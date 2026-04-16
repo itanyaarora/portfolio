@@ -221,6 +221,46 @@ if (muteBtn && bgMusic) {
   });
 }
 
+// ===== DISCO BALL (synced to bgMusic) =====
+// Drops in from above when music plays, retracts when paused or user scrolls away.
+const discoBallWrap = document.getElementById('discoBallWrap');
+const discoBallEl   = document.getElementById('discoBall');
+let discoAnim = null;
+
+function initDiscoBall() {
+  if (!discoBallEl || !window.lottie || discoAnim) return;
+  discoAnim = window.lottie.loadAnimation({
+    container: discoBallEl,
+    renderer:  'svg',
+    loop:      true,
+    autoplay:  false,
+    path:      'discoball.json'
+  });
+}
+
+// Lottie CDN may load after this script — wait for it if needed.
+if (window.lottie) {
+  initDiscoBall();
+} else {
+  window.addEventListener('load', initDiscoBall);
+}
+
+if (bgMusic) {
+  bgMusic.addEventListener('play', () => {
+    initDiscoBall();
+    if (discoBallWrap) discoBallWrap.classList.add('is-dropping');
+    if (discoAnim)     discoAnim.play();
+  });
+  bgMusic.addEventListener('pause', () => {
+    if (discoBallWrap) discoBallWrap.classList.remove('is-dropping');
+    if (discoAnim)     discoAnim.pause();
+  });
+  bgMusic.addEventListener('ended', () => {
+    if (discoBallWrap) discoBallWrap.classList.remove('is-dropping');
+    if (discoAnim)     discoAnim.pause();
+  });
+}
+
 // ===== WHY WORK WITH ME =====
 const whySection = document.querySelector('.why-work');
 const whyCards   = document.querySelectorAll('.why-card');
