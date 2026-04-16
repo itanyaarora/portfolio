@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanya - Strategic Product Designer for SaaS, Edtech, AI, and early-stage startups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=99">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <span class="logo-text">Tanya</span>
+      </div>
+      <div class="marquee-bar">
+        <div class="marquee-track">
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="#why" class="nav-link">Why me</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Character left -->
+    <div class="character character-left">
+      <img src="cropped/02_laptop.png" alt="Tanya with microphone" class="char-img">
+    </div>
+
+    <!-- Video -->
+    <div class="hero-video">
+      <div class="video-container" id="videoWrapper">
+        <div class="polaroid-tape" style="--tape: hsla(44,90%,72%,0.60); --tape-rot: -1deg"></div>
+        <div class="video-wrapper">
+          <video id="heroVideo" playsinline muted loop preload="auto">
+            <source src="tanya-intro.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-polaroid-label"></div>
+        <button class="video-btn" id="videoBtn" aria-label="Play video">
+          <svg class="icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="8,4 20,12 8,20"/>
+          </svg>
+          <svg class="icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+            <rect x="5" y="4" width="4" height="16" rx="1"/>
+            <rect x="15" y="4" width="4" height="16" rx="1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <p class="hero-greeting">Hey there,</p>
+    <h1 class="hero-headline">If you need someone who creates, executes, and gets things done</h1>
+    <p class="hero-subtext">You are in the right place.</p>
+    <a href="#contact" class="cta-button">Let's talk</a>
+
+    <!-- Character right -->
+    <div class="character character-right">
+      <img src="cropped/06_microphone.png" alt="Tanya with laptop" class="char-img">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-center">
+      <h2 class="section-title">About me</h2>
+      <p class="about-bio">I'm Tanya. Engineer by training, creative by nature. <strong>6 years</strong> at <span class="about-pill">Microsoft</span> and <span class="about-pill">Uber</span> — then I walked away to figure out who I actually am.</p>
+      <p class="about-bio">What I found: I build things, I take risks, and I make them matter. Right now I'm looking for a team that's building something real.</p>
+      <p class="about-bio">I thrive in <strong>0→1</strong> environments — messy, uncertain, fast-moving — where creative problem-solving and execution matter more than playbooks.</p>
+    </div>
+
+    <div class="about-photo-strip">
+      <div class="about-photo-track">
+        <img src="personal_photos/tanya-1.jpg" alt="">
+        <img src="personal_photos/tanya-2.jpg" alt="">
+        <img src="personal_photos/tanya-3.jpg" alt="">
+        <img src="personal_photos/tanya-4.jpg" alt="">
+        <img src="personal_photos/tanya-5.jpg" alt="">
+        <img src="personal_photos/tanya-6.jpg" alt="">
+        <img src="personal_photos/tanya-7.jpg" alt="">
+        <img src="personal_photos/tanya-8.jpg" alt="">
+        <img src="personal_photos/tanya-9.jpg" alt="">
+        <img src="personal_photos/tanya-10.jpg" alt="">
+        <img src="personal_photos/tanya-11.jpg" alt="">
+        <img src="personal_photos/tanya-14.jpg" alt="">
+        <!-- duplicate for seamless loop -->
+        <img src="personal_photos/tanya-1.jpg" alt="">
+        <img src="personal_photos/tanya-2.jpg" alt="">
+        <img src="personal_photos/tanya-3.jpg" alt="">
+        <img src="personal_photos/tanya-4.jpg" alt="">
+        <img src="personal_photos/tanya-5.jpg" alt="">
+        <img src="personal_photos/tanya-6.jpg" alt="">
+        <img src="personal_photos/tanya-7.jpg" alt="">
+        <img src="personal_photos/tanya-8.jpg" alt="">
+        <img src="personal_photos/tanya-9.jpg" alt="">
+        <img src="personal_photos/tanya-10.jpg" alt="">
+        <img src="personal_photos/tanya-11.jpg" alt="">
+        <img src="personal_photos/tanya-14.jpg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- MY JOURNEY — all 3 parts in one sticky section -->
+  <section class="journey" id="journey">
+    <div class="journey-sticky">
+
+      <!-- "My journey" title — visible during horizontal scroll -->
+      <h2 class="section-title journey-title" id="journeyTitle">My journey</h2>
+
+      <!-- Horizontal track: 3 panels -->
+      <div class="journey-track" id="journeyTrack">
+
+        <!-- Panel 1 — Creative Kid -->
+        <div class="journey-panel journey-panel--a">
+          <div class="journey-photos">
+            <div class="journey-polaroid journey-polaroid--1">
+              <div class="polaroid-tape" style="--tape: hsla(200,65%,78%,0.7); --tape-rot: -3deg"></div>
+              <img src="personal_photos/tanya-9.jpg" alt="Early years">
+              <div class="photo-polaroid-label">Early years</div>
+            </div>
+            <div class="journey-polaroid journey-polaroid--2">
+              <div class="polaroid-tape" style="--tape: hsla(44,90%,72%,0.7); --tape-rot: 2deg"></div>
+              <img src="personal_photos/tanya-8.jpg" alt="Placement day">
+              <div class="photo-polaroid-label">Placement day</div>
+            </div>
+          </div>
+          <div class="journey-text">
+            <span class="journey-era">Rishikesh · The early years</span>
+            <h3 class="journey-heading">Creative kid. Wrong script.</h3>
+            <p class="journey-body">I grew up creative — genuinely. But creativity wasn't a career plan anyone handed you growing up. So I chose engineering, landed at a private college, decided I'd be the best there anyway, and walked out with the highest placement offer from my batch. Microsoft. Uber. Six years of scaling real things at real speed. The creative side was always there, just waiting for its turn.</p>
+          </div>
+        </div>
+
+        <!-- Panel 2 — Engineering / Quit -->
+        <div class="journey-panel journey-panel--b">
+          <div class="journey-text">
+            <span class="journey-era">2024 – Now · The leap</span>
+            <h3 class="journey-heading">Quit the script. Tried everything.</h3>
+            <p class="journey-body">Something kept not working. So I stopped, stepped back, and decided to figure out what I actually love — by doing it. I gave myself a challenge: try 50 creative things. Mural art, floristry, event design, community hosting, exhibition curation. Turns out I enjoy a lot of things. That's not confusion — that's range. And it's been a blast.</p>
+          </div>
+          <div class="journey-photos">
+            <div class="journey-polaroid journey-polaroid--1">
+              <div class="polaroid-tape" style="--tape: hsla(140,50%,78%,0.7); --tape-rot: 2deg"></div>
+              <img src="personal_photos/tanya-11.jpg" alt="Mountain trek">
+              <div class="photo-polaroid-label">Mountain trek</div>
+            </div>
+            <div class="journey-polaroid journey-polaroid--2">
+              <div class="polaroid-tape" style="--tape: hsla(28,85%,78%,0.7); --tape-rot: -2deg"></div>
+              <img src="personal_photos/tanya-4.jpg" alt="Running 5K">
+              <div class="photo-polaroid-label">Running 5K</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 — 50 Creative Careers -->
+        <div class="journey-panel journey-panel--title">
+          <div class="journey-title-card" id="journeyTitleCard">
+            <p class="section-eyebrow">The Pivot.</p>
+            <h2 class="journey-careers-title">50 Creative Careers</h2>
+            <p class="journey-careers-story">I left a high-paying design job — Microsoft, Uber, six years, the whole thing. Something was missing and I couldn't ignore it anymore. So I made a deal with myself: try 50 completely different creative careers until something clicks. No plan B. <strong>I'm at #7.</strong></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dotted trail behind the car -->
+      <div class="journey-trail" id="journeyTrail"></div>
+
+      <!-- Driving car -->
+      <div class="journey-car" id="journeyCar">
+        <img src="drive_idle.gif" alt="Car idle" class="journey-car-idle" id="carIdle">
+        <img src="drive_speed.gif"    alt="Car driving" class="journey-car-speed" id="carSpeed">
+      </div>
+
+      <!-- Polaroid cards — hidden initially, revealed in phase 2 -->
+      <div class="journey-polaroids" id="journeyPolaroids">
+    <div class="careers-polaroid-grid" id="careersPolaroidGrid">
+
+      <div class="polaroid-card" style="--rot: -4deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(355,80%,82%,0.55); --tape-rot: -8deg"></div>
+            <div class="polaroid-photo"><img src="Careers /florist.jpg" alt="Florist"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Florist</span><em class="polaroid-num">01</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">01 / 50</em>
+            <h3 class="polaroid-back-title">Florist</h3>
+            <p class="polaroid-back-desc">Taught myself what it means to start a business from scratch — vendors, wholesalers, profit margins, all of it.</p>
+            <div class="polaroid-back-tags"><span>Business</span><span>Creative</span></div>
+            <a href="https://www.instagram.com/reel/DShLwUkkZYy/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: 3deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(44,90%,72%,0.55); --tape-rot: 5deg"></div>
+            <div class="polaroid-photo polaroid-photo--empty"><span>Coming soon</span></div>
+            <div class="polaroid-label"><span class="polaroid-name">Exhibition Designer</span><em class="polaroid-num">02</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">02 / 50</em>
+            <h3 class="polaroid-back-title">Exhibition Designer</h3>
+            <p class="polaroid-back-desc">Turned a SaaS startup's vision into physical artifacts clients could actually touch and feel.</p>
+            <div class="polaroid-back-tags"><span>Design</span><span>Strategy</span></div>
+            <a href="https://www.instagram.com/reel/DS4YRaFESqv/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: -2deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(200,65%,78%,0.55); --tape-rot: -6deg"></div>
+            <div class="polaroid-photo"><img src="Careers /EventMarketting.jpeg" alt="Event Marketer"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Event Marketer</span><em class="polaroid-num">03</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">03 / 50</em>
+            <h3 class="polaroid-back-title">Event Marketer</h3>
+            <p class="polaroid-back-desc">Helped a food chain break into wedding catering — built their pitch process and prospect outreach from scratch.</p>
+            <div class="polaroid-back-tags"><span>Marketing</span><span>Sales</span></div>
+            <a href="https://www.instagram.com/reel/DTXYgdRkRRg/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: 4deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(140,50%,78%,0.55); --tape-rot: 7deg"></div>
+            <div class="polaroid-photo"><img src="Careers /communitybhost.JPG" alt="Community Host"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Community Host</span><em class="polaroid-num">04</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">04 / 50</em>
+            <h3 class="polaroid-back-title">Community Host</h3>
+            <p class="polaroid-back-desc">Co-hosted a Bangalore community club — 20 strangers walk in, I'm the one who makes them friends.</p>
+            <div class="polaroid-back-tags"><span>People</span><span>Events</span></div>
+            <a href="https://www.instagram.com/reel/DUGaLynjz5j/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: -3deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(28,85%,78%,0.55); --tape-rot: 9deg"></div>
+            <div class="polaroid-photo"><img src="Careers /mural.JPG" alt="Mural Artist"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Mural Artist</span><em class="polaroid-num">05</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">05 / 50</em>
+            <h3 class="polaroid-back-title">Mural Artist</h3>
+            <p class="polaroid-back-desc">Got a free stay in Jaisalmer in exchange for finishing a mural on a deadline. Loved every part of it.</p>
+            <div class="polaroid-back-tags"><span>Art</span><span>Travel</span></div>
+            <a href="https://www.instagram.com/reels/DUcmsqEEQV3/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: 2deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(260,55%,82%,0.55); --tape-rot: -5deg"></div>
+            <div class="polaroid-photo polaroid-photo--empty"><span>Coming soon</span></div>
+            <div class="polaroid-label"><span class="polaroid-name">Telemarketer</span><em class="polaroid-num">06</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">06 / 50</em>
+            <h3 class="polaroid-back-title">Telemarketer</h3>
+            <p class="polaroid-back-desc">Going live on Flipkart almost every day — selling products, interacting with customers, watching live commerce up close.</p>
+            <div class="polaroid-back-tags"><span>Sales</span><span>Live</span></div>
+            <a href="https://www.instagram.com/reel/DWMNzdlkuOr/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card polaroid-card--ghost" style="--rot: -1deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(44,80%,78%,0.45); --tape-rot: 6deg"></div>
+            <div class="polaroid-photo polaroid-photo--empty"><span class="polaroid-ghost-count">+43</span></div>
+            <div class="polaroid-label"><span class="polaroid-name">Stay tuned.</span></div>
+          </div>
+          <div class="polaroid-back">
+            <h3 class="polaroid-back-title">More coming.</h3>
+            <p class="polaroid-back-desc">47 more careers in the making. This ride isn't over.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    </div><!-- end journey-polaroids -->
+
+    </div><!-- end journey-sticky -->
+  </section>
+
+
+  <!-- CAREERS REEL — HIDDEN (replaced by polaroid timeline) -->
+  <section class="careers-reel careers-reel--hidden" id="careers-reel" style="display:none;">
+
+          <div class="career-card" style="--accent: hsl(200,60%,62%)">
+            <div class="career-card-photo">
+              <img src="" alt="Exhibition Designer">
+              <span class="career-card-badge">02</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Exhibition Designer</h3>
+              <p class="career-card-desc">Turned a SaaS startup's vision into physical artifacts clients could actually touch and feel.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Design</span>
+                <span class="career-role-tag">Strategy</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DS4YRaFESqv/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(350,65%,65%)">
+            <div class="career-card-photo">
+              <img src="Careers /EventMarketting.jpeg" alt="Event Marketer">
+              <span class="career-card-badge">03</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Event Marketer</h3>
+              <p class="career-card-desc">Helped a food chain break into wedding catering — built their pitch process and prospect outreach from scratch.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Marketing</span>
+                <span class="career-role-tag">Sales</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DTXYgdRkRRg/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(140,45%,58%)">
+            <div class="career-card-photo">
+              <img src="Careers /communitybhost.JPG" alt="Community Host">
+              <span class="career-card-badge">04</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Community Host</h3>
+              <p class="career-card-desc">Co-hosted a Bangalore community club — 20 strangers walk in, I'm the one who makes them friends.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">People</span>
+                <span class="career-role-tag">Events</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DUGaLynjz5j/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(28,80%,60%)">
+            <div class="career-card-photo">
+              <img src="Careers /mural.JPG" alt="Mural Artist">
+              <span class="career-card-badge">05</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Mural Artist</h3>
+              <p class="career-card-desc">Got a free stay in Jaisalmer in exchange for finishing a mural on a deadline. Loved every part of it.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Art</span>
+                <span class="career-role-tag">Travel</span>
+              </div>
+              <a href="https://www.instagram.com/reels/DUcmsqEEQV3/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(260,55%,68%)">
+            <div class="career-card-photo">
+              <img src="" alt="Telemarketer">
+              <span class="career-card-badge">06</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Telemarketer</h3>
+              <p class="career-card-desc">Going live on Flipkart almost every day — selling products, interacting with customers, watching live commerce up close.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Sales</span>
+                <span class="career-role-tag">Live</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DWMNzdlkuOr/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <!-- ghost card — +47 more to come -->
+          <div class="career-card career-card--ghost">
+            <div class="career-card-photo"></div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Stay tuned.</h3>
+              <p class="career-card-desc">47 more careers in the making. This ride isn't over.</p>
+            </div>
+          </div>
+
+          <div class="careers-reel-spacer"></div>
+        </div><!-- end track -->
+      </div><!-- end track-wrap -->
+
+    </div><!-- end inner -->
+  </section>
+
+  <!-- WHY WORK WITH ME -->
+  <section class="why-work" id="why">
+    <div class="why-sticky">
+
+      <!-- Big background text: default 2 lines ("Why [target]" / "should work with me?").
+           JS switches to 3 lines if the target is long (e.g. full company name). -->
+      <div class="why-big-text" aria-hidden="true" id="whyBigText">
+        <div class="why-big-line why-big-line--prefix">Why <span class="why-big-target">you</span></div>
+        <div class="why-big-line">should work with me?</div>
+      </div>
+
+      <!-- Cards that slide up on scroll -->
+      <div class="why-cards">
+
+        <div class="why-card why-card--alt" data-index="0">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">01</span>
+            <h3 class="why-title why-title--alt">I'm creative</h3>
+            <p class="why-desc">Not just as a personality trait. I've been making things since childhood — out of the box, out of nowhere. Murals, reels, events, stories, brands.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_creative.png" alt="Creative">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="1">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">02</span>
+            <h3 class="why-title why-title--alt">Jack of all trades</h3>
+            <p class="why-desc">Engineering. Content. Hosting events. Painting murals. I've lived in many worlds — and that makes me dangerous in the best way.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_jackofalltrades.png" alt="Jack of all trades">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="2">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">03</span>
+            <h3 class="why-title why-title--alt">I get things done</h3>
+            <p class="why-desc">End to end. I don't hand off and disappear. I own it until it's finished. I'm quick at learning. If you need something done, it will happen.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_thingsdone.png" alt="Gets things done">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="3">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">04</span>
+            <h3 class="why-title why-title--alt">I take big bets</h3>
+            <p class="why-desc">I left Microsoft and Uber with no plan — just savings and a gut feeling. I go where it feels right. And honestly? It's worked out every time.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_execute.png" alt="Takes big bets">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="4">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">05</span>
+            <h3 class="why-title why-title--alt">I'm a nice human</h3>
+            <p class="why-desc">Genuinely. I'm fun to work with, I take things chill, and I show up for the people around me. Also — I know how to sell myself. That's a skill too.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_pray.png" alt="Nice human">
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- .why-sticky -->
+  </section>
+
+
+  <!-- WHAT I'M LOOKING FOR -->
+  <section class="services" id="services">
+    <div class="services-sticky">
+      <h2 class="section-title services-title">What I'm looking for</h2>
+      <p class="section-desc services-desc">"I'm not looking for just any room. I want the room where it happens."</p>
+
+      <!-- Role badges — horizontal, outside the box -->
+      <div class="roles-row">
+        <span class="role-badge">Founder's Office</span>
+        <span class="role-badge">Chief of Staff</span>
+        <span class="role-badge">Creative Strategy</span>
+        <span class="role-badge">Brand &amp; Marketing</span>
+        <span class="role-badge">Creative Operations</span>
+      </div>
+
+      <!-- Yes / No box with searching cartoon peeking from behind the top-right -->
+      <div class="looking-wrap">
+        <img class="looking-cartoon" src="cartoon_searching.png" alt="" aria-hidden="true">
+        <div class="looking-box">
+          <div class="looking-col">
+            <span class="looking-col-label">The yes</span>
+            <div class="looking-tags">
+              <span class="looking-tag yes">Culture that's real, not performed</span>
+              <span class="looking-tag yes">Cross-functional chaos — the good kind</span>
+              <span class="looking-tag yes">Room to be creative, not just efficient</span>
+              <span class="looking-tag yes">Bengaluru-based or remote-friendly</span>
+            </div>
+          </div>
+          <div class="looking-divider"></div>
+          <div class="looking-col">
+            <span class="looking-col-label">The no</span>
+            <div class="looking-tags">
+              <span class="looking-tag no">Pure engineering roles</span>
+              <span class="looking-tag no">Corporate bureaucracy</span>
+              <span class="looking-tag no">Toxic grind without meaning</span>
+              <span class="looking-tag no">Places where I'm just a number</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- .services-sticky -->
+  </section>
+
+
+  <!-- CTA / FOOTER -->
+  <section class="cta-footer" id="contact">
+    <div class="cta-box" id="ctaBox">
+      <div class="cta-content">
+        <h2 class="cta-title">Call me, maybe?</h2>
+        <p class="cta-desc">No pitch. No pressure. Just a quick conversation to see if I can help.</p>
+        <div class="cta-actions">
+          <button class="mute-btn" id="muteBtn" aria-label="Mute music" style="display:none">
+            <svg class="icon-sound" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+            <svg class="icon-mute" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Contact links — hidden until "Let's talk" is clicked -->
+        <div class="cta-contacts" id="ctaContacts">
+          <a href="https://wa.me/917906737517" class="contact-pill" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="mailto:talktotanyaarora@gmail.com" class="contact-pill">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>Email</span>
+          </a>
+          <a href="https://linkedin.com/in/yourprofile" class="contact-pill" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://instagram.com/heyatanyahere" class="contact-pill" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+      <div class="cta-character">
+        <img src="cropped/10_dancinggirl.gif" alt="Dancing girl" class="char-img">
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer-copyright">&copy;2026 Tanya Studio | Terms & Conditions</p>
+    </footer>
+  </section>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" src="audio-extract.mp3" preload="auto"></audio>
+
+  <!-- FLOATING CTA -->
+  <a href="#contact" class="float-cta" id="floatCta">Let's talk</a>
+
+  <script src="script.js?v=67"></script>
+</body>
+</html>

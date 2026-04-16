@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# Claude Code session data
+.claude/
+
+# Source / backup assets (originals kept locally, don't deploy)
+_archive/
+
+# Dev-only pages (not linked from index.html)
+admin.html
+admin.css
+admin.js
+brief.html
+fonts.html
+fonts-showcase.html
+
+# California Burrito variant (separate page, not part of main portfolio deploy)
+cb.html
+cb-script.js
+cb-style.css
+
+# Local dev server helper
+server.py
+
+# Side projects that live in this repo but aren't part of the site
+jobSearch/
+Careers/
+Careers\ /
+magesta/
+brand logo/
+v2/
+
+# Unused asset folders
+# (keep /cropped and /personal_photos — those are referenced)
