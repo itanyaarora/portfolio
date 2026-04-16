@@ -1208,12 +1208,12 @@ body::after {
 }
 
 .journey-polaroid--1 {
-  transform: rotate(-5deg) translate(-50px, -20px);
+  transform: rotate(-6deg) translate(-115px, -40px);
   z-index: 1;
 }
 
 .journey-polaroid--2 {
-  transform: rotate(4deg) translate(50px, 20px);
+  transform: rotate(5deg) translate(115px, 40px);
   z-index: 2;
 }
 

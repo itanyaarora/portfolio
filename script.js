@@ -531,6 +531,24 @@ if (careersPolaroidGrid) {
   careersPolaroidGrid.addEventListener('pointerup', endDrag);
   careersPolaroidGrid.addEventListener('pointercancel', endDrag);
   careersPolaroidGrid.addEventListener('pointerleave', endDrag);
+
+  // Horizontal wheel/trackpad panning — consume ONLY horizontal deltas so the
+  // vertical scroll-driven animation above keeps working normally. When the
+  // grid reaches either edge, let the event bubble so it doesn't feel stuck.
+  careersPolaroidGrid.addEventListener('wheel', (e) => {
+    // Pick horizontal delta if it dominates (trackpad two-finger swipe, shift+wheel).
+    const dx = e.deltaX;
+    const dy = e.deltaY;
+    if (Math.abs(dx) <= Math.abs(dy)) return; // vertical-dominant → let page scroll
+    const maxOff = getMaxOffset();
+    const nextOff = gridOffset - dx;
+    const atLeft  = gridOffset >= 0       && dx < 0;
+    const atRight = gridOffset <= maxOff  && dx > 0;
+    if (atLeft || atRight) return; // already at edge → let browser handle
+    e.preventDefault();
+    gridOffset = nextOff;
+    applyOffset();
+  }, { passive: false });
 }
 
 // ===== POLAROID SLIDE-UP ANIMATION =====
