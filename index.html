@@ -18,8 +18,10 @@
       z-index: 10000;
       background: hsl(48, 100%, 93%);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       transform: translateY(0);
       transition: transform 0.95s cubic-bezier(0.76, 0, 0.24, 1);
       will-change: transform;
@@ -28,9 +30,22 @@
     }
     .page-loader.is-leaving { transform: translateY(-100%); }
     .page-loader .loader-gif {
-      width: min(360px, 60vw);
+      width: min(320px, 55vw);
       height: auto;
       display: block;
+    }
+    .page-loader .loader-greeting {
+      margin: 0;
+      font-family: 'Fraunces', 'Times New Roman', serif;
+      font-weight: 800;
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -0.02em;
+      color: #1b1a18;
+      text-align: center;
+      line-height: 1.1;
+      max-width: 90vw;
+      padding: 0 24px;
+      word-break: break-word;
     }
   </style>
   <script>document.documentElement.classList.add('is-loading');</script>
@@ -40,11 +55,27 @@
   <!-- PAGE LOADER: hey-wave gif on butter yellow, slides up as a card -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
     <img src="loader_page_hey.gif" alt="" class="loader-gif">
+    <p class="loader-greeting" id="loaderGreeting">Hi there!</p>
   </div>
   <script>
     (function () {
       var loader = document.getElementById('pageLoader');
       if (!loader) return;
+
+      // Customizable greeting: share ?hi=Juspay or ?hi=California%20Burrito
+      // to personalize the loader for a specific audience. Defaults to "Hi there!"
+      var greetingEl = document.getElementById('loaderGreeting');
+      if (greetingEl) {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var who = params.get('hi') || params.get('to') || params.get('for');
+          if (who) {
+            who = who.replace(/[<>]/g, '').trim().slice(0, 40); // sanitize + cap
+            if (who) greetingEl.textContent = 'Hi ' + who + '!';
+          }
+        } catch (e) { /* no-op — keep the default */ }
+      }
+
       var MIN_MS = 2500;
       var started = Date.now();
       function hide() {
