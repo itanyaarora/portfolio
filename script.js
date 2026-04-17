@@ -200,9 +200,11 @@ function checkMusicTrigger() {
     }
   } else {
     // Scrolled away — pause without resetting position; clear the user-paused flag
-    // so the song can resume naturally when they come back.
+    // so the song can resume naturally when they come back, and hide the button
+    // so it doesn't linger outside the CTA section.
     userPausedHere = false;
     if (!bgMusic.paused) bgMusic.pause();
+    if (muteBtn) muteBtn.style.display = 'none';
   }
 }
 
@@ -212,28 +214,52 @@ document.addEventListener(     'scroll', checkMusicTrigger, { passive: true });
 window.addEventListener(       'scroll', checkMusicTrigger, { passive: true });
 checkMusicTrigger();
 
-// "Shh, I am in a meeting" — one-tap pause while the user stays in the section.
+// Music toggle button — click to pause, click again to resume.
+// Text + sound-wave animation reflect the current state.
+const muteLabel   = muteBtn ? muteBtn.querySelector('.mute-label') : null;
+const LABEL_PLAYING = 'Shh, I am in a meeting';
+const LABEL_PAUSED  = 'Click me if you wanna hear a song';
+
 if (muteBtn && bgMusic) {
   muteBtn.addEventListener('click', () => {
-    userPausedHere = true;
-    bgMusic.pause();
+    if (bgMusic.paused) {
+      userPausedHere = false;
+      bgMusic.play().catch(() => {});
+    } else {
+      userPausedHere = true;
+      bgMusic.pause();
+    }
   });
 }
 
 // Dancing girl: animate while music plays, freeze on first frame when paused.
-// Button visibility is also tied to the same play/pause state for consistency.
+// Party lights + button label + sound-wave rays sync with play/pause state.
+const partyLights = document.getElementById('partyLights');
 if (bgMusic) {
   bgMusic.addEventListener('play', () => {
-    if (muteBtn) muteBtn.style.display = 'flex';
+    if (muteBtn) {
+      muteBtn.style.display = 'flex';
+      muteBtn.classList.add('is-playing');
+      muteBtn.setAttribute('aria-label', 'Pause music');
+    }
+    if (muteLabel) muteLabel.textContent = LABEL_PLAYING;
     if (dancingGirl && GIRL_ANIMATED && dancingGirl.getAttribute('src') !== GIRL_ANIMATED) {
       dancingGirl.setAttribute('src', GIRL_ANIMATED);
     }
+    if (partyLights) partyLights.classList.add('is-on');
   });
   const pauseUI = () => {
-    if (muteBtn) muteBtn.style.display = 'none';
+    if (muteBtn) {
+      // Keep the button visible while the user is still on this section.
+      // checkMusicTrigger hides it (via display:none) only when scrolling away.
+      muteBtn.classList.remove('is-playing');
+      muteBtn.setAttribute('aria-label', 'Play music');
+    }
+    if (muteLabel) muteLabel.textContent = LABEL_PAUSED;
     if (dancingGirl && GIRL_STATIC && dancingGirl.getAttribute('src') !== GIRL_STATIC) {
       dancingGirl.setAttribute('src', GIRL_STATIC);
     }
+    if (partyLights) partyLights.classList.remove('is-on');
   };
   bgMusic.addEventListener('pause', pauseUI);
   bgMusic.addEventListener('ended', pauseUI);
