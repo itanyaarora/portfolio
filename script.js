@@ -168,14 +168,15 @@ window.addEventListener(       'scroll', checkReveals, { passive: true });
 checkReveals(); // run once on load for anything already in view
 
 // ===== AUDIO =====
-const bgMusic   = document.getElementById('bgMusic');
-const muteBtn   = document.getElementById('muteBtn');
-const iconSound = muteBtn ? muteBtn.querySelector('.icon-sound') : null;
-const iconMute  = muteBtn ? muteBtn.querySelector('.icon-mute')  : null;
-const ctaFooter = document.querySelector('.cta-footer');
+const bgMusic      = document.getElementById('bgMusic');
+const muteBtn      = document.getElementById('muteBtn');
+const ctaFooter    = document.querySelector('.cta-footer');
+const dancingGirl  = document.getElementById('dancingGirl');
+const GIRL_STATIC  = dancingGirl ? dancingGirl.dataset.static   : null;
+const GIRL_ANIMATED = dancingGirl ? dancingGirl.dataset.animated : null;
 
-let isMuted    = false;
-let songPlayed = false;
+let songPlayed     = false;
+let userPausedHere = false; // user clicked "Shh" while CTA is in view → don't auto-resume until scroll-away
 
 if (bgMusic) bgMusic.volume = 1.0;
 
@@ -190,16 +191,17 @@ function checkMusicTrigger() {
       songPlayed = true;
       bgMusic.currentTime = 0;
     }
-    // Resume (or start) only if not already playing and song hasn't ended
-    if (bgMusic.paused && !bgMusic.ended) {
-      bgMusic.play().then(() => {
-        if (muteBtn) muteBtn.style.display = 'flex';
-      }).catch(() => {
+    // Resume (or start) only if not already playing, song hasn't ended,
+    // AND the user hasn't explicitly paused while staying in this section.
+    if (bgMusic.paused && !bgMusic.ended && !userPausedHere) {
+      bgMusic.play().catch(() => {
         songPlayed = false; // reset so it can retry
       });
     }
   } else {
-    // Scrolled away — pause without resetting position
+    // Scrolled away — pause without resetting position; clear the user-paused flag
+    // so the song can resume naturally when they come back.
+    userPausedHere = false;
     if (!bgMusic.paused) bgMusic.pause();
   }
 }
@@ -210,15 +212,31 @@ document.addEventListener(     'scroll', checkMusicTrigger, { passive: true });
 window.addEventListener(       'scroll', checkMusicTrigger, { passive: true });
 checkMusicTrigger();
 
-// Mute / unmute toggle — button only appears when music is actually playing
+// "Shh, I am in a meeting" — one-tap pause while the user stays in the section.
 if (muteBtn && bgMusic) {
   muteBtn.addEventListener('click', () => {
-    if (bgMusic.paused) { bgMusic.play().catch(() => {}); return; }
-    isMuted = !isMuted;
-    bgMusic.muted = isMuted;
-    if (iconSound) iconSound.style.display = isMuted ? 'none'   : 'inline';
-    if (iconMute)  iconMute.style.display  = isMuted ? 'inline' : 'none';
+    userPausedHere = true;
+    bgMusic.pause();
   });
+}
+
+// Dancing girl: animate while music plays, freeze on first frame when paused.
+// Button visibility is also tied to the same play/pause state for consistency.
+if (bgMusic) {
+  bgMusic.addEventListener('play', () => {
+    if (muteBtn) muteBtn.style.display = 'flex';
+    if (dancingGirl && GIRL_ANIMATED && dancingGirl.getAttribute('src') !== GIRL_ANIMATED) {
+      dancingGirl.setAttribute('src', GIRL_ANIMATED);
+    }
+  });
+  const pauseUI = () => {
+    if (muteBtn) muteBtn.style.display = 'none';
+    if (dancingGirl && GIRL_STATIC && dancingGirl.getAttribute('src') !== GIRL_STATIC) {
+      dancingGirl.setAttribute('src', GIRL_STATIC);
+    }
+  };
+  bgMusic.addEventListener('pause', pauseUI);
+  bgMusic.addEventListener('ended', pauseUI);
 }
 
 // ===== DISCO BALL (synced to bgMusic) =====

@@ -538,26 +538,30 @@ body::after {
   transition: padding 0.4s ease;
 }
 
-/* ===== MUTE BUTTON (inline, next to Let's talk) ===== */
+/* ===== MUTE BUTTON — "Shh, I am in a meeting" text pill next to Let's talk ===== */
 .mute-btn {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  padding: 12px 20px;
   background: #111;
   color: #fff;
   border: none;
-  border-radius: 50%;
+  border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   transition: background 0.2s ease, transform 0.2s ease;
   flex-shrink: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
 .mute-btn:hover {
   background: #333;
-  transform: scale(1.08);
+  transform: translateY(-1px);
 }
 
 /* Pulses when autoplay is blocked — tap to start music */
