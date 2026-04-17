@@ -7,10 +7,62 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=101">
+  <link rel="preload" as="image" href="loader_page_hey.gif" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=102">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <style>
+    /* Critical loader styles — inlined so there's no flash before style.css parses */
+    html.is-loading, html.is-loading body { overflow: hidden; }
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: hsl(48, 100%, 93%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(0);
+      transition: transform 0.95s cubic-bezier(0.76, 0, 0.24, 1);
+      will-change: transform;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.18);
+    }
+    .page-loader.is-leaving { transform: translateY(-100%); }
+    .page-loader .loader-gif {
+      width: min(360px, 60vw);
+      height: auto;
+      display: block;
+    }
+  </style>
+  <script>document.documentElement.classList.add('is-loading');</script>
 </head>
 <body>
+
+  <!-- PAGE LOADER: hey-wave gif on butter yellow, slides up as a card -->
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <img src="loader_page_hey.gif" alt="" class="loader-gif">
+  </div>
+  <script>
+    (function () {
+      var loader = document.getElementById('pageLoader');
+      if (!loader) return;
+      var MIN_MS = 2500;
+      var started = Date.now();
+      function hide() {
+        loader.classList.add('is-leaving');
+        document.documentElement.classList.remove('is-loading');
+        loader.addEventListener('transitionend', function () {
+          if (loader.parentNode) loader.parentNode.removeChild(loader);
+        }, { once: true });
+      }
+      function fire() {
+        var wait = Math.max(0, MIN_MS - (Date.now() - started));
+        setTimeout(hide, wait);
+      }
+      if (document.readyState === 'complete') fire();
+      else window.addEventListener('load', fire);
+    })();
+  </script>
 
   <!-- NAVBAR -->
   <nav class="navbar">
