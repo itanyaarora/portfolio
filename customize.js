@@ -136,7 +136,9 @@
         // becomes "Tanya × Famyo" once the JSON entry loads.
         document.title = `Tanya × ${displayName}`;
 
-        if (config.heroHeadline) setHTML('.hero-headline', config.heroHeadline);
+        // Main hero headline ("I'm not figuring things out. / I'm collecting skills.")
+        // is intentionally NOT overridden per company — it stays constant as Tanya's
+        // opening line. Only the subtext below it gets tailored.
         if (config.heroSubtext) setText('.hero-subtext', config.heroSubtext);
         if (config.ctaTitle)    setText('.cta-title',    config.ctaTitle);
         if (config.ctaDesc)     setText('.cta-desc',     config.ctaDesc);

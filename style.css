@@ -406,6 +406,21 @@ body::after {
   z-index: 2;
 }
 
+/* "Hi, I'm Tanya." — small greeting between the polaroid and the big headline.
+   Matches the .hero-subtext treatment (Nunito 16px, 500 weight, primary color). */
+.hero-intro {
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin: 20px auto 14px;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-headline {
   font-family: 'Fraunces', serif;
   font-style: normal;

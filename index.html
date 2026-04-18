@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="loader_page_hey.gif" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=114">
+  <link rel="stylesheet" href="style.css?v=115">
   <style>
     /* Critical loader styles — inlined so there's no flash before style.css parses */
     html.is-loading, html.is-loading body { overflow: hidden; }
@@ -76,8 +76,9 @@
         } catch (e) { /* no-op — keep the default */ }
       }
 
-      var MIN_MS = 2500;
-      var started = Date.now();
+      // Fixed 2-second show time. Don't wait for window.load — the hero video +
+      // audio + GIFs can delay that to 10s+ on slower connections, making the
+      // loader feel stuck.
       function hide() {
         loader.classList.add('is-leaving');
         document.documentElement.classList.remove('is-loading');
@@ -85,12 +86,7 @@
           if (loader.parentNode) loader.parentNode.removeChild(loader);
         }, { once: true });
       }
-      function fire() {
-        var wait = Math.max(0, MIN_MS - (Date.now() - started));
-        setTimeout(hide, wait);
-      }
-      if (document.readyState === 'complete') fire();
-      else window.addEventListener('load', fire);
+      setTimeout(hide, 2000);
     })();
   </script>
 
@@ -148,8 +144,9 @@
       </div>
     </div>
 
+    <p class="hero-intro">Hi, I'm Tanya.</p>
     <h1 class="hero-headline">I'm not figuring things out.<br>I'm collecting skills.</h1>
-    <p class="hero-subtext">Ex-Microsoft, ex-Uber. Seven unrelated careers in the last 18 months — all deliberate. Looking for a founder who needs a generalist who actually ships.</p>
+    <p class="hero-subtext">Ex-Microsoft, ex-Uber. Seven unrelated careers in the last 4 months — all deliberate. Looking for a founder who needs a generalist who actually ships.</p>
     <a href="#contact" class="cta-button">Let's talk</a>
 
     <!-- Character right -->
@@ -200,9 +197,6 @@
 
   <!-- MY JOURNEY — all 3 parts in one sticky section -->
   <section class="journey" id="journey">
-    <!-- Intro sits outside the sticky zone so it scrolls away as the journey engages -->
-    <p class="journey-intro" id="journeyIntro">Hi, I'm Tanya. Engineer by training, creative by nature. Here's how I got here.</p>
-
     <div class="journey-sticky">
 
       <!-- "My journey" title — visible during horizontal scroll -->
