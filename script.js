@@ -1,39 +1,3 @@
-// ===== COMPANY PERSONALIZATION =====
-// If the URL has ?company=Name, rewrite the "Why you should work with me"
-// big background heading. Short names (≤10 chars) keep the 2-line layout
-// ("Why Uber" / "should work with me?"); longer names get a 3-line layout
-// ("Why" / "California Burrito" / "should work with me?") so the brand name
-// has its own line and the design stays balanced.
-(function applyCompanyPersonalization() {
-  try {
-    const params  = new URLSearchParams(window.location.search);
-    const company = (params.get('company') || '').trim();
-    if (!company) return;
-
-    const box = document.getElementById('whyBigText');
-    if (!box) return;
-
-    const LONG_THRESHOLD = 10;
-    if (company.length > LONG_THRESHOLD) {
-      // 3-line layout: brand on its own middle line
-      box.innerHTML = `
-        <div class="why-big-line">Why</div>
-        <div class="why-big-line why-big-target why-big-target--solo">${company}</div>
-        <div class="why-big-line">should work with me?</div>
-      `;
-    } else {
-      // 2-line layout: brand inline with "Why"
-      const target = box.querySelector('.why-big-target');
-      if (target) target.textContent = company;
-    }
-
-    // Update the page title for shared links
-    if (document.title && !document.title.includes(company)) {
-      document.title = `Tanya × ${company}`;
-    }
-  } catch (_) { /* no-op */ }
-})();
-
 // ===== VIDEO PLAYER =====
 const video = document.getElementById('heroVideo');
 const videoBtn = document.getElementById('videoBtn');

@@ -1,0 +1,116 @@
+{
+  "_template": {
+    "_comment": "Copy this block, rename the key to your company slug (lowercase, hyphen-separated). Every field is optional — only the ones you set will override the default site. Leave a field out to keep the default.",
+    "displayName": "Shown in 'Why X should work with me?' and the tab title. Defaults to the ?company= param as-typed.",
+    "heroHeadline": "Main h1 in the hero. Use <br> for a line break. Keep to 2 short lines.",
+    "heroSubtext": "The paragraph under the hero headline. Tailor to what this company cares about.",
+    "ctaTitle": "Final 'Call me, maybe?' heading. Default is 'Call me, maybe?'",
+    "ctaDesc": "Final CTA description. Default is 'No pitch. No pressure. Just a quick conversation to see if I can help.'",
+
+    "_personalNote_recipe": [
+      "Locked structure for each company's 'Why I'm writing to you, {COMPANY}' card.",
+      "Title is always: 'Why I'm writing to <em>you</em>, {COMPANY}.'",
+      "Bullets are locked — only swap the body, not the title:",
+      "  1. 'I've been watching how you build.'  → name ONE specific real thing (campaign, product, cultural choice). End with: that's what I'd want to be close to.",
+      "  2. '{Their stated ambition} is a different kind of operating problem.'  → flatter with a real number/target. End with: I'd love to understand how the team keeps up.",
+      "  3. 'My range might fit here.'  → connect one of Tanya's 7 careers or BigCo chapters to their work. Humble.",
+      "Rules: 25–40 words per body. Warm, curious, respectful. No LinkedIn-speak. No emoji. No diagnosing problems. No '90-day plans'. No 'I've done my homework' — the details prove it. Contractions fine.",
+      "Subtle = naming a real campaign/number/detail. Not subtle = restating the thesis or sounding cocky.",
+      "Wrap words in <em>…</em> for coral italic accent (same as the 'you' in the title)."
+    ],
+    "personalNote": {
+      "eyebrow": "A LITTLE NOTE JUST FOR {COMPANY} — small uppercase label.",
+      "title": "Why I'm writing to <em>you</em>, {COMPANY}.",
+      "intro": "Short 1-sentence setup for the bullets. Keep it honest. e.g. 'Before I send anything over — three things I've been thinking about.'",
+      "points": [
+        { "title": "I've been watching how you build.",         "body": "…" },
+        { "title": "{their ambition} is a different kind of operating problem.", "body": "…" },
+        { "title": "My range might fit here.",                   "body": "…" }
+      ]
+    }
+  },
+
+  "famyo": {
+    "displayName": "Famyo",
+    "heroHeadline": "A character-led D2C brand<br>needs a character-led generalist.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Seven creative careers in 18 months — mural artist, florist, event lead, community host, live-commerce host. I know how to make something kids remember and parents buy.",
+    "ctaTitle": "Let's build Famyo's next chapter.",
+    "ctaDesc": "No pitch deck. No 20-slide intro. Just a real conversation about what you need and whether I can ship it.",
+
+    "personalNote": {
+      "eyebrow": "A little note just for Famyo",
+      "title": "Why I'm writing to <em>you</em>, Famyo.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        {
+          "title": "I've been watching how you build.",
+          "body": "The choice to lead with <em>characters</em>, not SKUs — turning everyday kid essentials into things kids actually ask their parents for — is the kind of product instinct I'd want to be close to."
+        },
+        {
+          "title": "Your ambition is a different kind of operating problem.",
+          "body": "40% QoQ growth on a ₹12 Cr ARR, in a kids-essentials category that's barely been built in India. I'd love to understand how the team keeps up."
+        },
+        {
+          "title": "My range might fit here.",
+          "body": "Six years at Microsoft &amp; Uber, then seven unrelated creative careers in 18 months — mural, exhibition design, live-commerce. A character-led D2C brand might be one of the few places that shape reads like a fit."
+        }
+      ]
+    }
+  },
+
+  "goodera": {
+    "displayName": "Goodera",
+    "heroHeadline": "Scaling good is the kind<br>of operating problem I'd show up for.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of scaling programs at companies built for scale. Then 18 months trying seven creative careers — including a Bangalore community club where strangers had to leave as friends. That's the range Chief of Staff at Goodera probably wants.",
+    "ctaTitle": "Let's scale good together.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your Founder's Office is looking for.",
+
+    "personalNote": {
+      "eyebrow": "A little note just for Goodera",
+      "title": "Why I'm writing to <em>you</em>, Goodera.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        {
+          "title": "I've been watching how you build.",
+          "body": "Hosting <em>Karma Summit Asia</em> with 150+ companies in one room — turning a category into a community — is exactly the kind of move I'd want to be close to."
+        },
+        {
+          "title": "Your ambition is a different kind of operating problem.",
+          "body": "65+ Fortune 500 clients, a network of 50,000 nonprofits across 100 countries, and 100% YoY growth. I'd love to understand how the team keeps up."
+        },
+        {
+          "title": "My range might fit here.",
+          "body": "Six years at Microsoft &amp; Uber, then seven creative careers — including hosting a Bangalore community club where strangers had to leave as friends. A volunteering platform runs on that same muscle."
+        }
+      ]
+    }
+  },
+
+  "homelane": {
+    "displayName": "HomeLane",
+    "heroHeadline": "Design doesn't live in a brief.<br>It lives in the room.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Seven creative careers in 18 months — mural, exhibition design, event design. I've shipped design where people can touch it, walk through it, remember it. That's HomeLane's whole thing.",
+    "ctaTitle": "Let's make HomeLane's design unforgettable.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your creative team is missing.",
+
+    "personalNote": {
+      "eyebrow": "A little note just for HomeLane",
+      "title": "Why I'm writing to <em>you</em>, HomeLane.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        {
+          "title": "I've been watching how you build.",
+          "body": "The <em>DesignCafe</em> move — folding in a competitor instead of running at them — is the kind of move I'd want to be close to watching get made."
+        },
+        {
+          "title": "Your ambition is a different kind of operating problem.",
+          "body": "₹1,000 Cr of combined revenue across four brands, turning EBITDA positive while still designing at the individual-home level. I'd love to understand how the team keeps up."
+        },
+        {
+          "title": "My range might fit here.",
+          "body": "Six years at Microsoft &amp; Uber, then seven creative careers — mural, exhibition design, event design — where the work had to physically exist for real humans. Interior design reads like the grown-up version of that."
+        }
+      ]
+    }
+  }
+}

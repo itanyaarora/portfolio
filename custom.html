@@ -158,6 +158,19 @@
     </div>
   </section>
 
+  <!-- PERSONAL NOTE — shown only on company-specific pages (populated from companies.json personalNote) -->
+  <section class="personal-note" id="personalNote" aria-hidden="true">
+    <div class="personal-note-inner">
+      <div class="personal-note-eyebrow">
+        <span class="personal-note-psst">psst —</span>
+        <span class="personal-note-label" id="personalNoteEyebrow"></span>
+      </div>
+      <h2 class="personal-note-title" id="personalNoteTitle"></h2>
+      <p class="personal-note-intro" id="personalNoteIntro"></p>
+      <div class="personal-note-points" id="personalNotePoints"></div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-center">
@@ -687,6 +700,7 @@
   <!-- FLOATING CTA -->
   <a href="#contact" class="float-cta" id="floatCta">Let's talk</a>
 
+  <script src="customize.js?v=1"></script>
   <script src="script.js?v=76"></script>
 </body>
 </html>
