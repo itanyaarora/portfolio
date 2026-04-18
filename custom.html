@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="loader_page_hey.gif" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=111">
+  <link rel="stylesheet" href="style.css?v=112">
   <style>
     /* Critical loader styles — inlined so there's no flash before style.css parses */
     html.is-loading, html.is-loading body { overflow: hidden; }
@@ -50,7 +50,7 @@
   </style>
   <script>document.documentElement.classList.add('is-loading');</script>
 </head>
-<body>
+<body class="custom-page">
 
   <!-- PAGE LOADER: hey-wave gif on butter yellow, slides up as a card -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
@@ -161,10 +161,6 @@
   <!-- PERSONAL NOTE — shown only on company-specific pages (populated from companies.json personalNote) -->
   <section class="personal-note" id="personalNote" aria-hidden="true">
     <div class="personal-note-inner">
-      <div class="personal-note-eyebrow">
-        <span class="personal-note-psst">psst —</span>
-        <span class="personal-note-label" id="personalNoteEyebrow"></span>
-      </div>
       <h2 class="personal-note-title" id="personalNoteTitle"></h2>
       <p class="personal-note-intro" id="personalNoteIntro"></p>
       <div class="personal-note-points" id="personalNotePoints"></div>

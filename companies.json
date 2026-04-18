@@ -21,7 +21,7 @@
     "personalNote": {
       "eyebrow": "A LITTLE NOTE JUST FOR {COMPANY} — small uppercase label.",
       "title": "Why I'm writing to <em>you</em>, {COMPANY}.",
-      "intro": "Short 1-sentence setup for the bullets. Keep it honest. e.g. 'Before I send anything over — three things I've been thinking about.'",
+      "intro": "Short 1-sentence setup for the bullets. Keep it honest. e.g. 'Three things I wanted to say upfront.'",
       "points": [
         { "title": "I've been watching how you build.",         "body": "…" },
         { "title": "{their ambition} is a different kind of operating problem.", "body": "…" },
@@ -37,7 +37,7 @@
     "personalNote": {
       "eyebrow": "A little note just for 2070Health",
       "title": "Why I'm writing to <em>you</em>, 2070Health.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building healthcare ventures from the platform in instead of the thesis out — a 0→1 studio model for a sector that usually waits for white papers — is the kind of operator call I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Every special project has to ship like a startup while reporting like a platform. That's two operating rhythms at once. I'd love to understand how the team keeps up." },
@@ -53,7 +53,7 @@
     "personalNote": {
       "eyebrow": "A little note just for AIP",
       "title": "Why I'm writing to <em>you</em>, Accelerate Indian Philanthropy.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Turning <em>philanthropy</em> from a cheque into a community of givers who learn from each other — that's a much harder operating problem than it looks, and the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "India's UHNI cohort is small, private, and bespoke by default. Running executive ops for a cohort like that means every programme is a custom build. I'd love to understand how the team keeps up." },
@@ -71,7 +71,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Astra",
       "title": "Why I'm writing to <em>you</em>, Astra Security.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Turning pentesting from a scary black box into a <em>dashboard</em> that a non-security founder can actually use — that's a storytelling choice as much as a product one, and the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Protecting 10,000+ businesses without a dedicated security team at each means you're not selling a product — you're selling a substitute. I'd love to understand how the team keeps up." },
@@ -87,7 +87,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Biome/Build",
       "title": "Why I'm writing to <em>you</em>, Biome/Build.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Putting a <em>design</em>-native seat inside the founder's office — not as decoration, as decision-making — is the kind of structural call I'd want to be close to watching play out." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Design and strategy usually move at different tempos. Making them share one rhythm in an early-stage team is a real operating challenge. I'd love to understand how the team keeps up." },
@@ -103,7 +103,7 @@
     "personalNote": {
       "eyebrow": "A little note just for BiteSpeed",
       "title": "Why I'm writing to <em>you</em>, BiteSpeed.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Betting that commerce in India happens on <em>WhatsApp</em> — not a website, not an app — is the kind of channel call the whole product flows from. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "YC-backed, D2C-heavy book, charging per-message at Shopify-brand scale. FP&A at that shape is half pricing, half psychology. I'd love to understand how the team keeps up." },
@@ -121,7 +121,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Blissclub",
       "title": "Why I'm writing to <em>you</em>, Blissclub.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Designing an activewear brand around <em>movement</em> that real Indian women actually do — not the Lululemon aspirational fantasy — is the cultural call I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "India's fastest-growing activewear brand means growing faster than your supply chain, your hiring plan, and your OKR system can keep up. I'd love to understand how the team keeps up." },
@@ -139,7 +139,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Bold Cap",
       "title": "Why I'm writing to <em>you</em>, Bold Cap.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Hiring a <em>creator-operator</em> for the Chief of Staff seat — not a banker, not a consultant — is the call I'd want to be close to watching. It says something about what you think a platform is." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Platform VC means you're running a content engine, a founder service, and a portfolio at the same time. That's three operating rhythms in one seat. I'd love to understand how the team keeps up." },
@@ -157,7 +157,7 @@
     "personalNote": {
       "eyebrow": "A little note just for California Burrito",
       "title": "Why I'm writing to <em>you</em>, California Burrito.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Growing from a single Bangalore outlet into a Series B consumer brand without losing the thing that made the burritos feel specific — that's an identity-preservation problem as much as a scaling one, and the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Series B, Elevation-backed, creative leadership that has to translate across kitchens, packaging, reels, and stores. I'd love to understand how the team keeps up." },
@@ -173,7 +173,7 @@
     "personalNote": {
       "eyebrow": "A little note just for CertifyMe",
       "title": "Why I'm writing to <em>you</em>, CertifyMe.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Making a <em>verifiable credential</em> feel like a marketing asset — not compliance paperwork — is the kind of positioning call I'd want to be close to watching get made." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Growth in digital credentialing is sold to training teams, marketing teams, and HR teams — three different buyers, one product. I'd love to understand how the team keeps up." },
@@ -189,7 +189,7 @@
     "personalNote": {
       "eyebrow": "A little note just for CloudSEK",
       "title": "Why I'm writing to <em>you</em>, CloudSEK.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Using <em>AI</em> to watch the internet for your customers' exposures — scraping dark web and leaks at scale — is a product that only makes sense if you can tell the story simply. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "AI cybersecurity means a moving threat model, a moving regulatory floor, and a moving pricing model. Founder's office has to hold all three. I'd love to understand how the team keeps up." },
@@ -205,7 +205,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Contineu",
       "title": "Why I'm writing to <em>you</em>, Contineu.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Early-stage founder's office isn't a seat — it's whatever's <em>on fire</em> that week. Hiring for range instead of specialty is the bet I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Every cross-functional initiative in a small team is an ask of everyone's calendar. Protecting founder focus while keeping the company moving is the real operating problem. I'd love to understand how the team keeps up." },
@@ -221,7 +221,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Cube",
       "title": "Why I'm writing to <em>you</em>, Cube.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Making <em>marketing ops</em> feel like a product instead of a spreadsheet is the cultural call marketing stacks rarely get right. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Sequoia-backed and moving fast means your customer list tomorrow looks different from today. Growth + strategy in a founder's office at that tempo is its own thing. I'd love to understand how the team keeps up." },
@@ -239,7 +239,7 @@
     "personalNote": {
       "eyebrow": "A little note just for CureFit",
       "title": "Why I'm writing to <em>you</em>, CureFit.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building <em>cult.fit</em> as a place where a workout is also a club — not a transaction — is the cultural choice the whole brand runs on. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Consumer health at Indian scale means pricing a daily habit against a movie ticket, a gym fee, and a coffee. Brand has to justify itself every week. I'd love to understand how the team keeps up." },
@@ -257,7 +257,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Deconstruct",
       "title": "Why I'm writing to <em>you</em>, Deconstruct.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Selling skincare by <em>actives</em>, not adjectives — the 'niacinamide 10%' instead of 'glow potion' move — is a real category bet. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "D2C skincare at the stage of new-product development, positioning, and campaign calendar all at once is three operating rhythms in one brand seat. I'd love to understand how the team keeps up." },
@@ -273,7 +273,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Digitide",
       "title": "Why I'm writing to <em>you</em>, Digitide.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running a 4000+ person tech company from a <em>Chief of Staff</em> seat means protecting the CEO's attention is half the job. The discipline of that is the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "At 4000+ employees, every strategic decision has 10 downstream ops decisions underneath. Keeping those in sync without a bureaucracy is real work. I'd love to understand how the team keeps up." },
@@ -289,7 +289,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Ditto",
       "title": "Why I'm writing to <em>you</em>, Ditto Insurance.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Growing an insurance advisory business out of a <em>newsletter</em> — and keeping the voice the same when the product got serious — is the distribution call I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Finshots-to-Ditto means media and advisory share one brand, two sales motions, and one trust account. Founder's office has to keep all three aligned. I'd love to understand how the team keeps up." },
@@ -307,7 +307,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Elevation",
       "title": "Why I'm writing to <em>you</em>, Elevation Capital.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Investing across <em>Swiggy, Meesho, Paytm</em> and still backing pre-seed consumer bets is a portfolio temperament I'd want to be close to — most firms pick one personality." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "A Chief of Staff at a VC firm is running IR, portfolio support, and partner calendars — three founders' offices stacked on top of each other. I'd love to understand how the team keeps up." },
@@ -323,7 +323,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Enterpret",
       "title": "Why I'm writing to <em>you</em>, Enterpret.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Making <em>customer feedback</em> a structured data source — not a Notion doc the PM skims — is the kind of category-creating bet I'd want to be close to watching mature." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Chief of Staff to a CTO means translating between product, engineering, and customer reality in three different vocabularies. I'd love to understand how the team keeps up." },
@@ -339,7 +339,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Epik",
       "title": "Why I'm writing to <em>you</em>, Epik.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "A seed-stage D2C brand hiring its <em>first</em> content lead — instead of a performance marketer — says something about the kind of brand you're building. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "At seed, the narrative, the campaign, the film, the PR, the launch calendar all live in one person's head. I'd love to understand how the team keeps up." },
@@ -357,7 +357,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Exotel",
       "title": "Why I'm writing to <em>you</em>, Exotel.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Staying a <em>platform</em> instead of drifting into point solutions, after 15+ years of Indian communications shifting under you, is the kind of patience I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "A platform serving banks, delivery apps, and healthcare on the same cloud voice backbone means the founder's office has to hold three customer realities at once. I'd love to understand how the team keeps up." },
@@ -373,7 +373,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Flent",
       "title": "Why I'm writing to <em>you</em>, Flent.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Choosing to run the founder's office as the engine room of growth — not a strategy studio that writes memos — is the operating call I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Early-stage means every initiative is also a hiring decision, a comms decision, and a finance decision in disguise. I'd love to understand how the team keeps up." },
@@ -389,7 +389,7 @@
     "personalNote": {
       "eyebrow": "A little note just for GOOD MONK",
       "title": "Why I'm writing to <em>you</em>, GOOD MONK.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Reframing <em>superfoods</em> from wellness jargon into something Indian parents actually want to buy for their kids is the cultural call that matters most. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Healthy food at D2C unit economics in India is a permanent tension between price, shelf life, and ritual. Founder's office has to hold that tension. I'd love to understand how the team keeps up." },
@@ -405,7 +405,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Gloroots",
       "title": "Why I'm writing to <em>you</em>, Gloroots.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Putting an <em>engineer</em> inside the founder's office — not only building product but shaping how the company thinks — is the cultural choice I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Global EOR + payroll means compliance in 100+ jurisdictions, each changing quarterly. The engineering surface area at that shape is relentless. I'd love to understand how the team keeps up." },
@@ -421,7 +421,7 @@
     "personalNote": {
       "eyebrow": "A little note just for GoodScore",
       "title": "Why I'm writing to <em>you</em>, GoodScore.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a credit-score tool that acts like a <em>coach</em> — not a scoreboard — is the positioning call that flips the category on its head. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Growth in a fintech that sells behavior change, not product features, means marketing and product have to talk every week. I'd love to understand how the team keeps up." },
@@ -439,7 +439,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Paper Boat",
       "title": "Why I'm writing to <em>you</em>, Hector Beverages.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Keeping <em>Paper Boat</em>'s voice the same — from the first aamras pack to today's shelves — while adding new formats and drinks is the discipline I'd want to be close to. Most nostalgic brands slide in ten years." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "FMCG copy at Indian scale has to land in a print ad, a 6-second reel, and a kirana shelf within the same week. I'd love to understand how the team keeps up." },
@@ -455,7 +455,7 @@
     "personalNote": {
       "eyebrow": "A little note just for I-PAC",
       "title": "Why I'm writing to <em>you</em>, I-PAC.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Turning <em>campaign data</em> into a decision engine — running ground ops like a product team — is the cultural call that moved Indian political campaigns forward. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Campaign cycles are fixed in time, unpredictable in volume, and unforgiving of operational slack. Founder's office is where those three meet. I'd love to understand how the team keeps up." },
@@ -471,7 +471,7 @@
     "personalNote": {
       "eyebrow": "A little note just for ITILITE",
       "title": "Why I'm writing to <em>you</em>, ITILITE.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Hiring <em>former founders</em> into the leadership team — not just exec veterans — is a temperament bet as much as a skills bet. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "T&E SaaS means competing on trust, integrations, and unit economics all at once. Leadership team has to hold three clocks. I'd love to understand how the team keeps up." },
@@ -487,7 +487,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Inkle",
       "title": "Why I'm writing to <em>you</em>, Inkle.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running a <em>cross-border finance</em> platform means every country's tax code is a separate product. Doing it with a small team is the operating bet I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "US C-corp compliance for Indian founders is a category still being defined. Founder's office has to ship product, policy, and storytelling at once. I'd love to understand how the team keeps up." },
@@ -503,7 +503,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Karbon",
       "title": "Why I'm writing to <em>you</em>, Karbon Business.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a <em>payments + cards</em> stack specifically for Indian SaaS founders — not generic SMBs — is the positioning call the whole product rests on. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Startup banking means regulators, payment rails, and founder-customers all moving at different speeds. Founder's office is where the three meet. I'd love to understand how the team keeps up." },
@@ -519,7 +519,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Keka",
       "title": "Why I'm writing to <em>you</em>, Keka HR.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building an HR product that Indian businesses actually <em>like</em> using — in a category most users secretly resent — is a cultural call the product design only half-solves. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "HR + payroll means compliance changes under your feet every quarter, in every state, for every customer. Founder's office has to see those before they become support tickets. I'd love to understand how the team keeps up." },
@@ -537,7 +537,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Licious",
       "title": "Why I'm writing to <em>you</em>, Licious.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Getting Indians to <em>buy meat online</em> — a category that didn't exist before you made it — is the category-creation bet the whole brand was built on. That's the muscle I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Raw & Fresh SKUs at Licious scale means cold chain, imagery, and copy all have to tell the same freshness story. I'd love to understand how the team keeps up." },
@@ -553,7 +553,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Loop AI",
       "title": "Why I'm writing to <em>you</em>, Loop AI.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Hiring a <em>staff strategist</em> who's also hands-on with operations — refusing to split the roles — is the shape of a team that means it about speed. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "AI companies live on two clocks: the underlying model moves weekly, the product has to feel steady. Strategy has to hold both. I'd love to understand how the team keeps up." },
@@ -569,7 +569,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Lucidity",
       "title": "Why I'm writing to <em>you</em>, Lucidity.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Selling <em>cloud storage optimization</em> to engineering leaders — a buyer who hates marketing — is a GTM muscle most SaaS companies never quite build. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Infra SaaS means proving ROI in dollars before the contract closes. Founder's office + GTM has to design experiments that pay back in weeks, not quarters. I'd love to understand how the team keeps up." },
@@ -585,7 +585,7 @@
     "personalNote": {
       "eyebrow": "A little note just for MIRÓR",
       "title": "Why I'm writing to <em>you</em>, MIRÓR.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a brand with a name that dares people to spell it right — committing to a look and voice that doesn't apologize — is the kind of founder's-office-level taste call I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Early-stage means strategy, operations, and growth are three hats on one calendar. Founder's office is where they meet. I'd love to understand how the team keeps up." },
@@ -601,7 +601,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Masai",
       "title": "Why I'm writing to <em>you</em>, Masai.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Masai's <em>income-share</em> model — getting paid when students get paid — is the kind of structural bet most EdTech won't touch. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "EdTech with skin in the outcome means admissions, curriculum, and placements have to move in lockstep or the whole model cracks. I'd love to understand how the team keeps up." },
@@ -619,7 +619,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Myntra",
       "title": "Why I'm writing to <em>you</em>, Myntra.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running <em>EORS</em> every year like a cultural event — not just a sale — is the kind of brand-as-ritual move only a platform with real confidence pulls off. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Marketplace brand means holding the master narrative for thousands of seller brands while keeping one voice in campaigns and reels. I'd love to understand how the team keeps up." },
@@ -635,7 +635,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Nanonets",
       "title": "Why I'm writing to <em>you</em>, Nanonets.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Making <em>document AI</em> feel like a Stripe — drop-in, not a data-science project — is the kind of developer-experience call the whole business rests on. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Serving accounts payable, insurance, logistics, and healthcare on the same model stack means four very different ICP conversations in one founder's office. I'd love to understand how the team keeps up." },
@@ -653,7 +653,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Navi",
       "title": "Why I'm writing to <em>you</em>, Navi.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a consumer fintech by <em>Sachin Bansal</em> that leads with UPI instead of a loan hook says something about patience. Most fintechs would have started where the unit economics were. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Brand across UPI, Insurance, Loans, and Mutual Funds means four regulators, four audiences, one story. I'd love to understand how the team keeps up." },
@@ -669,7 +669,7 @@
     "personalNote": {
       "eyebrow": "A little note just for NextNation",
       "title": "Why I'm writing to <em>you</em>, NextNation.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building something with a name that wants to stand for more than a company — and earning it instead of claiming it — is the kind of long-horizon bet I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Operations + strategy in an early-stage founder's office means designing the scaffolding the next 20 hires will build on. I'd love to understand how the team keeps up." },
@@ -685,7 +685,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Nxthyre",
       "title": "Why I'm writing to <em>you</em>, Nxthyre.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a <em>hiring</em> product in a market where every product claims to fix hiring means your wedge is more about culture than feature. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Hiring platforms live on two-sided inventory — candidates and companies — and unit economics that only work at density. Founder's office has to plant both at once. I'd love to understand how the team keeps up." },
@@ -701,7 +701,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Orants AI",
       "title": "Why I'm writing to <em>you</em>, Orants AI.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Hiring a <em>startup generalist</em> instead of specialists at this stage is the honest call most AI startups pretend they don't need to make. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "AI startups live between a model that changes weekly and a product that has to feel steady. A founders' associate sits in that tension every day. I'd love to understand how the team keeps up." },
@@ -717,7 +717,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Origin",
       "title": "Why I'm writing to <em>you</em>, Origin.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Choosing to keep the <em>founder's office</em> as the engine room — not a central strategy function — is the shape of a team that means it about execution. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Early-stage means every initiative is also a hiring, finance, and comms decision. Founder's office is where those meet. I'd love to understand how the team keeps up." },
@@ -735,7 +735,7 @@
     "personalNote": {
       "eyebrow": "A little note just for PhonePe",
       "title": "Why I'm writing to <em>you</em>, PhonePe.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Deciding to build an <em>AI-native</em> marketing org from the top down — not as a middle-management pilot — is the architectural call that most fintechs will keep postponing. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "UPI's biggest brand, 500M+ users, and a creative org getting rebuilt under it — at that shape, a tooling change is a cultural change. I'd love to understand how the team keeps up." },
@@ -753,7 +753,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Playo",
       "title": "Why I'm writing to <em>you</em>, Playo.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building the largest <em>sports community</em> app in a country that doesn't talk much about amateur sport — and having the booking engine under it — is the twin play I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Marketing a community-led product means you can't out-spend the competition — you have to out-belong. I'd love to understand how the team keeps up." },
@@ -771,7 +771,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Pocket FM",
       "title": "Why I'm writing to <em>you</em>, Pocket FM.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Programming audio series <em>episode by episode</em> — soap-opera mechanics, not podcast mechanics — in a country that never had an audio series habit before is the cultural bet the whole brand runs on. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "250M+ listeners means brand campaigns have to translate across regions, genres, and voice artists without losing what makes Pocket FM feel like Pocket FM. I'd love to understand how the team keeps up." },
@@ -787,7 +787,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Qrata",
       "title": "Why I'm writing to <em>you</em>, Qrata.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running a recruiting firm that shows up more like a <em>network</em> than a pipeline — founder dinners, curated intros, being in the room — is the posture I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Community at an early-stage VC-adjacent firm means curating dinners, content, and matchmaking all from one calendar. I'd love to understand how the team keeps up." },
@@ -803,7 +803,7 @@
     "personalNote": {
       "eyebrow": "A little note just for RagaAI",
       "title": "Why I'm writing to <em>you</em>, RagaAI.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Making <em>AI testing</em> a first-class product — not a compliance afterthought — is the kind of category-creation bet that only works if a founder really believes it. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "$4.7M seed, a category that's still being defined, and an ICP that changes model by model. Founder's office has to keep all three coherent. I'd love to understand how the team keeps up." },
@@ -819,7 +819,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Roma",
       "title": "Why I'm writing to <em>you</em>, Roma.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Keeping the founder's office shape as <em>strategy and operations in one seat</em> is a deliberate refusal to split the roles too early. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Strategy + ops in a small team means one calendar holds long-horizon bets and this-week's blockers. I'd love to understand how the team keeps up." },
@@ -837,7 +837,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Schbang",
       "title": "Why I'm writing to <em>you</em>, Schbang.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Being a <em>1000+</em>-person independent agency in India — still independent, still irreverent — is a business temperament most agencies give up on at a quarter of that size. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Creative strategy across a floor that ships for D2C, BFSI, FMCG, and tech means the copywriter's brief is a different brief every day. I'd love to understand how the team keeps up." },
@@ -853,7 +853,7 @@
     "personalNote": {
       "eyebrow": "A little note just for SciSpace",
       "title": "Why I'm writing to <em>you</em>, SciSpace.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building <em>AI research tools</em> for researchers — where your ICP has strong opinions about what good looks like — is a marketing problem you can only solve by sounding like the ICP. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Founder-led marketing means the founder's calendar is also the content calendar. Supporting that without blowing it up is the real work. I'd love to understand how the team keeps up." },
@@ -869,7 +869,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Spenza",
       "title": "Why I'm writing to <em>you</em>, Spenza.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Telecom SaaS is one of those <em>boring</em> categories where the whole game is operational trust. Building it patiently is the bet I'd want to be close to watching." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Chief of Staff at 0.1–0.2% equity means the role is meant to compound over years, not quarters. I'd love to understand how the team keeps up." },
@@ -887,7 +887,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Swiggy",
       "title": "Why I'm writing to <em>you</em>, Swiggy.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Treating marketing as a <em>product surface</em> — One, Instamart, Dineout, Genie all telling one story without flattening the brand — is the architectural discipline I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "End-to-end campaigns at Swiggy mean creative, ops, restaurants, delivery partners, and the app all move to one calendar. I'd love to understand how the team keeps up." },
@@ -905,7 +905,7 @@
     "personalNote": {
       "eyebrow": "A little note just for TMRW",
       "title": "Why I'm writing to <em>you</em>, TMRW.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Bewakoof's <em>#AllEyesOnYou</em> is a clinic in community-led work — but it's the scaffolding around each founder that's harder and more interesting. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "30+ brands, each with its own founder, category, and stage. Platform team has to keep up with that many operating rhythms. I'd love to understand how the team keeps up." },
@@ -923,7 +923,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Third Wave",
       "title": "Why I'm writing to <em>you</em>, Third Wave Coffee.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Going from a <em>cafe</em> brand to an <em>FMCG</em> brand without breaking what made the cafes feel specific is a brand-translation problem that most cafe chains don't survive. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Building an FMCG portfolio off a cafe brand means shelf, cafe, and d2c all telling the same story, at three very different unit economics. I'd love to understand how the team keeps up." },
@@ -939,7 +939,7 @@
     "personalNote": {
       "eyebrow": "A little note just for TrueFoundry",
       "title": "Why I'm writing to <em>you</em>, TrueFoundry.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building <em>ML infra</em> for teams who think of themselves as developers, not data scientists, is a positioning move that decides the whole GTM. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "ML platform sales mean you're being compared against 'build it yourself' every single meeting. GTM has to show ROI in weeks. I'd love to understand how the team keeps up." },
@@ -955,7 +955,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Unifize",
       "title": "Why I'm writing to <em>you</em>, Unifize.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a <em>manufacturing collaboration</em> platform for a category that still runs on email chains and WhatsApp groups is the kind of patient category-making I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Manufacturing SaaS sales mean long cycles, multiple stakeholders, and a buyer who's been burned by enterprise software before. Sales ops is where those frictions surface. I'd love to understand how the team keeps up." },
@@ -971,7 +971,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Varsal Terra",
       "title": "Why I'm writing to <em>you</em>, Varsal Terra.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running a <em>specialty clinical chain</em> where each location is both a P&L and a care experience is a structural bet that only pays back with patient operating discipline. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Healthcare chains live on clinician trust, insurer contracts, and patient outcomes — three clocks that don't match. Chief of Staff at the founder's office has to hold all three. I'd love to understand how the team keeps up." },
@@ -987,7 +987,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Weekday",
       "title": "Why I'm writing to <em>you</em>, Weekday.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running a <em>hiring platform</em> where candidates come through other candidates — referral as the whole funnel — is a structural bet on people wanting to work with people they already trust. That's the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Referral density is a chicken-and-egg problem every week. Founder's office at a YC-shape team is where that math is fought out. I'd love to understand how the team keeps up." },
@@ -1003,7 +1003,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Weekday AI",
       "title": "Why I'm writing to <em>you</em>, Weekday AI.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Layering <em>AI</em> on a referral-hiring platform — instead of rebuilding the category from scratch — is the kind of focused second-act bet I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "GTM for an AI hiring product means you're pitching to recruiters who have seen 50 AI pitches. Standing out is not a demo problem; it's a trust problem. I'd love to understand how the team keeps up." },
@@ -1019,7 +1019,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Xoxoday",
       "title": "Why I'm writing to <em>you</em>, Xoxoday.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Building a <em>rewards &amp; incentives</em> platform that works across gifting, employee recognition, and channel partners — three very different buyers on one stack — is an operational call the whole company runs on. That's what I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Chief of Staff partnering with a COO means protecting attention across functions that all need the same 45 minutes every week. I'd love to understand how the team keeps up." },
@@ -1035,7 +1035,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Zamp",
       "title": "Why I'm writing to <em>you</em>, Zamp.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Running a <em>finance infrastructure</em> company means the product has to feel steady while the regulatory floor moves. Treating that as a strategy problem — not a compliance afterthought — is the part I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "Finance infra buyers are CFOs and controllers — a buyer who resents surprises. Strategy + ops at founder's office has to keep the company fast and the customer calm. I'd love to understand how the team keeps up." },
@@ -1053,7 +1053,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Famyo",
       "title": "Why I'm writing to <em>you</em>, Famyo.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "The choice to lead with <em>characters</em>, not SKUs — turning everyday kid essentials into things kids actually ask their parents for — is the kind of product instinct I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "40% QoQ growth on a ₹12 Cr ARR, in a kids-essentials category that's barely been built in India. I'd love to understand how the team keeps up." },
@@ -1071,7 +1071,7 @@
     "personalNote": {
       "eyebrow": "A little note just for Goodera",
       "title": "Why I'm writing to <em>you</em>, Goodera.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "Hosting <em>Karma Summit Asia</em> with 150+ companies in one room — turning a category into a community — is exactly the kind of move I'd want to be close to." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "65+ Fortune 500 clients, a network of 50,000 nonprofits across 100 countries, and 100% YoY growth. I'd love to understand how the team keeps up." },
@@ -1089,7 +1089,7 @@
     "personalNote": {
       "eyebrow": "A little note just for HomeLane",
       "title": "Why I'm writing to <em>you</em>, HomeLane.",
-      "intro": "Before I send anything over — three things I've been thinking about.",
+      "intro": "Three things I wanted to say upfront.",
       "points": [
         { "title": "I've been watching how you build.", "body": "The <em>DesignCafe</em> move — folding in a competitor instead of running at them — is the kind of move I'd want to be close to watching get made." },
         { "title": "Your ambition is a different kind of operating problem.", "body": "₹1,000 Cr of combined revenue across four brands, turning EBITDA positive while still designing at the individual-home level. I'd love to understand how the team keeps up." },
