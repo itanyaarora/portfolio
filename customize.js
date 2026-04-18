@@ -117,8 +117,13 @@
       document.title = `Tanya × ${raw}`;
     }
 
-    // Step 2 — async overrides from companies.json
-    const lookupKey = raw.toLowerCase().replace(/\s+/g, '-');
+    // Step 2 — async overrides from companies.json.
+    // Strip parenthetical suffixes first so "Famyo (via Uplers)" → "famyo" matches the base entry.
+    const lookupKey = raw
+      .toLowerCase()
+      .replace(/\s*\([^)]*\)/g, '')   // drop "(via Uplers)", "(YC W21)" etc.
+      .trim()
+      .replace(/\s+/g, '-');
     fetch('companies.json', { cache: 'no-cache' })
       .then(res => res.ok ? res.json() : {})
       .then(all => {
@@ -127,9 +132,9 @@
 
         const displayName = typeof config.displayName === 'string' ? config.displayName : raw;
         applyWhyHeading(displayName);
-        if (!document.title.includes(displayName)) {
-          document.title = `Tanya × ${displayName}`;
-        }
+        // Always overwrite with the canonical displayName so "Tanya × Famyo (via Uplers)"
+        // becomes "Tanya × Famyo" once the JSON entry loads.
+        document.title = `Tanya × ${displayName}`;
 
         if (config.heroHeadline) setHTML('.hero-headline', config.heroHeadline);
         if (config.heroSubtext) setText('.hero-subtext', config.heroSubtext);

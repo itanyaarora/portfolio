@@ -12,7 +12,7 @@
       "Title is always: 'Why I'm writing to <em>you</em>, {COMPANY}.'",
       "Bullets are locked — only swap the body, not the title:",
       "  1. 'I've been watching how you build.'  → name ONE specific real thing (campaign, product, cultural choice). End with: that's what I'd want to be close to.",
-      "  2. '{Their stated ambition} is a different kind of operating problem.'  → flatter with a real number/target. End with: I'd love to understand how the team keeps up.",
+      "  2. 'Your ambition is a different kind of operating problem.'  → flatter with a real number/target. End with: I'd love to understand how the team keeps up.",
       "  3. 'My range might fit here.'  → connect one of Tanya's 7 careers or BigCo chapters to their work. Humble.",
       "Rules: 25–40 words per body. Warm, curious, respectful. No LinkedIn-speak. No emoji. No diagnosing problems. No '90-day plans'. No 'I've done my homework' — the details prove it. Contractions fine.",
       "Subtle = naming a real campaign/number/detail. Not subtle = restating the thesis or sounding cocky.",
@@ -30,30 +30,1034 @@
     }
   },
 
+  "2070health": {
+    "displayName": "2070Health",
+    "ctaTitle": "Let's talk special projects.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the program manager your special-projects bench is missing.",
+    "personalNote": {
+      "eyebrow": "A little note just for 2070Health",
+      "title": "Why I'm writing to <em>you</em>, 2070Health.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building healthcare ventures from the platform in instead of the thesis out — a 0→1 studio model for a sector that usually waits for white papers — is the kind of operator call I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Every special project has to ship like a startup while reporting like a platform. That's two operating rhythms at once. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber shipping for coworkers and strangers alike. Then seven creative careers learning to run small things end to end. Special projects needs both muscles." }
+      ]
+    }
+  },
+
+  "accelerate-indian-philanthropy": {
+    "displayName": "Accelerate Indian Philanthropy",
+    "ctaTitle": "Let's talk programmes.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the founders' office work here could use another operator.",
+    "personalNote": {
+      "eyebrow": "A little note just for AIP",
+      "title": "Why I'm writing to <em>you</em>, Accelerate Indian Philanthropy.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Turning <em>philanthropy</em> from a cheque into a community of givers who learn from each other — that's a much harder operating problem than it looks, and the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "India's UHNI cohort is small, private, and bespoke by default. Running executive ops for a cohort like that means every programme is a custom build. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running programmes at scale. Then seven creative careers — including a Bangalore community club where strangers had to leave as friends. Programmes that land on giving run on that same muscle." }
+      ]
+    }
+  },
+
+  "astra-security": {
+    "displayName": "Astra Security",
+    "heroHeadline": "Security doesn't ship<br>unless a generalist makes it ship.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping planet-scale infra, then 18 months of seven creative careers learning to build from zero. Both muscles are useful in a founder's office.",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is looking for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Astra",
+      "title": "Why I'm writing to <em>you</em>, Astra Security.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Turning pentesting from a scary black box into a <em>dashboard</em> that a non-security founder can actually use — that's a storytelling choice as much as a product one, and the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Protecting 10,000+ businesses without a dedicated security team at each means you're not selling a product — you're selling a substitute. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft on product activation — the invisible infra that 'only breaks.' Then seven creative careers running things end to end. Security is invisible until it isn't — I know that shape." }
+      ]
+    }
+  },
+
+  "biome-build": {
+    "displayName": "Biome/Build",
+    "ctaTitle": "Let's talk design + strategy.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if my mix of design and ops is the bridge your founder's office needs.",
+    "personalNote": {
+      "eyebrow": "A little note just for Biome/Build",
+      "title": "Why I'm writing to <em>you</em>, Biome/Build.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Putting a <em>design</em>-native seat inside the founder's office — not as decoration, as decision-making — is the kind of structural call I'd want to be close to watching play out." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Design and strategy usually move at different tempos. Making them share one rhythm in an early-stage team is a real operating challenge. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Engineer by training, designer by nature, operator by the last six years. Then seven creative careers — mural, exhibition, event design. The whole shape sits in the seam between design and strategy." }
+      ]
+    }
+  },
+
+  "bitespeed": {
+    "displayName": "BiteSpeed",
+    "ctaTitle": "Let's talk founder's office, FP&A.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ex-Uber generalist is useful in your FP&A seat.",
+    "personalNote": {
+      "eyebrow": "A little note just for BiteSpeed",
+      "title": "Why I'm writing to <em>you</em>, BiteSpeed.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Betting that commerce in India happens on <em>WhatsApp</em> — not a website, not an app — is the kind of channel call the whole product flows from. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "YC-backed, D2C-heavy book, charging per-message at Shopify-brand scale. FP&A at that shape is half pricing, half psychology. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Uber taught me that FP&A lives or dies on how the data pipelines are shaped. I built those pipelines. Also telemarketed on Flipkart Live, so I've watched conversational commerce from the ground up." }
+      ]
+    }
+  },
+
+  "blissclub": {
+    "displayName": "Blissclub",
+    "heroHeadline": "Activewear brands live or die<br>on how they run their OKRs.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — florist, event lead, community host — learning to build small things that actually move.",
+    "ctaTitle": "Let's talk Chief of Staff.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Chief of Staff your next chapter needs.",
+    "personalNote": {
+      "eyebrow": "A little note just for Blissclub",
+      "title": "Why I'm writing to <em>you</em>, Blissclub.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Designing an activewear brand around <em>movement</em> that real Indian women actually do — not the Lululemon aspirational fantasy — is the cultural call I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "India's fastest-growing activewear brand means growing faster than your supply chain, your hiring plan, and your OKR system can keep up. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running OKRs at scale. Then seven creative careers — including running a Bangalore community club. Chief of Staff at a community-led brand lives in that exact seam." }
+      ]
+    }
+  },
+
+  "bold-cap": {
+    "displayName": "Bold Cap",
+    "heroHeadline": "A creator who executes like an operator<br>is a Chief of Staff.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of scaling. Then 18 months of seven creative careers — mural, content, community — learning to make storytelling and shipping sit in the same person.",
+    "ctaTitle": "Let's talk platform + storytelling.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the creator + operator mix is what you're hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Bold Cap",
+      "title": "Why I'm writing to <em>you</em>, Bold Cap.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Hiring a <em>creator-operator</em> for the Chief of Staff seat — not a banker, not a consultant — is the call I'd want to be close to watching. It says something about what you think a platform is." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Platform VC means you're running a content engine, a founder service, and a portfolio at the same time. That's three operating rhythms in one seat. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "I'm 339K followers on Instagram, mid-way through seven creative careers, and six years of Microsoft + Uber behind that. Creator who executes like an operator sounds like the shape." }
+      ]
+    }
+  },
+
+  "california-burrito": {
+    "displayName": "California Burrito",
+    "heroHeadline": "A food brand's creative work<br>is an operating problem.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — including event marketer for a food chain breaking into wedding catering. I've seen food brands from inside.",
+    "ctaTitle": "Let's make CB's creative sing.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Creative Head your kitchens are missing.",
+    "personalNote": {
+      "eyebrow": "A little note just for California Burrito",
+      "title": "Why I'm writing to <em>you</em>, California Burrito.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Growing from a single Bangalore outlet into a Series B consumer brand without losing the thing that made the burritos feel specific — that's an identity-preservation problem as much as a scaling one, and the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Series B, Elevation-backed, creative leadership that has to translate across kitchens, packaging, reels, and stores. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Event marketer for a food chain building its wedding-catering pitch deck. Mural, exhibition design, live commerce. Food brands live in physical + digital at once — that's most of what I've done the last 18 months." }
+      ]
+    }
+  },
+
+  "certifyme": {
+    "displayName": "CertifyMe",
+    "ctaTitle": "Let's talk growth.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your growth bench is missing.",
+    "personalNote": {
+      "eyebrow": "A little note just for CertifyMe",
+      "title": "Why I'm writing to <em>you</em>, CertifyMe.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Making a <em>verifiable credential</em> feel like a marketing asset — not compliance paperwork — is the kind of positioning call I'd want to be close to watching get made." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Growth in digital credentialing is sold to training teams, marketing teams, and HR teams — three different buyers, one product. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber shipping for internal customers. Then seven creative careers — including telemarketing on Flipkart Live where conversion was the only thing that mattered. Growth lives in the same muscle." }
+      ]
+    }
+  },
+
+  "cloudsek": {
+    "displayName": "CloudSEK",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ex-Microsoft generalist is useful next to the founding team.",
+    "personalNote": {
+      "eyebrow": "A little note just for CloudSEK",
+      "title": "Why I'm writing to <em>you</em>, CloudSEK.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Using <em>AI</em> to watch the internet for your customers' exposures — scraping dark web and leaks at scale — is a product that only makes sense if you can tell the story simply. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "AI cybersecurity means a moving threat model, a moving regulatory floor, and a moving pricing model. Founder's office has to hold all three. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft taught me what invisible infra looks like. Uber taught me what speed looks like. Seven creative careers taught me what sellable looks like. Founder's office in security needs a bit of each." }
+      ]
+    }
+  },
+
+  "contineu": {
+    "displayName": "Contineu",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Contineu",
+      "title": "Why I'm writing to <em>you</em>, Contineu.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Early-stage founder's office isn't a seat — it's whatever's <em>on fire</em> that week. Hiring for range instead of specialty is the bet I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Every cross-functional initiative in a small team is an ask of everyone's calendar. Protecting founder focus while keeping the company moving is the real operating problem. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running programs at scale. Then seven creative careers — different jobs, same muscle: show up, learn fast, finish the thing. That's most of what a founder's office runs on." }
+      ]
+    }
+  },
+
+  "cube": {
+    "displayName": "Cube",
+    "ctaTitle": "Let's talk growth + strategy.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm useful next to the founding team.",
+    "personalNote": {
+      "eyebrow": "A little note just for Cube",
+      "title": "Why I'm writing to <em>you</em>, Cube.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Making <em>marketing ops</em> feel like a product instead of a spreadsheet is the cultural call marketing stacks rarely get right. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Sequoia-backed and moving fast means your customer list tomorrow looks different from today. Growth + strategy in a founder's office at that tempo is its own thing. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber shipping for coworkers as customers. Then seven creative careers — I know what it takes to turn attention into revenue in small, messy rooms. Growth in a founder's office lives in both of those." }
+      ]
+    }
+  },
+
+  "curefit": {
+    "displayName": "CureFit",
+    "heroHeadline": "A fitness brand's story<br>is where its members come from.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — mural, event, community host — learning to build things people feel, not just see.",
+    "ctaTitle": "Let's build cult.fit's next chapter.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the Senior Brand seat could use another operator.",
+    "personalNote": {
+      "eyebrow": "A little note just for CureFit",
+      "title": "Why I'm writing to <em>you</em>, CureFit.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building <em>cult.fit</em> as a place where a workout is also a club — not a transaction — is the cultural choice the whole brand runs on. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Consumer health at Indian scale means pricing a daily habit against a movie ticket, a gym fee, and a coffee. Brand has to justify itself every week. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Community host in a Bangalore club where strangers had to leave as friends. Mural artist, event lead. cult.fit brand lives in that exact room — people showing up, together, because they want to." }
+      ]
+    }
+  },
+
+  "deconstruct": {
+    "displayName": "Deconstruct",
+    "heroHeadline": "A skincare brand's creative<br>is its second active ingredient.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — including florist, where I learned what turning a product into a ritual actually means.",
+    "ctaTitle": "Let's talk Senior Brand.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the brand operator your HSR team is looking for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Deconstruct",
+      "title": "Why I'm writing to <em>you</em>, Deconstruct.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Selling skincare by <em>actives</em>, not adjectives — the 'niacinamide 10%' instead of 'glow potion' move — is a real category bet. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "D2C skincare at the stage of new-product development, positioning, and campaign calendar all at once is three operating rhythms in one brand seat. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Florist — where I learned margins, vendors, and how a product becomes a ritual. Telemarketer on Flipkart Live. Mural artist. Skincare brand management lives in the overlap of all three." }
+      ]
+    }
+  },
+
+  "digitide": {
+    "displayName": "Digitide",
+    "ctaTitle": "Let's talk Chief of Staff.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ex-BigCo + creative-generalist mix is what you're hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Digitide",
+      "title": "Why I'm writing to <em>you</em>, Digitide.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running a 4000+ person tech company from a <em>Chief of Staff</em> seat means protecting the CEO's attention is half the job. The discipline of that is the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "At 4000+ employees, every strategic decision has 10 downstream ops decisions underneath. Keeping those in sync without a bureaucracy is real work. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft: 220,000+ employees. Uber: 30,000+. I've been the edge-case ticket in rooms that size. Then seven creative careers taught me how small things actually ship. Chief of Staff needs both muscles." }
+      ]
+    }
+  },
+
+  "ditto-insurance": {
+    "displayName": "Ditto Insurance",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the Finshots operator mix is what you're hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Ditto",
+      "title": "Why I'm writing to <em>you</em>, Ditto Insurance.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Growing an insurance advisory business out of a <em>newsletter</em> — and keeping the voice the same when the product got serious — is the distribution call I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Finshots-to-Ditto means media and advisory share one brand, two sales motions, and one trust account. Founder's office has to keep all three aligned. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running ops inside product teams. Then seven creative careers — including building an Instagram audience of 339K people by being honest. Media + ops is most of what I've been doing." }
+      ]
+    }
+  },
+
+  "elevation-capital": {
+    "displayName": "Elevation Capital",
+    "heroHeadline": "Chief of Staff at a VC firm<br>is a founder's office with 30 founders.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of shipping. Then 18 months of seven creative careers — mural, community host, event marketer, live commerce. 30 portfolio companies means 30 different operating problems. I've been 7 of them.",
+    "ctaTitle": "Let's talk Chief of Staff.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a generalist who's lived the 0→1 side is the Chief of Staff you want.",
+    "personalNote": {
+      "eyebrow": "A little note just for Elevation",
+      "title": "Why I'm writing to <em>you</em>, Elevation Capital.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Investing across <em>Swiggy, Meesho, Paytm</em> and still backing pre-seed consumer bets is a portfolio temperament I'd want to be close to — most firms pick one personality." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "A Chief of Staff at a VC firm is running IR, portfolio support, and partner calendars — three founders' offices stacked on top of each other. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber. Then seven unrelated creative careers. I've lived the 0→1 founder side of what Elevation invests in. That's the language a Chief of Staff needs to speak with 30 founders." }
+      ]
+    }
+  },
+
+  "enterpret": {
+    "displayName": "Enterpret",
+    "ctaTitle": "Let's talk Chief of Staff to the CTO.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ex-Uber data-pipelines person + creative generalist is useful next to the CTO.",
+    "personalNote": {
+      "eyebrow": "A little note just for Enterpret",
+      "title": "Why I'm writing to <em>you</em>, Enterpret.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Making <em>customer feedback</em> a structured data source — not a Notion doc the PM skims — is the kind of category-creating bet I'd want to be close to watching mature." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Chief of Staff to a CTO means translating between product, engineering, and customer reality in three different vocabularies. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "At Uber I built data pipelines for internal developers — my customers were coworkers. That's the exact muscle a CTO's Chief of Staff runs on, minus the coworkers." }
+      ]
+    }
+  },
+
+  "epik": {
+    "displayName": "Epik",
+    "ctaTitle": "Let's talk brand + content.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the brand operator your early stage is missing.",
+    "personalNote": {
+      "eyebrow": "A little note just for Epik",
+      "title": "Why I'm writing to <em>you</em>, Epik.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "A seed-stage D2C brand hiring its <em>first</em> content lead — instead of a performance marketer — says something about the kind of brand you're building. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "At seed, the narrative, the campaign, the film, the PR, the launch calendar all live in one person's head. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Mural, exhibition design, event marketer, community host, live commerce, florist. Every one of those is 'brand by doing.' That's the seed-stage shape of a brand lead." }
+      ]
+    }
+  },
+
+  "exotel": {
+    "displayName": "Exotel",
+    "heroHeadline": "Founder DNA isn't a title.<br>It's a way of looking at problems.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — quitting, no plan B, figuring it out by doing. That's not a hobby; that's founder DNA.",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the ex-founder shape you're looking for is closer to mine than you'd think.",
+    "personalNote": {
+      "eyebrow": "A little note just for Exotel",
+      "title": "Why I'm writing to <em>you</em>, Exotel.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Staying a <em>platform</em> instead of drifting into point solutions, after 15+ years of Indian communications shifting under you, is the kind of patience I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "A platform serving banks, delivery apps, and healthcare on the same cloud voice backbone means the founder's office has to hold three customer realities at once. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Didn't found a company, but I did quit a crore-paying job to try 50 creative careers with no plan B. Four months, seven careers, still going. That's the DNA, even if the resume line looks different." }
+      ]
+    }
+  },
+
+  "flent": {
+    "displayName": "Flent",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is looking for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Flent",
+      "title": "Why I'm writing to <em>you</em>, Flent.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Choosing to run the founder's office as the engine room of growth — not a strategy studio that writes memos — is the operating call I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Early-stage means every initiative is also a hiring decision, a comms decision, and a finance decision in disguise. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber shipping things coworkers depended on. Then seven creative careers — show up, learn fast, finish the thing. Founder's office, on most days, is exactly that." }
+      ]
+    }
+  },
+
+  "good-monk": {
+    "displayName": "GOOD MONK",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your superfoods team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for GOOD MONK",
+      "title": "Why I'm writing to <em>you</em>, GOOD MONK.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Reframing <em>superfoods</em> from wellness jargon into something Indian parents actually want to buy for their kids is the cultural call that matters most. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Healthy food at D2C unit economics in India is a permanent tension between price, shelf life, and ritual. Founder's office has to hold that tension. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Florist — I know what building a product-as-ritual looks like at ground level. Event marketer for a food chain. Telemarketer on Flipkart Live. Consumer brand operating is most of what I've done the last 18 months." }
+      ]
+    }
+  },
+
+  "gloroots": {
+    "displayName": "Gloroots",
+    "ctaTitle": "Let's talk founder's office engineering.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ex-Microsoft, ex-Uber engineer with a generalist streak is useful here.",
+    "personalNote": {
+      "eyebrow": "A little note just for Gloroots",
+      "title": "Why I'm writing to <em>you</em>, Gloroots.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Putting an <em>engineer</em> inside the founder's office — not only building product but shaping how the company thinks — is the cultural choice I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Global EOR + payroll means compliance in 100+ jurisdictions, each changing quarterly. The engineering surface area at that shape is relentless. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft: product activation infra at planet scale. Uber: data pipelines for internal devs. Then seven creative careers — a reminder that engineering shows up everywhere if you let it." }
+      ]
+    }
+  },
+
+  "goodscore": {
+    "displayName": "GoodScore",
+    "ctaTitle": "Let's talk strategy + growth.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founders are hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for GoodScore",
+      "title": "Why I'm writing to <em>you</em>, GoodScore.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a credit-score tool that acts like a <em>coach</em> — not a scoreboard — is the positioning call that flips the category on its head. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Growth in a fintech that sells behavior change, not product features, means marketing and product have to talk every week. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running programs that changed behavior at scale. Then seven creative careers building small rituals of repeat use. Strategy + growth in a founder's office lives in both." }
+      ]
+    }
+  },
+
+  "hector-beverages": {
+    "displayName": "Hector Beverages",
+    "heroHeadline": "A nostalgia brand's copy<br>is its second recipe.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — mural, event, community host, live commerce. I know what storytelling feels like when people can touch it.",
+    "ctaTitle": "Let's talk Paper Boat.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a creative copywriter with range fits your table.",
+    "personalNote": {
+      "eyebrow": "A little note just for Paper Boat",
+      "title": "Why I'm writing to <em>you</em>, Hector Beverages.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Keeping <em>Paper Boat</em>'s voice the same — from the first aamras pack to today's shelves — while adding new formats and drinks is the discipline I'd want to be close to. Most nostalgic brands slide in ten years." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "FMCG copy at Indian scale has to land in a print ad, a 6-second reel, and a kirana shelf within the same week. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Mural artist — deadlines and permanence. Event marketer — pitches that land or don't. Community host — voice that travels across rooms. Paper Boat copy lives in that overlap." }
+      ]
+    }
+  },
+
+  "i-pac": {
+    "displayName": "I-PAC",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the shape fits.",
+    "personalNote": {
+      "eyebrow": "A little note just for I-PAC",
+      "title": "Why I'm writing to <em>you</em>, I-PAC.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Turning <em>campaign data</em> into a decision engine — running ground ops like a product team — is the cultural call that moved Indian political campaigns forward. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Campaign cycles are fixed in time, unpredictable in volume, and unforgiving of operational slack. Founder's office is where those three meet. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber in programs where deadlines were real. Then seven creative careers — including event marketer and community host, both of which are ground ops dressed up. Campaigns live in the same muscle." }
+      ]
+    }
+  },
+
+  "itilite": {
+    "displayName": "ITILITE",
+    "ctaTitle": "Let's talk founders' team.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if founder-adjacent DNA counts when you haven't actually founded one.",
+    "personalNote": {
+      "eyebrow": "A little note just for ITILITE",
+      "title": "Why I'm writing to <em>you</em>, ITILITE.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Hiring <em>former founders</em> into the leadership team — not just exec veterans — is a temperament bet as much as a skills bet. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "T&E SaaS means competing on trust, integrations, and unit economics all at once. Leadership team has to hold three clocks. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Didn't found a company. Did quit a crore-paying job with no plan B to try 50 creative careers. Four months in, at seven. The temperament is there; the resume line looks different." }
+      ]
+    }
+  },
+
+  "inkle": {
+    "displayName": "Inkle",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the generalist seat could use another operator.",
+    "personalNote": {
+      "eyebrow": "A little note just for Inkle",
+      "title": "Why I'm writing to <em>you</em>, Inkle.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running a <em>cross-border finance</em> platform means every country's tax code is a separate product. Doing it with a small team is the operating bet I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "US C-corp compliance for Indian founders is a category still being defined. Founder's office has to ship product, policy, and storytelling at once. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft: I worked on the licensing keys that make every copy of Office turn on. Cross-border compliance-adjacent product. Then seven creative careers. The overlap is surprisingly neat." }
+      ]
+    }
+  },
+
+  "karbon-business": {
+    "displayName": "Karbon Business",
+    "ctaTitle": "Let's talk strategy + ops.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Karbon",
+      "title": "Why I'm writing to <em>you</em>, Karbon Business.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a <em>payments + cards</em> stack specifically for Indian SaaS founders — not generic SMBs — is the positioning call the whole product rests on. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Startup banking means regulators, payment rails, and founder-customers all moving at different speeds. Founder's office is where the three meet. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber shipping products where a small decision scaled to a lot of pain. Then seven creative careers building small things end to end. Strategy + ops needs both temperaments." }
+      ]
+    }
+  },
+
+  "keka-hr": {
+    "displayName": "Keka HR",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a creative generalist is useful next to the founding team.",
+    "personalNote": {
+      "eyebrow": "A little note just for Keka",
+      "title": "Why I'm writing to <em>you</em>, Keka HR.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building an HR product that Indian businesses actually <em>like</em> using — in a category most users secretly resent — is a cultural call the product design only half-solves. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "HR + payroll means compliance changes under your feet every quarter, in every state, for every customer. Founder's office has to see those before they become support tickets. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft + Uber taught me what scale feels like. Then seven creative careers — building small things where the user isn't a consultant. HR tools live where scale and feel overlap." }
+      ]
+    }
+  },
+
+  "licious": {
+    "displayName": "Licious",
+    "heroHeadline": "A meat brand's trust<br>is built reel by reel.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — mural, community host, telemarketer, event marketer. Building trust where people were afraid to buy is most of what I've done.",
+    "ctaTitle": "Let's build Raw & Fresh's next chapter.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the brand operator your table is missing.",
+    "personalNote": {
+      "eyebrow": "A little note just for Licious",
+      "title": "Why I'm writing to <em>you</em>, Licious.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Getting Indians to <em>buy meat online</em> — a category that didn't exist before you made it — is the category-creation bet the whole brand was built on. That's the muscle I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Raw & Fresh SKUs at Licious scale means cold chain, imagery, and copy all have to tell the same freshness story. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Telemarketer on Flipkart Live — selling products to skeptical buyers in real time. Florist, learning cold-chain economics at ground level. Brand at Licious is the same instinct, scaled up." }
+      ]
+    }
+  },
+
+  "loop-ai": {
+    "displayName": "Loop AI",
+    "ctaTitle": "Let's talk strategy + ops.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a senior generalist is useful at the shape you're hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Loop AI",
+      "title": "Why I'm writing to <em>you</em>, Loop AI.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Hiring a <em>staff strategist</em> who's also hands-on with operations — refusing to split the roles — is the shape of a team that means it about speed. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "AI companies live on two clocks: the underlying model moves weekly, the product has to feel steady. Strategy has to hold both. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years of Microsoft + Uber running high-stakes programs. Then seven creative careers — each of them a different operating problem solved from scratch. Strategy + ops at AI tempo needs both." }
+      ]
+    }
+  },
+
+  "lucidity": {
+    "displayName": "Lucidity",
+    "ctaTitle": "Let's talk GTM.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a generalist with a growth streak is useful in your founder's office.",
+    "personalNote": {
+      "eyebrow": "A little note just for Lucidity",
+      "title": "Why I'm writing to <em>you</em>, Lucidity.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Selling <em>cloud storage optimization</em> to engineering leaders — a buyer who hates marketing — is a GTM muscle most SaaS companies never quite build. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Infra SaaS means proving ROI in dollars before the contract closes. Founder's office + GTM has to design experiments that pay back in weeks, not quarters. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Uber: data pipelines for developers — selling by being useful. Six years of that. Then seven creative careers, all of which were small GTM experiments in disguise. Different stages, same muscle." }
+      ]
+    }
+  },
+
+  "mir-r": {
+    "displayName": "MIRÓR",
+    "ctaTitle": "Let's talk founders office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for MIRÓR",
+      "title": "Why I'm writing to <em>you</em>, MIRÓR.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a brand with a name that dares people to spell it right — committing to a look and voice that doesn't apologize — is the kind of founder's-office-level taste call I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Early-stage means strategy, operations, and growth are three hats on one calendar. Founder's office is where they meet. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber shipping at scale. Then seven creative careers — different jobs, same muscle: show up, figure it out, finish the thing. That's most of what a founder's office runs on." }
+      ]
+    }
+  },
+
+  "masai": {
+    "displayName": "Masai",
+    "ctaTitle": "Let's talk EIR.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the EIR seat could use a generalist with a 7-career streak.",
+    "personalNote": {
+      "eyebrow": "A little note just for Masai",
+      "title": "Why I'm writing to <em>you</em>, Masai.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Masai's <em>income-share</em> model — getting paid when students get paid — is the kind of structural bet most EdTech won't touch. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "EdTech with skin in the outcome means admissions, curriculum, and placements have to move in lockstep or the whole model cracks. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Engineer by training. Six years at Microsoft &amp; Uber. Then seven creative careers — a one-person curriculum on learning fast. EIR at Masai lives exactly in that shape." }
+      ]
+    }
+  },
+
+  "myntra": {
+    "displayName": "Myntra",
+    "heroHeadline": "Brand management at Myntra<br>is platform storytelling.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — mural, exhibition, event, community host. Fashion needs all of it.",
+    "ctaTitle": "Let's talk Marketplace brand.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a platform-minded brand operator is who you're hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Myntra",
+      "title": "Why I'm writing to <em>you</em>, Myntra.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running <em>EORS</em> every year like a cultural event — not just a sale — is the kind of brand-as-ritual move only a platform with real confidence pulls off. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Marketplace brand means holding the master narrative for thousands of seller brands while keeping one voice in campaigns and reels. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running programs where many small pieces had to ship to one narrative. Then seven creative careers — mural, exhibition, event. Marketplace brand is all three operating problems stacked." }
+      ]
+    }
+  },
+
+  "nanonets": {
+    "displayName": "Nanonets",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is looking for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Nanonets",
+      "title": "Why I'm writing to <em>you</em>, Nanonets.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Making <em>document AI</em> feel like a Stripe — drop-in, not a data-science project — is the kind of developer-experience call the whole business rests on. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Serving accounts payable, insurance, logistics, and healthcare on the same model stack means four very different ICP conversations in one founder's office. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Uber: I built data pipelines — my customers were developers. Same posture as selling into devs at Nanonets. Plus seven creative careers translating complicated things into things people can use." }
+      ]
+    }
+  },
+
+  "navi": {
+    "displayName": "Navi",
+    "heroHeadline": "Fintech marketing<br>is trust, shipped in 15 seconds.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping products people trust. Then 18 months of seven creative careers — including building an Instagram of 339K who stopped scrolling. Brand at Navi lives in both.",
+    "ctaTitle": "Let's talk Brand Marketing.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the brand operator your UPI + Insurance + Loans crew needs.",
+    "personalNote": {
+      "eyebrow": "A little note just for Navi",
+      "title": "Why I'm writing to <em>you</em>, Navi.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a consumer fintech by <em>Sachin Bansal</em> that leads with UPI instead of a loan hook says something about patience. Most fintechs would have started where the unit economics were. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Brand across UPI, Insurance, Loans, and Mutual Funds means four regulators, four audiences, one story. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running programs trusted by enterprises and strangers. Then a community of 339K on Instagram. Brand at Navi lives where infrastructure-grade trust meets 15-second storytelling." }
+      ]
+    }
+  },
+
+  "nextnation": {
+    "displayName": "NextNation",
+    "ctaTitle": "Let's talk operations + strategy.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the founder's office seat fits.",
+    "personalNote": {
+      "eyebrow": "A little note just for NextNation",
+      "title": "Why I'm writing to <em>you</em>, NextNation.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building something with a name that wants to stand for more than a company — and earning it instead of claiming it — is the kind of long-horizon bet I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Operations + strategy in an early-stage founder's office means designing the scaffolding the next 20 hires will build on. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber designing scaffolding inside huge teams. Then seven creative careers building scaffolding from scratch. NextNation likely needs both muscles." }
+      ]
+    }
+  },
+
+  "nxthyre": {
+    "displayName": "Nxthyre",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is looking for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Nxthyre",
+      "title": "Why I'm writing to <em>you</em>, Nxthyre.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a <em>hiring</em> product in a market where every product claims to fix hiring means your wedge is more about culture than feature. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Hiring platforms live on two-sided inventory — candidates and companies — and unit economics that only work at density. Founder's office has to plant both at once. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber hiring across teams. Then seven creative careers hiring myself into seven different rooms. I know the candidate side of this category pretty well." }
+      ]
+    }
+  },
+
+  "orants-ai": {
+    "displayName": "Orants AI",
+    "ctaTitle": "Let's talk founders' associate.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Orants AI",
+      "title": "Why I'm writing to <em>you</em>, Orants AI.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Hiring a <em>startup generalist</em> instead of specialists at this stage is the honest call most AI startups pretend they don't need to make. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "AI startups live between a model that changes weekly and a product that has to feel steady. A founders' associate sits in that tension every day. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber. Then seven creative careers — including one as a mural artist on a deadline in Jaisalmer. Generalists aren't people who can't decide; they're people who can finish." }
+      ]
+    }
+  },
+
+  "origin": {
+    "displayName": "Origin",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founders need.",
+    "personalNote": {
+      "eyebrow": "A little note just for Origin",
+      "title": "Why I'm writing to <em>you</em>, Origin.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Choosing to keep the <em>founder's office</em> as the engine room — not a central strategy function — is the shape of a team that means it about execution. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Early-stage means every initiative is also a hiring, finance, and comms decision. Founder's office is where those meet. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber. Then seven creative careers building small things from scratch. Founder's office runs on the overlap of both." }
+      ]
+    }
+  },
+
+  "phonepe": {
+    "displayName": "PhonePe",
+    "heroHeadline": "AI-native marketing isn't a tool choice.<br>It's a cultural choice.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping planet-scale products. Then 18 months of seven creative careers — including 339K followers built from scratch. AI in creative is just another medium to be curious about.",
+    "ctaTitle": "Let's build PhonePe's creative org.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Creative Director your AI-native marketing is looking for.",
+    "personalNote": {
+      "eyebrow": "A little note just for PhonePe",
+      "title": "Why I'm writing to <em>you</em>, PhonePe.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Deciding to build an <em>AI-native</em> marketing org from the top down — not as a middle-management pilot — is the architectural call that most fintechs will keep postponing. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "UPI's biggest brand, 500M+ users, and a creative org getting rebuilt under it — at that shape, a tooling change is a cultural change. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Engineer by training, creative by nature, six years at Microsoft &amp; Uber running infra. Then seven creative careers using new tools on every one. Creative Director at an AI-native org sits in that exact seam." }
+      ]
+    }
+  },
+
+  "playo": {
+    "displayName": "Playo",
+    "heroHeadline": "A sports community<br>doesn't scale on ads.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — including Bangalore community host, where making strangers into friends was the whole job.",
+    "ctaTitle": "Let's build Playo's next chapter.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Head of Marketing your community needs.",
+    "personalNote": {
+      "eyebrow": "A little note just for Playo",
+      "title": "Why I'm writing to <em>you</em>, Playo.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building the largest <em>sports community</em> app in a country that doesn't talk much about amateur sport — and having the booking engine under it — is the twin play I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Marketing a community-led product means you can't out-spend the competition — you have to out-belong. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Bangalore community club host — 20 strangers walk in, I'm the person who makes them friends. Mural artist. Event marketer. Sports community marketing lives in those exact muscles." }
+      ]
+    }
+  },
+
+  "pocket-fm": {
+    "displayName": "Pocket FM",
+    "heroHeadline": "250M listeners<br>don't arrive on billboards.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — learning to turn attention into a habit.",
+    "ctaTitle": "Let's build Pocket FM's next brand chapter.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Brand Manager your catalogue needs.",
+    "personalNote": {
+      "eyebrow": "A little note just for Pocket FM",
+      "title": "Why I'm writing to <em>you</em>, Pocket FM.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Programming audio series <em>episode by episode</em> — soap-opera mechanics, not podcast mechanics — in a country that never had an audio series habit before is the cultural bet the whole brand runs on. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "250M+ listeners means brand campaigns have to translate across regions, genres, and voice artists without losing what makes Pocket FM feel like Pocket FM. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber where daily-usage muscle was everything. Then 339K people on Instagram built from zero. Brand work at an audio platform lives in the same place — attention becoming a habit." }
+      ]
+    }
+  },
+
+  "qrata": {
+    "displayName": "Qrata",
+    "ctaTitle": "Let's talk platform + community.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the community operator you want in the seat.",
+    "personalNote": {
+      "eyebrow": "A little note just for Qrata",
+      "title": "Why I'm writing to <em>you</em>, Qrata.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running a recruiting firm that shows up more like a <em>network</em> than a pipeline — founder dinners, curated intros, being in the room — is the posture I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Community at an early-stage VC-adjacent firm means curating dinners, content, and matchmaking all from one calendar. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Bangalore community club host. Event marketer. Exhibition designer for a SaaS startup. Seven creative careers made mostly of 'put the right people in the right room.' That's Qrata's job description." }
+      ]
+    }
+  },
+
+  "ragaai-inc": {
+    "displayName": "RagaAI",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a generalist with an AI-curious streak is useful here.",
+    "personalNote": {
+      "eyebrow": "A little note just for RagaAI",
+      "title": "Why I'm writing to <em>you</em>, RagaAI.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Making <em>AI testing</em> a first-class product — not a compliance afterthought — is the kind of category-creation bet that only works if a founder really believes it. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "$4.7M seed, a category that's still being defined, and an ICP that changes model by model. Founder's office has to keep all three coherent. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft: product activation at planet scale — what 'safe to ship' actually means. Uber: data pipelines. Then seven creative careers. Founder's office at AI Testing lives in the overlap." }
+      ]
+    }
+  },
+
+  "roma": {
+    "displayName": "Roma",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founding team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Roma",
+      "title": "Why I'm writing to <em>you</em>, Roma.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Keeping the founder's office shape as <em>strategy and operations in one seat</em> is a deliberate refusal to split the roles too early. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Strategy + ops in a small team means one calendar holds long-horizon bets and this-week's blockers. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber holding long-horizon and short-horizon programs on the same calendar. Then seven creative careers finishing small things on deadline. That's exactly the shape." }
+      ]
+    }
+  },
+
+  "schbang": {
+    "displayName": "Schbang",
+    "heroHeadline": "An agency's best work<br>is the copy no brand team would have written.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — mural, event, community host, live commerce. I've written copy from inside and outside the brief.",
+    "ctaTitle": "Let's talk creative strategy.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a strategist with range fits the Bangalore floor.",
+    "personalNote": {
+      "eyebrow": "A little note just for Schbang",
+      "title": "Why I'm writing to <em>you</em>, Schbang.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Being a <em>1000+</em>-person independent agency in India — still independent, still irreverent — is a business temperament most agencies give up on at a quarter of that size. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Creative strategy across a floor that ships for D2C, BFSI, FMCG, and tech means the copywriter's brief is a different brief every day. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Mural artist, event marketer, community host — stories that land in different rooms, different weeks. Six years at Microsoft &amp; Uber where copy had to ship. Creative strategy lives in that exact blend." }
+      ]
+    }
+  },
+
+  "scispace": {
+    "displayName": "SciSpace",
+    "ctaTitle": "Let's talk founder-led marketing.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if the storytelling seat could use another operator.",
+    "personalNote": {
+      "eyebrow": "A little note just for SciSpace",
+      "title": "Why I'm writing to <em>you</em>, SciSpace.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building <em>AI research tools</em> for researchers — where your ICP has strong opinions about what good looks like — is a marketing problem you can only solve by sounding like the ICP. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Founder-led marketing means the founder's calendar is also the content calendar. Supporting that without blowing it up is the real work. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber translating technical work to non-technical people. Then 339K followers on Instagram built by being honest. Founder-led marketing at SciSpace lives in that seam." }
+      ]
+    }
+  },
+
+  "spenza": {
+    "displayName": "Spenza",
+    "ctaTitle": "Let's talk Chief of Staff.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a creative generalist is useful next to the founders.",
+    "personalNote": {
+      "eyebrow": "A little note just for Spenza",
+      "title": "Why I'm writing to <em>you</em>, Spenza.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Telecom SaaS is one of those <em>boring</em> categories where the whole game is operational trust. Building it patiently is the bet I'd want to be close to watching." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Chief of Staff at 0.1–0.2% equity means the role is meant to compound over years, not quarters. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber in infra programs where patience was the whole job. Then seven creative careers learning how to finish small things fast. Chief of Staff needs both." }
+      ]
+    }
+  },
+
+  "swiggy": {
+    "displayName": "Swiggy",
+    "heroHeadline": "Food delivery marketing<br>is narrative + ops at 30-minute tempo.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — including event marketer for a food chain breaking into wedding catering. Restaurants I've been inside.",
+    "ctaTitle": "Let's build Swiggy's next campaign.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Marketing Manager your team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Swiggy",
+      "title": "Why I'm writing to <em>you</em>, Swiggy.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Treating marketing as a <em>product surface</em> — One, Instamart, Dineout, Genie all telling one story without flattening the brand — is the architectural discipline I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "End-to-end campaigns at Swiggy mean creative, ops, restaurants, delivery partners, and the app all move to one calendar. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Event marketer for a food chain building its pitches. Telemarketer on Flipkart Live watching demand turn into orders in real time. Plus six years at Uber shipping at two-sided-marketplace tempo. That's the shape." }
+      ]
+    }
+  },
+
+  "tmrw-house-of-brands": {
+    "displayName": "TMRW",
+    "heroHeadline": "A House of Brands lives or dies<br>on how well the platform shows up.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — learning what founders actually need, because I've been seven of them.",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the operator your brand founders would want close to.",
+    "personalNote": {
+      "eyebrow": "A little note just for TMRW",
+      "title": "Why I'm writing to <em>you</em>, TMRW.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Bewakoof's <em>#AllEyesOnYou</em> is a clinic in community-led work — but it's the scaffolding around each founder that's harder and more interesting. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "30+ brands, each with its own founder, category, and stage. Platform team has to keep up with that many operating rhythms. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber. Eighteen months running seven unrelated careers. A House of Brands is one of the few places where 'I've done a bit of everything' reads like a fit, not a flag." }
+      ]
+    }
+  },
+
+  "third-wave-coffee": {
+    "displayName": "Third Wave Coffee",
+    "heroHeadline": "A coffee brand<br>is a café AND a shelf.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years shipping at scale. Then 18 months of seven creative careers — florist, mural, event, community host. Consumer brand is where all of that converges.",
+    "ctaTitle": "Let's build Third Wave's FMCG next chapter.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the Brand Manager your shelf portfolio needs.",
+    "personalNote": {
+      "eyebrow": "A little note just for Third Wave",
+      "title": "Why I'm writing to <em>you</em>, Third Wave Coffee.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Going from a <em>cafe</em> brand to an <em>FMCG</em> brand without breaking what made the cafes feel specific is a brand-translation problem that most cafe chains don't survive. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Building an FMCG portfolio off a cafe brand means shelf, cafe, and d2c all telling the same story, at three very different unit economics. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Florist — where I learned cold-chain and vendor reality. Community host — where 'the room' was the product. Mural — where the work had to survive in a specific place. FMCG brand lives in all three." }
+      ]
+    }
+  },
+
+  "truefoundry": {
+    "displayName": "TrueFoundry",
+    "ctaTitle": "Let's talk GTM.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ex-Uber infra person + creative generalist fits your GTM motion.",
+    "personalNote": {
+      "eyebrow": "A little note just for TrueFoundry",
+      "title": "Why I'm writing to <em>you</em>, TrueFoundry.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building <em>ML infra</em> for teams who think of themselves as developers, not data scientists, is a positioning move that decides the whole GTM. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "ML platform sales mean you're being compared against 'build it yourself' every single meeting. GTM has to show ROI in weeks. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Uber: I built data pipelines for internal developers — selling by being useful to peers. Same GTM posture, smaller stage. Plus seven creative careers where each one was a miniature GTM test." }
+      ]
+    }
+  },
+
+  "unifize": {
+    "displayName": "Unifize",
+    "ctaTitle": "Let's talk sales ops.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a generalist-operator fits the sales ops seat.",
+    "personalNote": {
+      "eyebrow": "A little note just for Unifize",
+      "title": "Why I'm writing to <em>you</em>, Unifize.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a <em>manufacturing collaboration</em> platform for a category that still runs on email chains and WhatsApp groups is the kind of patient category-making I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Manufacturing SaaS sales mean long cycles, multiple stakeholders, and a buyer who's been burned by enterprise software before. Sales ops is where those frictions surface. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft: enterprise product activation and the pipelines around it. Six years of that. Then seven creative careers, several of which were small-scale sales ops in disguise." }
+      ]
+    }
+  },
+
+  "varsal-terra": {
+    "displayName": "Varsal Terra",
+    "ctaTitle": "Let's talk Chief of Staff.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if a generalist with a learning streak fits the clinical-chain seat.",
+    "personalNote": {
+      "eyebrow": "A little note just for Varsal Terra",
+      "title": "Why I'm writing to <em>you</em>, Varsal Terra.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running a <em>specialty clinical chain</em> where each location is both a P&L and a care experience is a structural bet that only pays back with patient operating discipline. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Healthcare chains live on clinician trust, insurer contracts, and patient outcomes — three clocks that don't match. Chief of Staff at the founder's office has to hold all three. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber in programs where trust and ops lived in the same room. Then seven creative careers learning fast in new categories. Clinical chain is a new one — but not a different shape." }
+      ]
+    }
+  },
+
+  "weekday": {
+    "displayName": "Weekday",
+    "ctaTitle": "Let's talk founder's office.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your YC-shape team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Weekday",
+      "title": "Why I'm writing to <em>you</em>, Weekday.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running a <em>hiring platform</em> where candidates come through other candidates — referral as the whole funnel — is a structural bet on people wanting to work with people they already trust. That's the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Referral density is a chicken-and-egg problem every week. Founder's office at a YC-shape team is where that math is fought out. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber building things my coworkers depended on. Then seven creative careers — half of which found me through other people. I know the referral side of this intimately." }
+      ]
+    }
+  },
+
+  "weekday-ai": {
+    "displayName": "Weekday AI",
+    "ctaTitle": "Let's talk GTM / growth.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the GTM generalist your YC-shape team is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Weekday AI",
+      "title": "Why I'm writing to <em>you</em>, Weekday AI.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Layering <em>AI</em> on a referral-hiring platform — instead of rebuilding the category from scratch — is the kind of focused second-act bet I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "GTM for an AI hiring product means you're pitching to recruiters who have seen 50 AI pitches. Standing out is not a demo problem; it's a trust problem. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber translating technical product to non-technical buyers. Then seven creative careers where trust was the whole conversion. GTM / growth at your shape lives there." }
+      ]
+    }
+  },
+
+  "xoxoday": {
+    "displayName": "Xoxoday",
+    "ctaTitle": "Let's talk Chief of Staff / COO.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if an ops-native generalist is useful to the COO.",
+    "personalNote": {
+      "eyebrow": "A little note just for Xoxoday",
+      "title": "Why I'm writing to <em>you</em>, Xoxoday.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Building a <em>rewards &amp; incentives</em> platform that works across gifting, employee recognition, and channel partners — three very different buyers on one stack — is an operational call the whole company runs on. That's what I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Chief of Staff partnering with a COO means protecting attention across functions that all need the same 45 minutes every week. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber running programs across multiple customer types. Then seven creative careers managing my own rewards, time, and deliverables. Chief of Staff to a COO is the grown-up version." }
+      ]
+    }
+  },
+
+  "zamp": {
+    "displayName": "Zamp",
+    "ctaTitle": "Let's talk strategy + ops.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your founder's office is hiring for.",
+    "personalNote": {
+      "eyebrow": "A little note just for Zamp",
+      "title": "Why I'm writing to <em>you</em>, Zamp.",
+      "intro": "Before I send anything over — three things I've been thinking about.",
+      "points": [
+        { "title": "I've been watching how you build.", "body": "Running a <em>finance infrastructure</em> company means the product has to feel steady while the regulatory floor moves. Treating that as a strategy problem — not a compliance afterthought — is the part I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "Finance infra buyers are CFOs and controllers — a buyer who resents surprises. Strategy + ops at founder's office has to keep the company fast and the customer calm. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Microsoft &amp; Uber — infra products where shipping fast and shipping safe were the same sentence. Then seven creative careers. Finance infra founder's office is the same shape, one industry over." }
+      ]
+    }
+  },
+
   "famyo": {
     "displayName": "Famyo",
     "heroHeadline": "A character-led D2C brand<br>needs a character-led generalist.",
     "heroSubtext": "Ex-Microsoft, ex-Uber. Seven creative careers in 18 months — mural artist, florist, event lead, community host, live-commerce host. I know how to make something kids remember and parents buy.",
     "ctaTitle": "Let's build Famyo's next chapter.",
     "ctaDesc": "No pitch deck. No 20-slide intro. Just a real conversation about what you need and whether I can ship it.",
-
     "personalNote": {
       "eyebrow": "A little note just for Famyo",
       "title": "Why I'm writing to <em>you</em>, Famyo.",
       "intro": "Before I send anything over — three things I've been thinking about.",
       "points": [
-        {
-          "title": "I've been watching how you build.",
-          "body": "The choice to lead with <em>characters</em>, not SKUs — turning everyday kid essentials into things kids actually ask their parents for — is the kind of product instinct I'd want to be close to."
-        },
-        {
-          "title": "Your ambition is a different kind of operating problem.",
-          "body": "40% QoQ growth on a ₹12 Cr ARR, in a kids-essentials category that's barely been built in India. I'd love to understand how the team keeps up."
-        },
-        {
-          "title": "My range might fit here.",
-          "body": "Six years at Microsoft &amp; Uber, then seven unrelated creative careers in 18 months — mural, exhibition design, live-commerce. A character-led D2C brand might be one of the few places that shape reads like a fit."
-        }
+        { "title": "I've been watching how you build.", "body": "The choice to lead with <em>characters</em>, not SKUs — turning everyday kid essentials into things kids actually ask their parents for — is the kind of product instinct I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "40% QoQ growth on a ₹12 Cr ARR, in a kids-essentials category that's barely been built in India. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber, then seven unrelated creative careers in 18 months — mural, exhibition design, live-commerce. A character-led D2C brand might be one of the few places that shape reads like a fit." }
       ]
     }
   },
@@ -64,24 +1068,14 @@
     "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of scaling programs at companies built for scale. Then 18 months trying seven creative careers — including a Bangalore community club where strangers had to leave as friends. That's the range Chief of Staff at Goodera probably wants.",
     "ctaTitle": "Let's scale good together.",
     "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your Founder's Office is looking for.",
-
     "personalNote": {
       "eyebrow": "A little note just for Goodera",
       "title": "Why I'm writing to <em>you</em>, Goodera.",
       "intro": "Before I send anything over — three things I've been thinking about.",
       "points": [
-        {
-          "title": "I've been watching how you build.",
-          "body": "Hosting <em>Karma Summit Asia</em> with 150+ companies in one room — turning a category into a community — is exactly the kind of move I'd want to be close to."
-        },
-        {
-          "title": "Your ambition is a different kind of operating problem.",
-          "body": "65+ Fortune 500 clients, a network of 50,000 nonprofits across 100 countries, and 100% YoY growth. I'd love to understand how the team keeps up."
-        },
-        {
-          "title": "My range might fit here.",
-          "body": "Six years at Microsoft &amp; Uber, then seven creative careers — including hosting a Bangalore community club where strangers had to leave as friends. A volunteering platform runs on that same muscle."
-        }
+        { "title": "I've been watching how you build.", "body": "Hosting <em>Karma Summit Asia</em> with 150+ companies in one room — turning a category into a community — is exactly the kind of move I'd want to be close to." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "65+ Fortune 500 clients, a network of 50,000 nonprofits across 100 countries, and 100% YoY growth. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber, then seven creative careers — including hosting a Bangalore community club where strangers had to leave as friends. A volunteering platform runs on that same muscle." }
       ]
     }
   },
@@ -92,24 +1086,14 @@
     "heroSubtext": "Ex-Microsoft, ex-Uber. Seven creative careers in 18 months — mural, exhibition design, event design. I've shipped design where people can touch it, walk through it, remember it. That's HomeLane's whole thing.",
     "ctaTitle": "Let's make HomeLane's design unforgettable.",
     "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the generalist your creative team is missing.",
-
     "personalNote": {
       "eyebrow": "A little note just for HomeLane",
       "title": "Why I'm writing to <em>you</em>, HomeLane.",
       "intro": "Before I send anything over — three things I've been thinking about.",
       "points": [
-        {
-          "title": "I've been watching how you build.",
-          "body": "The <em>DesignCafe</em> move — folding in a competitor instead of running at them — is the kind of move I'd want to be close to watching get made."
-        },
-        {
-          "title": "Your ambition is a different kind of operating problem.",
-          "body": "₹1,000 Cr of combined revenue across four brands, turning EBITDA positive while still designing at the individual-home level. I'd love to understand how the team keeps up."
-        },
-        {
-          "title": "My range might fit here.",
-          "body": "Six years at Microsoft &amp; Uber, then seven creative careers — mural, exhibition design, event design — where the work had to physically exist for real humans. Interior design reads like the grown-up version of that."
-        }
+        { "title": "I've been watching how you build.", "body": "The <em>DesignCafe</em> move — folding in a competitor instead of running at them — is the kind of move I'd want to be close to watching get made." },
+        { "title": "Your ambition is a different kind of operating problem.", "body": "₹1,000 Cr of combined revenue across four brands, turning EBITDA positive while still designing at the individual-home level. I'd love to understand how the team keeps up." },
+        { "title": "My range might fit here.", "body": "Six years at Microsoft &amp; Uber, then seven creative careers — mural, exhibition design, event design — where the work had to physically exist for real humans. Interior design reads like the grown-up version of that." }
       ]
     }
   }
