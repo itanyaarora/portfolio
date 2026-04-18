@@ -1430,19 +1430,18 @@ body.custom-page .journey {
   will-change: transform;
 }
 
-/* Tanya's personal intro — sits under "My journey" so the section feels signed by her.
+/* Tanya's personal intro — sits ABOVE the sticky journey zone so it scrolls away
+   as the user enters the journey (not pinned with the "My journey" title).
    Size + line-height matched to .journey-body so it reads as the same voice. */
 .journey-intro {
-  flex-shrink: 0;
   text-align: center;
   font-family: 'Nunito', sans-serif;
   font-size: clamp(15px, 1.25vw, 18px);
   color: var(--text-secondary);
   line-height: 1.75;
   max-width: 720px;
-  margin: 0 auto 24px;
-  position: relative;
-  z-index: 5;
+  margin: 72px auto 40px;
+  padding: 0 24px;
 }
 
 /* Horizontal track — holds all panels side by side */
