@@ -136,10 +136,10 @@
         // becomes "Tanya × Famyo" once the JSON entry loads.
         document.title = `Tanya × ${displayName}`;
 
-        // Main hero headline ("I'm not figuring things out. / I'm collecting skills.")
-        // is intentionally NOT overridden per company — it stays constant as Tanya's
-        // opening line. Only the subtext below it gets tailored.
-        if (config.heroSubtext) setText('.hero-subtext', config.heroSubtext);
+        // Hero headline AND subtext are intentionally NOT overridden per company —
+        // they stay constant as Tanya's opening line across every page (generic +
+        // all company-specific). Per-company customization lives in the "Why I'm
+        // writing to you" card and the CTA section only.
         if (config.ctaTitle)    setText('.cta-title',    config.ctaTitle);
         if (config.ctaDesc)     setText('.cta-desc',     config.ctaDesc);
 
