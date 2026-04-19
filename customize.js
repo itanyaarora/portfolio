@@ -131,8 +131,10 @@
           document.title = `Tanya × ${displayName}`;
         }
 
-        if (config.heroHeadline) setHTML('.hero-headline', config.heroHeadline);
-        if (config.heroSubtext) setText('.hero-subtext', config.heroSubtext);
+        // Hero stays identical to the generic page across every company —
+        // the only company-specific customization is the "Why [Company]" heading
+        // in the Why-work section (applied via applyWhyHeading above) and the
+        // personal-note block below. Hero overrides are intentionally ignored.
         if (config.ctaTitle)    setText('.cta-title',    config.ctaTitle);
         if (config.ctaDesc)     setText('.cta-desc',     config.ctaDesc);
 
