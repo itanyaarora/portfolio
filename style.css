@@ -136,7 +136,7 @@ a {
 }
 
 .marquee-bar {
-  background: var(--bg-medium);
+  background: var(--bg);
   border-radius: 20px;
   padding: 6px 16px;
   overflow: hidden;
@@ -409,10 +409,10 @@ body::after {
 .hero-headline {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(38px, 5.5vw, 64px);
+  font-size: clamp(30px, 4vw, 48px);
   font-weight: 700;
   line-height: 1.2;
-  max-width: 960px;
+  max-width: 900px;
   margin-bottom: 24px;
   position: relative;
   z-index: 2;
@@ -922,7 +922,7 @@ body::after {
 
 .services-desc {
   text-align: center;
-  margin: 0 auto 48px;
+  margin: 0 auto 24px;
   max-width: 640px;
   color: var(--text-secondary);
   font-size: clamp(15px, 1.2vw, 17px);
@@ -949,7 +949,7 @@ body::after {
   margin-bottom: 40px;
 }
 
-/* ── Role badges — horizontal row above box ── */
+/* ── Role badges — horizontal row above box (legacy, kept for any stray refs) ── */
 .roles-row {
   display: flex;
   flex-wrap: wrap;
@@ -969,13 +969,91 @@ body::after {
   background: transparent;
 }
 
+/* ── Two-group role cards (replaces single flat badge row) ── */
+.roles-groups-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+
+.roles-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto 18px;
+}
+
+.role-group {
+  background: var(--surface);
+  border: 1.5px solid rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 18px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.role-group-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  color: var(--text-primary);
+}
+
+.role-group-items {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.roles-tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(15px, 1.25vw, 18px);
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0 auto 22px;
+  max-width: 640px;
+}
+
+/* Inline CTA button at the bottom of the What-I'm-looking-for sticky — gives
+   the reader a single-click exit to the contact section without scrolling further. */
+.services-cta {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 32px;
+  background: var(--text-primary);
+  color: var(--white);
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-self: center;
+}
+
+.services-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+}
+
 /* ── Yes / No box ── */
 /* Wrapper exists so the searching cartoon can be positioned absolutely
    right next to the box and layered BEHIND it via z-index. The top
    margin reserves room above the box for the cartoon's body to show. */
 .looking-wrap {
   position: relative;
-  margin-top: 150px;
+  margin-top: 70px;
 }
 
 /* Cartoon stands ON the top edge of the box: her feet/microscope visually
@@ -997,9 +1075,9 @@ body::after {
 .looking-box {
   display: flex;
   gap: 0;
-  background: var(--bg-medium);
+  background: var(--bg);
   border-radius: var(--radius-xl);
-  padding: 44px 52px;
+  padding: 24px 40px;
   position: relative;
   z-index: 2; /* sits above .looking-cartoon */
   overflow: hidden;
@@ -1040,7 +1118,7 @@ body::after {
   text-transform: uppercase;
   color: var(--text-muted);
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .looking-tags {
@@ -1105,14 +1183,65 @@ body::after {
 
 body.has-personal-note .personal-note {
   display: block;
+  /* Card-stacking pattern (same as .services / .cta-footer):
+     1. 100vh sticky pin     → personal-note content stays in view
+     2. 100vh scroll budget  → journey slides up from below as a yellow card
+     The inner .personal-note-inner handles the sticky pin so the section itself
+     can provide the extra scroll budget. */
+  height: calc(100vh + 100vh);
+  padding: 0;
 }
 
-/* When the personal note is showing, the about section sits on white already — remove its own card treatment */
-body.has-personal-note .about {
-  border-radius: 0;
-  margin-top: 0;
-  box-shadow: none;
-  padding-top: 40px;
+body.has-personal-note .personal-note-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.has-personal-note .personal-note-points {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* On custom.html the about section is removed from the HTML, so the journey
+   section card-stacks directly over the personal-note's white card. Butter
+   yellow fill (matches hero) for the whole journey stretch — "50 Creative
+   Careers" area AND the polaroid grid below the dashed line — so they read
+   as one continuous block. margin-top: -100vh makes the journey rise over
+   the personal-note's scroll-budget zone as you scroll, mirroring how the
+   personal-note card rises over the hero. */
+body.has-personal-note .journey {
+  background: var(--bg);
+  border-radius: 32px 32px 0 0;
+  margin-top: -100vh;
+  box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
+              0 -4px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 3;
+}
+
+body.has-personal-note .journey-sticky {
+  background: var(--bg);
+}
+
+body.has-personal-note .journey-polaroids {
+  background: var(--bg);
+}
+
+/* The journey-sticky radial gradient is a white glow — drop it when the section is yellow
+   so the yellow isn't washed out behind the polaroid cards. */
+body.has-personal-note .journey-sticky::before {
+  content: none;
 }
 
 .personal-note-inner {
@@ -1296,7 +1425,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 .about-pill {
   display: inline-block;
-  background: var(--bg-medium);
+  background: var(--bg);
   padding: 2px 12px;
   border-radius: 999px;
   font-weight: 700;
@@ -2627,26 +2756,38 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 }
 
 /* ── Cards ── */
+/* Aligned grid layout: 3 cards on top row, 2 centered on bottom row.
+   Cards start hidden (opacity 0 + translateY) and reveal in sequence
+   as the user scrolls through the section (JS adds .shown one at a time). */
 .why-cards {
   position: absolute;
   inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 12px 18px;
+  padding: 48px 40px 24px;
   pointer-events: none;
   z-index: 1;
 }
 
 .why-card {
-  position: absolute;
-  width: 320px;
+  position: relative;
+  flex: 0 0 290px;
+  width: 290px;
   background: var(--surface);
-  border-radius: 24px;
-  padding: 28px;
+  border-radius: 20px;
+  padding: 18px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10),
               0 4px 14px rgba(0, 0, 0, 0.05);
   pointer-events: auto;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.6s ease-out;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  opacity: 0;
 }
 
 .why-card-icon {
@@ -2665,39 +2806,21 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   flex: 1;
 }
 
-/* Position each card — start off-screen below */
-.why-card[data-index="0"] {
-  top: 10%;
-  left: 4%;
-  transform: translateY(120vh) rotate(-2deg);
-}
-.why-card[data-index="1"] {
-  top: 10%;
-  right: 4%;
-  transform: translateY(120vh) rotate(2deg);
-}
-.why-card[data-index="2"] {
-  top: 46%;
-  left: 3%;
-  transform: translateY(120vh) rotate(1.5deg);
-}
-.why-card[data-index="3"] {
-  top: 46%;
-  right: 3%;
-  transform: translateY(120vh) rotate(-1.5deg);
-}
-.why-card[data-index="4"] {
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%) translateY(120vh) rotate(0.5deg);
-}
+/* Hidden starting state — slight offset + subtle rotation per card */
+.why-card[data-index="0"] { transform: translateY(60px) rotate(-2deg); }
+.why-card[data-index="1"] { transform: translateY(60px) rotate(2deg); }
+.why-card[data-index="2"] { transform: translateY(60px) rotate(1.5deg); }
+.why-card[data-index="3"] { transform: translateY(60px) rotate(-1.5deg); }
+.why-card[data-index="4"] { transform: translateY(60px) rotate(0.5deg); }
+.why-card[data-index="5"] { transform: translateY(60px) rotate(-1deg); }
 
-/* Revealed state — slide into final position */
-.why-card[data-index="0"].shown { transform: translateY(0) rotate(-2deg); }
-.why-card[data-index="1"].shown { transform: translateY(0) rotate(2deg); }
-.why-card[data-index="2"].shown { transform: translateY(0) rotate(1.5deg); }
-.why-card[data-index="3"].shown { transform: translateY(0) rotate(-1.5deg); }
-.why-card[data-index="4"].shown { transform: translateX(-50%) translateY(0) rotate(0.5deg); }
+/* Revealed state — settle into grid position */
+.why-card[data-index="0"].shown { transform: translateY(0) rotate(-2deg); opacity: 1; }
+.why-card[data-index="1"].shown { transform: translateY(0) rotate(2deg); opacity: 1; }
+.why-card[data-index="2"].shown { transform: translateY(0) rotate(1.5deg); opacity: 1; }
+.why-card[data-index="3"].shown { transform: translateY(0) rotate(-1.5deg); opacity: 1; }
+.why-card[data-index="4"].shown { transform: translateY(0) rotate(0.5deg); opacity: 1; }
+.why-card[data-index="5"].shown { transform: translateY(0) rotate(-1deg); opacity: 1; }
 
 .why-title {
   font-size: 18px;
@@ -2714,23 +2837,20 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 }
 
 .why-desc {
-  font-size: 14px;
+  font-size: 12.5px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.55;
   margin: 0;
 }
 
-/* ── Alternate card layout (applied to all 5 why-cards) ──
+/* ── Alternate card layout (applied to all 6 why-cards) ──
    Text on top with a large faded ghost number above the title; character
-   illustration sits at the bottom-right. Do NOT override `position` here —
-   the base .why-card is position:absolute so each card lands at its
-   designated corner (top/left/right from .why-card[data-index=N]). Adding
-   position:relative would break that and collapse all cards into flow. */
+   illustration sits at the bottom-right. Sized to fit 3×2 grid within 100vh. */
 .why-card--alt {
   overflow: hidden;
   /* Reserve bottom space to match the .why-card-art height below. */
-  padding-bottom: 160px;
-  min-height: 300px;
+  padding-bottom: 96px;
+  min-height: 210px;
 }
 
 .why-card--alt .why-card-content {
@@ -2742,16 +2862,17 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   display: block;
   font-family: 'Fraunces', serif;
   font-weight: 900;
-  font-size: 72px;
+  font-size: 44px;
   line-height: 0.9;
   color: rgba(0, 0, 0, 0.08);
   letter-spacing: -0.02em;
-  margin-bottom: 4px;
+  margin-bottom: 0;
 }
 
 .why-card--alt .why-title--alt {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 17px;
+  line-height: 1.25;
+  margin-bottom: 6px;
 }
 
 /* Illustration: fixed-size "portrait" frame. The cropped/*.png characters
@@ -2764,9 +2885,9 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .why-card-art {
   position: absolute;
   bottom: 0;
-  right: 12px;
-  width: 150px;
-  height: 150px;
+  right: 6px;
+  width: 90px;
+  height: 90px;
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
@@ -2966,7 +3087,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--bg-medium);
+  background: var(--bg);
   border-radius: var(--radius-xl);
   padding: 40px 52px 0 52px;
   position: relative;
