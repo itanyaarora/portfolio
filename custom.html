@@ -68,7 +68,7 @@
       if (greetingEl) {
         try {
           var params = new URLSearchParams(window.location.search);
-          var who = params.get('hi') || params.get('to') || params.get('for');
+          var who = params.get('hi') || params.get('to') || params.get('for') || params.get('company');
           if (who) {
             who = who.replace(/[<>]/g, '').trim().slice(0, 40); // sanitize + cap
             if (who) greetingEl.textContent = 'Hi ' + who + '!';
