@@ -661,30 +661,88 @@ window.addEventListener('scroll', () => {
 
 // ===== MOBILE STACK CYCLING =====
 // On small screens the polaroid grid and why-me cards render as a physical
-// "pile" (absolute-positioned cards stacked with rotation). Tapping the top
-// card animates it off and sends it to the end of the DOM — which moves it to
-// the bottom of the visual stack via the nth-child z-index rules — so the
-// next card comes forward. No-op on desktop.
+// "pile" (absolute-positioned cards stacked with rotation). Tapping OR swiping
+// horizontally on the top card animates it off and sends it to the end of the
+// DOM — which moves it to the bottom of the visual stack via the nth-child
+// z-index rules — so the next card comes forward. No-op on desktop.
 (function initMobileStacks() {
   const MOBILE_STACK_MQ = window.matchMedia('(max-width: 768px)');
+  const SWIPE_THRESHOLD = 50; // px horizontal distance to count as a swipe
+
+  function cycle(card, container) {
+    if (!card || card.parentElement !== container) return;
+    card.classList.add('is-moving-away');
+    setTimeout(() => {
+      card.classList.remove('is-moving-away');
+      container.appendChild(card);
+    }, 380);
+  }
 
   function wire(containerSelector, cardSelector) {
     const container = document.querySelector(containerSelector);
     if (!container) return;
-    container.addEventListener('click', (e) => {
+
+    let startX = 0, startY = 0, pointerId = null, startTarget = null;
+
+    container.addEventListener('pointerdown', (e) => {
       if (!MOBILE_STACK_MQ.matches) return;
       const card = e.target.closest(cardSelector);
       if (!card || card.parentElement !== container) return;
-      // The top-of-pile is the last DOM child (highest z-index via nth-child),
-      // OR the element the user actually hit — we always cycle whatever was tapped.
-      card.classList.add('is-moving-away');
-      setTimeout(() => {
-        card.classList.remove('is-moving-away');
-        container.appendChild(card); // reorder: tapped card goes to bottom of pile
-      }, 380);
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      startTarget = card;
     }, { passive: true });
+
+    container.addEventListener('pointerup', (e) => {
+      if (!MOBILE_STACK_MQ.matches || e.pointerId !== pointerId) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      // Require horizontal-dominant swipe beyond threshold OR a tap (tiny movement)
+      if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+        cycle(startTarget, container);
+      } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+        // Treat as tap
+        cycle(startTarget, container);
+      }
+      pointerId = null;
+      startTarget = null;
+    }, { passive: true });
+
+    container.addEventListener('pointercancel', () => {
+      pointerId = null;
+      startTarget = null;
+    });
   }
 
   wire('.careers-polaroid-grid', '.polaroid-card');
   wire('.why-cards', '.why-card');
+})();
+
+// ===== FLOATING SKIP-TO-WHY BUTTON =====
+// Only on mobile, only while the Journey section (where polaroids live) is in
+// viewport. Gives users a one-tap escape to the Why-me section so the
+// polaroid pile isn't a dead-end for skim-readers.
+(function initMobileSkipCta() {
+  const MOBILE_SKIP_MQ = window.matchMedia('(max-width: 768px)');
+  const journeyEl = document.querySelector('.journey');
+  const whyEl = document.querySelector('.why-work');
+  if (!journeyEl || !whyEl) return;
+
+  const btn = document.createElement('a');
+  btn.className = 'polaroid-skip-cta';
+  btn.href = '#why';
+  btn.textContent = 'Skip to Why me →';
+  btn.setAttribute('aria-label', 'Skip polaroids and jump to the Why me section');
+  document.body.appendChild(btn);
+
+  function updateVisibility() {
+    if (!MOBILE_SKIP_MQ.matches) { btn.classList.remove('is-visible'); return; }
+    const r = journeyEl.getBoundingClientRect();
+    const inView = r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.2;
+    btn.classList.toggle('is-visible', inView);
+  }
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  MOBILE_SKIP_MQ.addEventListener('change', updateVisibility);
+  updateVisibility();
 })();

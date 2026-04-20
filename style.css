@@ -3478,12 +3478,13 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     position: absolute;
     top: 0;
     left: 50%;
-    width: 240px;
+    width: 180px;
     flex: none;
     transform: translateX(-50%) rotate(var(--stack-rot, 0)) !important;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
                 opacity   0.35s ease;
     will-change: transform, opacity;
+    touch-action: pan-y;
   }
   .careers-polaroid-grid .polaroid-card:nth-child(1) { z-index: 10; --stack-rot: -5deg; }
   .careers-polaroid-grid .polaroid-card:nth-child(2) { z-index:  9; --stack-rot:  3deg; }
@@ -3496,11 +3497,112 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     transform: translateX(-50%) translate3d(0, -80px, 0) rotate(var(--stack-rot, 0)) !important;
     opacity: 0 !important;
   }
-  .polaroid-back {
-    display: none !important;
-  }
+
+  /* Mobile polaroid: no 3D flip. Show the photo (front) AND the text (back) on
+     the same card, stacked vertically, so users get the full career context
+     without needing to flip. */
   .polaroid-inner {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
     transform: none !important;
+  }
+  .polaroid-front,
+  .polaroid-back {
+    position: static;
+    width: 100%;
+    height: auto;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    box-shadow: none;
+  }
+  .polaroid-front {
+    padding-bottom: 0;
+  }
+  .polaroid-photo,
+  .polaroid-photo--empty {
+    height: 160px;
+    margin: 6px 6px 0;
+  }
+  .polaroid-label {
+    padding: 8px 10px 10px;
+    font-size: 10px;
+    height: auto;
+  }
+  .polaroid-name { font-size: 11px; }
+  .polaroid-num  { font-size: 9px; }
+  .polaroid-back {
+    display: flex !important;
+    transform: none !important;
+    background: #fffcf4;
+    padding: 10px 12px 12px;
+    gap: 4px;
+    border-top: 1px dashed rgba(0,0,0,0.08);
+  }
+  .polaroid-back-num {
+    font-size: 8px;
+    margin-bottom: 0;
+  }
+  .polaroid-back-title {
+    font-size: 13px;
+    margin: 0;
+  }
+  .polaroid-back-desc {
+    font-size: 11px;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .polaroid-back-tags {
+    gap: 4px;
+    margin-top: 0;
+  }
+  .polaroid-back-tags span {
+    font-size: 8px;
+    padding: 2px 7px;
+  }
+  .polaroid-back-ig {
+    font-size: 10px;
+    padding: 5px 10px;
+    margin-top: 2px;
+    align-self: flex-start;
+  }
+
+  /* Pile container tall enough for the extended card (photo + text) */
+  .careers-polaroid-grid {
+    height: 420px;
+  }
+
+  /* Floating "Next section →" pill — only visible while the polaroid pile is
+     on screen, anchors to the bottom-right so users who skim polaroids can
+     jump straight to the Why-me section. */
+  .polaroid-skip-cta {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 200;
+    background: var(--text-primary);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .polaroid-skip-cta.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   /* Custom.html journey: match the generic journey on mobile (no yellow card-stack,
