@@ -438,6 +438,15 @@ function updateJourney() {
 }
 
 function animateJourney() {
+  // On mobile we keep the horizontal panel scroll-jacking but skip the
+  // phase-2 vertical slides (title sliding up, polaroids sliding up) — the
+  // polaroids should be visible right alongside panel 3's title, not
+  // animating up from below. Forcing the vertical targets to 0 does this.
+  const mobileNow = window.innerWidth <= 768;
+  if (mobileNow) {
+    journeyVertTarget = 0;
+    polaroidTarget = 0;
+  }
   // Lerp track horizontal — higher lerp for snappy feel
   const trackGap = Math.abs(journeyTarget - journeyCurrent);
   const trackLerp = trackGap > 5 ? 0.5 : 0.18;
@@ -717,6 +726,100 @@ window.addEventListener('scroll', () => {
 
   wire('.careers-polaroid-grid', '.polaroid-card');
   wire('.why-cards', '.why-card');
+})();
+
+// ===== MOBILE POLAROID: LIVE DETAILS + AUTO-ADVANCE =====
+// On small screens the polaroid card shows only photo + label. The back-content
+// (number / title / description / tags / Instagram link) is mirrored into a
+// separate block BELOW the pile, updated whenever the top card changes. The
+// pile also auto-advances every 3 seconds so the user sees every career
+// without needing to tap — tapping simply speeds things along.
+(function initMobilePolaroidAutoplay() {
+  const MQ = window.matchMedia('(max-width: 768px)');
+  const grid = document.querySelector('.careers-polaroid-grid');
+  if (!grid) return;
+
+  // Inject a details block right after the grid
+  const details = document.createElement('div');
+  details.className = 'polaroid-details-live';
+  details.innerHTML = [
+    '<em class="polaroid-details-live-num"></em>',
+    '<h3 class="polaroid-details-live-title"></h3>',
+    '<p class="polaroid-details-live-desc"></p>',
+    '<div class="polaroid-details-live-tags"></div>',
+    '<a class="polaroid-details-live-ig" target="_blank" rel="noopener noreferrer"></a>'
+  ].join('');
+  grid.parentNode.insertBefore(details, grid.nextSibling);
+
+  const numEl   = details.querySelector('.polaroid-details-live-num');
+  const titleEl = details.querySelector('.polaroid-details-live-title');
+  const descEl  = details.querySelector('.polaroid-details-live-desc');
+  const tagsEl  = details.querySelector('.polaroid-details-live-tags');
+  const igEl    = details.querySelector('.polaroid-details-live-ig');
+
+  function topCard() {
+    const cards = grid.querySelectorAll('.polaroid-card');
+    // The top of the pile is the FIRST child (highest z-index via nth-child)
+    return cards[0] || null;
+  }
+
+  function syncDetails() {
+    const card = topCard();
+    if (!card) return;
+    const back = card.querySelector('.polaroid-back');
+    if (!back) return;
+    numEl.textContent   = back.querySelector('.polaroid-back-num')?.textContent?.trim() || '';
+    titleEl.textContent = back.querySelector('.polaroid-back-title')?.textContent?.trim() || '';
+    descEl.textContent  = back.querySelector('.polaroid-back-desc')?.textContent?.trim() || '';
+    tagsEl.innerHTML    = '';
+    back.querySelectorAll('.polaroid-back-tags span').forEach(t => {
+      const s = document.createElement('span');
+      s.textContent = t.textContent;
+      tagsEl.appendChild(s);
+    });
+    const srcIG = back.querySelector('.polaroid-back-ig');
+    if (srcIG) {
+      igEl.href = srcIG.href;
+      igEl.textContent = srcIG.textContent?.trim() || 'Watch on Instagram';
+      igEl.style.display = '';
+    } else {
+      igEl.style.display = 'none';
+    }
+  }
+
+  // Sync once on load + whenever the pile is reordered
+  syncDetails();
+  new MutationObserver(syncDetails).observe(grid, { childList: true });
+
+  // Auto-advance every 3s while the polaroid pile is in view (mobile only)
+  let autoTimer = null;
+  function cycleTop() {
+    if (!MQ.matches) return;
+    const top = topCard();
+    if (!top) return;
+    top.classList.add('is-moving-away');
+    setTimeout(() => {
+      top.classList.remove('is-moving-away');
+      grid.appendChild(top);
+    }, 380);
+  }
+  function schedule() {
+    clearTimeout(autoTimer);
+    if (!MQ.matches) return;
+    autoTimer = setTimeout(() => { cycleTop(); schedule(); }, 3000);
+  }
+  function stop() { clearTimeout(autoTimer); autoTimer = null; }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.isIntersecting ? schedule() : stop());
+  }, { threshold: 0.3 });
+  io.observe(grid);
+
+  // A user tap or swipe on the pile (handled by initMobileStacks above) also
+  // reorders the DOM — so restart the auto-advance timer so the next auto
+  // cycle is 3s away from the user's interaction, not immediately after.
+  grid.addEventListener('click', () => { if (MQ.matches) schedule(); }, true);
+  grid.addEventListener('pointerup', () => { if (MQ.matches) schedule(); }, true);
 })();
 
 // ===== FLOATING SKIP-TO-WHY BUTTON =====

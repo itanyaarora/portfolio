@@ -1667,6 +1667,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   margin: 8px 0 8px;
 }
 
+/* Mobile-only short intro — hidden on desktop, shown via @media (max-width: 768px) */
+.journey-careers-story--mobile {
+  display: none;
+}
+
 .journey-careers-story {
   font-family: 'Nunito', sans-serif;
   font-size: clamp(14px, 1.2vw, 17px);
@@ -3317,17 +3322,32 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     height: auto;
   }
 
-  /* Contact pills row: wrap so they don't overflow viewport. */
+  /* Contact pills row: lay out as a 2-column grid so pills are aligned on both
+     axes (flex-wrap alone lets uneven widths stagger the rows). */
   .cta-contacts {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
+    width: 100%;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-pill {
+    justify-content: center;
+    width: 100%;
+    padding: 12px 16px;
   }
 
-  /* Dancing-girl / party-lights character: smaller, centered, doesn't dominate. */
-  .cta-character img {
-    max-width: 220px;
-    height: auto;
+  /* Dancing-girl / party-lights character: smaller, centered, doesn't dominate.
+     The desktop .char-img rule sets `height: 500px` with higher specificity, so
+     we override with the same class selector + !important to force proper
+     aspect-ratio scaling on narrow screens. */
+  .cta-character .char-img {
+    height: auto !important;
+    width: auto !important;
+    max-width: 200px !important;
+    max-height: 320px;
   }
 
   /* Custom.html personal-note: the 200vh card-stack pin is desktop-only.
@@ -3452,14 +3472,20 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     display: none !important;
   }
 
-  /* 50 Creative Careers POLAROID PILE: inside the scroll-jacked journey, the
-     polaroids area still slides up from below in phase 2 (JS controls .journey-polaroids
-     transform), but the cards inside form a physical stack instead of the desktop
-     drag-pan rail. Tap the top card to send it to the back. */
+  /* 50 Creative Careers POLAROID PILE: on mobile the polaroid area expands
+     upward and sits right below panel 3's title. Always pointer-interactive
+     (the phase-2 .is-visible gate is for desktop scroll-timing only). */
   .journey-polaroids {
-    /* Keep desktop positioning (absolute bottom, height: 52%) so the JS slide-up
-       animation still drives the entrance. Only override the interior layout. */
-    padding: 20px;
+    top: 26%;
+    bottom: 0;
+    height: auto;
+    border-top: none !important;
+    box-shadow: none !important;
+    padding: 12px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    pointer-events: auto !important;
   }
   .careers-polaroid-grid {
     position: relative;
@@ -3498,9 +3524,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     opacity: 0 !important;
   }
 
-  /* Mobile polaroid: no 3D flip. Show the photo (front) AND the text (back) on
-     the same card, stacked vertically, so users get the full career context
-     without needing to flip. */
+  /* Mobile polaroid: card shows ONLY photo + name/number label. The back-content
+     (description, tags, Instagram link) is mirrored into a separate text block
+     BELOW the pile (.polaroid-details-live) via script.js — so the pile stays
+     visually clean and tall text doesn't clip. */
   .polaroid-inner {
     position: static;
     width: 100%;
@@ -3509,69 +3536,123 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     flex-direction: column;
     transform: none !important;
   }
-  .polaroid-front,
-  .polaroid-back {
+  .polaroid-front {
     position: static;
     width: 100%;
     height: auto;
     backface-visibility: visible;
     -webkit-backface-visibility: visible;
-    box-shadow: none;
-  }
-  .polaroid-front {
     padding-bottom: 0;
   }
   .polaroid-photo,
   .polaroid-photo--empty {
-    height: 160px;
+    height: 170px;
     margin: 6px 6px 0;
   }
   .polaroid-label {
-    padding: 8px 10px 10px;
-    font-size: 10px;
+    padding: 10px 12px 12px;
+    font-size: 11px;
     height: auto;
   }
-  .polaroid-name { font-size: 11px; }
-  .polaroid-num  { font-size: 9px; }
+  .polaroid-name { font-size: 13px; }
+  .polaroid-num  { font-size: 10px; }
+  /* Hide the back-face on mobile — its content is replicated below the pile */
   .polaroid-back {
-    display: flex !important;
-    transform: none !important;
-    background: #fffcf4;
-    padding: 10px 12px 12px;
-    gap: 4px;
-    border-top: 1px dashed rgba(0,0,0,0.08);
-  }
-  .polaroid-back-num {
-    font-size: 8px;
-    margin-bottom: 0;
-  }
-  .polaroid-back-title {
-    font-size: 13px;
-    margin: 0;
-  }
-  .polaroid-back-desc {
-    font-size: 11px;
-    line-height: 1.4;
-    margin: 0;
-  }
-  .polaroid-back-tags {
-    gap: 4px;
-    margin-top: 0;
-  }
-  .polaroid-back-tags span {
-    font-size: 8px;
-    padding: 2px 7px;
-  }
-  .polaroid-back-ig {
-    font-size: 10px;
-    padding: 5px 10px;
-    margin-top: 2px;
-    align-self: flex-start;
+    display: none !important;
   }
 
-  /* Pile container tall enough for the extended card (photo + text) */
+  /* Pile container — just tall enough for the photo-only card, centered */
   .careers-polaroid-grid {
-    height: 420px;
+    height: 260px;
+    margin: 0 auto !important;
+    flex-shrink: 0;
+  }
+
+  /* Live details block below the pile — populated by script.js to show the
+     top card's back content (number, title, description, tags, IG link). */
+  .polaroid-details-live {
+    max-width: 320px;
+    margin: 16px auto 0;
+    padding: 0 8px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    flex-shrink: 0;
+  }
+  .polaroid-details-live-num {
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    opacity: 0.5;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 6px;
+    font-style: normal;
+  }
+  .polaroid-details-live-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: var(--text-primary);
+  }
+  .polaroid-details-live-desc {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0 0 10px;
+  }
+  .polaroid-details-live-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .polaroid-details-live-tags span {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.06);
+    color: var(--text-secondary);
+  }
+  .polaroid-details-live-ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--text-primary);
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  /* Journey careers story: on mobile hide the 3-paragraph desktop intro and
+     show only the one-liner. The tap-through instruction sits just above the pile. */
+  .journey-careers-story:not(.journey-careers-story--mobile) {
+    display: none;
+  }
+  .journey-careers-story--mobile {
+    display: block !important;
+    font-size: 13.5px;
+    margin: 6px auto 0;
+    max-width: 280px;
+  }
+  .journey-title-card .section-eyebrow {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  /* Panel 3 title card sits at the TOP of the panel (not vertically centered)
+     so the polaroid pile absolute-positioned below has less gap to travel. */
+  .journey-panel--title {
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
+  .journey-title-card {
+    margin-top: 0;
   }
 
   /* Floating "Next section →" pill — only visible while the polaroid pile is
