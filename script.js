@@ -369,7 +369,13 @@ function setCarDriving(driving) {
   if (!driving && isScrolling)  { isScrolling = false;  journeyCar.classList.remove('is-driving'); }
 }
 
+// Skip desktop journey scroll-jacking on small screens — mobile uses a real
+// horizontal-swipe carousel (CSS scroll-snap), which conflicts with the
+// scroll-driven translate on journey-track.
+const JOURNEY_DESKTOP_MQ = window.matchMedia('(min-width: 769px)');
+
 function updateJourney() {
+  if (!JOURNEY_DESKTOP_MQ.matches) return;
   if (!journeySection || !journeyTrack) return;
   const rect            = journeySection.getBoundingClientRect();
   const totalScrollable = journeySection.offsetHeight - window.innerHeight;
@@ -438,6 +444,7 @@ function updateJourney() {
 }
 
 function animateJourney() {
+  if (!JOURNEY_DESKTOP_MQ.matches) { requestAnimationFrame(animateJourney); return; }
   // Lerp track horizontal — higher lerp for snappy feel
   const trackGap = Math.abs(journeyTarget - journeyCurrent);
   const trackLerp = trackGap > 5 ? 0.5 : 0.18;
@@ -658,3 +665,33 @@ window.addEventListener('scroll', () => {
   if (left) left.style.transform = `translateY(${scrollY * 0.08}px)`;
   if (right) right.style.transform = `translateY(${scrollY * -0.05}px)`;
 });
+
+// ===== MOBILE STACK CYCLING =====
+// On small screens the polaroid grid and why-me cards render as a physical
+// "pile" (absolute-positioned cards stacked with rotation). Tapping the top
+// card animates it off and sends it to the end of the DOM — which moves it to
+// the bottom of the visual stack via the nth-child z-index rules — so the
+// next card comes forward. No-op on desktop.
+(function initMobileStacks() {
+  const MOBILE_STACK_MQ = window.matchMedia('(max-width: 768px)');
+
+  function wire(containerSelector, cardSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+    container.addEventListener('click', (e) => {
+      if (!MOBILE_STACK_MQ.matches) return;
+      const card = e.target.closest(cardSelector);
+      if (!card || card.parentElement !== container) return;
+      // The top-of-pile is the last DOM child (highest z-index via nth-child),
+      // OR the element the user actually hit — we always cycle whatever was tapped.
+      card.classList.add('is-moving-away');
+      setTimeout(() => {
+        card.classList.remove('is-moving-away');
+        container.appendChild(card); // reorder: tapped card goes to bottom of pile
+      }, 380);
+    }, { passive: true });
+  }
+
+  wire('.careers-polaroid-grid', '.polaroid-card');
+  wire('.why-cards', '.why-card');
+})();
