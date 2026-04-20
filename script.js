@@ -435,6 +435,27 @@ function updateJourney() {
     if (journeyTrail) journeyTrail.classList.remove('is-hidden');
     if (journeyPolaroids) journeyPolaroids.classList.remove('is-visible');
   }
+
+  // ── MOBILE: scroll-driven polaroid reveal ──
+  // Each polaroid gets .shown progressively through phase 2 so one card at a
+  // time flies up and stacks on the pile. At 100% phase 2 all cards are shown.
+  if (window.innerWidth <= 768) {
+    const polaroidCards = journeyPolaroids ? journeyPolaroids.querySelectorAll('.polaroid-card') : [];
+    const n = polaroidCards.length;
+    if (n > 0) {
+      // Compress the reveals into the first 90% of phase 2 so the last card
+      // lands with a bit of scroll slack before the section ends.
+      const pileProgress = Math.min(1, phase2P / 0.9);
+      polaroidCards.forEach((card, i) => {
+        const threshold = (i + 1) / n;
+        if (pileProgress >= threshold - 0.001) {
+          card.classList.add('shown');
+        } else {
+          card.classList.remove('shown');
+        }
+      });
+    }
+  }
 }
 
 function animateJourney() {
@@ -668,78 +689,15 @@ window.addEventListener('scroll', () => {
   if (right) right.style.transform = `translateY(${scrollY * -0.05}px)`;
 });
 
-// ===== MOBILE STACK CYCLING =====
-// On small screens the polaroid grid and why-me cards render as a physical
-// "pile" (absolute-positioned cards stacked with rotation). Tapping OR swiping
-// horizontally on the top card animates it off and sends it to the end of the
-// DOM — which moves it to the bottom of the visual stack via the nth-child
-// z-index rules — so the next card comes forward. No-op on desktop.
-(function initMobileStacks() {
-  const MOBILE_STACK_MQ = window.matchMedia('(max-width: 768px)');
-  const SWIPE_THRESHOLD = 50; // px horizontal distance to count as a swipe
-
-  function cycle(card, container) {
-    if (!card || card.parentElement !== container) return;
-    card.classList.add('is-moving-away');
-    setTimeout(() => {
-      card.classList.remove('is-moving-away');
-      container.appendChild(card);
-    }, 380);
-  }
-
-  function wire(containerSelector, cardSelector) {
-    const container = document.querySelector(containerSelector);
-    if (!container) return;
-
-    let startX = 0, startY = 0, pointerId = null, startTarget = null;
-
-    container.addEventListener('pointerdown', (e) => {
-      if (!MOBILE_STACK_MQ.matches) return;
-      const card = e.target.closest(cardSelector);
-      if (!card || card.parentElement !== container) return;
-      pointerId = e.pointerId;
-      startX = e.clientX;
-      startY = e.clientY;
-      startTarget = card;
-    }, { passive: true });
-
-    container.addEventListener('pointerup', (e) => {
-      if (!MOBILE_STACK_MQ.matches || e.pointerId !== pointerId) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      // Require horizontal-dominant swipe beyond threshold OR a tap (tiny movement)
-      if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
-        cycle(startTarget, container);
-      } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
-        // Treat as tap
-        cycle(startTarget, container);
-      }
-      pointerId = null;
-      startTarget = null;
-    }, { passive: true });
-
-    container.addEventListener('pointercancel', () => {
-      pointerId = null;
-      startTarget = null;
-    });
-  }
-
-  wire('.careers-polaroid-grid', '.polaroid-card');
-  wire('.why-cards', '.why-card');
-})();
-
-// ===== MOBILE POLAROID: LIVE DETAILS + AUTO-ADVANCE =====
-// On small screens the polaroid card shows only photo + label. The back-content
+// ===== MOBILE POLAROID: LIVE DETAILS SYNC =====
+// Polaroid card on mobile shows photo + label only; the back content
 // (number / title / description / tags / Instagram link) is mirrored into a
-// separate block BELOW the pile, updated whenever the top card changes. The
-// pile also auto-advances every 3 seconds so the user sees every career
-// without needing to tap — tapping simply speeds things along.
-(function initMobilePolaroidAutoplay() {
-  const MQ = window.matchMedia('(max-width: 768px)');
+// separate block below the pile. Reveal is scroll-driven in updateJourney —
+// each card gets .shown one at a time as the user scrolls through phase 2.
+(function initMobilePolaroidDetails() {
   const grid = document.querySelector('.careers-polaroid-grid');
   if (!grid) return;
 
-  // Inject a details block right after the grid
   const details = document.createElement('div');
   details.className = 'polaroid-details-live';
   details.innerHTML = [
@@ -757,17 +715,22 @@ window.addEventListener('scroll', () => {
   const tagsEl  = details.querySelector('.polaroid-details-live-tags');
   const igEl    = details.querySelector('.polaroid-details-live-ig');
 
-  function topCard() {
-    const cards = grid.querySelectorAll('.polaroid-card');
-    // The top of the pile is the FIRST child (highest z-index via nth-child)
-    return cards[0] || null;
+  function currentTopShown() {
+    // The visually-top card is the LAST .shown card in DOM order
+    // (nth-child z-index ascends so later DOM = higher z).
+    const shown = grid.querySelectorAll('.polaroid-card.shown');
+    return shown[shown.length - 1] || null;
   }
 
   function syncDetails() {
-    const card = topCard();
-    if (!card) return;
+    const card = currentTopShown();
+    if (!card) {
+      details.style.visibility = 'hidden';
+      return;
+    }
     const back = card.querySelector('.polaroid-back');
     if (!back) return;
+    details.style.visibility = 'visible';
     numEl.textContent   = back.querySelector('.polaroid-back-num')?.textContent?.trim() || '';
     titleEl.textContent = back.querySelector('.polaroid-back-title')?.textContent?.trim() || '';
     descEl.textContent  = back.querySelector('.polaroid-back-desc')?.textContent?.trim() || '';
@@ -787,39 +750,13 @@ window.addEventListener('scroll', () => {
     }
   }
 
-  // Sync once on load + whenever the pile is reordered
   syncDetails();
-  new MutationObserver(syncDetails).observe(grid, { childList: true });
-
-  // Auto-advance every 3s while the polaroid pile is in view (mobile only)
-  let autoTimer = null;
-  function cycleTop() {
-    if (!MQ.matches) return;
-    const top = topCard();
-    if (!top) return;
-    top.classList.add('is-moving-away');
-    setTimeout(() => {
-      top.classList.remove('is-moving-away');
-      grid.appendChild(top);
-    }, 380);
-  }
-  function schedule() {
-    clearTimeout(autoTimer);
-    if (!MQ.matches) return;
-    autoTimer = setTimeout(() => { cycleTop(); schedule(); }, 3000);
-  }
-  function stop() { clearTimeout(autoTimer); autoTimer = null; }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => e.isIntersecting ? schedule() : stop());
-  }, { threshold: 0.3 });
-  io.observe(grid);
-
-  // A user tap or swipe on the pile (handled by initMobileStacks above) also
-  // reorders the DOM — so restart the auto-advance timer so the next auto
-  // cycle is 3s away from the user's interaction, not immediately after.
-  grid.addEventListener('click', () => { if (MQ.matches) schedule(); }, true);
-  grid.addEventListener('pointerup', () => { if (MQ.matches) schedule(); }, true);
+  // Update whenever .shown is toggled on any card
+  new MutationObserver(() => syncDetails()).observe(grid, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class']
+  });
 })();
 
 // ===== FLOATING SKIP-TO-WHY BUTTON =====
@@ -835,7 +772,7 @@ window.addEventListener('scroll', () => {
   const btn = document.createElement('a');
   btn.className = 'polaroid-skip-cta';
   btn.href = '#why';
-  btn.textContent = 'Skip to Why me →';
+  btn.textContent = '↓';
   btn.setAttribute('aria-label', 'Skip polaroids and jump to the Why me section');
   document.body.appendChild(btn);
 
