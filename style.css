@@ -3183,79 +3183,419 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .works-grid {
-    grid-template-columns: 1fr;
+/* Three breakpoints — desktop (>1024px) is the canonical design and stays untouched.
+   Tablet (≤1024), small-screen (≤768), and mobile (≤480) each release animations/pins
+   that don't survive shorter viewports and collapse multi-column grids to single stacks. */
+
+/* ── Tablet & small desktop (≤1024px) ── */
+@media (max-width: 1024px) {
+  /* Side-parallax characters, marquee, and scroll-parallax decorations don't add value
+     on narrower screens — hide them to free horizontal space. */
+  .character-left,
+  .character-right,
+  .marquee-bar {
+    display: none;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  /* Hero: video polaroid moves into the flow above the headline.
+     The absolute positioning relies on side characters to balance it — without them
+     it overflows, so we center it inline instead. */
+  .hero {
+    padding: 96px 24px 48px;
+  }
+  .hero-video {
+    position: static;
+    margin: 0 auto 32px;
+    width: min(320px, 70vw);
+  }
+  .video-container {
+    margin: 0 auto;
   }
 
-  .about-content {
-    grid-template-columns: 1fr;
+  /* Release the sticky-pin on the Why-work section — the 3×2 grid doesn't fit the
+     100vh pin on shorter viewports, so we let the cards flow naturally instead. */
+  .why-work {
+    height: auto;
+    margin-top: 0;
+  }
+  .why-sticky {
+    position: static;
+    height: auto;
+    padding: 80px 24px 60px;
+    overflow: visible;
+  }
+  .why-cards {
+    position: static;
+    inset: auto;
+    padding: 40px 0 0;
+  }
+  .why-card {
+    flex: 0 0 calc(50% - 12px);
+    width: calc(50% - 12px);
+    max-width: 340px;
+  }
+  /* Show "Why …" bg text in flow since the cards are no longer absolute. */
+  .why-big-text {
+    position: static;
+    transform: none;
+    margin-bottom: 12px;
   }
 
+  /* Services: same pattern — release the pin, let content flow vertically. */
+  .services {
+    height: auto;
+    margin-top: 0;
+  }
+  .services-sticky {
+    position: static;
+    height: auto;
+    padding: 80px 24px 60px;
+    overflow: visible;
+  }
+
+  /* CTA footer: remove the -100vh stack-margin so it doesn't clobber services on mobile. */
+  .cta-footer {
+    margin-top: 0;
+    height: auto;
+  }
+
+  /* Contact pills row: wrap so they don't overflow viewport. */
+  .cta-contacts {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Dancing-girl / party-lights character: smaller, centered, doesn't dominate. */
+  .cta-character img {
+    max-width: 220px;
+    height: auto;
+  }
+
+  /* Custom.html personal-note: the 200vh card-stack pin is desktop-only.
+     On narrower screens, let the personal-note content flow naturally and the
+     journey sits below it with a standard card-stack edge. */
+  body.has-personal-note .personal-note {
+    height: auto;
+    padding: 0;
+  }
+  body.has-personal-note .personal-note-inner {
+    position: static;
+    height: auto;
+    padding: 80px 24px 60px;
+    overflow: visible;
+    justify-content: flex-start;
+  }
+  body.has-personal-note .journey {
+    margin-top: -28px;
+    border-radius: 28px 28px 0 0;
+  }
+
+  /* CTA footer: box already stacks via the old 900px rule; consolidate here. */
+  .cta-box {
+    flex-direction: column;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .cta-character {
+    margin: 0 auto;
+  }
+  .footer {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .footer-copyright {
+    text-align: center;
+  }
+
+  /* Other legacy grids kept from prior @900px rule. */
+  .works-grid,
+  .services-grid,
+  .about-content,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
   .journey-row,
   .journey-row.journey-row--flip {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
-  /* On mobile, always show text first then photos */
-  .journey-row--flip .journey-photos {
-    order: 2;
-  }
-  .journey-row--flip .journey-text {
-    order: 1;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-box {
-    flex-direction: column;
-    padding: 40px;
-    text-align: center;
-  }
-
-  .footer {
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .footer-copyright {
-    text-align: left;
-  }
-
-  .character-left,
-  .character-right {
-    display: none;
-  }
-
-  .marquee-bar {
-    display: none;
-  }
+  .journey-row--flip .journey-photos { order: 2; }
+  .journey-row--flip .journey-text   { order: 1; }
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    padding: 12px 16px;
+/* ── Small screen / portrait tablet & large phones (≤768px) ── */
+@media (max-width: 768px) {
+  /* The horizontal-scroll Journey section doesn't translate to mobile — collapse
+     the 3-panel track to a vertical stack and drop the driving-car animation. */
+  .journey {
+    height: auto;
+    background: var(--surface);
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+  }
+  .journey-sticky {
+    position: static;
+    height: auto;
+    padding: 80px 20px 60px;
+    overflow: visible;
+    display: block;
+  }
+  .journey-title {
+    transform: none !important;
+    margin-bottom: 32px;
+  }
+  .journey-track {
+    width: auto !important;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 0;
+  }
+  .journey-panel {
+    width: auto;
+    padding: 0;
+    grid-template-columns: 1fr !important;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .journey-panel--a .journey-photos,
+  .journey-panel--b .journey-photos {
+    justify-self: center;
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    min-height: 280px;
+  }
+  .journey-panel--a .journey-text,
+  .journey-panel--b .journey-text {
+    justify-self: center;
+    text-align: left;
+  }
+  /* Reset the overlap/translate so polaroids sit cleanly inside the photos area. */
+  .journey-polaroid {
+    position: relative;
+    display: inline-block;
+  }
+  .journey-polaroid--1 {
+    transform: rotate(-4deg);
+    margin: 0 -20px 0 0;
+  }
+  .journey-polaroid--2 {
+    transform: rotate(4deg);
+    margin: 20px 0 0 -20px;
+  }
+  .journey-car,
+  .journey-trail {
+    display: none;
+  }
+  /* Polaroids: in-flow vertical grid instead of the absolute drag-pan rail. */
+  .journey-polaroids {
+    position: static;
+    transform: none !important;
+    height: auto;
+    border-top: none;
+    box-shadow: none;
+    padding: 40px 0 0;
+    opacity: 1;
+  }
+  .careers-polaroid-grid {
+    transform: none !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    overflow: visible;
+    cursor: default;
+  }
+  .polaroid-card {
+    width: min(280px, 80vw);
+    flex: 0 0 auto;
+  }
+  /* 3D flip doesn't work without the perspective/transform-style context, and
+     showing both faces stacked on mobile is noisy. Show only the photo front. */
+  .polaroid-back {
+    display: none !important;
+  }
+  .polaroid-inner {
+    transform: none !important;
   }
 
-  .hero {
-    padding: 80px 20px 40px;
+  /* Custom.html journey: match the generic journey on mobile (no yellow stack,
+     since the horizontal-scroll pattern is gone). */
+  body.has-personal-note .journey,
+  body.has-personal-note .journey-sticky,
+  body.has-personal-note .journey-polaroids {
+    background: var(--surface);
+  }
+  body.has-personal-note .journey {
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
+  /* Why-me cards stack single column on small screens. */
+  .why-card {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 340px;
+  }
+  .why-cards {
+    gap: 16px;
+  }
+
+  /* Services role-groups and Yes/No box both collapse to single column. */
+  .roles-groups {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 420px;
+  }
+  .looking-wrap {
+    margin-top: 0;
+  }
+  .looking-cartoon {
+    display: none;
+  }
+  .looking-box {
+    flex-direction: column;
+    padding: 28px 24px;
+    gap: 24px;
+  }
+  .looking-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+  .looking-col {
+    width: 100%;
+  }
+
+  /* Personal-note 3-col grid already collapses at 900, but make sure the inner
+     sticky release is total on small screens. */
+  .personal-note-points {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    gap: 20px;
+  }
+
+  /* Fonts: shrink the largest display sizes so they don't swallow the viewport. */
+  .hero-headline {
+    font-size: clamp(26px, 6.5vw, 40px);
+  }
+  .section-title {
+    font-size: clamp(26px, 6vw, 40px);
+  }
+  .personal-note-title {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+  .why-big-text {
+    font-size: clamp(28px, 7vw, 44px);
+    white-space: normal;
+  }
+  .journey-careers-title {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+  .cta-title {
+    font-size: clamp(28px, 7vw, 44px);
+  }
+  .journey-heading {
+    font-size: clamp(24px, 5.5vw, 32px);
+  }
+
+  /* About bio: tighten the padding so photo strip doesn't dominate. */
+  .about {
+    padding: 60px 20px 0;
+  }
+  .about-center {
+    margin-bottom: 40px;
+  }
+  .about-photo-track img {
+    width: 140px;
+    height: 180px;
+  }
+
+  /* Section side padding */
   .works,
   .services,
   .about,
   .extended-testimonials,
-  .cta-footer {
+  .cta-footer,
+  .why-work,
+  .personal-note {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  /* Rounded-card-stack radii too big for small viewports */
+  .personal-note,
+  .about,
+  .why-work,
+  .services,
+  .journey,
+  .cta-footer {
+    border-radius: 0;
+  }
+}
+
+/* ── Mobile portrait (≤480px) ── */
+@media (max-width: 480px) {
+  .hero {
+    padding: 88px 16px 32px;
+  }
+  .hero-headline {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+  .hero-subtext {
+    font-size: 14px;
+  }
+  .hero-video {
+    width: min(280px, 80vw);
+  }
+
+  /* Tighten card interiors so body copy is readable at smaller width. */
+  .why-card {
+    padding: 16px;
+  }
+  .why-card--alt {
+    padding-bottom: 110px;
+    min-height: 200px;
+  }
+  .why-card-art {
+    width: 80px;
+    height: 80px;
+  }
+
+  .looking-box {
+    padding: 24px 20px;
+  }
+  .looking-tag {
+    font-size: 14px;
+  }
+
+  .role-group {
+    padding: 16px 18px;
+  }
+  .role-group-title {
+    font-size: 16px;
+  }
+  .role-group-items {
+    font-size: 12.5px;
+  }
+
+  .personal-note-card {
+    padding: 32px 22px 28px;
+  }
+
+  /* CTA footer character scales down */
+  .cta-character img {
+    max-width: 180px;
   }
 
   .time-badge {
