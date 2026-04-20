@@ -1133,7 +1133,8 @@ body::after {
   line-height: 1.5;
   color: var(--text-primary);
   display: flex;
-  align-items: center;
+  align-items: flex-start;     /* pin icon to the first line, not vertical-middle of 2 lines */
+  text-align: left;            /* override the parent section's center-align */
   gap: 12px;
 }
 
@@ -1149,6 +1150,7 @@ body::after {
   font-size: 13px;
   line-height: 22px;
   text-align: center;
+  margin-top: 1px;             /* nudge down so ✓ optically centers on the first line's cap-height */
 }
 
 .looking-tag.yes::before {

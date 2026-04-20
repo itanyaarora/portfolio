@@ -112,5 +112,14 @@
         }
       ]
     }
+  },
+
+  "california-burrito": {
+    "displayName": "California Burrito",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, California Burrito.",
+      "intro": "Before I send anything over. Two things I've been thinking about."
+    }
   }
 }

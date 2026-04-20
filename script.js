@@ -150,6 +150,10 @@ function checkMusicTrigger() {
   const inView  = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
 
   if (inView) {
+    // Always surface the button while the CTA is on screen — even before any
+    // interaction, so the user sees the "Wanna dance?" nudge. The click handler
+    // below toggles music state from there.
+    if (muteBtn) muteBtn.style.display = 'flex';
     if (!songPlayed) {
       // First time entering — start from the beginning
       songPlayed = true;
@@ -182,7 +186,7 @@ checkMusicTrigger();
 // Text + sound-wave animation reflect the current state.
 const muteLabel   = muteBtn ? muteBtn.querySelector('.mute-label') : null;
 const LABEL_PLAYING = 'Shh, I am in a meeting';
-const LABEL_PAUSED  = 'Click me if you wanna hear a song';
+const LABEL_PAUSED  = 'Wanna dance?';
 
 if (muteBtn && bgMusic) {
   muteBtn.addEventListener('click', () => {
