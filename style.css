@@ -3384,58 +3384,33 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 /* ── Small screen / portrait tablet & large phones (≤768px) ── */
 @media (max-width: 768px) {
-  /* Journey: horizontal swipe carousel with scroll-snap — one panel per screen,
-     swipe to advance. The desktop scroll-jacked horizontal pattern doesn't work
-     on touch, so we fall back to a real horizontal scroll with snap points. */
+  /* Journey keeps the desktop scroll-jacking pattern — vertical scroll drives
+     horizontal translate on the track. Just collapse each panel's internal
+     2-col layout to a single column so photos + text stack nicely at 100vw. */
   .journey {
-    height: auto;
     background: var(--surface);
     border-radius: 0;
     box-shadow: none;
     margin-top: 0;
+    /* Keep desktop height: 550vh so the JS has its scroll budget */
   }
   .journey-sticky {
-    position: static;
-    height: auto;
-    padding: 60px 0 40px;
-    overflow: visible;
-    display: block;
+    padding-top: 60px;
   }
   .journey-title {
-    transform: none !important;
-    margin: 0 20px 24px;
+    margin: 0 20px 16px;
   }
-  .journey-track {
-    width: 100% !important;
-    transform: none !important;
-    display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-padding: 16px;
-    gap: 0;
-    padding: 20px 16px 28px;
-    margin-bottom: 0;
-    /* Hide the scrollbar so the pan feels native */
-    scrollbar-width: none;
-  }
-  .journey-track::-webkit-scrollbar { display: none; }
+  /* Panels: each takes full 100vw, internals go single-column */
   .journey-panel {
-    flex: 0 0 calc(100vw - 32px);
-    width: calc(100vw - 32px);
-    max-width: 360px;
-    scroll-snap-align: center;
-    padding: 24px 18px;
+    padding: 20px 20px 0;
     grid-template-columns: 1fr !important;
     display: flex !important;
     flex-direction: column;
     gap: 20px;
-    background: var(--card-bg);
-    border-radius: 20px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.06);
-    margin: 0 6px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
   }
   .journey-panel--title {
     justify-content: center;
@@ -3449,7 +3424,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     width: 100%;
     height: auto;
     max-height: none;
-    min-height: 240px;
+    min-height: 220px;
     display: flex;
     justify-content: center;
   }
@@ -3461,44 +3436,42 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   .journey-polaroid {
     position: relative;
     display: inline-block;
-    width: clamp(140px, 38vw, 180px);
+    width: clamp(130px, 36vw, 170px);
   }
   .journey-polaroid--1 {
     transform: rotate(-4deg);
-    margin: 0 -16px 0 0;
+    margin: 0 -14px 0 0;
   }
   .journey-polaroid--2 {
     transform: rotate(4deg);
-    margin: 16px 0 0 -16px;
+    margin: 14px 0 0 -14px;
   }
+  /* Car/trail: hide on mobile since they're positioned for desktop geometry */
   .journey-car,
   .journey-trail {
     display: none !important;
   }
 
-  /* 50 Creative Careers POLAROID PILE: all cards stack on top of each other in
-     the center, slightly rotated. Tap the top card to send it to the back and
-     reveal the next one (handled by script.js). */
+  /* 50 Creative Careers POLAROID PILE: inside the scroll-jacked journey, the
+     polaroids area still slides up from below in phase 2 (JS controls .journey-polaroids
+     transform), but the cards inside form a physical stack instead of the desktop
+     drag-pan rail. Tap the top card to send it to the back. */
   .journey-polaroids {
-    position: static;
-    transform: none !important;
-    height: auto;
-    border-top: none;
-    box-shadow: none;
-    padding: 0 20px 60px;
-    opacity: 1;
+    /* Keep desktop positioning (absolute bottom, height: 52%) so the JS slide-up
+       animation still drives the entrance. Only override the interior layout. */
+    padding: 20px;
   }
   .careers-polaroid-grid {
     position: relative;
     flex-direction: row;
-    height: 380px;
+    height: 100%;
     gap: 0;
     padding: 0;
     overflow: visible;
     cursor: pointer;
     touch-action: manipulation;
     max-width: 320px;
-    margin: 24px auto 0;
+    margin: 0 auto;
     transform: none !important;
   }
   .polaroid-card {
@@ -3530,7 +3503,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     transform: none !important;
   }
 
-  /* Custom.html journey: match the generic journey on mobile (no yellow stack). */
+  /* Custom.html journey: match the generic journey on mobile (no yellow card-stack,
+     since the narrow viewport makes the rounded edge look awkward). */
   body.has-personal-note .journey,
   body.has-personal-note .journey-sticky,
   body.has-personal-note .journey-polaroids {
@@ -3540,9 +3514,6 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     margin-top: 0;
     border-radius: 0;
     box-shadow: none;
-  }
-  body.has-personal-note .journey-panel {
-    background: var(--card-bg);
   }
 
   /* WHY-ME CARD PILE: 6 cards stack on top of each other, tap the top card to

@@ -369,13 +369,7 @@ function setCarDriving(driving) {
   if (!driving && isScrolling)  { isScrolling = false;  journeyCar.classList.remove('is-driving'); }
 }
 
-// Skip desktop journey scroll-jacking on small screens — mobile uses a real
-// horizontal-swipe carousel (CSS scroll-snap), which conflicts with the
-// scroll-driven translate on journey-track.
-const JOURNEY_DESKTOP_MQ = window.matchMedia('(min-width: 769px)');
-
 function updateJourney() {
-  if (!JOURNEY_DESKTOP_MQ.matches) return;
   if (!journeySection || !journeyTrack) return;
   const rect            = journeySection.getBoundingClientRect();
   const totalScrollable = journeySection.offsetHeight - window.innerHeight;
@@ -444,7 +438,6 @@ function updateJourney() {
 }
 
 function animateJourney() {
-  if (!JOURNEY_DESKTOP_MQ.matches) { requestAnimationFrame(animateJourney); return; }
   // Lerp track horizontal — higher lerp for snappy feel
   const trackGap = Math.abs(journeyTarget - journeyCurrent);
   const trackLerp = trackGap > 5 ? 0.5 : 0.18;
