@@ -15,8 +15,10 @@ brief.html
 fonts.html
 fonts-showcase.html
 
-# California Burrito variant (separate page, not part of main portfolio deploy)
-cb.html
+# CB variant — old standalone fork (cb-script.js / cb-style.css) is deprecated.
+# cb.html now mirrors custom.html with a forced company=California+Burrito param,
+# so it's part of the main deploy. Keep the old asset filenames here so stale
+# copies on disk don't accidentally get committed.
 cb-script.js
 cb-style.css
 
@@ -26,7 +28,6 @@ server.py
 # Side projects that live in this repo but aren't part of the site
 jobSearch/
 magesta/
-brand logo/
 v2/
 
 # Unused asset folders

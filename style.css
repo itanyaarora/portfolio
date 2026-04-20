@@ -1133,7 +1133,8 @@ body::after {
   line-height: 1.5;
   color: var(--text-primary);
   display: flex;
-  align-items: center;
+  align-items: flex-start;     /* pin icon to the first line, not vertical-middle of 2 lines */
+  text-align: left;            /* override the parent section's center-align */
   gap: 12px;
 }
 
@@ -1149,6 +1150,7 @@ body::after {
   font-size: 13px;
   line-height: 22px;
   text-align: center;
+  margin-top: 1px;             /* nudge down so ✓ optically centers on the first line's cap-height */
 }
 
 .looking-tag.yes::before {
@@ -3418,14 +3420,15 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 /* ── Small screen / portrait tablet & large phones (≤768px) ── */
 @media (max-width: 768px) {
   /* Journey keeps the desktop scroll-jacking pattern — vertical scroll drives
-     horizontal translate on the track. Just collapse each panel's internal
-     2-col layout to a single column so photos + text stack nicely at 100vw. */
+     horizontal translate on the track. Extra height on mobile spreads the
+     per-card reveal across more scroll (a single thumb-swipe advances one
+     card instead of five). */
   .journey {
     background: var(--surface);
     border-radius: 0;
     box-shadow: none;
     margin-top: 0;
-    /* Keep desktop height: 550vh so the JS has its scroll budget */
+    height: 800vh;
   }
   .journey-sticky {
     padding-top: 60px;

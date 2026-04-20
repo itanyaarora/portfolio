@@ -150,6 +150,10 @@ function checkMusicTrigger() {
   const inView  = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
 
   if (inView) {
+    // Always surface the button while the CTA is on screen — even before any
+    // interaction, so the user sees the "Wanna dance?" nudge. The click handler
+    // below toggles music state from there.
+    if (muteBtn) muteBtn.style.display = 'flex';
     if (!songPlayed) {
       // First time entering — start from the beginning
       songPlayed = true;
@@ -182,7 +186,7 @@ checkMusicTrigger();
 // Text + sound-wave animation reflect the current state.
 const muteLabel   = muteBtn ? muteBtn.querySelector('.mute-label') : null;
 const LABEL_PLAYING = 'Shh, I am in a meeting';
-const LABEL_PAUSED  = 'Click me if you wanna hear a song';
+const LABEL_PAUSED  = 'Wanna dance?';
 
 if (muteBtn && bgMusic) {
   muteBtn.addEventListener('click', () => {
@@ -388,8 +392,14 @@ function updateJourney() {
   }
   lastRawProgress = rawProgress;
 
-  // ── PHASE 1: horizontal scroll (0 → PHASE1_END) ──
-  const horizP = Math.min(1, rawProgress / PHASE1_END);
+  // On mobile, shift the phase split so horizontal scroll finishes earlier
+  // and the polaroid pile reveal gets MOST of the scroll budget — a single
+  // thumb-swipe advances one card (not five). Desktop keeps the 0.72 split.
+  const isMobileJourney = window.innerWidth <= 768;
+  const phase1End = isMobileJourney ? 0.40 : PHASE1_END;
+
+  // ── PHASE 1: horizontal scroll (0 → phase1End) ──
+  const horizP = Math.min(1, rawProgress / phase1End);
   const eased  = easeInOutSine(horizP);
   journeyTarget = -eased * (100 * (JOURNEY_PANELS - 1) / JOURNEY_PANELS);
 
@@ -410,7 +420,7 @@ function updateJourney() {
 
   // ── PHASE 2: title + track scroll up, polaroids slide up from below ──
   // Everything settles into a fixed layout, then dead scroll for card overlap.
-  const phase2P = Math.max(0, (rawProgress - PHASE1_END) / (1 - PHASE1_END));
+  const phase2P = Math.max(0, (rawProgress - phase1End) / (1 - phase1End));
 
   // settleT completes 0→1 within first 40% of phase 2 (smooth, not jumpy)
   const settleT = Math.min(1, phase2P / 0.40);
