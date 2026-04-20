@@ -3418,14 +3418,15 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 /* ── Small screen / portrait tablet & large phones (≤768px) ── */
 @media (max-width: 768px) {
   /* Journey keeps the desktop scroll-jacking pattern — vertical scroll drives
-     horizontal translate on the track. Just collapse each panel's internal
-     2-col layout to a single column so photos + text stack nicely at 100vw. */
+     horizontal translate on the track. Extra height on mobile spreads the
+     per-card reveal across more scroll (a single thumb-swipe advances one
+     card instead of five). */
   .journey {
     background: var(--surface);
     border-radius: 0;
     box-shadow: none;
     margin-top: 0;
-    /* Keep desktop height: 550vh so the JS has its scroll budget */
+    height: 800vh;
   }
   .journey-sticky {
     padding-top: 60px;
