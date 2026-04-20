@@ -3484,19 +3484,26 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     display: none !important;
   }
 
-  /* 50 Creative Careers POLAROID PILE: on mobile the polaroid area expands
-     upward and sits right below panel 3's title. Always pointer-interactive
-     (the phase-2 .is-visible gate is for desktop scroll-timing only). */
+  /* 50 Creative Careers POLAROID PILE: on mobile the polaroid area sits in
+     the lower half of the sticky. Hidden during phase 1 (panels 1+2) so it
+     doesn't overlap journey content; only fades in once the user reaches
+     panel 3 and phase 2 starts (.is-visible class toggled by updateJourney). */
   .journey-polaroids {
-    top: 26%;
+    top: 38%;
     bottom: 0;
     height: auto;
     border-top: none !important;
     box-shadow: none !important;
-    padding: 12px 20px 20px;
+    padding: 8px 20px 16px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none !important;
+  }
+  .journey-polaroids.is-visible {
+    opacity: 1;
     pointer-events: auto !important;
   }
   .careers-polaroid-grid {
@@ -3516,7 +3523,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     position: absolute;
     top: 0;
     left: 50%;
-    width: 180px;
+    width: 160px;
     flex: none;
     /* Hidden starting state — each card flies up from below when its
        scroll threshold is crossed (see script.js updateJourney). */
@@ -3526,6 +3533,13 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
                 opacity   0.4s ease;
     will-change: transform, opacity;
     touch-action: pan-y;
+  }
+  /* Softer shadows on the polaroid faces so stacked cards don't paint a
+     heavy edge behind the top one. */
+  .polaroid-front,
+  .polaroid-back {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0, 0, 0, 0.04);
   }
   .polaroid-card.shown {
     opacity: 1;
@@ -3563,7 +3577,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
   .polaroid-photo,
   .polaroid-photo--empty {
-    height: 170px;
+    height: 150px;
     margin: 6px 6px 0;
   }
   .polaroid-label {
@@ -3580,7 +3594,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
   /* Pile container — just tall enough for the photo-only card, centered */
   .careers-polaroid-grid {
-    height: 260px;
+    height: 220px;
     margin: 0 auto !important;
     flex-shrink: 0;
   }
@@ -3706,6 +3720,70 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     transform: translateY(0);
   }
 
+  /* Restore the sticky-pin pattern on Services (the ≤1024 rule released it).
+     The CTA footer still card-stacks over it, so services keeps its own
+     100vh pin with 100vh of extra scroll budget for cta-footer overlap. */
+  .services {
+    height: calc(100vh + 100vh);
+    margin-top: -100vh;
+    border-radius: 28px 28px 0 0;
+  }
+  .services-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 40px 20px 24px;
+    overflow: hidden;
+    border-radius: 28px 28px 0 0;
+  }
+  /* CTA footer: also re-enable the card-stack overlap (was released at ≤1024). */
+  .cta-footer {
+    margin-top: -100vh;
+    height: 100vh;
+    border-radius: 28px 28px 0 0;
+  }
+  /* Tighten services content so title + roles + 3 phrases all fit 100vh. */
+  .services-title {
+    font-size: clamp(22px, 6.2vw, 30px);
+    margin-bottom: 4px;
+  }
+  .services-desc {
+    font-size: 12px;
+    margin-bottom: 10px;
+    max-width: 300px;
+    line-height: 1.45;
+  }
+  .roles-groups-label {
+    font-size: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.14em;
+  }
+  .roles-groups {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .role-group {
+    padding: 8px 12px;
+  }
+  .role-group-title {
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+  .role-group-items {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  /* Drop the tagline on mobile — the 3 mobile phrases below communicate the
+     same thing in less vertical space. */
+  .roles-tagline {
+    display: none;
+  }
+  /* Drop the inline CTA on mobile too — the floating ↓ arrow + nav "Contact"
+     link already give users ways to reach the contact section. */
+  .services-cta {
+    display: none;
+  }
+
   /* Mobile replaces the Yes/No box with a simpler 3-phrase values block
      featuring the "searching with a microscope" cartoon. */
   .looking-wrap {
@@ -3713,23 +3791,23 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
   .looking-mobile-values {
     display: block;
-    max-width: 340px;
-    margin: 24px auto 12px;
+    max-width: 320px;
+    margin: 4px auto 0;
     text-align: center;
   }
   .looking-mobile-cartoon {
-    width: 120px;
+    width: 70px;
     height: auto;
     display: block;
-    margin: 0 auto 16px;
+    margin: 0 auto 4px;
   }
   .looking-mobile-phrase {
     font-family: 'Fraunces', serif;
     font-weight: 800;
-    font-size: 20px;
-    line-height: 1.3;
+    font-size: 14px;
+    line-height: 1.25;
     color: var(--text-primary);
-    margin: 0 0 12px;
+    margin: 0 0 2px;
   }
   .looking-mobile-phrase:last-child {
     margin-bottom: 0;
@@ -3779,21 +3857,25 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
   .why-cards .why-card {
     position: absolute;
-    top: 18%;
+    top: 50%;
     left: 50%;
     flex: none;
     width: 280px;
     max-width: 280px;
     margin: 0;
     opacity: 0;
-    transform: translateX(-50%) translateY(80vh) rotate(var(--stack-rot, 0)) !important;
+    /* Lighter shadow on mobile so the rotated cards underneath don't show a
+       heavy edge — only the top card reads as "elevated". */
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06),
+                0 2px 6px rgba(0, 0, 0, 0.04);
+    transform: translate(-50%, 80vh) rotate(var(--stack-rot, 0)) !important;
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
                 opacity   0.4s ease;
     will-change: transform, opacity;
   }
   .why-cards .why-card.shown {
     opacity: 1 !important;
-    transform: translateX(-50%) translateY(0) rotate(var(--stack-rot, 0)) !important;
+    transform: translate(-50%, -50%) rotate(var(--stack-rot, 0)) !important;
   }
   /* Same ascending z-index pattern so as each card is scroll-revealed it
      lands ON TOP of the previous one — the pile grows as you scroll. */
@@ -3889,15 +3971,6 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     padding: 12px 16px;
   }
 
-  /* Rounded-card-stack radii too big for small viewports */
-  .personal-note,
-  .about,
-  .why-work,
-  .services,
-  .journey,
-  .cta-footer {
-    border-radius: 0;
-  }
 }
 
 /* ── Mobile portrait (≤480px) ── */
