@@ -435,9 +435,39 @@ function updateJourney() {
     if (journeyTrail) journeyTrail.classList.remove('is-hidden');
     if (journeyPolaroids) journeyPolaroids.classList.remove('is-visible');
   }
+
+  // ── MOBILE: scroll-driven polaroid reveal ──
+  // Each polaroid gets .shown progressively through phase 2 so one card at a
+  // time flies up and stacks on the pile. At 100% phase 2 all cards are shown.
+  if (window.innerWidth <= 768) {
+    const polaroidCards = journeyPolaroids ? journeyPolaroids.querySelectorAll('.polaroid-card') : [];
+    const n = polaroidCards.length;
+    if (n > 0) {
+      // Compress the reveals into the first 90% of phase 2 so the last card
+      // lands with a bit of scroll slack before the section ends.
+      const pileProgress = Math.min(1, phase2P / 0.9);
+      polaroidCards.forEach((card, i) => {
+        const threshold = (i + 1) / n;
+        if (pileProgress >= threshold - 0.001) {
+          card.classList.add('shown');
+        } else {
+          card.classList.remove('shown');
+        }
+      });
+    }
+  }
 }
 
 function animateJourney() {
+  // On mobile we keep the horizontal panel scroll-jacking but skip the
+  // phase-2 vertical slides (title sliding up, polaroids sliding up) — the
+  // polaroids should be visible right alongside panel 3's title, not
+  // animating up from below. Forcing the vertical targets to 0 does this.
+  const mobileNow = window.innerWidth <= 768;
+  if (mobileNow) {
+    journeyVertTarget = 0;
+    polaroidTarget = 0;
+  }
   // Lerp track horizontal — higher lerp for snappy feel
   const trackGap = Math.abs(journeyTarget - journeyCurrent);
   const trackLerp = trackGap > 5 ? 0.5 : 0.18;
@@ -658,3 +688,101 @@ window.addEventListener('scroll', () => {
   if (left) left.style.transform = `translateY(${scrollY * 0.08}px)`;
   if (right) right.style.transform = `translateY(${scrollY * -0.05}px)`;
 });
+
+// ===== MOBILE POLAROID: LIVE DETAILS SYNC =====
+// Polaroid card on mobile shows photo + label only; the back content
+// (number / title / description / tags / Instagram link) is mirrored into a
+// separate block below the pile. Reveal is scroll-driven in updateJourney —
+// each card gets .shown one at a time as the user scrolls through phase 2.
+(function initMobilePolaroidDetails() {
+  const grid = document.querySelector('.careers-polaroid-grid');
+  if (!grid) return;
+
+  const details = document.createElement('div');
+  details.className = 'polaroid-details-live';
+  details.innerHTML = [
+    '<em class="polaroid-details-live-num"></em>',
+    '<h3 class="polaroid-details-live-title"></h3>',
+    '<p class="polaroid-details-live-desc"></p>',
+    '<div class="polaroid-details-live-tags"></div>',
+    '<a class="polaroid-details-live-ig" target="_blank" rel="noopener noreferrer"></a>'
+  ].join('');
+  grid.parentNode.insertBefore(details, grid.nextSibling);
+
+  const numEl   = details.querySelector('.polaroid-details-live-num');
+  const titleEl = details.querySelector('.polaroid-details-live-title');
+  const descEl  = details.querySelector('.polaroid-details-live-desc');
+  const tagsEl  = details.querySelector('.polaroid-details-live-tags');
+  const igEl    = details.querySelector('.polaroid-details-live-ig');
+
+  function currentTopShown() {
+    // The visually-top card is the LAST .shown card in DOM order
+    // (nth-child z-index ascends so later DOM = higher z).
+    const shown = grid.querySelectorAll('.polaroid-card.shown');
+    return shown[shown.length - 1] || null;
+  }
+
+  function syncDetails() {
+    const card = currentTopShown();
+    if (!card) {
+      details.style.visibility = 'hidden';
+      return;
+    }
+    const back = card.querySelector('.polaroid-back');
+    if (!back) return;
+    details.style.visibility = 'visible';
+    numEl.textContent   = back.querySelector('.polaroid-back-num')?.textContent?.trim() || '';
+    titleEl.textContent = back.querySelector('.polaroid-back-title')?.textContent?.trim() || '';
+    descEl.textContent  = back.querySelector('.polaroid-back-desc')?.textContent?.trim() || '';
+    tagsEl.innerHTML    = '';
+    back.querySelectorAll('.polaroid-back-tags span').forEach(t => {
+      const s = document.createElement('span');
+      s.textContent = t.textContent;
+      tagsEl.appendChild(s);
+    });
+    const srcIG = back.querySelector('.polaroid-back-ig');
+    if (srcIG) {
+      igEl.href = srcIG.href;
+      igEl.textContent = srcIG.textContent?.trim() || 'Watch on Instagram';
+      igEl.style.display = '';
+    } else {
+      igEl.style.display = 'none';
+    }
+  }
+
+  syncDetails();
+  // Update whenever .shown is toggled on any card
+  new MutationObserver(() => syncDetails()).observe(grid, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class']
+  });
+})();
+
+// ===== FLOATING SKIP-TO-WHY BUTTON =====
+// Only on mobile, only while the Journey section (where polaroids live) is in
+// viewport. Gives users a one-tap escape to the Why-me section so the
+// polaroid pile isn't a dead-end for skim-readers.
+(function initMobileSkipCta() {
+  const MOBILE_SKIP_MQ = window.matchMedia('(max-width: 768px)');
+  const journeyEl = document.querySelector('.journey');
+  const whyEl = document.querySelector('.why-work');
+  if (!journeyEl || !whyEl) return;
+
+  const btn = document.createElement('a');
+  btn.className = 'polaroid-skip-cta';
+  btn.href = '#why';
+  btn.textContent = '↓';
+  btn.setAttribute('aria-label', 'Skip polaroids and jump to the Why me section');
+  document.body.appendChild(btn);
+
+  function updateVisibility() {
+    if (!MOBILE_SKIP_MQ.matches) { btn.classList.remove('is-visible'); return; }
+    const r = journeyEl.getBoundingClientRect();
+    const inView = r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.2;
+    btn.classList.toggle('is-visible', inView);
+  }
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  MOBILE_SKIP_MQ.addEventListener('change', updateVisibility);
+  updateVisibility();
+})();
