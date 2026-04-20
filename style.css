@@ -3183,9 +3183,67 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 }
 
 /* ===== RESPONSIVE ===== */
-/* Three breakpoints — desktop (>1024px) is the canonical design and stays untouched.
-   Tablet (≤1024), small-screen (≤768), and mobile (≤480) each release animations/pins
-   that don't survive shorter viewports and collapse multi-column grids to single stacks. */
+/* Reference design: 1280–1439px. Below that: three step-down breakpoints collapse
+   grids / release pins. Above that: two step-up breakpoints scale display type and
+   padding so the layout doesn't feel lost in the middle of a wide monitor. */
+
+/* ── Wide desktop (≥1440px) — large laptops, 1080p monitors ── */
+@media (min-width: 1440px) {
+  /* Display-size headlines get a viewport-aware bump so they grow with screen */
+  .hero-headline        { font-size: clamp(48px, 3.75vw, 72px); max-width: 1100px; }
+  .hero-subtext         { font-size: clamp(16px, 1.15vw, 19px); max-width: 880px; }
+  .section-title        { font-size: clamp(48px, 3.75vw, 64px); }
+  .why-big-text         { font-size: clamp(60px, 5.5vw, 88px); }
+  .personal-note-title  { font-size: clamp(56px, 4.5vw, 80px); }
+  .cta-title            { font-size: clamp(52px, 4vw, 72px); }
+  .journey-careers-title { font-size: clamp(48px, 4vw, 72px); }
+  .journey-heading      { font-size: clamp(32px, 2.5vw, 44px); }
+
+  /* Hero gets more breathing room */
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    min-height: 95vh;
+  }
+
+  /* Content containers scale up so copy + cards don't feel tiny in the middle.
+     The Why-me grid cap keeps the 3×2 layout intact (4×2 would break the design). */
+  .about-center          { max-width: 880px; }
+  .looking-box           { max-width: 960px; margin-left: auto; margin-right: auto; }
+  .roles-groups          { max-width: 880px; }
+  .personal-note-points  { max-width: 1400px; gap: 36px; }
+  .why-cards             { max-width: 1200px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+  .why-card              { flex-basis: 340px; width: 340px; }
+  .cta-box               { max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .about-photo-track img { width: 240px; height: 310px; }
+}
+
+/* ── Ultra-wide (≥1920px) — 2K displays, 4K laptops running at 1× scaling ── */
+@media (min-width: 1920px) {
+  .hero-headline        { font-size: clamp(64px, 3.75vw, 96px); }
+  .hero-subtext         { font-size: 20px; }
+  .section-title        { font-size: clamp(56px, 3.75vw, 80px); }
+  .why-big-text         { font-size: clamp(72px, 5.5vw, 112px); }
+  .personal-note-title  { font-size: clamp(64px, 4.5vw, 96px); }
+  .cta-title            { font-size: clamp(60px, 4vw, 88px); }
+  .journey-careers-title { font-size: clamp(56px, 4vw, 88px); }
+
+  .hero {
+    padding-top: 160px;
+    padding-bottom: 100px;
+  }
+
+  /* Same 3×2 cap, slightly larger cards + breathing room */
+  .why-cards             { max-width: 1320px; padding-left: 48px; padding-right: 48px; }
+  .why-card              { flex-basis: 380px; width: 380px; }
+  .looking-box           { max-width: 1040px; }
+  .personal-note-points  { max-width: 1500px; }
+}
+
+/* Three step-down breakpoints — desktop (>1024px) is the canonical design and stays
+   untouched. Tablet (≤1024), small-screen (≤768), and mobile (≤480) each release
+   animations/pins that don't survive shorter viewports and collapse multi-column
+   grids to single stacks. */
 
 /* ── Tablet & small desktop (≤1024px) ── */
 @media (max-width: 1024px) {
