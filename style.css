@@ -1648,7 +1648,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .journey-title {
   flex-shrink: 0;
   text-align: center;
-  margin: 0 0 10px;
+  /* margin-block only — don't touch margin-inline so the shared headline
+     rule's `margin-inline: auto` can still centre the (narrow) title block
+     horizontally in its flex-column parent. */
+  margin-block: 0 10px;
   position: relative;
   z-index: 5;
   will-change: transform;
@@ -1766,7 +1769,9 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   font-weight: 800;
   font-style: normal;
   color: var(--text-primary);
-  margin: 8px 0 8px;
+  /* margin-block only — preserves margin-inline: auto from the shared
+     headline rule. */
+  margin-block: 8px;
   /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
@@ -3575,7 +3580,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     padding-top: 60px;
   }
   .journey-title {
-    margin: 0 20px 16px;
+    /* margin-block only — don't clobber the shared headline's
+       margin-inline: auto. Horizontal breathing room on mobile comes from
+       the parent's padding-inline, not a title margin. */
+    margin-block: 0 16px;
   }
   /* Panels: each takes full 100vw, internals go single-column */
   .journey-panel {
