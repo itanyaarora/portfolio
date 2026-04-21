@@ -76,25 +76,56 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ============================================================
+   RESPONSIVE BASE RESETS
+   These run once at the root and remove the need for per-component
+   patching of overflow, image sizing, and text wrapping.
+   ============================================================ */
+
+/* Stop horizontal overflow at the html root. `overflow: clip` is preferred
+   (no scroll-container side effects), but Safari < 16 falls back to visible
+   without it, letting wide children (e.g. the 300vw journey track) push the
+   page past the viewport. `@supports` keeps modern browsers on `clip`. */
+html {
+  overflow-x: hidden;
+}
+@supports (overflow: clip) {
+  html { overflow-x: clip; }
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   background-color: var(--bg);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: clip;
-  /* Lock text rendering to the CSS-declared size. Without this, iOS Safari
-     (and macOS Safari in narrow windows) auto-inflates text on "mobile-ish"
-     viewports, which blew up hero/journey headlines and made them overflow
-     their containers. */
+  /* Stop Safari (iOS + narrow macOS windows) from auto-inflating text on
+     "mobile-ish" viewports — our clamp() scale is the single source of truth. */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-/* Long headlines should break inside a word before they ever overflow their
-   container. Safari honors overflow-wrap on block-level text containers. */
-h1, h2, h3, p {
+/* Media: intrinsic responsive sizing. Specific components with fixed widths
+   override, but anything unstyled still fits its parent. */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headlines: break inside a word before overflowing; balance multi-line
+   titles so they wrap visually evenly (progressive enhancement in Chrome
+   114+ and Safari 17.4+ — falls back to normal wrapping elsewhere). */
+h1, h2, h3 {
   overflow-wrap: break-word;
-  word-break: break-word;
+  text-wrap: balance;
+}
+
+/* Body copy: same break-word safety, plus `pretty` to avoid orphan last-
+   lines where supported. No cost on older browsers. */
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 a {
@@ -422,10 +453,12 @@ body::after {
 .hero-headline {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(30px, 4vw, 48px);
+  /* Fluid 28px → 96px across 320–2560px viewports. One rule spans every
+     screen size; no more per-breakpoint font-size overrides needed. */
+  font-size: clamp(28px, 1rem + 3.5vw, 96px);
   font-weight: 700;
   line-height: 1.2;
-  max-width: 900px;
+  max-width: min(100% - 2rem, 900px);
   margin-bottom: 24px;
   position: relative;
   z-index: 2;
@@ -433,10 +466,11 @@ body::after {
 
 .hero-subtext {
   font-family: 'Nunito', sans-serif;
-  font-size: 16px;
+  /* Fluid body copy: 14px → 20px across the range. */
+  font-size: clamp(14px, 0.85rem + 0.25vw, 20px);
   font-weight: 500;
   color: var(--text-primary);
-  max-width: 800px;
+  max-width: min(100% - 2rem, 800px);
   line-height: 1.8;
   margin-bottom: 32px;
   position: relative;
@@ -949,7 +983,8 @@ body::after {
 .section-title {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(32px, 3.8vw, 50px);
+  /* Fluid 24px → 72px across 320–2560px. */
+  font-size: clamp(24px, 0.75rem + 2.5vw, 72px);
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -1297,12 +1332,13 @@ body.has-personal-note .journey-sticky::before {
 .personal-note-title {
   font-family: 'Fraunces', serif;
   font-weight: 800;
-  font-size: clamp(36px, 5vw, 64px);
+  /* Fluid 28px → 88px across 320–2560px. */
+  font-size: clamp(28px, 1rem + 3vw, 88px);
   letter-spacing: -0.02em;
   color: var(--text-primary);
   line-height: 1.1;
   margin: 0 auto 36px;
-  max-width: 1000px;
+  max-width: min(100% - 2rem, 1000px);
 }
 
 .personal-note-title em {
@@ -1312,10 +1348,11 @@ body.has-personal-note .journey-sticky::before {
 
 .personal-note-intro {
   font-family: 'Nunito', sans-serif;
-  font-size: clamp(16px, 1.25vw, 19px);
+  /* Fluid body copy: 14px → 20px across the range. */
+  font-size: clamp(14px, 0.85rem + 0.25vw, 20px);
   line-height: 1.8;
   color: var(--text-secondary);
-  max-width: 760px;
+  max-width: min(100% - 2rem, 760px);
   margin: 0 auto 72px;
 }
 
@@ -1674,7 +1711,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 .journey-careers-title {
   font-family: 'Fraunces', serif;
-  font-size: clamp(36px, 4.5vw, 64px);
+  /* Fluid 28px → 88px across 320–2560px. */
+  font-size: clamp(28px, 1rem + 2.8vw, 88px);
   font-weight: 800;
   font-style: normal;
   color: var(--text-primary);
@@ -1773,7 +1811,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 .journey-heading {
   font-family: 'Fraunces', serif;
-  font-size: clamp(26px, 2.8vw, 38px);
+  /* Fluid 20px → 44px across 320–2560px. */
+  font-size: clamp(20px, 0.75rem + 1.4vw, 44px);
   font-weight: 400;
   font-style: normal;
   color: var(--text-primary);
@@ -2762,7 +2801,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   line-height: 0.95;
   font-family: 'Fraunces', serif;
   font-weight: 900;
-  font-size: clamp(36px, 5vw, 64px);
+  /* Fluid 28px → 112px across 320–2560px (this is the big bg display). */
+  font-size: clamp(28px, 1rem + 4vw, 112px);
   color: var(--text-primary);
   opacity: 1;
   pointer-events: none;
@@ -3156,7 +3196,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .cta-title {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(34px, 4.5vw, 48px);
+  /* Fluid 28px → 80px across 320–2560px. */
+  font-size: clamp(28px, 1rem + 2.5vw, 80px);
   font-weight: 700;
   margin-bottom: 16px;
   line-height: 1.2;
@@ -3224,18 +3265,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
    grids / release pins. Above that: two step-up breakpoints scale display type and
    padding so the layout doesn't feel lost in the middle of a wide monitor. */
 
-/* ── Wide desktop (≥1440px) — large laptops, 1080p monitors ── */
+/* ── Wide desktop (≥1440px) — large laptops, 1080p monitors ──
+   Typography is fully fluid via clamp() on the base rules — no font-size
+   overrides needed here anymore. This block only keeps the CONTAINER-width
+   bumps so wide screens get bigger copy regions (cards, grids, images).   */
 @media (min-width: 1440px) {
-  /* Display-size headlines get a viewport-aware bump so they grow with screen */
-  .hero-headline        { font-size: clamp(48px, 3.75vw, 72px); max-width: 1100px; }
-  .hero-subtext         { font-size: clamp(16px, 1.15vw, 19px); max-width: 880px; }
-  .section-title        { font-size: clamp(48px, 3.75vw, 64px); }
-  .why-big-text         { font-size: clamp(60px, 5.5vw, 88px); }
-  .personal-note-title  { font-size: clamp(56px, 4.5vw, 80px); }
-  .cta-title            { font-size: clamp(52px, 4vw, 72px); }
-  .journey-careers-title { font-size: clamp(48px, 4vw, 72px); }
-  .journey-heading      { font-size: clamp(32px, 2.5vw, 44px); }
-
   /* Hero gets more breathing room */
   .hero {
     padding-top: 140px;
@@ -3255,16 +3289,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   .about-photo-track img { width: 240px; height: 310px; }
 }
 
-/* ── Ultra-wide (≥1920px) — 2K displays, 4K laptops running at 1× scaling ── */
+/* ── Ultra-wide (≥1920px) — 2K displays, 4K laptops running at 1× scaling ──
+   Same story as 1440: typography is already fluid, only container widths
+   need to bump so the layout doesn't feel lost on big monitors. */
 @media (min-width: 1920px) {
-  .hero-headline        { font-size: clamp(64px, 3.75vw, 96px); }
-  .hero-subtext         { font-size: 20px; }
-  .section-title        { font-size: clamp(56px, 3.75vw, 80px); }
-  .why-big-text         { font-size: clamp(72px, 5.5vw, 112px); }
-  .personal-note-title  { font-size: clamp(64px, 4.5vw, 96px); }
-  .cta-title            { font-size: clamp(60px, 4vw, 88px); }
-  .journey-careers-title { font-size: clamp(56px, 4vw, 88px); }
-
   .hero {
     padding-top: 160px;
     padding-bottom: 100px;
@@ -3282,20 +3310,12 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
    animations/pins that don't survive shorter viewports and collapse multi-column
    grids to single stacks. */
 
-/* ── Tablet & small desktop (≤1024px) ── */
+/* ── Tablet & small desktop (≤1024px) ──
+   NB: typography is fully fluid via clamp() on the base rules, so this block
+   no longer overrides font-sizes — it only handles STRUCTURAL changes that
+   need a hard breakpoint (hiding decorative characters, releasing sticky
+   pins, etc). */
 @media (max-width: 1024px) {
-  /* Narrow-window typography: default desktop clamps still bottom-out too big
-     at ~800–1024px (and Safari can auto-inflate further on narrow windows).
-     Pin the ceilings lower so nothing overflows its container. */
-  .hero-headline         { font-size: clamp(28px, 4.8vw, 40px); max-width: 100%; }
-  .hero-subtext          { font-size: clamp(14px, 1.8vw, 16px); max-width: 100%; }
-  .section-title         { font-size: clamp(26px, 4.5vw, 42px); }
-  .personal-note-title   { font-size: clamp(28px, 5vw, 44px); }
-  .journey-heading       { font-size: clamp(22px, 3.6vw, 32px); }
-  .journey-careers-title { font-size: clamp(32px, 5.5vw, 54px); }
-  .cta-title             { font-size: clamp(28px, 5vw, 44px); }
-  .why-big-text          { font-size: clamp(22px, 5vw, 36px); }
-
   /* Side-parallax characters, marquee, and scroll-parallax decorations don't add value
      on narrower screens — hide them to free horizontal space. */
   .character-left,
@@ -3470,9 +3490,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     width: 100%;
     max-width: 640px;
   }
-  .journey-careers-title {
-    font-size: clamp(40px, 6vw, 64px);
-  }
+  /* .journey-careers-title font-size is fluid via base clamp() — no override
+     needed here anymore. */
   /* Car + dotted trail hidden — both rely on desktop-width geometry and
      end up overlapping copy at tablet widths. */
   .journey-car,
