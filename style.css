@@ -143,24 +143,35 @@ p {
    writing to you, California Burrito.") to wrap into a tighter block
    shape instead of stretching across the viewport.
    ============================================================ */
-.hero-headline,
-.section-title,
-.personal-note-title,
-.journey-careers-title,
-.cta-title {
-  /* 28px floor on mobile, 60px ceiling on large screens. 2.5vw+1rem keeps
-     the mid-range proportionate — the earlier 4.5rem ceiling felt
-     overwhelming on big monitors. */
-  font-size: clamp(1.75rem, 2.5vw + 1rem, 3.75rem);
-  line-height: 1.1;
-  /* ~32 characters per line gives 2–3 clean wrap lines on desktop for the
-     long titles like "Why I'm writing to you, California Burrito." and the
-     hero headline, while 90% viewport cap prevents edge-to-edge stretching
-     on narrow screens. */
+/* Hero headline — slightly tighter clamp than the other display headings
+   since it's the h1 and the surrounding hero already has its own generous
+   padding/layout. */
+.hero-headline {
+  font-size: clamp(1.5rem, 2vw + 0.75rem, 2.75rem);
+  line-height: 1.15;
   max-width: min(90%, 32ch);
   margin-inline: auto;
   text-wrap: balance;
   overflow-wrap: break-word;
+  /* Anchor links (e.g. #hero) land with breathing room rather than flush
+     with the viewport top. */
+  scroll-margin-top: 6rem;
+}
+
+/* Other display headings (h2-ish) — unified scale. Reducing the ceiling
+   keeps long section titles readable on common laptop heights (13"
+   MacBook at ~810px fullscreen) without clipping at section boundaries. */
+.section-title,
+.personal-note-title,
+.journey-careers-title,
+.cta-title {
+  font-size: clamp(1.5rem, 1.8vw + 0.5rem, 2.5rem);
+  line-height: 1.2;
+  max-width: min(90%, 32ch);
+  margin-inline: auto;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  scroll-margin-top: 6rem;
 }
 
 a {
@@ -275,23 +286,21 @@ a {
   top: 0;
   z-index: 1;
   text-align: center;
-  /* Sized by CONTENT, not viewport. min-height lets the hero fill the screen
-     when there's room, but expand naturally when the polaroid + headline +
-     subtext + CTA are taller than the viewport (short laptops, iPhone SE).
-     svh = smallest viewport height — safe from Safari's dynamic chrome. */
-  min-height: 100svh;
+  /* Hero fills the viewport on normal screens but caps at 900px on very
+     tall monitors so it doesn't become a comedic-sized splash. min() is
+     used instead of max-height because min-height and max-height conflict
+     in CSS (min wins) — min() picks the smaller of the two up front. */
+  min-height: min(100svh, 900px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;  /* hero stays vertically centred — content is simple */
   align-items: center;
-  /* Tightened after the last over-correction pushed the CTA off-screen on
-     1440×900. Previous values (8vh/6rem block, 3vh/2rem gap) stacked up to
-     ~225px of empty space at normal laptop heights. */
-  padding-block: clamp(1.5rem, 4vh, 3.5rem);
+  /* Slightly more breathing room than before (5vh vs 4vh) since the
+     headline ceiling came down ~25%. */
+  padding-block: clamp(2rem, 5vh, 4rem);
   padding-inline: clamp(1rem, 4vw, 3rem);
   gap: clamp(0.75rem, 2vh, 1.25rem);
-  /* NO overflow: hidden — if content is taller than the viewport the page
-     scrolls naturally instead of clipping. */
+  /* No overflow: hidden — page scrolls naturally when content exceeds. */
 }
 
 /* ===== FULL-PAGE GRAIN TEXTURE ===== */
@@ -1008,14 +1017,17 @@ body::after {
   /* NO overflow: hidden — was clipping content when the viewport was
      shorter than the content itself. Page scroll handles the overflow. */
   border-radius: 32px 32px 0 0;
-  /* Fluid padding; vh-aware block padding shrinks on short screens. */
-  padding-block: clamp(2rem, 6vh, 5rem);
+  /* flex-start + heading-friendly top padding so "What I'm looking for"
+     sits near the top of the pinned area, not floating at mid-viewport
+     where a 13" MacBook in Safari fullscreen clipped it. */
+  padding-top: clamp(4rem, 8vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
   padding-inline: clamp(1rem, 4vw, 3rem);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(1rem, 3vh, 2rem);
 }
 
@@ -1306,11 +1318,15 @@ body.has-personal-note .personal-note-inner {
      down if the viewport is short. NO overflow: hidden — if title + intro
      + cards exceed the viewport, the page scrolls to reveal them. */
   min-height: 100svh;
-  padding-block: clamp(2rem, 6vh, 5rem);
+  /* flex-start + generous padding-top so the heading sits near the top of
+     the pinned area instead of floating in vertical-centre (where Safari
+     fullscreen on a 13" MacBook clipped it against the section boundary). */
+  padding-top: clamp(4rem, 8vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
   padding-inline: clamp(1rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: none;
   width: 100%;
   box-sizing: border-box;
@@ -3220,8 +3236,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
-  /* vh-aware block padding shrinks on short screens. */
-  padding-block: clamp(2rem, 6vh, 5rem);
+  /* Heading-friendly top padding so "Call me, maybe?" has breathing room
+     from the section boundary instead of being pushed into the fold by
+     flex-center. */
+  padding-top: clamp(4rem, 8vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
   padding-inline: clamp(1rem, 4vw, 3rem);
   /* svh so the CTA always fits the viewport but grows when Call-me title +
      desc + 4 contact pills + dancing-girl exceed a short viewport. */
