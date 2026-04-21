@@ -13,10 +13,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Preload the CB loader frame. Safari uses the HEVC-alpha MOV;
-       Chrome/Firefox use the smaller WebM with VP9 alpha. -->
-  <link rel="preload" as="video" href="calib_wave.mov" type="video/quicktime" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=152">
+  <!-- Preload the CB loader APNG. Every previous format we tried showed a
+       black box behind the cartoon because the source WebM was exported
+       without a real alpha channel (yuv420p) — the black was painted INTO
+       the pixels, not a codec issue. This APNG is chroma-keyed from the
+       WebM (all near-black pixels tagged transparent) so it renders
+       cleanly on any background. Supported in Safari 8+, Chrome 59+. -->
+  <link rel="preload" as="image" href="calib_wave.apng" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=154">
   <style>
     /* Critical loader styles, inlined so there's no flash before style.css parses */
     html.is-loading, html.is-loading body { overflow: hidden; }
@@ -155,15 +159,15 @@
 </head>
 <body>
 
-  <!-- PAGE LOADER: CB-branded signboard-wave video + greeting.
-       Safari takes the HEVC-alpha MOV; Chrome/Firefox fall through to the
-       WebM (VP9 alpha). GIF <img> is a final fallback if neither source plays. -->
+  <!-- PAGE LOADER: CB-branded signboard-wave APNG + greeting.
+       The source WebM's transparency was baked-in as literal black pixels
+       (yuv420p encode — no alpha channel), so every video format I tried
+       rendered a black box behind the cartoon. Switched to an APNG that
+       was chroma-keyed from the WebM (ffmpeg colorkey filter) so all the
+       near-black pixels are marked transparent in the output. Renders
+       cleanly on butter-yellow in every browser, no codec dance. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <video class="loader-gif" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="calib_wave.mov" type="video/quicktime; codecs=hvc1">
-      <source src="calib_wave.webm" type="video/webm">
-      <img src="calib_wave.gif" alt="" aria-hidden="true">
-    </video>
+    <img class="loader-gif" src="calib_wave.apng" alt="" aria-hidden="true">
     <p class="loader-greeting" id="loaderGreeting">Hi California Burrito!</p>
   </div>
   <script>
