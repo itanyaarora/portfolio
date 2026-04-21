@@ -82,6 +82,19 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: clip;
+  /* Lock text rendering to the CSS-declared size. Without this, iOS Safari
+     (and macOS Safari in narrow windows) auto-inflates text on "mobile-ish"
+     viewports, which blew up hero/journey headlines and made them overflow
+     their containers. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Long headlines should break inside a word before they ever overflow their
+   container. Safari honors overflow-wrap on block-level text containers. */
+h1, h2, h3, p {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 a {
@@ -3271,6 +3284,18 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 /* ── Tablet & small desktop (≤1024px) ── */
 @media (max-width: 1024px) {
+  /* Narrow-window typography: default desktop clamps still bottom-out too big
+     at ~800–1024px (and Safari can auto-inflate further on narrow windows).
+     Pin the ceilings lower so nothing overflows its container. */
+  .hero-headline         { font-size: clamp(28px, 4.8vw, 40px); max-width: 100%; }
+  .hero-subtext          { font-size: clamp(14px, 1.8vw, 16px); max-width: 100%; }
+  .section-title         { font-size: clamp(26px, 4.5vw, 42px); }
+  .personal-note-title   { font-size: clamp(28px, 5vw, 44px); }
+  .journey-heading       { font-size: clamp(22px, 3.6vw, 32px); }
+  .journey-careers-title { font-size: clamp(32px, 5.5vw, 54px); }
+  .cta-title             { font-size: clamp(28px, 5vw, 44px); }
+  .why-big-text          { font-size: clamp(22px, 5vw, 36px); }
+
   /* Side-parallax characters, marquee, and scroll-parallax decorations don't add value
      on narrower screens — hide them to free horizontal space. */
   .character-left,
