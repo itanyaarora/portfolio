@@ -135,6 +135,29 @@ p {
   text-wrap: pretty;
 }
 
+/* ============================================================
+   DISPLAY HEADLINES — ONE shared scale
+   Applied to every major section heading so sizing/wrapping stays
+   consistent. Do not add per-section font-size overrides — tune this
+   rule instead. 20ch max-width forces longer headlines (e.g. "Why I'm
+   writing to you, California Burrito.") to wrap into a tighter block
+   shape instead of stretching across the viewport.
+   ============================================================ */
+.hero-headline,
+.section-title,
+.personal-note-title,
+.journey-careers-title,
+.cta-title {
+  /* 28px floor on mobile, 72px ceiling on large screens. Linear 3vw+1rem
+     preferred value keeps the scale predictable. */
+  font-size: clamp(1.75rem, 3vw + 1rem, 4.5rem);
+  line-height: 1.1;
+  max-width: 20ch;
+  margin-inline: auto;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -479,14 +502,9 @@ body::after {
 .hero-headline {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  /* Fluid font size bound by the SMALLER of viewport width and height.
-     On short-wide screens (e.g. 1440×600 split-screen), 8vh caps the size
-     so the headline doesn't eat the whole viewport vertically. */
-  font-size: clamp(1.75rem, min(5vw, 7vh), 5rem);
   font-weight: 700;
-  line-height: 1.2;
-  max-width: min(100% - 2rem, 900px);
-  /* margin-bottom removed — parent .hero uses flex gap for spacing. */
+  /* font-size / line-height / max-width come from the shared .display-headline
+     rule below — see bottom of typography section. */
   position: relative;
   z-index: 2;
 }
@@ -1017,10 +1035,9 @@ body::after {
 .section-title {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  /* Fluid 24px → 72px across 320–2560px. */
-  font-size: clamp(24px, 0.75rem + 2.5vw, 72px);
   font-weight: 700;
   margin-bottom: 16px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
 .section-desc {
@@ -1370,13 +1387,10 @@ body.has-personal-note .journey-sticky::before {
 .personal-note-title {
   font-family: 'Fraunces', serif;
   font-weight: 800;
-  /* Fluid 28px → 88px across 320–2560px. */
-  font-size: clamp(28px, 1rem + 3vw, 88px);
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  line-height: 1.1;
-  margin: 0 auto 36px;
-  max-width: min(100% - 2rem, 1000px);
+  margin-bottom: 36px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
 .personal-note-title em {
@@ -1749,13 +1763,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 .journey-careers-title {
   font-family: 'Fraunces', serif;
-  /* Fluid 28px → 88px across 320–2560px. */
-  font-size: clamp(28px, 1rem + 2.8vw, 88px);
   font-weight: 800;
   font-style: normal;
   color: var(--text-primary);
-  line-height: 1.1;
   margin: 8px 0 8px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
 /* Mobile-only short intro — hidden on desktop, shown via @media (max-width: 768px) */
@@ -3242,10 +3254,9 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .cta-title {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  /* Fluid 28px → 80px across 320–2560px. */
-  font-size: clamp(28px, 1rem + 2.5vw, 80px);
   font-weight: 700;
   margin-bottom: 16px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
   line-height: 1.2;
 }
 
@@ -4064,29 +4075,15 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     gap: 20px;
   }
 
-  /* Fonts: shrink the largest display sizes so they don't swallow the viewport. */
-  .hero-headline {
-    font-size: clamp(26px, 6.5vw, 40px);
-  }
-  .section-title {
-    font-size: clamp(26px, 6vw, 40px);
-  }
-  .personal-note-title {
-    font-size: clamp(28px, 7vw, 40px);
-  }
+  /* Display headline font-sizes are handled by the shared .hero-headline,
+     .section-title, .personal-note-title, .journey-careers-title, .cta-title
+     rule in the base typography section — one clamp(1.75rem, 3vw+1rem, 4.5rem)
+     scale covers 320–2560px. No mobile-specific overrides here.
+     .why-big-text is intentionally huge background display and stays on its
+     own rule; .journey-heading is a subheading (H3) and keeps its own. */
   .why-big-text {
-    font-size: clamp(22px, 5.5vw, 34px);
     white-space: normal;
     line-height: 1.05;
-  }
-  .journey-careers-title {
-    font-size: clamp(28px, 7vw, 40px);
-  }
-  .cta-title {
-    font-size: clamp(28px, 7vw, 44px);
-  }
-  .journey-heading {
-    font-size: clamp(24px, 5.5vw, 32px);
   }
 
   /* About bio: tighten the padding so photo strip doesn't dominate. */
