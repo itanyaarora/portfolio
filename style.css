@@ -256,13 +256,12 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* Vertical padding uses vh units so it shrinks on short screens, leaving
-     more room for the content itself. */
-  padding-block: clamp(2rem, 8vh, 6rem);
+  /* Tightened after the last over-correction pushed the CTA off-screen on
+     1440×900. Previous values (8vh/6rem block, 3vh/2rem gap) stacked up to
+     ~225px of empty space at normal laptop heights. */
+  padding-block: clamp(1.5rem, 4vh, 3.5rem);
   padding-inline: clamp(1rem, 4vw, 3rem);
-  /* Flex gap replaces individual margin-bottom chains so inner elements share
-     consistent, vh-aware spacing. */
-  gap: clamp(1rem, 3vh, 2rem);
+  gap: clamp(0.75rem, 2vh, 1.25rem);
   /* NO overflow: hidden — if content is taller than the viewport the page
      scrolls naturally instead of clipping. */
 }
@@ -385,12 +384,9 @@ body::after {
 .hero-video {
   position: relative;
   z-index: 2;
-  /* margin-bottom removed — parent .hero uses flex gap for spacing. */
-  /* Cap polaroid at 45% of viewport height so short screens (600px laptops,
-     iPhone SE) can still fit the headline + subtext + CTA below it. Width
-     auto so the polaroid's aspect ratio is preserved. */
-  max-height: 45vh;
-  width: auto;
+  /* Polaroid sizes itself via .video-wrapper (160×196 photo hole + frame).
+     No max-height override — was stretching the polaroid out of its natural
+     Instax aspect ratio on tall screens. */
 }
 
 /* Outer container — polaroid frame */
@@ -403,22 +399,18 @@ body::after {
   transform: rotate(-2deg);
   box-shadow: 0 8px 36px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
   overflow: visible;
-  /* Cap at 45% of viewport height so the polaroid shrinks on short screens
-     (600px laptops, iPhone SE) instead of pushing the headline off-screen. */
-  max-height: 45vh;
-}
-/* Inner video fills available space within the capped container. */
-.video-container video,
-.video-container .video-wrapper {
-  max-height: calc(45vh - 54px); /* 45vh minus the polaroid frame padding */
-  height: auto;
-  width: auto;
+  /* No max-height cap — .video-wrapper's fixed 160×196 + frame padding
+     already gives the polaroid a compact designed size. A max-height here
+     was overriding the wrapper's height and stretching the photo. */
 }
 
-/* The video photo area */
+/* The video photo area — Instax-ish ~4:5 portrait. aspect-ratio is a belt-
+   and-braces guard: if the fixed height is ever overridden elsewhere, the
+   wrapper still keeps its designed proportions instead of stretching. */
 .video-wrapper {
   width: 160px;
   height: 196px;
+  aspect-ratio: 4 / 5;
   border-radius: 2px;
   overflow: hidden;
   background: #e8e0d8;
