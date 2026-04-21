@@ -76,12 +76,102 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ============================================================
+   RESPONSIVE BASE RESETS
+   These run once at the root and remove the need for per-component
+   patching of overflow, image sizing, and text wrapping.
+   ============================================================ */
+
+/* Baseline safety net for html + body:
+   - overflow-x: hidden stops horizontal runaway (wide children like the
+     300vw journey track). `clip` where supported (no scroll-container
+     side effects); `hidden` as fallback for Safari < 16.
+   - NO vertical overflow restriction — page MUST scroll when content
+     exceeds the viewport (iPhone SE, short laptop, split-screen).
+   - min-height: 100svh so short content pages still fill the viewport
+     rather than leaving a yellow strip below the fold. */
+html,
+body {
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+@supports (overflow: clip) {
+  html,
+  body { overflow-x: clip; }
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   background-color: var(--bg);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: clip;
+  /* Stop Safari (iOS + narrow macOS windows) from auto-inflating text on
+     "mobile-ish" viewports — our clamp() scale is the single source of truth. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Media: intrinsic responsive sizing. Specific components with fixed widths
+   override, but anything unstyled still fits its parent. */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headlines: break inside a word before overflowing; balance multi-line
+   titles so they wrap visually evenly (progressive enhancement in Chrome
+   114+ and Safari 17.4+ — falls back to normal wrapping elsewhere). */
+h1, h2, h3 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+/* Body copy: same break-word safety, plus `pretty` to avoid orphan last-
+   lines where supported. No cost on older browsers. */
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+/* ============================================================
+   DISPLAY HEADLINES — ONE shared scale
+   Applied to every major section heading so sizing/wrapping stays
+   consistent. Do not add per-section font-size overrides — tune this
+   rule instead. 20ch max-width forces longer headlines (e.g. "Why I'm
+   writing to you, California Burrito.") to wrap into a tighter block
+   shape instead of stretching across the viewport.
+   ============================================================ */
+/* Hero headline — slightly tighter clamp than the other display headings
+   since it's the h1 and the surrounding hero already has its own generous
+   padding/layout. */
+.hero-headline {
+  font-size: clamp(1.5rem, 2vw + 0.75rem, 2.75rem);
+  line-height: 1.15;
+  max-width: min(90%, 32ch);
+  margin-inline: auto;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  /* Anchor links (e.g. #hero) land with breathing room rather than flush
+     with the viewport top. */
+  scroll-margin-top: 6rem;
+}
+
+/* Other display headings (h2-ish) — unified scale. Reducing the ceiling
+   keeps long section titles readable on common laptop heights (13"
+   MacBook at ~810px fullscreen) without clipping at section boundaries. */
+.section-title,
+.personal-note-title,
+.journey-careers-title,
+.cta-title {
+  font-size: clamp(1.5rem, 1.8vw + 0.5rem, 2.5rem);
+  line-height: 1.2;
+  max-width: min(90%, 32ch);
+  margin-inline: auto;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  scroll-margin-top: 6rem;
 }
 
 a {
@@ -195,13 +285,22 @@ a {
   position: sticky;
   top: 0;
   z-index: 1;
-  padding: 100px 32px 60px;
   text-align: center;
-  min-height: 100vh;
+  /* Hero fills the viewport on normal screens but caps at 900px on very
+     tall monitors so it doesn't become a comedic-sized splash. min() is
+     used instead of max-height because min-height and max-height conflict
+     in CSS (min wins) — min() picks the smaller of the two up front. */
+  min-height: min(100svh, 900px);
   display: flex;
   flex-direction: column;
+  justify-content: center;  /* hero stays vertically centred — content is simple */
   align-items: center;
-  overflow: hidden;
+  /* Slightly more breathing room than before (5vh vs 4vh) since the
+     headline ceiling came down ~25%. */
+  padding-block: clamp(2rem, 5vh, 4rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  gap: clamp(0.75rem, 2vh, 1.25rem);
+  /* No overflow: hidden — page scrolls naturally when content exceeds. */
 }
 
 /* ===== FULL-PAGE GRAIN TEXTURE ===== */
@@ -322,7 +421,9 @@ body::after {
 .hero-video {
   position: relative;
   z-index: 2;
-  margin-bottom: 24px;
+  /* Polaroid sizes itself via .video-wrapper (160×196 photo hole + frame).
+     No max-height override — was stretching the polaroid out of its natural
+     Instax aspect ratio on tall screens. */
 }
 
 /* Outer container — polaroid frame */
@@ -335,12 +436,18 @@ body::after {
   transform: rotate(-2deg);
   box-shadow: 0 8px 36px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
   overflow: visible;
+  /* No max-height cap — .video-wrapper's fixed 160×196 + frame padding
+     already gives the polaroid a compact designed size. A max-height here
+     was overriding the wrapper's height and stretching the photo. */
 }
 
-/* The video photo area */
+/* The video photo area — Instax-ish ~4:5 portrait. aspect-ratio is a belt-
+   and-braces guard: if the fixed height is ever overridden elsewhere, the
+   wrapper still keeps its designed proportions instead of stretching. */
 .video-wrapper {
   width: 160px;
   height: 196px;
+  aspect-ratio: 4 / 5;
   border-radius: 2px;
   overflow: hidden;
   background: #e8e0d8;
@@ -409,21 +516,20 @@ body::after {
 .hero-headline {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(30px, 4vw, 48px);
   font-weight: 700;
-  line-height: 1.2;
-  max-width: 900px;
-  margin-bottom: 24px;
+  /* font-size / line-height / max-width come from the shared .display-headline
+     rule below — see bottom of typography section. */
   position: relative;
   z-index: 2;
 }
 
 .hero-subtext {
   font-family: 'Nunito', sans-serif;
-  font-size: 16px;
+  /* Fluid body copy: 14px → 20px across the range. */
+  font-size: clamp(14px, 0.85rem + 0.25vw, 20px);
   font-weight: 500;
   color: var(--text-primary);
-  max-width: 800px;
+  max-width: min(100% - 2rem, 800px);
   line-height: 1.8;
   margin-bottom: 32px;
   position: relative;
@@ -887,15 +993,15 @@ body::after {
   position: relative;
   z-index: 5;
   /* Card-stacking, same pattern as .why-work:
-     1. 100vh sticky pin  (services content stays in viewport)
-     2. 100vh CTA slide-up (cta-footer rises from below to cover us).
-     The -100vh margin-top is what lets services itself slide over the
-     why-work pin above. The extra 100vh of height is the scroll budget
+     1. 100svh sticky pin  (services content stays in viewport)
+     2. 100svh CTA slide-up (cta-footer rises from below to cover us).
+     The -100svh margin-top is what lets services itself slide over the
+     why-work pin above. The extra 100svh of height is the scroll budget
      for the NEXT card (cta) to slide over THIS pin. */
-  height: calc(100vh + 100vh);
+  height: calc(100svh + 100svh);
   background: var(--surface);
   border-radius: 32px 32px 0 0;
-  margin-top: -100vh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
 }
@@ -904,15 +1010,25 @@ body::after {
 .services-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
-  overflow: hidden;
+  /* min-height, not height — so if the role-groups + Yes/No box + CTA are
+     taller than the viewport (short laptop, iPhone SE), the section grows
+     naturally and the page scrolls. svh = safe-from-Safari's dynamic UI. */
+  min-height: 100svh;
+  /* NO overflow: hidden — was clipping content when the viewport was
+     shorter than the content itself. Page scroll handles the overflow. */
   border-radius: 32px 32px 0 0;
-  padding: 70px 32px 40px;
+  /* flex-start + heading-friendly top padding so "What I'm looking for"
+     sits near the top of the pinned area, not floating at mid-viewport
+     where a 13" MacBook in Safari fullscreen clipped it. */
+  padding-top: clamp(4rem, 8vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: clamp(1rem, 3vh, 2rem);
 }
 
 .services-title {
@@ -936,9 +1052,9 @@ body::after {
 .section-title {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(32px, 3.8vw, 50px);
   font-weight: 700;
   margin-bottom: 16px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
 .section-desc {
@@ -1174,7 +1290,8 @@ body::after {
 .personal-note {
   position: relative;
   z-index: 2;
-  padding: 100px 32px 90px;
+  /* Fluid 60–130px top, 16–48px sides, 60–120px bottom. */
+  padding: clamp(60px, 7vw, 130px) clamp(16px, 4vw, 48px) clamp(60px, 7vw, 120px);
   background: var(--surface);
   border-radius: 28px 28px 0 0;
   margin-top: -28px;
@@ -1186,23 +1303,30 @@ body::after {
 body.has-personal-note .personal-note {
   display: block;
   /* Card-stacking pattern (same as .services / .cta-footer):
-     1. 100vh sticky pin     → personal-note content stays in view
-     2. 100vh scroll budget  → journey slides up from below as a yellow card
+     1. 100svh sticky pin     → personal-note content stays in view
+     2. 100svh scroll budget  → journey slides up from below as a yellow card
      The inner .personal-note-inner handles the sticky pin so the section itself
      can provide the extra scroll budget. */
-  height: calc(100vh + 100vh);
+  height: calc(100svh + 100svh);
   padding: 0;
 }
 
 body.has-personal-note .personal-note-inner {
   position: sticky;
   top: 0;
-  height: 100vh;
-  overflow: hidden;
-  padding: 40px 32px;
+  /* min-height + svh: pin fits viewport but the 3 cards can grow + wrap
+     down if the viewport is short. NO overflow: hidden — if title + intro
+     + cards exceed the viewport, the page scrolls to reveal them. */
+  min-height: 100svh;
+  /* flex-start + generous padding-top so the heading sits near the top of
+     the pinned area instead of floating in vertical-centre (where Safari
+     fullscreen on a 13" MacBook clipped it against the section boundary). */
+  padding-top: clamp(4rem, 8vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: none;
   width: 100%;
   box-sizing: border-box;
@@ -1219,13 +1343,13 @@ body.has-personal-note .personal-note-points {
    section card-stacks directly over the personal-note's white card. Butter
    yellow fill (matches hero) for the whole journey stretch — "50 Creative
    Careers" area AND the polaroid grid below the dashed line — so they read
-   as one continuous block. margin-top: -100vh makes the journey rise over
+   as one continuous block. margin-top: -100svh makes the journey rise over
    the personal-note's scroll-budget zone as you scroll, mirroring how the
    personal-note card rises over the hero. */
 body.has-personal-note .journey {
   background: var(--bg);
   border-radius: 32px 32px 0 0;
-  margin-top: -100vh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
   position: relative;
@@ -1284,12 +1408,10 @@ body.has-personal-note .journey-sticky::before {
 .personal-note-title {
   font-family: 'Fraunces', serif;
   font-weight: 800;
-  font-size: clamp(36px, 5vw, 64px);
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  line-height: 1.1;
-  margin: 0 auto 36px;
-  max-width: 1000px;
+  margin-bottom: 36px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
 .personal-note-title em {
@@ -1299,10 +1421,11 @@ body.has-personal-note .journey-sticky::before {
 
 .personal-note-intro {
   font-family: 'Nunito', sans-serif;
-  font-size: clamp(16px, 1.25vw, 19px);
+  /* Fluid body copy: 14px → 20px across the range. */
+  font-size: clamp(14px, 0.85rem + 0.25vw, 20px);
   line-height: 1.8;
   color: var(--text-secondary);
-  max-width: 760px;
+  max-width: min(100% - 2rem, 760px);
   margin: 0 auto 72px;
 }
 
@@ -1315,18 +1438,13 @@ body.has-personal-note .journey-sticky::before {
 
 .personal-note-points {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  /* Auto-fit grid: columns stay at minimum 280px wide, reflow to 1-3 columns
+     based on available space. Replaces the old explicit 3-col default + a
+     @media (max-width: 900px) breakpoint that forced single-column. */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(20px, 2.5vw, 32px);
   max-width: 1200px;
   margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-  .personal-note-points {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-    gap: 20px;
-  }
 }
 
 .personal-note-card {
@@ -1400,7 +1518,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .about {
   position: relative;
   z-index: 2;
-  padding: 80px 32px 0;
+  /* Fluid 48–110px top, 16–48px sides. */
+  padding: clamp(48px, 6vw, 110px) clamp(16px, 4vw, 48px) 0;
   background: var(--surface);
   border-radius: 28px 28px 0 0;
   margin-top: -28px;
@@ -1535,10 +1654,14 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .journey-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  /* min-height + svh: pin fits viewport but can grow if content exceeds.
+     overflow: hidden kept — this is the journey's horizontal scroll-jack
+     track, which is intentionally 300vw wide and MUST be clipped at the
+     sticky boundary. It's not clipping user-reading content. */
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: max(80px, 10vh) 0 0;
+  padding: clamp(60px, 8vh, 120px) 0 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -1546,7 +1669,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .journey-title {
   flex-shrink: 0;
   text-align: center;
-  margin: 0 0 10px;
+  /* margin-block only — don't touch margin-inline so the shared headline
+     rule's `margin-inline: auto` can still centre the (narrow) title block
+     horizontally in its flex-column parent. */
+  margin-block: 0 10px;
   position: relative;
   z-index: 5;
   will-change: transform;
@@ -1661,12 +1787,13 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 .journey-careers-title {
   font-family: 'Fraunces', serif;
-  font-size: clamp(36px, 4.5vw, 64px);
   font-weight: 800;
   font-style: normal;
   color: var(--text-primary);
-  line-height: 1.1;
-  margin: 8px 0 8px;
+  /* margin-block only — preserves margin-inline: auto from the shared
+     headline rule. */
+  margin-block: 8px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
 }
 
 /* Mobile-only short intro — hidden on desktop, shown via @media (max-width: 768px) */
@@ -1760,7 +1887,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 .journey-heading {
   font-family: 'Fraunces', serif;
-  font-size: clamp(26px, 2.8vw, 38px);
+  /* Fluid 20px → 44px across 320–2560px. */
+  font-size: clamp(20px, 0.75rem + 1.4vw, 44px);
   font-weight: 400;
   font-style: normal;
   color: var(--text-primary);
@@ -2127,7 +2255,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   position: relative;
   z-index: 3;
   background: hsl(45, 85%, 95%);
-  padding: 96px 0 80px;
+  /* Fluid 56–120px top, 48–100px bottom. */
+  padding: clamp(56px, 7vw, 120px) 0 clamp(48px, 6vw, 100px);
   border-radius: 0;
   margin-top: 0;
   box-shadow: none;
@@ -2720,11 +2849,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   /* Three zones stacked into one scroll budget:
      1. Card reveal  →  1100px  (cards 1–5 slide up)
      2. Read pause   →   400px  (all cards visible, nothing moving — user can read card 5)
-     3. Services up  →  100vh   (services slides up to cover the sticky)
-     Plus the 100vh sticky base itself. */
-  height: calc(100vh + 1100px + 400px + 100vh);
+     3. Services up  →  100svh   (services slides up to cover the sticky)
+     Plus the 100svh sticky base itself. */
+  height: calc(100svh + 1100px + 400px + 100svh);
   border-radius: 32px 32px 0 0;
-  margin-top: -100vh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
 }
@@ -2732,7 +2861,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .why-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  /* min-height so cards + big-text can grow if needed; svh for safe Safari
+     chrome. overflow: hidden kept only for the card pile animation that
+     relies on clipping — this is a purely-decorative case, not content. */
+  min-height: 100svh;
   overflow: hidden;
   border-radius: 32px 32px 0 0;
 }
@@ -2749,7 +2881,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   line-height: 0.95;
   font-family: 'Fraunces', serif;
   font-weight: 900;
-  font-size: clamp(36px, 5vw, 64px);
+  /* Fluid 28px → 112px across 320–2560px (this is the big bg display). */
+  font-size: clamp(28px, 1rem + 4vw, 112px);
   color: var(--text-primary);
   opacity: 1;
   pointer-events: none;
@@ -2869,7 +3002,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 /* ── Alternate card layout (applied to all 6 why-cards) ──
    Text on top with a large faded ghost number above the title; character
-   illustration sits at the bottom-right. Sized to fit 3×2 grid within 100vh. */
+   illustration sits at the bottom-right. Sized to fit 3×2 grid within 100svh. */
 .why-card--alt {
   overflow: hidden;
   /* Reserve bottom space to match the .why-card-art height below. */
@@ -3096,15 +3229,22 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .cta-footer {
   position: relative;
   /* Card-stacking: rises from below to cover the pinned .services-sticky.
-     Services reserves 100vh at the end of its height for this slide-up. */
+     Services reserves 100svh at the end of its height for this slide-up. */
   z-index: 6;
   background: var(--bg);
   border-radius: 32px 32px 0 0;
-  margin-top: -100vh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
-  padding: 60px 32px 60px;
-  min-height: 100vh;
+  /* Heading-friendly top padding so "Call me, maybe?" has breathing room
+     from the section boundary instead of being pushed into the fold by
+     flex-center. */
+  padding-top: clamp(4rem, 8vh, 6rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  /* svh so the CTA always fits the viewport but grows when Call-me title +
+     desc + 4 contact pills + dancing-girl exceed a short viewport. */
+  min-height: 100svh;
 }
 
 .cta-box {
@@ -3143,9 +3283,9 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .cta-title {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  font-size: clamp(34px, 4.5vw, 48px);
   font-weight: 700;
   margin-bottom: 16px;
+  /* font-size / line-height / max-width come from the shared headline rule. */
   line-height: 1.2;
 }
 
@@ -3175,7 +3315,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 60px 28px 0;
+  /* Fluid footer padding: 40–72px top, 16–40px sides. */
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 3vw, 40px) 0;
 }
 
 .footer-links {
@@ -3211,18 +3352,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
    grids / release pins. Above that: two step-up breakpoints scale display type and
    padding so the layout doesn't feel lost in the middle of a wide monitor. */
 
-/* ── Wide desktop (≥1440px) — large laptops, 1080p monitors ── */
+/* ── Wide desktop (≥1440px) — large laptops, 1080p monitors ──
+   Typography is fully fluid via clamp() on the base rules — no font-size
+   overrides needed here anymore. This block only keeps the CONTAINER-width
+   bumps so wide screens get bigger copy regions (cards, grids, images).   */
 @media (min-width: 1440px) {
-  /* Display-size headlines get a viewport-aware bump so they grow with screen */
-  .hero-headline        { font-size: clamp(48px, 3.75vw, 72px); max-width: 1100px; }
-  .hero-subtext         { font-size: clamp(16px, 1.15vw, 19px); max-width: 880px; }
-  .section-title        { font-size: clamp(48px, 3.75vw, 64px); }
-  .why-big-text         { font-size: clamp(60px, 5.5vw, 88px); }
-  .personal-note-title  { font-size: clamp(56px, 4.5vw, 80px); }
-  .cta-title            { font-size: clamp(52px, 4vw, 72px); }
-  .journey-careers-title { font-size: clamp(48px, 4vw, 72px); }
-  .journey-heading      { font-size: clamp(32px, 2.5vw, 44px); }
-
   /* Hero gets more breathing room */
   .hero {
     padding-top: 140px;
@@ -3242,16 +3376,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   .about-photo-track img { width: 240px; height: 310px; }
 }
 
-/* ── Ultra-wide (≥1920px) — 2K displays, 4K laptops running at 1× scaling ── */
+/* ── Ultra-wide (≥1920px) — 2K displays, 4K laptops running at 1× scaling ──
+   Same story as 1440: typography is already fluid, only container widths
+   need to bump so the layout doesn't feel lost on big monitors. */
 @media (min-width: 1920px) {
-  .hero-headline        { font-size: clamp(64px, 3.75vw, 96px); }
-  .hero-subtext         { font-size: 20px; }
-  .section-title        { font-size: clamp(56px, 3.75vw, 80px); }
-  .why-big-text         { font-size: clamp(72px, 5.5vw, 112px); }
-  .personal-note-title  { font-size: clamp(64px, 4.5vw, 96px); }
-  .cta-title            { font-size: clamp(60px, 4vw, 88px); }
-  .journey-careers-title { font-size: clamp(56px, 4vw, 88px); }
-
   .hero {
     padding-top: 160px;
     padding-bottom: 100px;
@@ -3269,7 +3397,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
    animations/pins that don't survive shorter viewports and collapse multi-column
    grids to single stacks. */
 
-/* ── Tablet & small desktop (≤1024px) ── */
+/* ── Tablet & small desktop (≤1024px) ──
+   NB: typography is fully fluid via clamp() on the base rules, so this block
+   no longer overrides font-sizes — it only handles STRUCTURAL changes that
+   need a hard breakpoint (hiding decorative characters, releasing sticky
+   pins, etc). */
 @media (max-width: 1024px) {
   /* Side-parallax characters, marquee, and scroll-parallax decorations don't add value
      on narrower screens — hide them to free horizontal space. */
@@ -3295,7 +3427,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
 
   /* Release the sticky-pin on the Why-work section — the 3×2 grid doesn't fit the
-     100vh pin on shorter viewports, so we let the cards flow naturally instead. */
+     100svh pin on shorter viewports, so we let the cards flow naturally instead. */
   .why-work {
     height: auto;
     margin-top: 0;
@@ -3335,7 +3467,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     overflow: visible;
   }
 
-  /* CTA footer: remove the -100vh stack-margin so it doesn't clobber services on mobile. */
+  /* CTA footer: remove the -100svh stack-margin so it doesn't clobber services on mobile. */
   .cta-footer {
     margin-top: 0;
     height: auto;
@@ -3420,6 +3552,39 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
   .journey-row--flip .journey-photos { order: 2; }
   .journey-row--flip .journey-text   { order: 1; }
+
+  /* ── Tablet-range journey fix (Safari/iPad) ──
+     The journey's two-column panels + desktop-geometry driving-car don't fit
+     the 769–1024px range: text clips on the right, and the car overlaps
+     panel copy because its path is tuned for wider viewports. Stack each
+     panel into a single column, soften padding, and hide the car. The
+     horizontal scroll-jack itself (track translate via vertical scroll)
+     stays — only the inside of each panel simplifies. */
+  .journey-panel {
+    padding: 40px 32px;
+    grid-template-columns: 1fr !important;
+    align-items: start;
+    gap: 24px;
+  }
+  .journey-panel--a .journey-photos,
+  .journey-panel--b .journey-photos {
+    justify-self: center;
+    width: min(420px, 100%);
+  }
+  .journey-panel--a .journey-text,
+  .journey-panel--b .journey-text {
+    justify-self: start;
+    width: 100%;
+    max-width: 640px;
+  }
+  /* .journey-careers-title font-size is fluid via base clamp() — no override
+     needed here anymore. */
+  /* Car + dotted trail hidden — both rely on desktop-width geometry and
+     end up overlapping copy at tablet widths. */
+  .journey-car,
+  .journey-trail {
+    display: none !important;
+  }
 }
 
 /* ── Small screen / portrait tablet & large phones (≤768px) ── */
@@ -3439,7 +3604,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     padding-top: 60px;
   }
   .journey-title {
-    margin: 0 20px 16px;
+    /* margin-block only — don't clobber the shared headline's
+       margin-inline: auto. Horizontal breathing room on mobile comes from
+       the parent's padding-inline, not a title margin. */
+    margin-block: 0 16px;
   }
   /* Panels: each takes full 100vw, internals go single-column */
   .journey-panel {
@@ -3731,27 +3899,27 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
   /* Restore the sticky-pin pattern on Services (the ≤1024 rule released it).
      The CTA footer still card-stacks over it, so services keeps its own
-     100vh pin with 100vh of extra scroll budget for cta-footer overlap. */
+     100svh pin with 100svh of extra scroll budget for cta-footer overlap. */
   .services {
-    height: calc(100vh + 100vh);
-    margin-top: -100vh;
+    height: calc(100svh + 100svh);
+    margin-top: -100svh;
     border-radius: 28px 28px 0 0;
   }
   .services-sticky {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100svh;
     padding: 40px 20px 24px;
     overflow: hidden;
     border-radius: 28px 28px 0 0;
   }
   /* CTA footer: also re-enable the card-stack overlap (was released at ≤1024). */
   .cta-footer {
-    margin-top: -100vh;
-    height: 100vh;
+    margin-top: -100svh;
+    height: 100svh;
     border-radius: 28px 28px 0 0;
   }
-  /* Tighten services content so title + roles + 3 phrases all fit 100vh. */
+  /* Tighten services content so title + roles + 3 phrases all fit 100svh. */
   .services-title {
     font-size: clamp(22px, 6.2vw, 30px);
     margin-bottom: 4px;
@@ -3844,13 +4012,13 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
      at a time — each new card flies in from below and stacks on top.
      Only when all 6 are revealed does continued scroll advance. */
   .why-work {
-    height: calc(100vh + 1100px + 400px + 100vh);
-    margin-top: -100vh;
+    height: calc(100svh + 1100px + 400px + 100svh);
+    margin-top: -100svh;
   }
   .why-sticky {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100svh;
     padding: 60px 20px 20px;
     overflow: hidden;
   }
@@ -3939,29 +4107,15 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     gap: 20px;
   }
 
-  /* Fonts: shrink the largest display sizes so they don't swallow the viewport. */
-  .hero-headline {
-    font-size: clamp(26px, 6.5vw, 40px);
-  }
-  .section-title {
-    font-size: clamp(26px, 6vw, 40px);
-  }
-  .personal-note-title {
-    font-size: clamp(28px, 7vw, 40px);
-  }
+  /* Display headline font-sizes are handled by the shared .hero-headline,
+     .section-title, .personal-note-title, .journey-careers-title, .cta-title
+     rule in the base typography section — one clamp(1.75rem, 3vw+1rem, 4.5rem)
+     scale covers 320–2560px. No mobile-specific overrides here.
+     .why-big-text is intentionally huge background display and stays on its
+     own rule; .journey-heading is a subheading (H3) and keeps its own. */
   .why-big-text {
-    font-size: clamp(22px, 5.5vw, 34px);
     white-space: normal;
     line-height: 1.05;
-  }
-  .journey-careers-title {
-    font-size: clamp(28px, 7vw, 40px);
-  }
-  .cta-title {
-    font-size: clamp(28px, 7vw, 44px);
-  }
-  .journey-heading {
-    font-size: clamp(24px, 5.5vw, 32px);
   }
 
   /* About bio: tighten the padding so photo strip doesn't dominate. */
@@ -3993,17 +4147,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 }
 
-/* ── Mobile portrait (≤480px) ── */
+/* ── Mobile portrait (≤480px) ──
+   Typography is fluid via clamp() on the base rules, so this block only
+   keeps small-screen-specific STRUCTURAL tweaks (card padding, component
+   sizes) that don't fit cleanly into a fluid token. */
 @media (max-width: 480px) {
-  .hero {
-    padding: 88px 16px 32px;
-  }
-  .hero-headline {
-    font-size: clamp(24px, 7vw, 32px);
-  }
-  .hero-subtext {
-    font-size: 14px;
-  }
   .hero-video {
     width: min(280px, 80vw);
   }
