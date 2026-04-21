@@ -3420,6 +3420,40 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
   .journey-row--flip .journey-photos { order: 2; }
   .journey-row--flip .journey-text   { order: 1; }
+
+  /* ── Tablet-range journey fix (Safari/iPad) ──
+     The journey's two-column panels + desktop-geometry driving-car don't fit
+     the 769–1024px range: text clips on the right, and the car overlaps
+     panel copy because its path is tuned for wider viewports. Stack each
+     panel into a single column, soften padding, and hide the car. The
+     horizontal scroll-jack itself (track translate via vertical scroll)
+     stays — only the inside of each panel simplifies. */
+  .journey-panel {
+    padding: 40px 32px;
+    grid-template-columns: 1fr !important;
+    align-items: start;
+    gap: 24px;
+  }
+  .journey-panel--a .journey-photos,
+  .journey-panel--b .journey-photos {
+    justify-self: center;
+    width: min(420px, 100%);
+  }
+  .journey-panel--a .journey-text,
+  .journey-panel--b .journey-text {
+    justify-self: start;
+    width: 100%;
+    max-width: 640px;
+  }
+  .journey-careers-title {
+    font-size: clamp(40px, 6vw, 64px);
+  }
+  /* Car + dotted trail hidden — both rely on desktop-width geometry and
+     end up overlapping copy at tablet widths. */
+  .journey-car,
+  .journey-trail {
+    display: none !important;
+  }
 }
 
 /* ── Small screen / portrait tablet & large phones (≤768px) ── */
