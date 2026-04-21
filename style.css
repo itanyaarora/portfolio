@@ -148,11 +148,16 @@ p {
 .personal-note-title,
 .journey-careers-title,
 .cta-title {
-  /* 28px floor on mobile, 72px ceiling on large screens. Linear 3vw+1rem
-     preferred value keeps the scale predictable. */
-  font-size: clamp(1.75rem, 3vw + 1rem, 4.5rem);
+  /* 28px floor on mobile, 60px ceiling on large screens. 2.5vw+1rem keeps
+     the mid-range proportionate — the earlier 4.5rem ceiling felt
+     overwhelming on big monitors. */
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 3.75rem);
   line-height: 1.1;
-  max-width: 20ch;
+  /* ~32 characters per line gives 2–3 clean wrap lines on desktop for the
+     long titles like "Why I'm writing to you, California Burrito." and the
+     hero headline, while 90% viewport cap prevents edge-to-edge stretching
+     on narrow screens. */
+  max-width: min(90%, 32ch);
   margin-inline: auto;
   text-wrap: balance;
   overflow-wrap: break-word;
