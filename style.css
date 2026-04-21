@@ -1661,7 +1661,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: clamp(60px, 8vh, 120px) 0 0;
+  /* Generous top padding so "My journey" has breathing room from the
+     viewport's top edge during phase 1 of the scroll-jack. The JS lifts
+     the title up ~30vh during phase 2 to clear room for the polaroid
+     pile, so this floor needs to be comfortable on its own. */
+  padding: clamp(6rem, 12vh, 10rem) 0 0;
   overflow: hidden;
   box-sizing: border-box;
 }
