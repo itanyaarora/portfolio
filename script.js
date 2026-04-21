@@ -553,6 +553,12 @@ if (careersPolaroidGrid) {
   careersPolaroidGrid.addEventListener('pointerdown', (e) => {
     // Only left-click / touch / pen; ignore right-click etc.
     if (e.button !== 0 && e.pointerType === 'mouse') return;
+    // Don't hijack pointerdown when it lands on an interactive child
+    // (e.g., the "Watch on Instagram" anchor on the card back). The
+    // setPointerCapture call below would otherwise redirect the eventual
+    // pointerup + click away from the link, so hover styles fire but
+    // clicks do nothing.
+    if (e.target.closest('a, button')) return;
     isDraggingGrid = true;
     activePointer  = e.pointerId;
     dragStartX     = e.clientX;

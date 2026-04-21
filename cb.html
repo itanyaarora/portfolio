@@ -13,7 +13,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="video" href="calib_wave.webm" type="video/webm" fetchpriority="high">
+  <!-- Preload the CB loader frame (GIF rather than webm — Safari doesn't support
+       WebM alpha, so the webm version showed a black box behind the cartoon). -->
+  <link rel="preload" as="image" href="calib_wave.gif" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=142">
   <style>
     /* Critical loader styles, inlined so there's no flash before style.css parses */
@@ -153,11 +155,11 @@
 </head>
 <body>
 
-  <!-- PAGE LOADER: CB-branded signboard-wave video (webm w/ alpha) + greeting -->
+  <!-- PAGE LOADER: CB-branded signboard-wave GIF + greeting.
+       We use GIF (not webm) because Safari doesn't support WebM with alpha,
+       so the webm version rendered with a black background on macOS Safari. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <video class="loader-gif" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-      <source src="calib_wave.webm" type="video/webm">
-    </video>
+    <img class="loader-gif" src="calib_wave.gif" alt="" aria-hidden="true">
     <p class="loader-greeting" id="loaderGreeting">Hi California Burrito!</p>
   </div>
   <script>
