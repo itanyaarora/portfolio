@@ -82,15 +82,22 @@ html {
    patching of overflow, image sizing, and text wrapping.
    ============================================================ */
 
-/* Stop horizontal overflow at the html root. `overflow: clip` is preferred
-   (no scroll-container side effects), but Safari < 16 falls back to visible
-   without it, letting wide children (e.g. the 300vw journey track) push the
-   page past the viewport. `@supports` keeps modern browsers on `clip`. */
-html {
+/* Baseline safety net for html + body:
+   - overflow-x: hidden stops horizontal runaway (wide children like the
+     300vw journey track). `clip` where supported (no scroll-container
+     side effects); `hidden` as fallback for Safari < 16.
+   - NO vertical overflow restriction — page MUST scroll when content
+     exceeds the viewport (iPhone SE, short laptop, split-screen).
+   - min-height: 100svh so short content pages still fill the viewport
+     rather than leaving a yellow strip below the fold. */
+html,
+body {
+  min-height: 100svh;
   overflow-x: hidden;
 }
 @supports (overflow: clip) {
-  html { overflow-x: clip; }
+  html,
+  body { overflow-x: clip; }
 }
 
 body {
@@ -239,15 +246,25 @@ a {
   position: sticky;
   top: 0;
   z-index: 1;
-  /* Fluid section padding: 60–140px vertically, 16–48px horizontally.
-     Scales with viewport instead of snapping at breakpoints. */
-  padding: clamp(60px, 8vw, 140px) clamp(16px, 4vw, 48px) clamp(40px, 5vw, 80px);
   text-align: center;
-  min-height: 100dvh;
+  /* Sized by CONTENT, not viewport. min-height lets the hero fill the screen
+     when there's room, but expand naturally when the polaroid + headline +
+     subtext + CTA are taller than the viewport (short laptops, iPhone SE).
+     svh = smallest viewport height — safe from Safari's dynamic chrome. */
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  /* Vertical padding uses vh units so it shrinks on short screens, leaving
+     more room for the content itself. */
+  padding-block: clamp(2rem, 8vh, 6rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  /* Flex gap replaces individual margin-bottom chains so inner elements share
+     consistent, vh-aware spacing. */
+  gap: clamp(1rem, 3vh, 2rem);
+  /* NO overflow: hidden — if content is taller than the viewport the page
+     scrolls naturally instead of clipping. */
 }
 
 /* ===== FULL-PAGE GRAIN TEXTURE ===== */
@@ -368,7 +385,12 @@ body::after {
 .hero-video {
   position: relative;
   z-index: 2;
-  margin-bottom: 24px;
+  /* margin-bottom removed — parent .hero uses flex gap for spacing. */
+  /* Cap polaroid at 45% of viewport height so short screens (600px laptops,
+     iPhone SE) can still fit the headline + subtext + CTA below it. Width
+     auto so the polaroid's aspect ratio is preserved. */
+  max-height: 45vh;
+  width: auto;
 }
 
 /* Outer container — polaroid frame */
@@ -381,6 +403,16 @@ body::after {
   transform: rotate(-2deg);
   box-shadow: 0 8px 36px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
   overflow: visible;
+  /* Cap at 45% of viewport height so the polaroid shrinks on short screens
+     (600px laptops, iPhone SE) instead of pushing the headline off-screen. */
+  max-height: 45vh;
+}
+/* Inner video fills available space within the capped container. */
+.video-container video,
+.video-container .video-wrapper {
+  max-height: calc(45vh - 54px); /* 45vh minus the polaroid frame padding */
+  height: auto;
+  width: auto;
 }
 
 /* The video photo area */
@@ -455,13 +487,14 @@ body::after {
 .hero-headline {
   font-family: 'Fraunces', serif;
   font-style: normal;
-  /* Fluid 28px → 96px across 320–2560px viewports. One rule spans every
-     screen size; no more per-breakpoint font-size overrides needed. */
-  font-size: clamp(28px, 1rem + 3.5vw, 96px);
+  /* Fluid font size bound by the SMALLER of viewport width and height.
+     On short-wide screens (e.g. 1440×600 split-screen), 8vh caps the size
+     so the headline doesn't eat the whole viewport vertically. */
+  font-size: clamp(1.75rem, min(5vw, 7vh), 5rem);
   font-weight: 700;
   line-height: 1.2;
   max-width: min(100% - 2rem, 900px);
-  margin-bottom: 24px;
+  /* margin-bottom removed — parent .hero uses flex gap for spacing. */
   position: relative;
   z-index: 2;
 }
@@ -936,15 +969,15 @@ body::after {
   position: relative;
   z-index: 5;
   /* Card-stacking, same pattern as .why-work:
-     1. 100dvh sticky pin  (services content stays in viewport)
-     2. 100dvh CTA slide-up (cta-footer rises from below to cover us).
-     The -100dvh margin-top is what lets services itself slide over the
-     why-work pin above. The extra 100dvh of height is the scroll budget
+     1. 100svh sticky pin  (services content stays in viewport)
+     2. 100svh CTA slide-up (cta-footer rises from below to cover us).
+     The -100svh margin-top is what lets services itself slide over the
+     why-work pin above. The extra 100svh of height is the scroll budget
      for the NEXT card (cta) to slide over THIS pin. */
-  height: calc(100dvh + 100dvh);
+  height: calc(100svh + 100svh);
   background: var(--surface);
   border-radius: 32px 32px 0 0;
-  margin-top: -100dvh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
 }
@@ -953,16 +986,22 @@ body::after {
 .services-sticky {
   position: sticky;
   top: 0;
-  height: 100dvh;
-  overflow: hidden;
+  /* min-height, not height — so if the role-groups + Yes/No box + CTA are
+     taller than the viewport (short laptop, iPhone SE), the section grows
+     naturally and the page scrolls. svh = safe-from-Safari's dynamic UI. */
+  min-height: 100svh;
+  /* NO overflow: hidden — was clipping content when the viewport was
+     shorter than the content itself. Page scroll handles the overflow. */
   border-radius: 32px 32px 0 0;
-  /* Fluid padding: 48–90px top, 16–48px sides, 24–50px bottom. */
-  padding: clamp(48px, 6vw, 90px) clamp(16px, 4vw, 48px) clamp(24px, 3vw, 50px);
+  /* Fluid padding; vh-aware block padding shrinks on short screens. */
+  padding-block: clamp(2rem, 6vh, 5rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  gap: clamp(1rem, 3vh, 2rem);
 }
 
 .services-title {
@@ -1238,20 +1277,23 @@ body::after {
 body.has-personal-note .personal-note {
   display: block;
   /* Card-stacking pattern (same as .services / .cta-footer):
-     1. 100dvh sticky pin     → personal-note content stays in view
-     2. 100dvh scroll budget  → journey slides up from below as a yellow card
+     1. 100svh sticky pin     → personal-note content stays in view
+     2. 100svh scroll budget  → journey slides up from below as a yellow card
      The inner .personal-note-inner handles the sticky pin so the section itself
      can provide the extra scroll budget. */
-  height: calc(100dvh + 100dvh);
+  height: calc(100svh + 100svh);
   padding: 0;
 }
 
 body.has-personal-note .personal-note-inner {
   position: sticky;
   top: 0;
-  height: 100dvh;
-  overflow: hidden;
-  padding: 40px 32px;
+  /* min-height + svh: pin fits viewport but the 3 cards can grow + wrap
+     down if the viewport is short. NO overflow: hidden — if title + intro
+     + cards exceed the viewport, the page scrolls to reveal them. */
+  min-height: 100svh;
+  padding-block: clamp(2rem, 6vh, 5rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1271,13 +1313,13 @@ body.has-personal-note .personal-note-points {
    section card-stacks directly over the personal-note's white card. Butter
    yellow fill (matches hero) for the whole journey stretch — "50 Creative
    Careers" area AND the polaroid grid below the dashed line — so they read
-   as one continuous block. margin-top: -100dvh makes the journey rise over
+   as one continuous block. margin-top: -100svh makes the journey rise over
    the personal-note's scroll-budget zone as you scroll, mirroring how the
    personal-note card rises over the hero. */
 body.has-personal-note .journey {
   background: var(--bg);
   border-radius: 32px 32px 0 0;
-  margin-top: -100dvh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
   position: relative;
@@ -1585,10 +1627,14 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .journey-sticky {
   position: sticky;
   top: 0;
-  height: 100dvh;
+  /* min-height + svh: pin fits viewport but can grow if content exceeds.
+     overflow: hidden kept — this is the journey's horizontal scroll-jack
+     track, which is intentionally 300vw wide and MUST be clipped at the
+     sticky boundary. It's not clipping user-reading content. */
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: max(80px, 10vh) 0 0;
+  padding: clamp(60px, 8vh, 120px) 0 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -2773,11 +2819,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   /* Three zones stacked into one scroll budget:
      1. Card reveal  →  1100px  (cards 1–5 slide up)
      2. Read pause   →   400px  (all cards visible, nothing moving — user can read card 5)
-     3. Services up  →  100dvh   (services slides up to cover the sticky)
-     Plus the 100dvh sticky base itself. */
-  height: calc(100dvh + 1100px + 400px + 100dvh);
+     3. Services up  →  100svh   (services slides up to cover the sticky)
+     Plus the 100svh sticky base itself. */
+  height: calc(100svh + 1100px + 400px + 100svh);
   border-radius: 32px 32px 0 0;
-  margin-top: -100dvh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
 }
@@ -2785,7 +2831,10 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .why-sticky {
   position: sticky;
   top: 0;
-  height: 100dvh;
+  /* min-height so cards + big-text can grow if needed; svh for safe Safari
+     chrome. overflow: hidden kept only for the card pile animation that
+     relies on clipping — this is a purely-decorative case, not content. */
+  min-height: 100svh;
   overflow: hidden;
   border-radius: 32px 32px 0 0;
 }
@@ -2923,7 +2972,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
 /* ── Alternate card layout (applied to all 6 why-cards) ──
    Text on top with a large faded ghost number above the title; character
-   illustration sits at the bottom-right. Sized to fit 3×2 grid within 100dvh. */
+   illustration sits at the bottom-right. Sized to fit 3×2 grid within 100svh. */
 .why-card--alt {
   overflow: hidden;
   /* Reserve bottom space to match the .why-card-art height below. */
@@ -3150,16 +3199,19 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 .cta-footer {
   position: relative;
   /* Card-stacking: rises from below to cover the pinned .services-sticky.
-     Services reserves 100dvh at the end of its height for this slide-up. */
+     Services reserves 100svh at the end of its height for this slide-up. */
   z-index: 6;
   background: var(--bg);
   border-radius: 32px 32px 0 0;
-  margin-top: -100dvh;
+  margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
               0 -4px 20px rgba(0, 0, 0, 0.06);
-  /* Fluid padding: 40–90px vertically, 16–48px horizontally. */
-  padding: clamp(40px, 5vw, 90px) clamp(16px, 4vw, 48px);
-  min-height: 100dvh;
+  /* vh-aware block padding shrinks on short screens. */
+  padding-block: clamp(2rem, 6vh, 5rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+  /* svh so the CTA always fits the viewport but grows when Call-me title +
+     desc + 4 contact pills + dancing-girl exceed a short viewport. */
+  min-height: 100svh;
 }
 
 .cta-box {
@@ -3343,7 +3395,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
 
   /* Release the sticky-pin on the Why-work section — the 3×2 grid doesn't fit the
-     100dvh pin on shorter viewports, so we let the cards flow naturally instead. */
+     100svh pin on shorter viewports, so we let the cards flow naturally instead. */
   .why-work {
     height: auto;
     margin-top: 0;
@@ -3383,7 +3435,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     overflow: visible;
   }
 
-  /* CTA footer: remove the -100dvh stack-margin so it doesn't clobber services on mobile. */
+  /* CTA footer: remove the -100svh stack-margin so it doesn't clobber services on mobile. */
   .cta-footer {
     margin-top: 0;
     height: auto;
@@ -3812,27 +3864,27 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
   /* Restore the sticky-pin pattern on Services (the ≤1024 rule released it).
      The CTA footer still card-stacks over it, so services keeps its own
-     100dvh pin with 100dvh of extra scroll budget for cta-footer overlap. */
+     100svh pin with 100svh of extra scroll budget for cta-footer overlap. */
   .services {
-    height: calc(100dvh + 100dvh);
-    margin-top: -100dvh;
+    height: calc(100svh + 100svh);
+    margin-top: -100svh;
     border-radius: 28px 28px 0 0;
   }
   .services-sticky {
     position: sticky;
     top: 0;
-    height: 100dvh;
+    height: 100svh;
     padding: 40px 20px 24px;
     overflow: hidden;
     border-radius: 28px 28px 0 0;
   }
   /* CTA footer: also re-enable the card-stack overlap (was released at ≤1024). */
   .cta-footer {
-    margin-top: -100dvh;
-    height: 100dvh;
+    margin-top: -100svh;
+    height: 100svh;
     border-radius: 28px 28px 0 0;
   }
-  /* Tighten services content so title + roles + 3 phrases all fit 100dvh. */
+  /* Tighten services content so title + roles + 3 phrases all fit 100svh. */
   .services-title {
     font-size: clamp(22px, 6.2vw, 30px);
     margin-bottom: 4px;
@@ -3925,13 +3977,13 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
      at a time — each new card flies in from below and stacks on top.
      Only when all 6 are revealed does continued scroll advance. */
   .why-work {
-    height: calc(100dvh + 1100px + 400px + 100dvh);
-    margin-top: -100dvh;
+    height: calc(100svh + 1100px + 400px + 100svh);
+    margin-top: -100svh;
   }
   .why-sticky {
     position: sticky;
     top: 0;
-    height: 100dvh;
+    height: 100svh;
     padding: 60px 20px 20px;
     overflow: hidden;
   }
