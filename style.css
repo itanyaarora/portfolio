@@ -615,24 +615,30 @@ body::after {
 /* ===== CTA CONTACTS — always visible ===== */
 .cta-contacts {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
+  /* flex-start so pill rows align with the "Wanna dance?" button above
+     them. justify-content: center was centring each wrapped row on its
+     own total width, which left the rows looking offset from each other
+     and from the button. */
+  justify-content: flex-start;
 }
 
 .contact-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 9px;
+  padding: 11px 18px;
   background: #111;
   color: #fff;
   border-radius: 100px;
   text-decoration: none;
   font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 600;
   transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
 }
 
 .contact-pill:hover {
@@ -711,14 +717,17 @@ body::after {
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  transition: background 0.2s ease, transform 0.2s ease;
   flex-shrink: 0;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.2px;
   white-space: nowrap;
-  min-width: 228px;           /* stable size across both labels */
+  /* No min-width — let button size to its label. "Wanna dance?" is
+     short so the button is compact; "Shh, I am in a meeting" is longer
+     and the button grows for it. A fixed 228px stable width meant
+     "Wanna dance?" sat in too much empty space. */
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .mute-btn:hover {
@@ -3291,13 +3300,19 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   margin-bottom: 16px;
   /* font-size / line-height / max-width come from the shared headline rule. */
   line-height: 1.2;
+  /* Override the shared .hero-headline/.section-title etc. rule's
+     margin-inline: auto — in the CTA footer we want the title to
+     align LEFT with the desc + contact pills below it, not float
+     centered within the content box. */
+  margin-inline: 0;
 }
 
 .cta-desc {
   font-size: 13px;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 28px;
+  margin: 0 0 28px;
+  max-width: 44ch;
 }
 
 .cta-character {
