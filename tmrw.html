@@ -13,9 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Preload the TMRW loader SVG. SVG renders natively at any size with
-       clean alpha on every browser — no codec gotchas. -->
-  <link rel="preload" as="image" href="HeyTMRW.svg" fetchpriority="high">
+  <!-- Preload the TMRW loader APNG. Chroma-keyed from tmrw_hey.webm because
+       the raw webm had yuv420p (no real alpha channel) with opaque-black
+       backgrounds baked into the frames — same broken-alpha shape as the
+       CaliB webm. The APNG tags all near-black pixels transparent so the
+       cartoon sits cleanly on butter-yellow. -->
+  <link rel="preload" as="image" href="tmrw_hey.apng" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=159">
   <style>
     /* Critical loader styles, inlined so there's no flash before style.css parses */
@@ -155,9 +158,12 @@
 </head>
 <body>
 
-  <!-- PAGE LOADER: TMRW-branded "Hey TMRW" SVG + greeting. -->
+  <!-- PAGE LOADER: TMRW-branded "Hey TMRW" APNG + greeting.
+       The source tmrw_hey.webm was yuv420p (no real alpha channel) — same
+       black-background problem as the CaliB webm had. Chroma-keyed to
+       APNG so the cartoon sits cleanly on butter-yellow. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <img class="loader-gif" src="HeyTMRW.svg" alt="" aria-hidden="true">
+    <img class="loader-gif" src="tmrw_hey.apng" alt="" aria-hidden="true">
     <p class="loader-greeting" id="loaderGreeting">Hi TMRW!</p>
   </div>
   <script>
