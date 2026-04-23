@@ -278,22 +278,23 @@
       <h2 class="personal-note-title" id="personalNoteTitle"></h2>
       <p class="personal-note-intro" id="personalNoteIntro"></p>
 
-      <!-- Honest PS up top so it's visible in every viewport size.
-           Originally sat below the two cards, but on narrower viewports
-           the tall polaroid pushed it below the fold. This placement
-           makes it the second thing after the intro. -->
+      <!-- Honest PS up top. Sits under the title (the intro line is empty
+           on this page — companies.json has no `intro` for TMRW, and
+           .personal-note-intro:empty hides it via CSS). Acknowledges the
+           background gap without explicitly calling out the MBA
+           requirement in the posting. -->
       <p style="
         font-family: 'Nunito', sans-serif;
         font-style: italic;
         font-size: 13px;
         color: var(--muted, hsl(30, 10%, 40%));
         max-width: 58ch;
-        margin: -1.5rem auto 2.5rem;
+        margin: 0 auto 2.5rem;
         text-align: center;
         line-height: 1.6;
         padding: 0 1rem;
       ">
-        PS: I noticed the posting asks for a Tier-1 MBA. I don't have one &mdash; but the rest of this page is my case for why that's OK.
+        Coming from an unusual background for this role, I know. Keep scrolling &mdash; the rest of this page is my case for why I can still be a good fit.
       </p>
 
       <div class="personal-note-points personal-note-points--cb" id="personalNotePoints">
