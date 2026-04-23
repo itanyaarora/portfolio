@@ -618,7 +618,11 @@ body::after {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
-  justify-content: center;
+  /* flex-start so pill rows align with the "Wanna dance?" button above
+     them. justify-content: center was centring each wrapped row on its
+     own total width, which left the rows looking offset from each other
+     and from the button. */
+  justify-content: flex-start;
 }
 
 .contact-pill {
