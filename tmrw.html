@@ -286,16 +286,20 @@
           <p class="personal-note-card-body">Anyone around me will tell you so. I've been looking for a role where I get to work on products I'm genuinely passionate about, and a house of <em>eight clothing brands</em> puts TMRW right at the top of my list.</p>
         </div>
 
-        <!-- Middle, polaroid photo of Tanya. Swap tanya-3.jpg for any
-             face-visible portrait when content direction changes. -->
+        <!-- Middle polaroid: shopping loop. MP4 is used instead of GIF
+             because a well-compressed MP4 of the same 8s clip is ~12×
+             smaller than even a palette-optimised GIF (966 KB vs 11.5 MB).
+             No transparency needed here — the polaroid frame is opaque. -->
         <figure class="personal-note-media">
           <div class="polaroid-tape" style="--tape: hsla(44, 90%, 72%, 0.85); --tape-rot: 3deg"></div>
-          <img
+          <video
             class="personal-note-media-video"
-            src="personal_photos/tanya-3.jpg"
-            alt=""
+            autoplay muted loop playsinline
+            preload="auto"
             aria-hidden="true">
-          <figcaption class="personal-note-media-label">Hi, it's me</figcaption>
+            <source src="shopping.mp4" type="video/mp4">
+          </video>
+          <figcaption class="personal-note-media-label">Me, every weekend</figcaption>
         </figure>
 
         <!-- Card 2, appreciation of the portfolio's scale story -->
