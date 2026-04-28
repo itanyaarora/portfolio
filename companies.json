@@ -129,5 +129,17 @@
     "personalNote": {
       "title": "Why I'm writing to <em>you</em>, TMRW."
     }
+  },
+
+  "elfina": {
+    "displayName": "Elfina",
+    "heroHeadline": "A brand built on taste<br>needs an operator who has it.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Seven creative careers in 18 months. Built this entire site with Claude Code over a weekend. Taste and judgment is the bar. That's the part I'm most confident about.",
+    "ctaTitle": "Let's talk about Founder's Office at Elfina.",
+    "ctaDesc": "No pitch. No pressure. 20 minutes to see if I'm the bet you'd take.",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, Elfina."
+    }
   }
 }
