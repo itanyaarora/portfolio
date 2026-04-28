@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elrow Bangalore — Social Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0818;
+    --surface: #15122e;
+    --surface-2: #1f1a40;
+    --ink: #fffaf0;
+    --soft: #c8c2e0;
+    --muted: #807a9e;
+    --pink: #ff3ea5;
+    --magenta: #ff1493;
+    --yellow: #ffd23f;
+    --orange: #ff7a00;
+    --mint: #2ee5c1;
+    --cyan: #00d4ff;
+    --purple: #8b5cf6;
+    --green: #00ff88;
+    --line: rgba(255,255,255,0.1);
+    --rainbow: linear-gradient(90deg, #ff1493 0%, #ff3ea5 15%, #ff7a00 30%, #ffd23f 45%, #00ff88 60%, #2ee5c1 75%, #00d4ff 88%, #8b5cf6 100%);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(700px 400px at 88% -5%, rgba(255,62,165,0.18), transparent 55%),
+      radial-gradient(600px 400px at 5% 25%, rgba(255,210,63,0.10), transparent 55%),
+      radial-gradient(800px 500px at 95% 60%, rgba(46,229,193,0.10), transparent 55%),
+      radial-gradient(700px 400px at -5% 90%, rgba(139,92,246,0.12), transparent 55%),
+      radial-gradient(500px 350px at 50% 50%, rgba(255,122,0,0.06), transparent 55%),
+      var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+  }
+  /* Halftone comic-book dot pattern overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(255,62,165,0.08) 1px, transparent 1px),
+      radial-gradient(rgba(46,229,193,0.06) 1px, transparent 1px);
+    background-size: 28px 28px, 44px 44px;
+    background-position: 0 0, 14px 22px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Confetti scatter */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(45deg, var(--pink) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--yellow) 25%, transparent 25%),
+      linear-gradient(45deg, var(--mint) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--orange) 25%, transparent 25%);
+    background-size: 6px 6px, 8px 8px, 5px 5px, 7px 7px;
+    background-position: 12% 8%, 88% 18%, 6% 72%, 92% 88%;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 70px 28px 110px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hero */
+  header {
+    margin-bottom: 60px;
+    position: relative;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, var(--yellow) 30%, transparent 31%) 0 0,
+                radial-gradient(circle, var(--pink) 30%, transparent 31%) 12px 6px,
+                radial-gradient(circle, var(--mint) 30%, transparent 31%) 24px 16px;
+    background-size: 8px 8px;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255,62,165,0.12);
+    border: 1px solid rgba(255,62,165,0.4);
+    border-radius: 999px;
+  }
+  h1 {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    font-size: clamp(48px, 8vw, 84px);
+    line-height: 0.95;
+    margin: 0;
+    background: linear-gradient(95deg, #fff 0%, var(--yellow) 20%, var(--orange) 38%, var(--pink) 55%, var(--magenta) 70%, var(--purple) 88%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    filter: drop-shadow(0 4px 20px rgba(255,62,165,0.3));
+  }
+
+  /* Section heading with rainbow bar */
+  .section-h {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 90px 0 36px;
+    padding-bottom: 16px;
+    position: relative;
+    border-bottom: 3px solid transparent;
+    border-image: var(--rainbow) 1;
+  }
+  .section-h .label {
+    font-family: 'Bebas Neue', 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--mint);
+    font-weight: 400;
+  }
+  .section-h .num {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Idea spreads */
+  .idea {
+    margin: 48px 0 80px;
+    position: relative;
+  }
+  .idea .index {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(64px, 10vw, 112px);
+    font-weight: 900;
+    line-height: 0.85;
+    margin-bottom: -8px;
+    background: linear-gradient(135deg, var(--pink), var(--orange), var(--yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.04em;
+    filter: drop-shadow(0 4px 16px rgba(255,62,165,0.25));
+  }
+  .idea:nth-of-type(2) .index {
+    background: linear-gradient(135deg, var(--mint), var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 4px 16px rgba(46,229,193,0.25));
+  }
+  .idea h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(34px, 4.6vw, 48px);
+    margin: 0 0 14px;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .idea .tagline {
+    font-size: 18px;
+    color: var(--yellow);
+    font-style: italic;
+    margin-bottom: 28px;
+    font-weight: 500;
+    padding-left: 12px;
+    border-left: 3px solid var(--yellow);
+  }
+  .idea:nth-of-type(2) .tagline {
+    color: var(--mint);
+    border-left-color: var(--mint);
+  }
+  .idea p {
+    font-size: 16px;
+    color: var(--soft);
+    margin: 14px 0;
+    line-height: 1.75;
+  }
+  .idea p strong { color: var(--ink); font-weight: 600; }
+  .idea p em { color: var(--yellow); font-style: italic; }
+  .idea:nth-of-type(2) p em { color: var(--mint); }
+  .idea .why {
+    margin-top: 28px;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: var(--ink);
+    background: linear-gradient(90deg, rgba(255,210,63,0.12), transparent);
+    border-left: 4px solid var(--yellow);
+    border-radius: 0 8px 8px 0;
+    font-weight: 500;
+  }
+  .idea .why strong { color: var(--yellow); }
+
+  /* Banner image — small supporting visual, not dominant */
+  .banner-img {
+    margin: 22px 0 26px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--rainbow);
+    padding: 2px;
+    box-shadow: 0 8px 24px rgba(255,62,165,0.18);
+  }
+  .banner-img-inner {
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16 / 9;
+  }
+  .banner-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Tier cards (caravan) */
+  .tiers {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .tier {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 26px 30px;
+    border-left: 6px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .tier::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at top right, currentColor, transparent 60%);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .tier.a { border-left-color: var(--pink); color: var(--pink); }
+  .tier.b { border-left-color: var(--yellow); color: var(--yellow); }
+  .tier.c { border-left-color: var(--mint); color: var(--mint); }
+  .tier .tier-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .tier .tier-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .tier.a .tier-label { color: var(--pink); }
+  .tier.b .tier-label { color: var(--yellow); }
+  .tier.c .tier-label { color: var(--mint); }
+  .tier .tier-stats {
+    font-size: 11px;
+    color: var(--soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tier h4 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    margin: 0 0 12px;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+  .tier p {
+    font-size: 14px;
+    color: var(--soft);
+    margin: 8px 0;
+    line-height: 1.7;
+  }
+  .tier p strong { color: var(--ink); }
+
+  /* Tier C — split layout with YouTube */
+  .tier.c .split {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-top: 12px;
+    align-items: start;
+  }
+  .yt-frame {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #000;
+    aspect-ratio: 9/16;
+    position: relative;
+  }
+  .yt-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .yt-caption {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+  .yt-caption a { color: var(--mint); text-decoration: none; }
+  .yt-caption a:hover { text-decoration: underline; }
+  @media (max-width: 700px) {
+    .tier.c .split { grid-template-columns: 1fr; }
+  }
+
+  /* Smaller ideas — colored cards */
+  .small-ideas {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .small {
+    padding: 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  .small::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+  .small:nth-child(1)::after { background: var(--pink); }
+  .small:nth-child(2)::after { background: var(--orange); }
+  .small:nth-child(3)::after { background: var(--mint); }
+  .small:nth-child(4)::after { background: var(--purple); }
+  .small .num-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .small:nth-child(1) .num-tag { color: var(--pink); }
+  .small:nth-child(2) .num-tag { color: var(--orange); }
+  .small:nth-child(3) .num-tag { color: var(--mint); }
+  .small:nth-child(4) .num-tag { color: var(--purple); }
+  .small h5 {
+    font-family: 'Archivo Black', sans-serif;
+    margin: 6px 0 8px;
+    font-size: 19px;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .small p {
+    margin: 0;
+    color: var(--soft);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  @media (max-width: 720px) {
+    .small-ideas { grid-template-columns: 1fr; }
+  }
+
+  /* Sample reels — featured larger */
+  .section-note {
+    margin: -8px 0 24px;
+    color: var(--soft);
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 600px;
+  }
+  .section-note a {
+    color: var(--pink);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,62,165,0.4);
+  }
+  .section-note a:hover {
+    color: var(--yellow);
+    border-bottom-color: var(--yellow);
+  }
+  .reels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .reel-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .reel-card:nth-child(1) { box-shadow: 0 0 0 2px rgba(255,62,165,0.4), 0 12px 32px rgba(255,62,165,0.12); }
+  .reel-card:nth-child(2) { box-shadow: 0 0 0 2px rgba(46,229,193,0.4), 0 12px 32px rgba(46,229,193,0.12); }
+  .reel-card .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .reel-card .reel-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .reel-card:nth-child(1) .reel-num { color: var(--pink); }
+  .reel-card:nth-child(2) .reel-num { color: var(--mint); }
+  .reel-card .reel-style {
+    font-size: 11px;
+    color: var(--soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .reel-card .embed-wrap {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 720px;
+  }
+  .reel-card .embed-wrap blockquote.instagram-media {
+    margin: 0 !important;
+    border-radius: 4px;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+  .reel-card .reel-link {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .reel-card .reel-link:hover { color: var(--mint); }
+  @media (max-width: 700px) {
+    .reels { grid-template-columns: 1fr; }
+  }
+
+  /* Closing */
+  .closing {
+    margin-top: 90px;
+    padding: 36px 32px;
+    background: var(--rainbow);
+    border-radius: 12px;
+    position: relative;
+  }
+  .closing-inner {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin: 3px;
+  }
+  .closing p {
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0;
+    font-weight: 500;
+  }
+  .closing p em {
+    background: linear-gradient(90deg, var(--yellow), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: italic;
+    font-weight: 700;
+  }
+  .footer-note {
+    margin-top: 60px;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .footer-note::before, .footer-note::after {
+    content: "★";
+    color: var(--pink);
+    margin: 0 12px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header>
+      <div class="eyebrow">Pitch · Buzzlab · Elrow Bangalore</div>
+      <h1>The Social Plan.</h1>
+    </header>
+
+    <!-- BIG IDEAS -->
+    <div class="section-h">
+      <span class="label">The big ideas</span>
+      <span class="num">02 concepts</span>
+    </div>
+
+    <!-- IDEA 01 -->
+    <article class="idea">
+      <div class="index">01</div>
+      <h2>Sell the European Summer.</h2>
+      <div class="tagline">Europe's most colorful festival is coming to Bangalore.</div>
+
+      <div class="banner-img">
+        <div class="banner-img-inner">
+          <img src="europe.jpg" alt="European summer aesthetic — reference banner">
+        </div>
+      </div>
+
+      <p>European summer is the dominant aesthetic on Reels right now — Mediterranean palettes, Ibiza beach clubs, golden-hour parties. Elrow is <em>literally</em> Europe's biggest experiential festival, born in Barcelona. We don't manufacture the trend; we plug into it.</p>
+
+      <p><strong>The execution:</strong> high-quality, premium-cut hero reels. Cinematic colour grading, beat-synced edits, treated like fashion campaign films. Footage stack pulled from Elrow's Ibiza, Madrid &amp; London archives, layered over Bangalore plates for the "it's coming home" reveal. The reference photo above is the world — every frame should feel like that.</p>
+
+      <div class="why"><strong>Why it cracks:</strong> The European summer cluster has algorithmic tailwind. Premium edits in a category already getting served = guaranteed reach.</div>
+    </article>
+
+    <!-- IDEA 02 -->
+    <article class="idea">
+      <div class="index">02</div>
+      <h2>The Color Caravan Campaign.</h2>
+      <div class="tagline">"Coming to Bangalore" — made physical.</div>
+
+      <div class="banner-img">
+        <div class="banner-img-inner">
+          <img src="caravan.jpg" alt="Color caravan reference — DJ truck through Bangalore">
+        </div>
+      </div>
+
+      <p>An open-top vehicle rolls through Bangalore: a live DJ, three or four costumed Elrow characters, confetti cannons firing as it moves. Loud music, full theatre. Elrow's brand promise — colorful chaos — taken out of the venue and dropped onto the street.</p>
+
+      <p><strong>The honest read on feasibility:</strong> a fully mobile activation is high-budget and high-permission. Bangalore Traffic Police, multi-jurisdiction police clearance, sound permits, RTO approval, music licensing — realistically 5–8 separate approvals over 3–4 weeks. So we plan for three versions, descending in budget and friction.</p>
+
+      <div class="tiers">
+
+        <div class="tier a">
+          <div class="tier-meta">
+            <span class="tier-label">Tier A · The Full Caravan</span>
+            <span class="tier-stats">High budget · Hard permissions</span>
+          </div>
+          <h4>Driving through Bangalore.</h4>
+          <p>Full mobile activation across 5–6 high-foot-traffic stops — Indiranagar, Koramangala, Church Street, MG Road, UB City. Drone overhead, GoPro on truck, ground reaction cam. One shoot day yields 6–8 reels + an aftermovie + organic UGC + likely press pickup.</p>
+          <p><strong>Risk:</strong> permits may not clear in time, or budget may not cover end-to-end production.</p>
+        </div>
+
+        <div class="tier b">
+          <div class="tier-meta">
+            <span class="tier-label">Tier B · Stationary Setup</span>
+            <span class="tier-stats">Mid budget · Easy permissions</span>
+          </div>
+          <h4>Park-and-perform.</h4>
+          <p>Same caravan, same characters, same DJ — but parked at a single high-impact location (UB City, 1MG, a cafe parking, an open-air venue). People come to the spectacle. Permits drop to property-owner approval + sound permit only. ~80% of the visual content, ~30% of the production friction.</p>
+          <p><strong>Risk:</strong> lower organic spread without the moving-through-city angle.</p>
+        </div>
+
+        <div class="tier c">
+          <div class="tier-meta">
+            <span class="tier-label">Tier C · The VFX Version</span>
+            <span class="tier-stats">Lowest budget · Zero permissions</span>
+          </div>
+          <h4>AI / VFX-led "what if."</h4>
+
+          <div class="split">
+            <div>
+              <p>If permits and budget both close down, we go fully <strong>VFX</strong>. AI-generated or composited shots of the caravan, characters, and confetti rolling down recognisable Bangalore streets — no real-world shoot needed.</p>
+              <p><strong>Reference:</strong> the CRED "Bad Mobiles coming out of the garage" campaign that went viral two years ago — same playbook. A single, well-executed VFX shot can outperform a 6-figure production day if the concept is sharp.</p>
+              <p><strong>Why it still works:</strong> the spectacle is the share trigger. Audiences don't care if it's real — they care if it's striking.</p>
+            </div>
+            <div>
+              <div class="yt-frame">
+                <iframe src="https://www.youtube.com/embed/dnwNq_pXjPo"
+                        title="Reference — CRED Bad Mobiles"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+              </div>
+              <div class="yt-caption">Reference · <a href="https://youtube.com/shorts/dnwNq_pXjPo" target="_blank" rel="noopener">YouTube Short</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="why"><strong>Why this tiered approach:</strong> we lock the concept now and de-risk execution. Whichever tier clears budget and permissions, the campaign still ships on time.</div>
+    </article>
+
+    <!-- SMALLER IDEAS -->
+    <div class="section-h">
+      <span class="label">Smaller plays</span>
+      <span class="num">02 supporting</span>
+    </div>
+
+    <div class="small-ideas">
+      <div class="small">
+        <span class="num-tag">01</span>
+        <h5>Street Quiz — Top 5 Party Places</h5>
+        <p>Mic-on-street format. <em>"Guess the top 5 party places in the world."</em> Cut between guesses, hesitations, confident wrong answers. Reveal at #1: <strong>Ibiza, Spain</strong> — and Spain's biggest party is coming to Bangalore on May 23. Low-cost: just need interviewers and a busy spot.</p>
+      </div>
+      <div class="small">
+        <span class="num-tag">02</span>
+        <h5>Coachella GRWM × Fashion Collab</h5>
+        <p>Get-ready-with-me with fashion influencers — Coachella-prep energy, Elrow's loud costume brief. Outfit picks, glitter, neon, accessories, theme-play (Spanish bullfighter, Neo Kaos fairy, comic-book villain). Posted on creator's page + brand handle as a collab.</p>
+      </div>
+    </div>
+
+    <!-- SAMPLE WORK -->
+    <div class="section-h">
+      <span class="label">Sample work</span>
+      <span class="num">02 reels</span>
+    </div>
+
+    <p class="section-note">This is my Instagram — I've recently started creating content. Two reels below to show range and edit craft.</p>
+
+    <div class="reels">
+      <div class="reel-card">
+        <div class="meta-row">
+          <span class="reel-num">Reel 01</span>
+          <span class="reel-style">Style: ___</span>
+        </div>
+        <div class="embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSZodKKEQlq/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/reel/DSZodKKEQlq/">View Reel on Instagram</a>
+          </blockquote>
+        </div>
+        <a class="reel-link" href="https://www.instagram.com/reel/DSZodKKEQlq/" target="_blank" rel="noopener">instagram.com/reel/DSZodKKEQlq</a>
+      </div>
+
+      <div class="reel-card">
+        <div class="meta-row">
+          <span class="reel-num">Reel 02</span>
+          <span class="reel-style">Style: ___</span>
+        </div>
+        <div class="embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUcmsqEEQV3/" data-instgrm-version="14">
+            <a href="https://www.instagram.com/reel/DUcmsqEEQV3/">View Reel on Instagram</a>
+          </blockquote>
+        </div>
+        <a class="reel-link" href="https://www.instagram.com/reel/DUcmsqEEQV3/" target="_blank" rel="noopener">instagram.com/reel/DUcmsqEEQV3</a>
+      </div>
+    </div>
+    <script async src="https://www.instagram.com/embed.js"></script>
+
+    <div class="footer-note">Elrow Bangalore · 23 May 2026</div>
+
+  </div>
+</body>
+</html>
