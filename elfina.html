@@ -307,22 +307,24 @@
 <body>
 
   <!-- PAGE LOADER: Elfina-branded VP9-alpha webm + greeting.
-       Filename is `elfima_wave.webm` because the source asset has a
-       typo (Elfima vs Elfina) — only the filename is wrong, the visual
-       reads "Elfina" correctly. Static SVG poster shows while the video
-       buffers; if the browser somehow can't play VP9-alpha (very rare on
-       modern browsers, but a real concern on iOS < 16), the poster stays
-       up as a graceful fallback. Greeting overrides via ?hi=… or
-       ?company=… URL params. -->
+       Filename `elfima_wave.webm` keeps the typo from the source asset
+       (Elfima vs Elfina) — only the filename is wrong, the visual
+       reads "Elfina" correctly. Static WebP poster shows while the
+       video buffers; PNG is the last-resort fallback for any browser
+       that doesn't support WebP (very rare). Originally a 3.36MB SVG;
+       composed the embedded RGB image with its alpha mask via Pillow,
+       cropped to content, resized to 640px wide, saved as WebP — 69×
+       smaller (49 KB). Greeting overrides via ?hi=… or ?company=… URL
+       params. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
     <video
       class="loader-gif"
       autoplay muted loop playsinline
       preload="auto"
-      poster="elfima_wave_static.svg"
+      poster="elfina_hey.webp"
       aria-hidden="true">
       <source src="elfima_wave.webm" type="video/webm">
-      <img src="elfima_wave_static.svg" alt="" aria-hidden="true">
+      <img src="elfina_hey.png" alt="" aria-hidden="true">
     </video>
     <p class="loader-greeting" id="loaderGreeting">Hi Elfina!</p>
   </div>
