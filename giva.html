@@ -13,12 +13,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Preload the GIVA loader (`givawave.webp`). Animated WebP, 75
-       frames, 5s loop, 360x360. Converted from the source 5.4 MB APNG
-       via Pillow — final size 434 KB (12.7× smaller). Renders inline
-       via <img> in every modern browser (Safari 14+, Chrome, Firefox
-       65+, Edge). -->
-  <link rel="preload" as="image" href="givawave.webp" fetchpriority="high">
+  <!-- Preload the GIVA loader (`givawave2.webp`). Static WebP, 360x360,
+       transparent background. Replaces the earlier animated APNG —
+       that version had a black background baked into its frames so
+       rendered as a black square on butter-yellow. The static art has
+       proper alpha. Compressed from the 87 KB source PNG to 17 KB
+       (lossy WebP q=90, visually indistinguishable). -->
+  <link rel="preload" as="image" href="givawave2.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=159">
   <style>
     /* Critical loader styles, inlined so there's no flash before style.css parses */
@@ -183,11 +184,11 @@
 </head>
 <body>
 
-  <!-- PAGE LOADER: GIVA-branded animated WebP (givawave.webp) +
-       greeting. 434 KB, 5s loop, plays inline via <img>. Greeting
-       overrides via ?hi=… or ?company=… URL params. -->
+  <!-- PAGE LOADER: GIVA-branded static WebP (givawave2.webp) +
+       greeting. 17 KB, transparent bg, plays inline via <img>.
+       Greeting overrides via ?hi=… or ?company=… URL params. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <img class="loader-gif" src="givawave.webp" alt="" aria-hidden="true">
+    <img class="loader-gif" src="givawave2.webp" alt="" aria-hidden="true">
     <p class="loader-greeting" id="loaderGreeting">Hi GIVA!</p>
   </div>
   <script>
