@@ -145,7 +145,8 @@
 
   "giva": {
     "displayName": "GIVA",
-    "_status": "WIP — placeholder entry. GIVA Jewellery (D2C silver/jewellery brand). Hero/CTA copy + personal note title to be finalised once brand brief lands.",
+    "ctaTitle": "Hire your most loyal customer?",
+    "ctaDesc": "20 minutes. No pitch, just a chat.",
 
     "personalNote": {
       "title": "Why I'm writing to <em>you</em>, GIVA."
