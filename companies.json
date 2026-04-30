@@ -141,5 +141,14 @@
     "personalNote": {
       "title": "Why I'm writing to <em>you</em>, Elfina."
     }
+  },
+
+  "giva": {
+    "displayName": "GIVA",
+    "_status": "WIP — placeholder entry. GIVA Jewellery (D2C silver/jewellery brand). Hero/CTA copy + personal note title to be finalised once brand brief lands.",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, GIVA."
+    }
   }
 }
