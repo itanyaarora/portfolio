@@ -13,12 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Preload the TMRW loader APNG. Chroma-keyed from tmrw_hey.webm because
-       the raw webm had yuv420p (no real alpha channel) with opaque-black
-       backgrounds baked into the frames — same broken-alpha shape as the
-       CaliB webm. The APNG tags all near-black pixels transparent so the
-       cartoon sits cleanly on butter-yellow. -->
-  <link rel="preload" as="image" href="tmrw_hey.apng" fetchpriority="high">
+  <!-- Preload the Arva loader. Asset placeholder — Tanya to share the
+       graphic. Save as arva_hey.webp (or .apng / .png) in project root.
+       Until then this preload will 404 silently and the greeting alone
+       shows. -->
+  <link rel="preload" as="image" href="arva_hey.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=159">
   <style>
     /* Critical loader styles, inlined so there's no flash before style.css parses */
@@ -54,13 +53,24 @@
     }
 
     /* ── CB-variant personal-note: 2 cards with a middle polaroid video ──
-       Override the default 3-col grid so the polaroid sits narrower in the
-       middle. Number badges aren't rendered for this variant (HTML has no
-       .personal-note-card-num elements), so cards start straight with title. */
-    .personal-note-points--cb {
-      grid-template-columns: 1fr minmax(240px, 300px) 1fr;
-      gap: clamp(24px, 3vw, 44px);
-      align-items: center;
+       Arva variant: 2 cards side by side, NO middle polaroid. Same
+       restraint pattern as elfina.html — sensitive topic warrants two
+       cards in a clean grid, not a fun-portfolio polaroid in between.
+       Polaroid CSS below is dead wood on this page; kept for parity
+       with cb.html / tmrw.html.
+
+       Selector specificity note: style.css has `body.has-personal-note
+       .personal-note-points { max-width: 1200px; }` which beats a
+       plain `.personal-note-points--cb` rule. So we mirror its full
+       selector to win specificity (0,0,3,1) > (0,0,2,1). Without this
+       override, the cards stretch to 1200px and clip out of the
+       viewport on the right. */
+    body.has-personal-note .personal-note-points--cb {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(24px, 4vw, 56px);
+      align-items: start;
+      max-width: 760px;
+      margin-inline: auto;
     }
 
     /* Middle polaroid frame holding an autoplaying muted video */
@@ -137,18 +147,25 @@
       word-break: break-word;
     }
 
+    /* Arva-specific: bump the top padding so the "Why I'm writing to
+       you" heading clears the navbar with breathing room. The default
+       sticky padding (clamp 4-6rem ~ 64-96px) is too tight against the
+       50-80px navbar. Same fix as elfina.html. */
+    body.has-personal-note .personal-note-inner {
+      padding-top: clamp(5.5rem, 11vh, 8rem);
+    }
+
   </style>
   <script>document.documentElement.classList.add('is-loading');</script>
-  <!-- tmrw.html is the TMRW-specific page. Force the customize.js and loader
-       scripts to treat this as company=TMRW even when visited with no URL
-       param. Runs before the loader + customize.js read the search string,
-       so everything picks up the override seamlessly. -->
+  <!-- arva.html is the Arva-specific page. Force customize.js and the
+       loader to treat this as company=Arva even when visited with no
+       URL param. -->
   <script>
     (function () {
       try {
         var p = new URLSearchParams(window.location.search);
         if (!p.get('company')) {
-          p.set('company', 'TMRW');
+          p.set('company', 'Arva');
           var next = window.location.pathname + '?' + p.toString() + window.location.hash;
           window.history.replaceState({}, '', next);
         }
@@ -158,13 +175,13 @@
 </head>
 <body>
 
-  <!-- PAGE LOADER: TMRW-branded "Hey TMRW" APNG + greeting.
-       The source tmrw_hey.webm was yuv420p (no real alpha channel) — same
-       black-background problem as the CaliB webm had. Chroma-keyed to
-       APNG so the cartoon sits cleanly on butter-yellow. -->
+  <!-- PAGE LOADER: Arva-branded greeting + (TBD) loader graphic.
+       Asset is supplied separately — save as arva_hey.webp in project
+       root. Until then, the <img> 404s silently and the greeting text
+       alone shows. Greeting overrides via ?hi=… URL param. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <img class="loader-gif" src="tmrw_hey.apng" alt="" aria-hidden="true">
-    <p class="loader-greeting" id="loaderGreeting">Hi TMRW!</p>
+    <img class="loader-gif" src="arva_hey.webp" alt="" aria-hidden="true">
+    <p class="loader-greeting" id="loaderGreeting">Hi Arva!</p>
   </div>
   <script>
     (function () {
@@ -278,11 +295,9 @@
       <h2 class="personal-note-title" id="personalNoteTitle"></h2>
       <p class="personal-note-intro" id="personalNoteIntro"></p>
 
-      <!-- Honest PS up top. Sits under the title (the intro line is empty
-           on this page — companies.json has no `intro` for TMRW, and
-           .personal-note-intro:empty hides it via CSS). Acknowledges the
-           background gap without explicitly calling out the MBA
-           requirement in the posting. -->
+      <!-- Honest PS up top. For the Arva Brand Manager role: Tanya is
+           an engineer pivoting into brand work. The "unusual background"
+           framing acknowledges that without overplaying it. -->
       <p style="
         font-family: 'Nunito', sans-serif;
         font-style: italic;
@@ -299,34 +314,34 @@
 
       <div class="personal-note-points personal-note-points--cb" id="personalNotePoints">
 
-        <!-- Card 1, personal confession + fit -->
+        <!-- Card 1 — heart-touching personal angle. Before Arva, Tanya
+             didn't talk about fertility / IVF with her friends. Now
+             she does, and it feels normal. The shift in how women
+             talk about these topics is what Arva sparked, and Tanya's
+             closing me-thread says she wants to work on products that
+             actually reach real people. No data points, no tagline
+             citations, no proper-noun lists — just a real shift she's
+             lived through. -->
         <div class="personal-note-card">
           <div class="polaroid-tape" style="--tape: hsla(48, 95%, 72%, 0.85); --tape-rot: -4deg"></div>
-          <h3 class="personal-note-card-title">I'm obsessed with clothes.</h3>
-          <p class="personal-note-card-body">Anyone around me will tell you so. I've been looking for a role where I get to work on products I'm genuinely passionate about, and a house of <em>eight clothing brands</em> puts TMRW right at the top of my list.</p>
+          <h3 class="personal-note-card-title">You sparked these conversations.</h3>
+          <p class="personal-note-card-body">Before <em>Arva</em>, I'd never talked about fertility or IVF with my friends. Now we do, and it feels normal. That doesn't happen unless you actually care, not just about the product. That's what I want to be working on. Things that reach real people and quietly make their lives better.</p>
         </div>
 
-        <!-- Middle polaroid: shopping loop. MP4 is used instead of GIF
-             because a well-compressed MP4 of the same 8s clip is ~12×
-             smaller than even a palette-optimised GIF (966 KB vs 11.5 MB).
-             No transparency needed here — the polaroid frame is opaque. -->
-        <figure class="personal-note-media">
-          <div class="polaroid-tape" style="--tape: hsla(44, 90%, 72%, 0.85); --tape-rot: 3deg"></div>
-          <video
-            class="personal-note-media-video"
-            autoplay muted loop playsinline
-            preload="auto"
-            aria-hidden="true">
-            <source src="shopping.mp4" type="video/mp4">
-          </video>
-          <figcaption class="personal-note-media-label">Me, every weekend</figcaption>
-        </figure>
+        <!-- No middle polaroid on the Arva page. Tanya's call: a
+             stylised polaroid in between a fertility-conversation card
+             and a founder-praise card felt tonally wrong. 2-card grid
+             is the right restraint here. -->
 
-        <!-- Card 2, appreciation of the portfolio's scale story -->
+        <!-- Card 2 — praise the founders' diverse backgrounds.
+             Dipalie (CEO) is ex-UX designer. Nidhi is a Chartered
+             Accountant. Neither is clinical, and that's exactly why
+             the brand voice doesn't read like a hospital. Closes with
+             Tanya's humble learning-frame ask. -->
         <div class="personal-note-card">
           <div class="polaroid-tape" style="--tape: hsla(54, 88%, 74%, 0.85); --tape-rot: -2deg"></div>
-          <h3 class="personal-note-card-title">Every brand winning on its own terms.</h3>
-          <p class="personal-note-card-body">What I love about TMRW is that each brand is scaling on its own terms. <em>Wrogn, Bewakoof, NautiNati, Nobero</em>. All at different sizes, all actually working. Running that many brands and still keeping each one distinct is a serious operating problem, and exactly the kind I want to be close to.</p>
+          <h3 class="personal-note-card-title">Two friends, two different worlds.</h3>
+          <p class="personal-note-card-body"><em>Dipalie</em> from UX. <em>Nidhi</em> from finance. Neither clinical, and yet somehow Arva's voice ended up warmer than most of the actual clinics. That's a real choice, not an accident. There's a story in how two people from such different worlds built that, and I'd love to be close to learning it.</p>
         </div>
 
       </div>

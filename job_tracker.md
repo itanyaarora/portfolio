@@ -122,6 +122,18 @@
 
 ---
 
+### Arva Health — Brand Manager
+- **Contact**: **dipalie@arva.health** (Dipalie, likely founder or hiring lead)
+- **Role**: Brand Manager
+- **Status**: 🟡 Research in progress — page + cards + email to be built once research returns
+- **TODO**: confirm category (women's health?), build `/arva` page + Brand Manager-flavored cards, draft email
+- **Angle ideas (pre-research, to refine)**:
+  - 50 Creative Careers project = creator-operator proof
+  - Engineer-with-creative range (NIFT was the road not taken)
+  - Customer / category-passion angle (TBD — confirm if Tanya uses Arva)
+
+---
+
 ## 📋 Workflow when it's time to apply
 
 When you say *"let's apply to Meesho"* (or any of the above), I'll:
