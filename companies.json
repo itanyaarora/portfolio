@@ -151,5 +151,15 @@
     "personalNote": {
       "title": "Why I'm writing to <em>you</em>, GIVA."
     }
+  },
+
+  "arva": {
+    "displayName": "Arva",
+    "ctaTitle": "Open to a conversation?",
+    "ctaDesc": "20 minutes, whenever it's easy for you.",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, Arva."
+    }
   }
 }
