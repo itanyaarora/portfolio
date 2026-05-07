@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon: a cropped head-shot of the dancing-girl cartoon so the site
+       has a recognizable face in the browser tab. 192 covers modern/retina,
+       32 is the legacy fallback for older chrome. -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <title>Tanya - Strategic Product Designer for SaaS, Edtech, AI, and early-stage startups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Preload the BrandSheep loader (Budweiser-themed animation).
+       budweiser_hey.webp is a compressed animated WebP, transcoded from
+       /Users/shifuventures/TanyaWebsite/budvieser.gif (36 MB, 1200x1200,
+       150 frames, 5s loop) via Pillow → animated WebP at 400px wide. -->
+  <link rel="preload" as="image" href="budweiser_hey.webp" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=159">
+  <style>
+    /* Critical loader styles, inlined so there's no flash before style.css parses */
+    html.is-loading, html.is-loading body { overflow: hidden; }
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: hsl(48, 100%, 93%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transform: translateY(0);
+      transition: transform 0.95s cubic-bezier(0.76, 0, 0.24, 1);
+      will-change: transform;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.18);
+    }
+    .page-loader.is-leaving { transform: translateY(-100%); }
+    .page-loader .loader-gif {
+      width: min(320px, 55vw);
+      height: auto;
+      display: block;
+      background: transparent;
+    }
+
+    /* Coral accent for "California Burrito" in the big "Why X should work with me"
+       heading, applies to the target span/line inserted by customize.js. */
+    .why-big-target {
+      color: hsl(12, 70%, 58%);
+    }
+
+    /* ── CB-variant personal-note: 2 cards with a middle polaroid rotator ──
+       BrandSheep variant: 3-col grid (card | rotating polaroid | card),
+       same shape as cb.html. The middle polaroid is a multi-slot rotator
+       (photos + videos) that cycles every few seconds — same JS pattern
+       as giva.html, scaled up to 9 slots. Media lives at /beer-photo-N.webp
+       and /beer-vid-N.mp4 (transcoded from /Users/shifuventures/TanyaWebsite/beer
+       — HEIC → webp via Pillow, HEVC .mov → H.264 .mp4 via avconvert).
+
+       Selector specificity note: style.css has `body.has-personal-note
+       .personal-note-points { max-width: 1200px; }` which beats a
+       plain `.personal-note-points--cb` rule. So we mirror its full
+       selector to win specificity (0,0,3,1) > (0,0,2,1). */
+    body.has-personal-note .personal-note-points--cb {
+      grid-template-columns: 1fr minmax(240px, 300px) 1fr;
+      gap: clamp(24px, 3vw, 44px);
+      align-items: center;
+    }
+
+    /* Middle polaroid frame holding an autoplaying muted video */
+    .personal-note-media {
+      position: relative;
+      margin: 0 auto;
+      background: #fdfaf3;
+      padding: 14px 14px 44px;
+      border-radius: 3px;
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.18),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+      transform: rotate(-2deg) translateY(20px);
+      opacity: 0;
+      transition:
+        opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 240ms,
+        transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 240ms;
+      width: min(100%, 280px);
+      justify-self: center;
+    }
+    body.personal-note-visible .personal-note-media {
+      opacity: 1;
+      transform: rotate(-2deg) translateY(0);
+    }
+    /* The global .polaroid-tape sits absolutely positioned at top:-20px.
+       Inside our polaroid frame we want it nudged tighter. */
+    .personal-note-media > .polaroid-tape {
+      top: -12px;
+      width: 90px;
+      height: 22px;
+      z-index: 2;
+    }
+    .personal-note-media-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      background: hsl(40, 30%, 94%);
+      border-radius: 2px;
+    }
+
+    /* BrandSheep polaroid rotator: 2 slots (1 video + 1 photo) stacked
+       absolutely. JS at end of body cycles them — photos hold for ~3s,
+       videos play their full duration with a 7s safety fallback if a
+       codec can't decode. Crossfades via opacity. Same shape as giva.html. */
+    .brandsheep-rotator {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+    }
+    .brandsheep-rotator-item {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+      background: hsl(40, 30%, 94%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+    .brandsheep-rotator-item.is-active {
+      opacity: 1;
+    }
+
+    .personal-note-media-label {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      right: 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      color: hsl(30, 12%, 28%);
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 900px) {
+      .personal-note-points--cb {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+      }
+      .personal-note-media {
+        width: min(100%, 260px);
+      }
+    }
+    .page-loader .loader-greeting {
+      margin: 0;
+      font-family: 'Fraunces', 'Times New Roman', serif;
+      font-weight: 800;
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -0.02em;
+      color: #1b1a18;
+      text-align: center;
+      line-height: 1.1;
+      max-width: 90vw;
+      padding: 0 24px;
+      word-break: break-word;
+    }
+
+    /* BrandSheep-specific: bump the top padding so the "Why I'm writing
+       to you" heading clears the navbar with breathing room. The default
+       sticky padding (clamp 4-6rem ~ 64-96px) is too tight against the
+       50-80px navbar. Same fix as elfina.html and meesho.html. */
+    body.has-personal-note .personal-note-inner {
+      padding-top: clamp(5.5rem, 11vh, 8rem);
+    }
+
+  </style>
+  <script>document.documentElement.classList.add('is-loading');</script>
+  <!-- brandsheep.html is the BrandSheep-specific page. Force customize.js
+       and the loader to treat this as company=BrandSheep even when visited
+       with no URL param. -->
+  <script>
+    (function () {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        if (!p.get('company')) {
+          p.set('company', 'BrandSheep');
+          var next = window.location.pathname + '?' + p.toString() + window.location.hash;
+          window.history.replaceState({}, '', next);
+        }
+      } catch (e) { /* no-op */ }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- PAGE LOADER: BrandSheep greeting + Budweiser animated graphic.
+       budweiser_hey.webp is the compressed loop, transcoded from a 36 MB
+       source GIF. Greeting overrides via ?hi=… URL param. -->
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <img class="loader-gif" src="budweiser_hey.webp" alt="" aria-hidden="true">
+    <p class="loader-greeting" id="loaderGreeting">Hi BrandSheep!</p>
+  </div>
+  <script>
+    (function () {
+      var loader = document.getElementById('pageLoader');
+      if (!loader) return;
+
+      // Customizable greeting: share ?hi=Juspay or ?hi=California%20Burrito
+      // to personalize the loader for a specific audience. On custom.html the
+      // ?company= param also feeds the greeting so a single link personalises
+      // both the loader AND the "Why [Company]" heading. Defaults to "Hi there!"
+      var greetingEl = document.getElementById('loaderGreeting');
+      if (greetingEl) {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var who = params.get('hi') || params.get('to') || params.get('for') || params.get('company');
+          if (who) {
+            who = who.replace(/[<>]/g, '').trim().slice(0, 40); // sanitize + cap
+            if (who) greetingEl.textContent = 'Hi ' + who + '!';
+          }
+        } catch (e) { /* no-op, keep the default */ }
+      }
+
+      var MIN_MS = 2500;
+      var started = Date.now();
+      function hide() {
+        loader.classList.add('is-leaving');
+        document.documentElement.classList.remove('is-loading');
+        loader.addEventListener('transitionend', function () {
+          if (loader.parentNode) loader.parentNode.removeChild(loader);
+        }, { once: true });
+      }
+      function fire() {
+        var wait = Math.max(0, MIN_MS - (Date.now() - started));
+        setTimeout(hide, wait);
+      }
+      if (document.readyState === 'complete') fire();
+      else window.addEventListener('load', fire);
+    })();
+  </script>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <span class="logo-text">Tanya</span>
+      </div>
+      <div class="marquee-bar">
+        <div class="marquee-track">
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+          <span>Open to opportunities</span>
+          <span class="marquee-divider">/</span>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="#why" class="nav-link">Why me</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Character left (same as custom.html, CB-specific greeting moved into the loader) -->
+    <div class="character character-left">
+      <img src="cropped/02_laptop.png" alt="Tanya with microphone" class="char-img">
+    </div>
+
+    <!-- Video -->
+    <div class="hero-video">
+      <div class="video-container" id="videoWrapper">
+        <div class="polaroid-tape" style="--tape: hsla(44,90%,72%,0.60); --tape-rot: -1deg"></div>
+        <div class="video-wrapper">
+          <video id="heroVideo" playsinline muted loop preload="auto">
+            <source src="tanya-intro.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-polaroid-label"></div>
+        <button class="video-btn" id="videoBtn" aria-label="Play video">
+          <svg class="icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="8,4 20,12 8,20"/>
+          </svg>
+          <svg class="icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+            <rect x="5" y="4" width="4" height="16" rx="1"/>
+            <rect x="15" y="4" width="4" height="16" rx="1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <h1 class="hero-headline">Looking for someone creative, relentless, and good at figuring it out on the way?</h1>
+    <p class="hero-subtext">I am Tanya. I walked away from comfortable, high-paying jobs at Microsoft to be exactly that, and I pulled off seven different careers in four months.</p>
+    <a href="#contact" class="cta-button">Let's talk</a>
+
+    <!-- Character right -->
+    <div class="character character-right">
+      <img src="cropped/06_microphone.png" alt="Tanya with laptop" class="char-img">
+    </div>
+  </section>
+
+  <!-- PERSONAL NOTE, CB variant: 2 thought-cards with a middle polaroid video.
+       Title + intro are still populated from companies.json by customize.js;
+       points are hard-coded here (no `points` array in companies.json), so
+       customize.js leaves #personalNotePoints untouched. -->
+  <section class="personal-note" id="personalNote" aria-hidden="true">
+    <div class="personal-note-inner">
+      <h2 class="personal-note-title" id="personalNoteTitle"></h2>
+      <p class="personal-note-intro" id="personalNoteIntro"></p>
+
+      <div class="personal-note-points personal-note-points--cb" id="personalNotePoints">
+
+        <!-- Card 1 — the real-customer angle. Pool photo in the polaroid
+             is the proof, this card gives the reason. -->
+        <div class="personal-note-card">
+          <div class="polaroid-tape" style="--tape: hsla(48, 95%, 72%, 0.85); --tape-rot: -4deg"></div>
+          <h3 class="personal-note-card-title">I'm an actual Budweiser fan.</h3>
+          <p class="personal-note-card-body">That photo isn't a prop. It's from a holiday last summer, by the pool, with a Bud actually in my hand. The brands you build for are ones I genuinely drink. So the stories you get to tell for Bud, across sports and music and festivals, I'd love to be in the room helping write them.</p>
+        </div>
+
+        <!-- ━━━ MIDDLE POLAROID — 2-slot rotator (video → zoomed photo) ━━━
+             Slot 1 = beer-vid-1.mp4 (3.2 MB, H.264 480p, ~7s, transcoded
+                    from /Users/shifuventures/TanyaWebsite/beer/IMG_2470.MOV
+                    via avconvert).
+             Slot 2 = beer-photo-2.webp — Tanya in a pool holding a
+                    Budweiser Premium can. Re-cropped from the original
+                    4032x3024 HEIC at /Users/shifuventures/TanyaWebsite/beer/IMG_4153.HEIC
+                    via Pillow: 76% top-aligned 3:4 crop. Native crop, not
+                    CSS scale — image stays inside the polaroid frame. -->
+        <figure class="personal-note-media">
+          <div class="polaroid-tape" style="--tape: hsla(44, 90%, 72%, 0.85); --tape-rot: 3deg"></div>
+          <div class="brandsheep-rotator" id="brandsheepRotator">
+            <video class="brandsheep-rotator-item is-active" muted playsinline preload="auto" aria-hidden="true">
+              <source src="beer-vid-1.mp4" type="video/mp4">
+            </video>
+            <img class="brandsheep-rotator-item" src="beer-photo-2.webp" alt="" aria-hidden="true">
+          </div>
+          <figcaption class="personal-note-media-label">Bud &times; me</figcaption>
+        </figure>
+
+        <!-- Card 2 — what Tanya wants from her next chapter. Maps onto
+             her brief: left high-risk corporate jobs to be around creative
+             people, learn from them, work on things she'd be excited to
+             talk about. -->
+        <div class="personal-note-card">
+          <div class="polaroid-tape" style="--tape: hsla(54, 88%, 74%, 0.85); --tape-rot: -2deg"></div>
+          <h3 class="personal-note-card-title">This is the kind of room I've been looking for.</h3>
+          <p class="personal-note-card-body">I left Microsoft and Uber with no plan. Just a hunch I wanted to be around creative people, learn from them, and work on stuff I'd actually want to talk about at dinner. A "collective of content, culture and people" working on a brand I already drink, that's pretty much my brief.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MY JOURNEY, all 3 parts in one sticky section -->
+  <section class="journey" id="journey">
+    <div class="journey-sticky">
+
+      <!-- "My journey" title, visible during horizontal scroll -->
+      <h2 class="section-title journey-title" id="journeyTitle">My journey</h2>
+
+      <!-- Horizontal track: 3 panels -->
+      <div class="journey-track" id="journeyTrack">
+
+        <!-- Panel 1, Creative Kid -->
+        <div class="journey-panel journey-panel--a">
+          <div class="journey-photos">
+            <div class="journey-polaroid journey-polaroid--1">
+              <div class="polaroid-tape" style="--tape: hsla(200,65%,78%,0.7); --tape-rot: -3deg"></div>
+              <img src="personal_photos/journey_part1_1.jpg" alt="Early years">
+              <div class="photo-polaroid-label">Early years</div>
+            </div>
+            <div class="journey-polaroid journey-polaroid--2">
+              <div class="polaroid-tape" style="--tape: hsla(44,90%,72%,0.7); --tape-rot: 2deg"></div>
+              <img src="personal_photos/journey_part_2.jpg" alt="Placement day">
+              <div class="photo-polaroid-label">Placement day</div>
+            </div>
+          </div>
+          <div class="journey-text">
+            <span class="journey-era">The early years</span>
+            <h3 class="journey-heading">How the engineer got made</h3>
+            <p class="journey-body">I was a creative kid who somehow ended up in engineering. And I liked it, turns out once I'm doing something, I want to be really good at it.</p>
+            <p class="journey-body">I went to a low-tier private college. Not a pedigree story. But when placements came, I landed the highest offer my college had ever seen, ₹45 LPA. The only one of its kind.</p>
+            <p class="journey-body">That's the pattern that's followed me everywhere since: drop me into a room I don't belong in, and I'll figure out how to earn my place.</p>
+          </div>
+        </div>
+
+        <!-- Panel 2, Engineering / Quit -->
+        <div class="journey-panel journey-panel--b">
+          <div class="journey-text">
+            <span class="journey-era">Microsoft + Uber</span>
+            <h3 class="journey-heading">Six years of learning to ship</h3>
+            <p class="journey-body">At Microsoft, I worked on the team behind product activation, the 16-digit keys that make every copy of Office, Windows, and Visual Studio actually turn on. Invisible infrastructure at planet scale. You only hear about it when it breaks.</p>
+            <p class="journey-body">At Uber, I built data pipelines for internal developers. My customers were my own coworkers. Fastest feedback loop I've ever had, and the clearest lesson in what "shipped" actually means.</p>
+            <p class="journey-body">Six years of building things other people depend on. That's the muscle I took with me when I left.</p>
+          </div>
+          <div class="journey-photos">
+            <div class="journey-polaroid journey-polaroid--1">
+              <div class="polaroid-tape" style="--tape: hsla(140,50%,78%,0.7); --tape-rot: 2deg"></div>
+              <img src="personal_photos/journey_part2_1.jpg" alt="Microsoft days">
+              <div class="photo-polaroid-label">Microsoft days</div>
+            </div>
+            <div class="journey-polaroid journey-polaroid--2">
+              <div class="polaroid-tape" style="--tape: hsla(28,85%,78%,0.7); --tape-rot: -2deg"></div>
+              <img src="personal_photos/journey_part2_2.jpg" alt="Uber days">
+              <div class="photo-polaroid-label">Uber days</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3, 50 Creative Careers -->
+        <div class="journey-panel journey-panel--title">
+          <div class="journey-title-card" id="journeyTitleCard">
+            <p class="section-eyebrow">The pivot</p>
+            <h2 class="journey-careers-title">50 Creative Careers</h2>
+            <p class="journey-careers-story">In 2025, I quit. Made one rule: try a new career every couple of weeks until something clicks. Fifty is the stretch goal.</p>
+            <p class="journey-careers-story">Four months in, I'm at <strong>seven</strong>: florist, mural artist, telemarketer, community host, event marketer, exhibition designer. Different jobs. Same muscle: show up, learn fast, finish the thing.</p>
+            <p class="journey-careers-story">I know what I'm built for now. The room where things are being built. That's why I'm here.</p>
+            <p class="journey-careers-story journey-careers-story--mobile">In the four months since I quit, I've tried these. Tap through →</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dotted trail behind the car -->
+      <div class="journey-trail" id="journeyTrail"></div>
+
+      <!-- Driving car -->
+      <div class="journey-car" id="journeyCar">
+        <img src="drive_idle.gif" alt="Car idle" class="journey-car-idle" id="carIdle">
+        <img src="drive_speed.gif"    alt="Car driving" class="journey-car-speed" id="carSpeed">
+      </div>
+
+      <!-- Polaroid cards, hidden initially, revealed in phase 2 -->
+      <div class="journey-polaroids" id="journeyPolaroids">
+    <div class="careers-polaroid-grid" id="careersPolaroidGrid">
+
+      <div class="polaroid-card" style="--rot: -4deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(355,80%,82%,0.55); --tape-rot: -8deg"></div>
+            <div class="polaroid-photo"><img src="Careers/florist.jpg" alt="Florist"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Florist</span><em class="polaroid-num">01</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">01 / 50</em>
+            <h3 class="polaroid-back-title">Florist</h3>
+            <p class="polaroid-back-desc">Taught myself what it means to start a business from scratch, vendors, wholesalers, profit margins, all of it.</p>
+            <div class="polaroid-back-tags"><span>Business</span><span>Creative</span></div>
+            <a href="https://www.instagram.com/reel/DShLwUkkZYy/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: 3deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(44,90%,72%,0.55); --tape-rot: 5deg"></div>
+            <div class="polaroid-photo"><img src="Careers/exhibition.jpg" alt="Exhibition Designer"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Exhibition Designer</span><em class="polaroid-num">02</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">02 / 50</em>
+            <h3 class="polaroid-back-title">Exhibition Designer</h3>
+            <p class="polaroid-back-desc">Turned a SaaS startup's vision into physical artifacts clients could actually touch and feel.</p>
+            <div class="polaroid-back-tags"><span>Design</span><span>Strategy</span></div>
+            <a href="https://www.instagram.com/reel/DS4YRaFESqv/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: -2deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(200,65%,78%,0.55); --tape-rot: -6deg"></div>
+            <div class="polaroid-photo"><img src="Careers/EventMarketting.jpeg" alt="Event Marketer"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Event Marketer</span><em class="polaroid-num">03</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">03 / 50</em>
+            <h3 class="polaroid-back-title">Event Marketer</h3>
+            <p class="polaroid-back-desc">Helped a food chain break into wedding catering, built their pitch process and prospect outreach from scratch.</p>
+            <div class="polaroid-back-tags"><span>Marketing</span><span>Sales</span></div>
+            <a href="https://www.instagram.com/reel/DTXYgdRkRRg/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: 4deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(140,50%,78%,0.55); --tape-rot: 7deg"></div>
+            <div class="polaroid-photo"><img src="Careers/communitybhost.JPG" alt="Community Host"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Community Host</span><em class="polaroid-num">04</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">04 / 50</em>
+            <h3 class="polaroid-back-title">Community Host</h3>
+            <p class="polaroid-back-desc">Co-hosted a Bangalore community club, 20 strangers walk in, I'm the one who makes them friends.</p>
+            <div class="polaroid-back-tags"><span>People</span><span>Events</span></div>
+            <a href="https://www.instagram.com/reel/DUGaLynjz5j/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: -3deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(28,85%,78%,0.55); --tape-rot: 9deg"></div>
+            <div class="polaroid-photo"><img src="Careers/mural.JPG" alt="Mural Artist"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Mural Artist</span><em class="polaroid-num">05</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">05 / 50</em>
+            <h3 class="polaroid-back-title">Mural Artist</h3>
+            <p class="polaroid-back-desc">Got a free stay in Jaisalmer in exchange for finishing a mural on a deadline. Loved every part of it.</p>
+            <div class="polaroid-back-tags"><span>Art</span><span>Travel</span></div>
+            <a href="https://www.instagram.com/reels/DUcmsqEEQV3/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card" style="--rot: 2deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(260,55%,82%,0.55); --tape-rot: -5deg"></div>
+            <div class="polaroid-photo"><img src="Careers/telemarketer.jpg" alt="Telemarketer"></div>
+            <div class="polaroid-label"><span class="polaroid-name">Telemarketer</span><em class="polaroid-num">06</em></div>
+          </div>
+          <div class="polaroid-back">
+            <em class="polaroid-back-num">06 / 50</em>
+            <h3 class="polaroid-back-title">Telemarketer</h3>
+            <p class="polaroid-back-desc">Going live on Flipkart almost every day, selling products, interacting with customers, watching live commerce up close.</p>
+            <div class="polaroid-back-tags"><span>Sales</span><span>Live</span></div>
+            <a href="https://www.instagram.com/reel/DWMNzdlkuOr/" class="polaroid-back-ig" target="_blank">↗ Watch on Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="polaroid-card polaroid-card--ghost" style="--rot: -1deg">
+        <div class="polaroid-inner">
+          <div class="polaroid-front">
+            <div class="polaroid-tape" style="--tape: hsla(44,80%,78%,0.45); --tape-rot: 6deg"></div>
+            <div class="polaroid-photo polaroid-photo--empty"><span class="polaroid-ghost-count">+43</span></div>
+            <div class="polaroid-label"><span class="polaroid-name">Stay tuned.</span></div>
+          </div>
+          <div class="polaroid-back">
+            <h3 class="polaroid-back-title">More coming.</h3>
+            <p class="polaroid-back-desc">47 more careers in the making. This ride isn't over.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    </div><!-- end journey-polaroids -->
+
+    </div><!-- end journey-sticky -->
+  </section>
+
+
+  <!-- CAREERS REEL, HIDDEN (replaced by polaroid timeline) -->
+  <section class="careers-reel careers-reel--hidden" id="careers-reel" style="display:none;">
+
+          <div class="career-card" style="--accent: hsl(200,60%,62%)">
+            <div class="career-card-photo">
+              <img src="" alt="Exhibition Designer">
+              <span class="career-card-badge">02</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Exhibition Designer</h3>
+              <p class="career-card-desc">Turned a SaaS startup's vision into physical artifacts clients could actually touch and feel.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Design</span>
+                <span class="career-role-tag">Strategy</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DS4YRaFESqv/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(350,65%,65%)">
+            <div class="career-card-photo">
+              <img src="Careers/EventMarketting.jpeg" alt="Event Marketer">
+              <span class="career-card-badge">03</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Event Marketer</h3>
+              <p class="career-card-desc">Helped a food chain break into wedding catering, built their pitch process and prospect outreach from scratch.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Marketing</span>
+                <span class="career-role-tag">Sales</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DTXYgdRkRRg/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(140,45%,58%)">
+            <div class="career-card-photo">
+              <img src="Careers/communitybhost.JPG" alt="Community Host">
+              <span class="career-card-badge">04</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Community Host</h3>
+              <p class="career-card-desc">Co-hosted a Bangalore community club, 20 strangers walk in, I'm the one who makes them friends.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">People</span>
+                <span class="career-role-tag">Events</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DUGaLynjz5j/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(28,80%,60%)">
+            <div class="career-card-photo">
+              <img src="Careers/mural.JPG" alt="Mural Artist">
+              <span class="career-card-badge">05</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Mural Artist</h3>
+              <p class="career-card-desc">Got a free stay in Jaisalmer in exchange for finishing a mural on a deadline. Loved every part of it.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Art</span>
+                <span class="career-role-tag">Travel</span>
+              </div>
+              <a href="https://www.instagram.com/reels/DUcmsqEEQV3/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <div class="career-card" style="--accent: hsl(260,55%,68%)">
+            <div class="career-card-photo">
+              <img src="" alt="Telemarketer">
+              <span class="career-card-badge">06</span>
+            </div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Telemarketer</h3>
+              <p class="career-card-desc">Going live on Flipkart almost every day, selling products, interacting with customers, watching live commerce up close.</p>
+              <div class="career-card-roles">
+                <span class="career-role-tag">Sales</span>
+                <span class="career-role-tag">Live</span>
+              </div>
+              <a href="https://www.instagram.com/reel/DWMNzdlkuOr/" class="career-ig-btn" target="_blank">Watch on Instagram</a>
+            </div>
+          </div>
+
+          <!-- ghost card, +47 more to come -->
+          <div class="career-card career-card--ghost">
+            <div class="career-card-photo"></div>
+            <div class="career-card-body">
+              <h3 class="career-card-name">Stay tuned.</h3>
+              <p class="career-card-desc">47 more careers in the making. This ride isn't over.</p>
+            </div>
+          </div>
+
+          <div class="careers-reel-spacer"></div>
+        </div><!-- end track -->
+      </div><!-- end track-wrap -->
+
+    </div><!-- end inner -->
+  </section>
+
+  <!-- WHY WORK WITH ME -->
+  <section class="why-work" id="why">
+    <div class="why-sticky">
+
+      <!-- Big background text: default 2 lines ("Why [target]" / "should work with me?").
+           JS switches to 3 lines if the target is long (e.g. full company name). -->
+      <div class="why-big-text" aria-hidden="true" id="whyBigText">
+        <div class="why-big-line why-big-line--prefix">Why <span class="why-big-target">you</span></div>
+        <div class="why-big-line">should work with me?</div>
+      </div>
+
+      <!-- Cards that slide up on scroll -->
+      <div class="why-cards">
+
+        <div class="why-card why-card--alt" data-index="0">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">01</span>
+            <h3 class="why-title why-title--alt">I make things. Always have.</h3>
+            <p class="why-desc">Creativity isn't a line on my résumé. It's how I've spent my time since I was a kid, murals, comics, reels, events, stories, brands. If what you're building needs someone who actually makes the thing, that's me.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_creative.png" alt="Makes things">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="1">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">02</span>
+            <h3 class="why-title why-title--alt">I've lived in many worlds</h3>
+            <p class="why-desc">Engineering at Microsoft. Data at Uber. Content on my own. Events for a community. Sales for a food chain. Design for a SaaS startup. I can talk to anyone on your team, pull my weight with all of them, and pitch whatever we're building to whoever needs to hear it.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_jackofalltrades.png" alt="Many worlds">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="2">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">03</span>
+            <h3 class="why-title why-title--alt">Relentlessly resourceful</h3>
+            <p class="why-desc">Drop me in a room where nothing's figured out and no one's written a playbook, I'll find the way, and I'll see it through. No budget, I'll stretch it. No team, I'll build one. No precedent, even better. That's where I do my best work.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_execute.png" alt="Resourceful">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="3">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">04</span>
+            <h3 class="why-title why-title--alt">I take big bets, and I land them</h3>
+            <p class="why-desc">I walked away from Microsoft and Uber with no plan, just savings and instinct. Four months later, I've pulled off seven new careers. If you're building something worth betting on, I'm already in.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_thingsdone.png" alt="Takes big bets">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="4">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">05</span>
+            <h3 class="why-title why-title--alt">I make it look easy</h3>
+            <p class="why-desc">Seven brand-new careers in four months. All finished on deadline. None of them dramatic. Hand me hard problems, and I'll hand you back calm execution, no ego, no fire drills, no chaos spillover.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/relaxed.png" alt="Makes it look easy">
+          </div>
+        </div>
+
+        <div class="why-card why-card--alt" data-index="5">
+          <div class="why-card-content">
+            <span class="why-num-ghost" aria-hidden="true">06</span>
+            <h3 class="why-title why-title--alt">Nice human</h3>
+            <p class="why-desc">Genuinely. I'm fun to work with, I take things chill, and I show up for the people around me. Also, I know how to sell myself. That's a skill too.</p>
+          </div>
+          <div class="why-card-art">
+            <img src="cropped/cartoon_pray.png" alt="Nice human">
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- .why-sticky -->
+  </section>
+
+
+  <!-- WHAT I'M LOOKING FOR -->
+  <section class="services" id="services">
+    <div class="services-sticky">
+      <h2 class="section-title services-title">What I'm looking for</h2>
+      <p class="section-desc services-desc">"I'm not looking for just any room. I want the room where it happens."</p>
+
+      <!-- Two role groups, what I'm open for -->
+      <p class="roles-groups-label">Two kinds of roles:</p>
+      <div class="roles-groups">
+        <div class="role-group">
+          <h3 class="role-group-title">Founder's right hand</h3>
+          <p class="role-group-items">Founder's Office · Chief of Staff</p>
+        </div>
+        <div class="role-group">
+          <h3 class="role-group-title">Owning the creative</h3>
+          <p class="role-group-items">Creative Strategy · Brand &amp; Marketing · Creative Operations</p>
+        </div>
+      </div>
+      <p class="roles-tagline">In either seat, give me room to experiment.</p>
+
+      <!-- Mobile-only: compact values list with the searching cartoon -->
+      <div class="looking-mobile-values">
+        <img class="looking-mobile-cartoon" src="cartoon_searching.png" alt="" aria-hidden="true">
+        <p class="looking-mobile-phrase">Give me <em>room to experiment</em>.</p>
+        <p class="looking-mobile-phrase">Let me <em>be creative</em>.</p>
+        <p class="looking-mobile-phrase">Hand me the <em>hard problems</em>.</p>
+      </div>
+
+      <!-- Yes / No box with searching cartoon peeking from behind the top-right -->
+      <div class="looking-wrap">
+        <img class="looking-cartoon" src="cartoon_searching.png" alt="" aria-hidden="true">
+        <div class="looking-box">
+          <div class="looking-col">
+            <span class="looking-col-label">The yes</span>
+            <div class="looking-tags">
+              <span class="looking-tag yes">Freedom to experiment, and to be wrong before being right</span>
+              <span class="looking-tag yes">Founders who move fast and TRUST the people they hire</span>
+            </div>
+          </div>
+          <div class="looking-divider"></div>
+          <div class="looking-col">
+            <span class="looking-col-label">The no</span>
+            <div class="looking-tags">
+              <span class="looking-tag no">Pure engineering roles</span>
+              <span class="looking-tag no">Corporate bureaucracy</span>
+              <span class="looking-tag no">Toxic grind without meaning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#contact" class="services-cta">Let's talk</a>
+    </div><!-- .services-sticky -->
+  </section>
+
+
+  <!-- CTA / FOOTER -->
+  <section class="cta-footer" id="contact">
+    <div class="cta-box" id="ctaBox">
+      <!-- Party lights, drift + pulse while music plays, fade out on pause -->
+      <div class="party-lights" id="partyLights" aria-hidden="true">
+        <span class="party-light party-light--1"></span>
+        <span class="party-light party-light--2"></span>
+        <span class="party-light party-light--3"></span>
+        <span class="party-light party-light--4"></span>
+        <span class="party-light party-light--5"></span>
+        <span class="party-light party-light--6"></span>
+      </div>
+      <div class="cta-content">
+        <h2 class="cta-title">Call me, maybe?</h2>
+        <p class="cta-desc">No pitch. No pressure. Just a quick conversation to see if I can help.</p>
+        <div class="cta-actions">
+          <button class="mute-btn" id="muteBtn" aria-label="Play music">
+            <span class="sound-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+              </svg>
+              <span class="sound-wave sound-wave--1"></span>
+              <span class="sound-wave sound-wave--2"></span>
+            </span>
+            <span class="mute-label">Wanna dance?</span>
+          </button>
+        </div>
+
+        <!-- Contact links, hidden until "Let's talk" is clicked -->
+        <div class="cta-contacts" id="ctaContacts">
+          <a href="https://wa.me/917906737517" class="contact-pill" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>+91 79067 37517</span>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=talktotanyaarora@gmail.com&su=Hey+Tanya%2C" class="contact-pill" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>talktotanyaarora@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/tanya-arora-9025b114a/" class="contact-pill" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>@tanya-arora</span>
+          </a>
+          <a href="https://instagram.com/heyatanyahere" class="contact-pill" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span>@heyatanyahere</span>
+          </a>
+        </div>
+      </div>
+      <div class="cta-character">
+        <img id="dancingGirl" src="cropped/10_dancinggirl_static.png" data-static="cropped/10_dancinggirl_static.png" data-animated="cropped/10_dancinggirl.gif" alt="Dancing girl" class="char-img">
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer-copyright">&copy;2026 Tanya Studio | Terms & Conditions</p>
+    </footer>
+  </section>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" src="audio-extract.mp3" preload="auto"></audio>
+
+  <!-- FLOATING CTA -->
+  <a href="#contact" class="float-cta" id="floatCta">Let's talk</a>
+
+  <script src="customize.js?v=2"></script>
+  <script src="script.js?v=83"></script>
+
+  <!-- BrandSheep polaroid rotator — cycles 6 photos and 3 videos.
+       Photos hold for 3s; videos play their full duration with a 7s
+       safety fallback in case a codec can't decode (rare on H.264 720p
+       but kept for parity with giva.html). Same JS shape as GIVA, just
+       with more slots. Browser handles preload="metadata" — only the
+       active video's data fetches as it becomes active. -->
+  <script>
+    (function () {
+      var rotator = document.getElementById('brandsheepRotator');
+      if (!rotator) return;
+      var items = Array.prototype.slice.call(rotator.querySelectorAll('.brandsheep-rotator-item'));
+      if (items.length < 2) return;
+
+      var PHOTO_MS = 3000;
+      var VIDEO_FALLBACK_MS = 7000;
+      var current = 0;
+      var timer = null;
+      var pendingVideo = null;
+      var pendingHandler = null;
+
+      function clearAll() {
+        if (timer) { clearTimeout(timer); timer = null; }
+        if (pendingVideo && pendingHandler) {
+          pendingVideo.removeEventListener('ended', pendingHandler);
+          pendingVideo.removeEventListener('error', pendingHandler);
+          pendingVideo = null;
+          pendingHandler = null;
+        }
+      }
+
+      function next() {
+        clearAll();
+        current = (current + 1) % items.length;
+        activate(current);
+      }
+
+      function activate(i) {
+        items.forEach(function (el, idx) {
+          if (idx === i) {
+            el.classList.add('is-active');
+            if (el.tagName === 'VIDEO') {
+              try { el.currentTime = 0; var p = el.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {}
+              pendingVideo = el;
+              pendingHandler = next;
+              el.addEventListener('ended', pendingHandler, { once: true });
+              el.addEventListener('error', pendingHandler, { once: true });
+              timer = setTimeout(next, VIDEO_FALLBACK_MS);
+            } else {
+              timer = setTimeout(next, PHOTO_MS);
+            }
+          } else {
+            el.classList.remove('is-active');
+            if (el.tagName === 'VIDEO') { try { el.pause(); } catch (e) {} }
+          }
+        });
+      }
+
+      activate(0);
+    })();
+  </script>
+
+</body>
+</html>

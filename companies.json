@@ -161,5 +161,34 @@
     "personalNote": {
       "title": "Why I'm writing to <em>you</em>, Arva."
     }
+  },
+
+  "livspace": {
+    "displayName": "Livspace",
+    "ctaTitle": "Want to talk about making beauty accessible?",
+    "ctaDesc": "20 minutes, whenever it's easy for you.",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, Livspace."
+    }
+  },
+
+  "meesho": {
+    "displayName": "Meesho",
+    "_status": "WIP — placeholder. Chief of Staff to CEO (Vidit Aatrey) role. Hero/CTA copy + personal note bodies to be finalised once Tanya picks angles.",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, Meesho."
+    }
+  },
+
+  "brandsheep": {
+    "displayName": "BrandSheep",
+    "_status": "Creative Lead role at BrandSheep Collective (Arunita Sen) on the Budweiser India account, across sports/music/art/lifestyle. Cards live; copy reflects Tanya's brief — real-customer angle + 'this is the room I've been looking for'.",
+
+    "personalNote": {
+      "title": "Why I'm writing to <em>you</em>, BrandSheep.",
+      "intro": "Before I send anything over, two things I've been thinking about."
+    }
   }
 }
