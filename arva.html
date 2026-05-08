@@ -52,25 +52,20 @@
       color: hsl(12, 70%, 58%);
     }
 
-    /* ── CB-variant personal-note: 2 cards with a middle polaroid video ──
-       Arva variant: 2 cards side by side, NO middle polaroid. Same
-       restraint pattern as elfina.html — sensitive topic warrants two
-       cards in a clean grid, not a fun-portfolio polaroid in between.
-       Polaroid CSS below is dead wood on this page; kept for parity
-       with cb.html / tmrw.html.
+    /* ── CB-variant personal-note: 2 cards with a middle polaroid ──
+       Arva variant: 3-col grid (card | polaroid | card). The middle
+       polaroid is Tanya's actual Arva test result screenshot, used as
+       the "I'm a real customer" proof for Card 1. Source asset
+       `arva_test.webp` is the cropped + compressed Arva-app screenshot.
 
        Selector specificity note: style.css has `body.has-personal-note
        .personal-note-points { max-width: 1200px; }` which beats a
        plain `.personal-note-points--cb` rule. So we mirror its full
-       selector to win specificity (0,0,3,1) > (0,0,2,1). Without this
-       override, the cards stretch to 1200px and clip out of the
-       viewport on the right. */
+       selector to win specificity (0,0,3,1) > (0,0,2,1). */
     body.has-personal-note .personal-note-points--cb {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(24px, 4vw, 56px);
-      align-items: start;
-      max-width: 760px;
-      margin-inline: auto;
+      grid-template-columns: 1fr minmax(240px, 300px) 1fr;
+      gap: clamp(24px, 3vw, 44px);
+      align-items: center;
     }
 
     /* Middle polaroid frame holding an autoplaying muted video */
@@ -110,6 +105,14 @@
       object-fit: cover;
       background: hsl(40, 30%, 94%);
       border-radius: 2px;
+    }
+    /* Arva test result screenshot is closer to square than 3:4. Use a
+       slightly wider polaroid window with contain so the whole result
+       reads (name + headline + value + chart) without center-cropping. */
+    .personal-note-media-video--arva-test {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: hsl(286, 60%, 70%); /* matches the Arva app purple */
     }
     .personal-note-media-label {
       position: absolute;
@@ -314,24 +317,28 @@
 
       <div class="personal-note-points personal-note-points--cb" id="personalNotePoints">
 
-        <!-- Card 1 — heart-touching personal angle. Before Arva, Tanya
-             didn't talk about fertility / IVF with her friends. Now
-             she does, and it feels normal. The shift in how women
-             talk about these topics is what Arva sparked, and Tanya's
-             closing me-thread says she wants to work on products that
-             actually reach real people. No data points, no tagline
-             citations, no proper-noun lists — just a real shift she's
-             lived through. -->
+        <!-- Card 1 — the real-customer angle. Tanya took the Arva test,
+             got her actual AMH result back, and her stress about fertility
+             got resolved. Polaroid below shows her real test result
+             (4.2 ng/mL, 16 Mar 2025) as proof. No anecdote, no abstraction
+             — just lived experience. -->
         <div class="personal-note-card">
           <div class="polaroid-tape" style="--tape: hsla(48, 95%, 72%, 0.85); --tape-rot: -4deg"></div>
-          <h3 class="personal-note-card-title">You sparked these conversations.</h3>
-          <p class="personal-note-card-body">Before <em>Arva</em>, I'd never talked about fertility or IVF with my friends. Now we do, and it feels normal. That doesn't happen unless you actually care, not just about the product. That's what I want to be working on. Things that reach real people and quietly make their lives better.</p>
+          <h3 class="personal-note-card-title">You actually fixed one of my worries.</h3>
+          <p class="personal-note-card-body">A few months ago I was quietly worrying about fertility, the way most women in their late 20s do. I took the <em>Arva</em> test almost as a try-it-and-see, and the result said I had a higher-than-average egg count for my age. My brain just exhaled. Thanks for one less thing to stress about. Plenty of other worries left, but you handled this one.</p>
         </div>
 
-        <!-- No middle polaroid on the Arva page. Tanya's call: a
-             stylised polaroid in between a fertility-conversation card
-             and a founder-praise card felt tonally wrong. 2-card grid
-             is the right restraint here. -->
+        <!-- Middle polaroid: Tanya's actual Arva test result screenshot.
+             Cropped + compressed via Pillow from /Users/shifuventures/
+             TanyaWebsite/test_result.jpeg. 23 KB webp at 800x649.
+             Custom .personal-note-media-video--arva-test class swaps the
+             3:4 frame for 4:3 contain so the whole screenshot fits with
+             a purple background (matching the Arva app). -->
+        <figure class="personal-note-media">
+          <div class="polaroid-tape" style="--tape: hsla(286, 60%, 75%, 0.85); --tape-rot: 3deg"></div>
+          <img src="arva_test.webp" class="personal-note-media-video personal-note-media-video--arva-test" alt="My Arva test result" aria-hidden="true">
+          <figcaption class="personal-note-media-label">Receipts.</figcaption>
+        </figure>
 
         <!-- Card 2 — praise the founders' diverse backgrounds.
              Dipalie (CEO) is ex-UX designer. Nidhi is a Chartered
