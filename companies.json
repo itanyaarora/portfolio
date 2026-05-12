@@ -182,6 +182,35 @@
     }
   },
 
+  "dorje-teas": {
+    "displayName": "Dorje Teas",
+    "heroHeadline": "A multi-career person<br>writing to a multi-career founder.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of engineering, then four months of trying 50 new careers. The shape of what you've built with Dorje and Alt Carbon feels like the kind of room I'd want to be in.",
+    "ctaTitle": "Open to a conversation?",
+    "ctaDesc": "20 minutes, whenever it's easy for you.",
+    "_status": "Cards live (\"Second Chance House\" + range angle for Sparsh Agarwal). Awaiting Tanya's GIF for loader (dorje_hey.webp). Cold-DM-to-founder play, no formal hiring channel.",
+
+    "personalNote": {
+      "eyebrow": "A little note just for Dorje Teas",
+      "title": "Why I'm writing to <em>you</em>, Dorje Teas.",
+      "intro": "Two things I keep coming back to."
+    }
+  },
+
+  "goat-life": {
+    "displayName": "GOAT Life",
+    "heroHeadline": "A real customer<br>writing to the founder.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of engineering, then four months of trying 50 new careers. The shape of GOAT Life feels like the kind of room I'd want to be in.",
+    "ctaTitle": "Open to a conversation?",
+    "ctaDesc": "20 minutes, whenever it's easy for you.",
+
+    "personalNote": {
+      "eyebrow": "A little note just for GOAT Life",
+      "title": "Why I'm writing to <em>you</em>, GOAT Life.",
+      "intro": "Two things I've been thinking about."
+    }
+  },
+
   "brandsheep": {
     "displayName": "BrandSheep",
     "_status": "Creative Lead role at BrandSheep Collective (Arunita Sen) on the Budweiser India account, across sports/music/art/lifestyle. Cards live; copy reflects Tanya's brief — real-customer angle + 'this is the room I've been looking for'.",
