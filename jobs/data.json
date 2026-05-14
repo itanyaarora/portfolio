@@ -1,180 +1,242 @@
 {
-  "generated_at": "2026-05-13T20:30:00+05:30",
-  "source": "manual snapshot — will be overwritten by GitHub Action once token is added",
+  "generated_at": "2026-05-14T09:31:54.933Z",
+  "source": "Notion DB 82d05994b82f4ad69228a1081c9be8c3",
   "total": 13,
   "rows": [
     {
-      "id": "elfina",
-      "company": "Elfina",
-      "status": "Interviewing",
-      "priority": "High",
-      "role": "Founder's Office",
-      "person": "Tanvi Agrawal (Founder/CEO)",
-      "mode": ["Job Application", "WhatsApp"],
-      "date_sent": "2026-05-12",
-      "brand_page": "https://www.tanyaarora.in/hey_elfina",
-      "job_posting": null,
-      "last_contact": "May 12, 2026: Tanvi DM'd, met in Koramangala same evening. Awaiting next step.",
-      "tags": ["met"]
-    },
-    {
-      "id": "dorje-teas",
-      "company": "Dorje Teas",
-      "status": "Awaiting reply",
-      "priority": "High",
-      "role": "Founder's Office",
-      "person": "Sparsh Agarwal, Ishaan Kanoria, Shrey Agarwal, Sayantani Biswas",
-      "mode": ["Email", "LinkedIn InMail", "WhatsApp", "Job Application"],
-      "date_sent": "2026-05-12",
-      "brand_page": "https://www.tanyaarora.in/hey_dorje",
-      "job_posting": null,
-      "last_contact": "May 12: Multi-channel outreach in one day. Email to Sparsh, InMail to Sayantani, WhatsApp to Shrey. Registered for May 22 Alter Magazine event."
-    },
-    {
-      "id": "pocket-fm",
+      "id": "360c095b-d797-8122-a499-dfcbb38f53be",
       "company": "Pocket FM",
       "status": "Sent",
       "priority": "High",
       "role": "AI Native Generalist, Founder's Office",
-      "person": "Rohan Nayak (CEO), Ashish Kumar (Head of Talent)",
-      "mode": ["Job Application"],
+      "person": "Rohan Nayak (CEO), Ashish Kumar (Head of Talent), Nishanth Srinivasagowda (COO), Prateek Dixit (CTO), Lalit Gangwar (COO Global)",
+      "mode": [
+        "Job Application"
+      ],
       "date_sent": "2026-05-13",
       "brand_page": null,
       "job_posting": "https://in.linkedin.com/jobs/view/ai-native-generalist-at-pocket-fm-4410383106",
-      "last_contact": "May 13: Applied via LinkedIn. NEXT: build custom brand page + direct DM to Rohan + Ashish.",
-      "tags": ["new"]
+      "last_contact": "May 13, 2026: Applied via LinkedIn for the AI Native Generalist, Founder's Office role in Bengaluru (posted ~3 days ago, 200+ applicants). NEXT: build custom brand page + direct DM to Rohan Nayak + Ashish Kumar to differentiate from the applicant pile.",
+      "notes_preview": "Role: AI Native Generalist, Founder's Office · HQ: Bengaluru (Koramangala + HSR Layout, primary) + Gurgaon (secondary).\n\nFounded 2018 by IIT-KGP batchmates Rohan Nayak (CEO) + Nishanth Srinivasagowda (COO) + Prateek Dixit (CTO). Audio-series platform (~10 min serialized fiction).",
+      "notion_url": "https://www.notion.so/Pocket-FM-360c095bd7978122a499dfcbb38f53be"
     },
     {
-      "id": "california-burrito",
-      "company": "California Burrito",
-      "status": "Interviewing",
-      "priority": "High",
-      "role": "Creative Head / Founder's Office",
-      "person": "Bert Mueller (Co-Founder & CEO)",
-      "mode": ["LinkedIn Public Post", "Connection Request", "Email", "WhatsApp"],
-      "date_sent": null,
-      "brand_page": "https://www.tanyaarora.in/hey_calib",
-      "job_posting": null,
-      "last_contact": "Had a call with Bert Mueller (Co-Founder/CEO). Awaiting next step. Previous outreach: LinkedIn post + connection requests to Taru, Kulshresth, Sanskar + email + WhatsApp.",
-      "tags": ["met"]
-    },
-    {
-      "id": "tmrw",
-      "company": "TMRW House of Brands",
+      "id": "360c095b-d797-81ac-aabd-c8fc5f617f98",
+      "company": "Dorje Teas",
       "status": "Awaiting reply",
       "priority": "High",
-      "role": "Founder's Office",
-      "person": "Prashanth Aluru (CEO & Co-Founder)",
-      "mode": ["LinkedIn InMail", "Email", "WhatsApp", "Instagram DM"],
-      "date_sent": "2026-05-08",
-      "brand_page": "https://www.tanyaarora.in/hey_tmrw",
-      "job_posting": null,
-      "last_contact": "May 8: Direct DM follow-up to Prashanth (Bert-pattern). Outreach also to Namrata, Krati, Ayushi."
-    },
-    {
-      "id": "arva-health",
-      "company": "Arva Health",
-      "status": "Awaiting reply",
-      "priority": "High",
-      "role": "Brand Manager",
-      "person": "Dipalie Bajaj (Founder)",
-      "mode": ["Email", "WhatsApp"],
-      "date_sent": "2026-05-08",
-      "brand_page": "https://www.tanyaarora.in/hey_arva",
-      "job_posting": null,
-      "last_contact": "May 8: Direct WhatsApp DM. Real-customer angle (since last year). Test screenshot attached."
-    },
-    {
-      "id": "giva",
-      "company": "GIVA",
-      "status": "Awaiting reply",
-      "priority": "High",
-      "role": "Program Manager / CEO's Office",
-      "person": "Ishendra Agarwal (CEO) + Nikita Prasad",
-      "mode": ["LinkedIn DM", "Instagram DM", "WhatsApp", "Job Application"],
+      "role": "Founder's Office at Dorje Teas",
+      "person": "Sparsh Agarwal (Founder + Alt Carbon), Sayantani Biswas (Hiring), Shrey Agarwal (Alt Carbon co-founder)",
+      "mode": [
+        "Email",
+        "LinkedIn InMail",
+        "WhatsApp",
+        "Job Application"
+      ],
       "date_sent": "2026-05-12",
-      "brand_page": "https://www.tanyaarora.in/hey_giva",
+      "brand_page": "https://www.tanyaarora.in/hey_dorje",
       "job_posting": null,
-      "last_contact": "May 12: Direct WhatsApp DM to Ishendra. Customer-loyalty angle + hey_giva link."
+      "last_contact": "May 12, 2026: Multi-channel outreach in one day. (1) Email to Sparsh Agarwal — subject \"Found the room I've been looking for,\" TL;DR + link to hey_dorje + call ask. (2) LinkedIn InMail to Sayantani Biswas — \"Just applied, wanted to reach out directly too.\" (3) WhatsApp to Shrey Agarwal — casual Alt Carbon → Dorje cascade, mentioned May 22 Alter Magazine event signup. Also registered for the event itself.",
+      "notes_preview": "Role: Founder's Office at Dorje Teas · Contacts: Sparsh Agarwal (Founder, also Alt Carbon Pres), Ishaan Kanoria (co-founder), Shrey Agarwal (Alt Carbon co-founder + Sparsh's brother), Sayantani Biswas (hiring).\n\nApplied via form earlier on May 12, 2026. Same day: direct multi-cha",
+      "notion_url": "https://www.notion.so/Dorje-Teas-360c095bd79781acaabdc8fc5f617f98"
     },
     {
-      "id": "brandsheep",
-      "company": "BrandSheep × Budweiser",
-      "status": "Sent",
-      "priority": "High",
-      "role": "Creative Lead",
-      "person": "Arunita Sen (Founder & CEO)",
-      "mode": ["Email"],
-      "date_sent": "2026-05-07",
-      "brand_page": "https://www.tanyaarora.in/hey_brandsheep",
-      "job_posting": "https://www.linkedin.com/posts/arunitasen_nowhiring-activity-7457645794641432576-M2gF",
-      "last_contact": "May 7: Email to hello@brandsheep.in (subject: 'From a long-time Bud fan')."
-    },
-    {
-      "id": "snapmint",
+      "id": "359c095b-d797-810b-861b-fd2f480c9713",
       "company": "SnapMint",
       "status": "Sent",
       "priority": "High",
       "role": "Manager, Founder's Office",
-      "person": "Nalin Agrawal (Co-Founder & CEO)",
-      "mode": ["Job Application", "WhatsApp"],
+      "person": "",
+      "mode": [
+        "Job Application",
+        "WhatsApp"
+      ],
       "date_sent": "2026-05-08",
       "brand_page": null,
       "job_posting": null,
-      "last_contact": "May 8: Form application + direct WhatsApp to Nalin."
+      "last_contact": "May 8, 2026: Form application submitted + direct WhatsApp DM to Nalin Agrawal. Awaiting reply.",
+      "notes_preview": "Role: Manager, Founder's Office · Contact: Nalin Agrawal (Co-Founder & CEO, IIT Bombay engineer)\n\nApplied via Snapmint Google form + sent direct WhatsApp to Nalin same day.\n\nApplication answer (form Q: \"What interests you about this role?\"): led with the product itself — the app ",
+      "notion_url": "https://www.notion.so/SnapMint-359c095bd797810b861bfd2f480c9713"
     },
     {
-      "id": "stealth-d2c-fashion",
+      "id": "359c095b-d797-8105-89e4-d3c2c95f69bf",
+      "company": "Meesho",
+      "status": "Sent",
+      "priority": "Low",
+      "role": "Chief of Staff to CEO",
+      "person": "Vidit Aatrey",
+      "mode": [
+        "Job Application"
+      ],
+      "date_sent": "2026-05-08",
+      "brand_page": "https://www.tanyaarora.in/hey_meesho",
+      "job_posting": "https://www.linkedin.com/jobs/view/4390838078/",
+      "last_contact": "May 8, 2026: Form application submitted. ⚠️ NEXT MOVE: Direct WhatsApp DM to Vidit Aatrey is drafted but NOT YET SENT. Should pair with Flipkart-live reel link as a follow-up.",
+      "notes_preview": "Role: Chief of Staff to CEO · Contact: Vidit Aatrey (Co-Founder & CEO)\n\nMay 8, 2026: form application submitted to Meesho.\n\nNEXT MOVE: direct WhatsApp/DM to Vidit drafted and ready to send. Message frame: \"Hey Vidit, this is Tanya. I just submitted my application for the Chief of",
+      "notion_url": "https://www.notion.so/Meesho-359c095bd797810589e4d3c2c95f69bf"
+    },
+    {
+      "id": "359c095b-d797-8136-903d-fe5db0342d83",
       "company": "Stealth D2C Fashion",
       "status": "Sent",
       "priority": "High",
       "role": "(undisclosed)",
-      "person": "(undisclosed)",
-      "mode": ["Email", "Job Application"],
+      "person": "",
+      "mode": [
+        "Job Application"
+      ],
       "date_sent": null,
       "brand_page": null,
       "job_posting": "https://www.linkedin.com/jobs/view/4403377101/",
-      "last_contact": "Pre-tracker: Email + Job App via LinkedIn job 4403377101."
+      "last_contact": "Pre-tracker: Email + Job Application sent via LinkedIn job 4403377101. Awaiting reply.",
+      "notes_preview": "Role: (undisclosed) · Contact: (undisclosed)\n\nEmail applied via the LinkedIn job. Multiple iterations on email tone — landed on humble version after a few drafts.",
+      "notion_url": "https://www.notion.so/Stealth-D2C-Fashion-359c095bd7978136903dfe5db0342d83"
     },
     {
-      "id": "shram",
-      "company": "Shram",
-      "status": "Interviewing",
+      "id": "359c095b-d797-8159-9d70-d1ef6c156bc4",
+      "company": "Arva Health",
+      "status": "Awaiting reply",
       "priority": "High",
-      "role": "Founder's Office Generalist",
-      "person": "Jay (Founder)",
-      "mode": ["Email", "Job Application"],
-      "date_sent": null,
-      "brand_page": null,
-      "job_posting": null,
-      "last_contact": "Applied + got back with an assignment. ⚠️ Assignment pending — needs to be completed for the next round. 45 LPA + villa stay in Indiranagar.",
-      "tags": ["assignment"]
-    },
-    {
-      "id": "meesho",
-      "company": "Meesho",
-      "status": "Sent",
-      "priority": "Medium",
-      "role": "Chief of Staff to CEO",
-      "person": "Vidit Aatrey (Co-Founder & CEO)",
-      "mode": ["Job Application"],
+      "role": "Brand Manager",
+      "person": "Dipalie Bajaj",
+      "mode": [
+        "Email",
+        "WhatsApp"
+      ],
       "date_sent": "2026-05-08",
-      "brand_page": "https://www.tanyaarora.in/hey_meesho",
-      "job_posting": "https://www.linkedin.com/jobs/view/4390838078/",
-      "last_contact": "May 8: Form submitted. Direct WhatsApp DM to Vidit drafted but NOT YET SENT."
+      "brand_page": "https://www.tanyaarora.in/hey_arva",
+      "job_posting": null,
+      "last_contact": "May 8, 2026: Direct WhatsApp DM to Dipalie. Real-customer angle (\"been a customer of Arva since last year, took the test, made me stress less about fertility\"). Test result screenshot attached. Awaiting reply.",
+      "notes_preview": "Role: Brand Manager · Contact: Dipalie Bajaj (Founder, Arva Health)\n\nApplied via dipalie@arva.health (email provided by Tanya). Women's-health / fertility-care D2C. Card 2 angle: Dipalie + Nidhi (\"two friends, two different worlds\"). Card 1: \"You sparked these conversations\" with",
+      "notion_url": "https://www.notion.so/Arva-Health-359c095bd79781599d70d1ef6c156bc4"
     },
     {
-      "id": "livspace",
+      "id": "359c095b-d797-817d-8924-f35820d21a88",
+      "company": "GIVA",
+      "status": "Awaiting reply",
+      "priority": "High",
+      "role": "Brand / Customer-side",
+      "person": "Ishendra Agarwal (CEO/Co-founder) + Nikita Prasad (earlier contact)",
+      "mode": [
+        "LinkedIn DM",
+        "Instagram DM",
+        "WhatsApp",
+        "Job Application"
+      ],
+      "date_sent": "2026-05-12",
+      "brand_page": "https://www.tanyaarora.in/hey_giva",
+      "job_posting": null,
+      "last_contact": "May 12, 2026: Direct WhatsApp DM to Ishendra Agarwal (CEO). Customer-loyalty angle + tanyaarora.in/hey_giva link. Following up on the Program Manager / CEO's Office role application from a few days back. Awaiting reply.",
+      "notes_preview": "Role: Brand / Customer-side · Contact: Nikita Prasad (Founder, GIVA)\n\nCustomer-loyalty angle. LinkedIn DM + Insta DM via @magic_muggle_me (Magic & Muggle). Page has 3-slot polaroid rotator (giva2.jpg → giva1.mp4 → giva3.jpg). CTA = \"Hire your most loyal customer?\"",
+      "notion_url": "https://www.notion.so/GIVA-359c095bd797817d8924f35820d21a88"
+    },
+    {
+      "id": "359c095b-d797-8187-aa06-c48e292f828d",
+      "company": "BrandSheep × Budweiser",
+      "status": "Sent",
+      "priority": "High",
+      "role": "Creative Lead",
+      "person": "Arunita Sen",
+      "mode": [
+        "Email"
+      ],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/hey_brandsheep",
+      "job_posting": "https://www.linkedin.com/posts/arunitasen_nowhiring-activity-7457645794641432576-M2gF",
+      "last_contact": "May 7, 2026: Email sent to hello@brandsheep.in (subject: \"From a long-time Bud fan\"). Site: tanyaarora.in/hey_brandsheep. Awaiting reply.",
+      "notes_preview": "Role: Creative Lead · Contact: Arunita Sen (Founder & CEO, BrandSheep)\n\nApplication email sent; subject \"From a long-time Bud fan\". Sent to hello@brandsheep.in. Bud confirmed (not Corona) via Outlook \"Game Changers 2025\" profile. Account is Budweiser India across sports/music/art",
+      "notion_url": "https://www.notion.so/BrandSheep-Budweiser-359c095bd7978187aa06c48e292f828d"
+    },
+    {
+      "id": "359c095b-d797-8195-995b-d2c530ad6733",
       "company": "Livspace",
       "status": "To apply",
       "priority": "Low",
       "role": "Brand Manager",
-      "person": "Kartikeya Bhandari (CMO)",
-      "mode": ["LinkedIn DM"],
+      "person": "Kartikeya Bhandari",
+      "mode": [
+        "LinkedIn DM"
+      ],
       "date_sent": null,
       "brand_page": null,
       "job_posting": null,
-      "last_contact": "Page built locally but NOT pushed. Pending: home photo for polaroid + push + Kartikeya outreach."
+      "last_contact": "PAGE BUILT LOCALLY BUT NOT PUSHED. Pending: (1) Tanya's home photo for polaroid, (2) push livspace.html + hey_livspace, (3) LinkedIn DM/InMail to Kartikeya Bhandari (CMO).",
+      "notes_preview": "Role: Brand Manager · Contact: Kartikeya Bhandari (CMO, ex-Flipkart Big Billion Days, IIM Calcutta)\n\nPAGE NOT YET PUSHED. Founders: Anuj Srivastava (Chairman) + Ramakant Sharma (CEO, elevated Feb 2025). Pre-IPO 2026 listing. Pending: Tanya's home photo for polaroid, LinkedIn post",
+      "notion_url": "https://www.notion.so/Livspace-359c095bd7978195995bd2c530ad6733"
+    },
+    {
+      "id": "359c095b-d797-8196-9bde-fd0344d87b2a",
+      "company": "Shram",
+      "status": "Interviewing",
+      "priority": "Medium",
+      "role": "Founder's Office Generalist",
+      "person": "Jay",
+      "mode": [
+        "Email"
+      ],
+      "date_sent": null,
+      "brand_page": null,
+      "job_posting": null,
+      "last_contact": "Applied to Shram, got back with an assignment. Assignment is pending — needs to be completed for the next round. Email/role context still at jay@shram.ai. 45 LPA + villa stay in Indiranagar.",
+      "notes_preview": "Role: Founder's Office Generalist · Contact: Jay (Founder, Shram)\n\nEmail to jay@shram.ai drafted (asking for Shram access to prepare a 1-pager). 45 LPA + villa stay in Indiranagar. SENDING TOMORROW.",
+      "notion_url": "https://www.notion.so/Shram-359c095bd79781969bdefd0344d87b2a"
+    },
+    {
+      "id": "359c095b-d797-81be-857e-dfc72b2af50f",
+      "company": "TMRW House of Brands",
+      "status": "Awaiting reply",
+      "priority": "High",
+      "role": "Founder's Office",
+      "person": "Prashanth Aluru",
+      "mode": [
+        "LinkedIn InMail",
+        "Email",
+        "WhatsApp",
+        "Instagram DM"
+      ],
+      "date_sent": "2026-05-08",
+      "brand_page": "https://www.tanyaarora.in/hey_tmrw",
+      "job_posting": null,
+      "last_contact": "May 8, 2026: Direct DM follow-up to Prashanth (Bert-pattern — \"Pretty sure none of it made it to you. Put together a little site… tanyaarora.in/hey_tmrw\"). Awaiting reply. Earlier outreach went to: Prashanth, Namrata Lal (CGO), Krati Agarwal (FO), Ayushi Kutta (FO).",
+      "notes_preview": "Role: Founder's Office · Contact: Prashanth Aluru (CEO & Co-Founder)\n\nMulti-channel outreach: original LinkedIn InMails to Prashanth + Namrata Lal (CGO) + Krati Agarwal (FO) + Ayushi Kutta (FO). Tried email + Instagram, no response.\n\nMay 8, 2026: sent direct follow-up DM to Prash",
+      "notion_url": "https://www.notion.so/TMRW-House-of-Brands-359c095bd79781be857edfc72b2af50f"
+    },
+    {
+      "id": "359c095b-d797-81f5-9ebc-e0c869c2da8f",
+      "company": "Elfina",
+      "status": "Interviewing",
+      "priority": "High",
+      "role": "Founder's Office",
+      "person": "Tanvi Agrawal",
+      "mode": [
+        "Job Application",
+        "WhatsApp"
+      ],
+      "date_sent": "2026-05-12",
+      "brand_page": "https://www.tanyaarora.in/hey_elfina",
+      "job_posting": null,
+      "last_contact": "May 12, 2026: Tanvi DM'd Tanya proactively, asked to meet same evening in Koramangala. Meeting happened May 12 evening. Brand page: tanyaarora.in/hey_elfina. Prep dossier: /elfina-prep.html (local, used pre-meeting). Loom + written FO answer still pending if needed for follow-up. POST-MEETING NOTES to be added by Tanya.",
+      "notes_preview": "Role: Founder's Office · Contact: Tanvi Agrawal (Solo Founder / CEO)\n\nMental-health D2C, ~6 people, HQ HSR Bengaluru. Hiring bar (ranked): taste + judgment, writing, self-directed execution, AI fluency, dhandha. Submission asks: (1) short Loom of AI stack, (2) written \"what FO is",
+      "notion_url": "https://www.notion.so/Elfina-359c095bd79781f59ebce0c869c2da8f"
+    },
+    {
+      "id": "359c095b-d797-81fd-9582-d63765c6aadc",
+      "company": "California Burrito",
+      "status": "Interviewing",
+      "priority": "High",
+      "role": "Creative Head / Founder's Office",
+      "person": "Bert Mueller",
+      "mode": [
+        "LinkedIn Public Post",
+        "Email",
+        "WhatsApp"
+      ],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/hey_calib",
+      "job_posting": null,
+      "last_contact": "Had a call with Bert Mueller (Co-Founder/CEO). Awaiting next step. Previous outreach: public LinkedIn post + connection requests to Taru Goswami, Kulshresth Patel, Sanskar Jaiswal + email + WhatsApp.",
+      "notes_preview": "Role: Creative Head / Founder's Office · Contact: Bert Mueller (Co-Founder & CEO)\n\nPublic LinkedIn post tagging Bert; connection requests sent to Taru Goswami (HR), Kulshresth Patel (CFO), Sanskar Jaiswal. Also produced a 4-slide pitch deck (tanya-calib-pitch.pptx) and a bert-pre",
+      "notion_url": "https://www.notion.so/California-Burrito-359c095bd79781fd9582d63765c6aadc"
     }
   ]
 }
