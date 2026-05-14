@@ -561,6 +561,45 @@ function isApplyOnly(modes){
   return modes && modes.length === 1 && modes[0] === "Job Application";
 }
 
+// Parse the Person field. Lines that start with "—" are section
+// dividers ("— Not yet contacted —"); lines that start with "(" are
+// parenthetical notes ("(No outreach yet)"). Neither counts as a real
+// contact reached.
+function parsePersonField(text){
+  if(!text) return { contacted: [], pending: [], count: 0 };
+  const lines = text.split(/\n+/).map(l => l.trim()).filter(Boolean);
+  const contacted = [];
+  const pending = [];
+  let inPendingMode = false;
+  for(const line of lines){
+    if(/^\(/.test(line)){
+      // Parenthetical note — show as italicized
+      continue;
+    }
+    if(/^[—–-]\s*not\s+yet|^[—–-]\s*drafted|^[—–-]\s*targets/i.test(line)){
+      inPendingMode = true;
+      continue;
+    }
+    if(/^[—–-]\s*$/.test(line) || /^[—–-]+$/.test(line)){
+      continue;
+    }
+    if(inPendingMode){
+      pending.push(line);
+    } else {
+      contacted.push(line);
+    }
+  }
+  return { contacted, pending, count: contacted.length };
+}
+
+// Render a person line. Detects "linkedin.com/in/..." or other URLs
+// and turns them into clickable links.
+function renderPersonLine(line){
+  const safe = esc(line);
+  return safe.replace(/(linkedin\.com\/in\/[a-zA-Z0-9_\-]+)/g,
+    '<a href="https://$1" target="_blank" style="color:var(--terra);border-bottom:1px dotted var(--terra);">$1</a>');
+}
+
 function brandLink(url){
   if(!url) return '<span class="no-link">—</span>';
   const short = url.replace(/^https?:\/\/(www\.)?/, "");
@@ -641,7 +680,19 @@ function renderRows(){
 
   meta.innerText = `Showing ${rows.length} of ${DATA.rows.length} · sorted by priority + status`;
 
-  tbody.innerHTML = rows.map(r => `
+  tbody.innerHTML = rows.map(r => {
+    const p = parsePersonField(r.person);
+    const personHtml = p.count === 0
+      ? `<div class="row-person" style="color:var(--muted);font-style:italic;">No direct outreach yet</div>${
+          p.pending.length ? `<div style="margin-top:6px;font-size:11px;color:var(--muted);font-style:italic;">Targets: ${p.pending.map(l => esc(l.split('—')[0].trim())).join(', ')}</div>` : ""
+        }`
+      : `<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+            <span style="background:var(--coral);color:var(--paper);font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;">${p.count} contact${p.count > 1 ? 's' : ''}</span>
+         </div>
+         <div class="row-person" style="font-size:12px;line-height:1.45;">${p.contacted.map(renderPersonLine).join('<br>')}</div>${
+            p.pending.length ? `<div style="margin-top:6px;font-size:11px;color:var(--muted);font-style:italic;">+ ${p.pending.length} not yet contacted</div>` : ""
+         }`;
+    return `
     <tr>
       <td>
         <div class="row-company">${esc(r.company)}${tagBadges(r.tags)}</div>
@@ -652,9 +703,7 @@ function renderRows(){
         <div>${badge(r.status)}</div>
         <div style="margin-top:6px"><span class="priority-dot priority-dot--${PRIORITY_DOT[r.priority] || 'low'}"></span><span class="priority-label">${esc(r.priority || "")}</span></div>
       </td>
-      <td>
-        <div class="row-person">${esc(r.person || "—")}</div>
-      </td>
+      <td>${personHtml}</td>
       <td>
         <div class="row-last-contact">${esc(r.last_contact || "—")}</div>
         ${r.date_sent ? `<div class="row-date" style="margin-top:4px">Sent: ${esc(r.date_sent)}</div>` : ""}
@@ -662,9 +711,17 @@ function renderRows(){
       <td>${modePills(r.mode)}</td>
       <td>${brandLink(r.brand_page)}</td>
     </tr>
-  `).join("") || `<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--muted)">No applications match this filter.</td></tr>`;
+  `;}).join("") || `<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--muted)">No applications match this filter.</td></tr>`;
 
-  cards.innerHTML = rows.map(r => `
+  cards.innerHTML = rows.map(r => {
+    const p = parsePersonField(r.person);
+    const personHtml = p.count === 0
+      ? `<div class="row-person" style="color:var(--muted);font-style:italic;font-size:13px;">No direct outreach yet${p.pending.length ? ` · Targets: ${p.pending.map(l => esc(l.split('—')[0].trim())).join(', ')}` : ""}</div>`
+      : `<div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
+            <span style="background:var(--coral);color:var(--paper);font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;">${p.count} contact${p.count > 1 ? 's' : ''}</span>
+         </div>
+         <div class="row-person" style="font-size:13px;line-height:1.5;">${p.contacted.map(renderPersonLine).join('<br>')}</div>`;
+    return `
     <div class="card-row">
       <div class="row-company">${esc(r.company)}${tagBadges(r.tags)}</div>
       <div class="row-role">${esc(r.role || "")}</div>
@@ -673,7 +730,7 @@ function renderRows(){
         ${badge(r.status)}
         <span class="priority-label"><span class="priority-dot priority-dot--${PRIORITY_DOT[r.priority] || 'low'}"></span>${esc(r.priority || "")}</span>
       </div>
-      <div class="row-person">${esc(r.person || "—")}</div>
+      ${personHtml}
       <div class="row-meta">${modePills(r.mode)}</div>
       <div class="row-last-contact">${esc(r.last_contact || "—")}</div>
       <div class="row-links">
@@ -681,7 +738,7 @@ function renderRows(){
         ${r.job_posting ? `<a class="link-icon" href="${esc(r.job_posting)}" target="_blank">job link ↗</a>` : ""}
       </div>
     </div>
-  `).join("") || `<div class="card-row" style="text-align:center;color:var(--muted)">No applications match this filter.</div>`;
+  `;}).join("") || `<div class="card-row" style="text-align:center;color:var(--muted)">No applications match this filter.</div>`;
 }
 
 function renderBrandGrid(){
