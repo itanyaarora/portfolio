@@ -182,6 +182,21 @@
     }
   },
 
+  "pocket-fm": {
+    "displayName": "Pocket FM",
+    "heroHeadline": "An engineer<br>who loves a good story.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of infrastructure, then four months trying ten different creative careers. Pocket FM looks like the rare place where the engineering brain and the storytelling actually meet.",
+    "ctaTitle": "Open to a 20-min call?",
+    "ctaDesc": "No pitch deck. Just a conversation, whenever it's easy for you.",
+    "_status": "Cards rewritten in Tanya's warm Cal-Burrito-style voice (storytelling-fan + engineer-meets-entertainment). Applied via LinkedIn May 13; next move = direct DM to Rohan + Ashish with hey_pocketfm link. Awaiting polaroid asset (Career #6 Flipkart-live reel recommended).",
+
+    "personalNote": {
+      "eyebrow": "A little note just for Pocket FM",
+      "title": "Why I'm writing to <em>you</em>, Pocket FM.",
+      "intro": ""
+    }
+  },
+
   "dorje-teas": {
     "displayName": "Dorje Teas",
     "heroHeadline": "A multi-career person<br>writing to a multi-career founder.",
