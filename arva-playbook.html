@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arva Health's Brand Playbook — Notes for Tanvi</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF6CC;
+    --paper: #FCF5E0;
+    --paper-deep: #FFE9A1;
+    --coral: #DA6F4D;
+    --terra: #C04B25;
+    --merlot: #722F37;
+    --green: #5C8A4F;
+    --ink: #1B1A18;
+    --muted: hsl(30, 12%, 30%);
+    --line: rgba(27, 26, 24, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  body {
+    background:
+      radial-gradient(ellipse 800px 500px at 5% 0%, rgba(218, 111, 77, 0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 95% 100%, rgba(114, 47, 55, 0.07), transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+    padding: clamp(24px, 5vw, 60px) clamp(16px, 4vw, 60px);
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+
+  .stamp {
+    font-size: 12px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(34px, 6vw, 60px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  h1 em { font-style: italic; color: var(--coral); }
+  .subtitle {
+    font-size: clamp(15px, 2vw, 17px);
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 36px;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(22px, 3.5vw, 32px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: clamp(40px, 6vw, 60px) 0 14px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 8px;
+  }
+  h2 em { font-style: italic; color: var(--coral); }
+  h2 .num {
+    display: inline-block;
+    font-size: 0.5em;
+    color: var(--coral);
+    vertical-align: middle;
+    margin-right: 10px;
+    font-style: italic;
+  }
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(17px, 2.2vw, 20px);
+    margin: 22px 0 8px;
+  }
+  h3 em { color: var(--coral); font-style: italic; }
+
+  p, li { font-size: clamp(15px, 1.6vw, 16px); margin-bottom: 12px; }
+  a { color: var(--terra); }
+  a:hover { color: var(--coral); }
+  strong { font-weight: 700; }
+
+  .card {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: clamp(20px, 3vw, 26px);
+    margin: 18px 0 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--ink);
+    border-left: 3px solid var(--merlot);
+    padding: 10px 0 10px 18px;
+    margin: 14px 0;
+    line-height: 1.5;
+  }
+  .pull-quote-source {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .num-list { counter-reset: item; list-style: none; padding: 0; }
+  .num-list li {
+    position: relative;
+    padding: 18px 18px 18px 60px;
+    background: var(--paper);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--coral);
+  }
+  .num-list li::before {
+    counter-increment: item;
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--coral);
+  }
+  .num-list li strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(15px, 1.9vw, 17px);
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 14px;
+  }
+  table thead th {
+    text-align: left;
+    background: var(--paper-deep);
+    border-bottom: 2px solid var(--ink);
+    padding: 10px 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table tbody tr:hover { background: rgba(218, 111, 77, 0.04); }
+
+  .flag {
+    background: rgba(218, 111, 77, 0.10);
+    border-left: 4px solid var(--coral);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+  .flag strong { color: var(--terra); }
+
+  .toc {
+    background: var(--paper-deep);
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 28px 0;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .toc-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .toc-list { list-style: none; padding: 0; }
+  .toc-list li {
+    padding: 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  .toc-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted transparent;
+  }
+  .toc-list a:hover { border-bottom-color: var(--coral); color: var(--coral); }
+
+  .footer {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1.5px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .sources { font-size: 13px; }
+  .sources li { margin-bottom: 6px; }
+
+  ul { padding-left: 24px; }
+  ul li { padding-left: 4px; }
+
+  blockquote {
+    background: var(--paper);
+    padding: 18px 22px;
+    border-left: 4px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .num-list li { padding-left: 50px; }
+    .num-list li::before { left: 14px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<main class="container">
+
+  <p class="stamp">Internal note · For Tanvi at Elfina</p>
+  <h1>Arva Health's <em>brand playbook</em>.</h1>
+  <p class="subtitle">What they did right, and what Elfina could borrow. Compiled May 14, 2026.</p>
+
+  <div class="card" style="background: var(--paper-deep); border-color: var(--ink);">
+    <p style="margin-bottom: 6px;"><strong>Why this exists.</strong> You said you wanted brand recall in mental health like Arva has in fertility. Here's exactly what they did. I've used Arva for a year, so this is part research, part lived experience.</p>
+  </div>
+
+  <nav class="toc">
+    <p class="toc-label">In here</p>
+    <ul class="toc-list">
+      <li><a href="#fundamentals">1. The fundamentals</a></li>
+      <li><a href="#voice">2. The brand voice — how they talk</a></li>
+      <li><a href="#visual">3. Visual identity</a></li>
+      <li><a href="#channels">4. Channels they own</a></li>
+      <li><a href="#moves">5. The specific moves that built recall</a></li>
+      <li><a href="#non-judgmental">6. The non-judgmental moves, specifically</a></li>
+      <li><a href="#founders">7. Founder learnings</a></li>
+      <li><a href="#elfina">8. Direct applications for Elfina</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="fundamentals"><span class="num">01</span>The <em>fundamentals</em></h2>
+  <div class="card">
+    <p><strong>Founders:</strong> <strong>Dipalie Bajaj</strong> (Co-founder &amp; CEO) and <strong>Nidhi Panchmal</strong> (Co-founder). Described in press as <strong>childhood friends</strong> who started exploring fertility together after family pressure about biological clocks. They visited IVF clinics with no medical background and found the experience disorienting. <a href="https://inc42.com/startups/this-startup-is-on-a-mission-to-transform-indias-fertility-care-landscape/" target="_blank">Inc42</a></p>
+    <p><strong>Founded:</strong> 2022 (pilot). Fertility test launched January 2024, consultations March 2024.</p>
+    <p><strong>HQ:</strong> Bengaluru. Flagship clinic in Whitefield. Plan: 10 clinics across India by 2027 (Mumbai + Delhi next).</p>
+    <p><strong>Team size:</strong> ~10-15 people + a medical advisory panel.</p>
+    <p><strong>Pricing:</strong></p>
+    <ul>
+      <li>Complete fertility test (11 hormones): <strong>₹2,200-5,650</strong></li>
+      <li>Fertility multivitamin: ₹1,799-4,799</li>
+      <li>Expert consultation: ₹500-1,000</li>
+      <li><strong>Arva360</strong> coaching: ₹10,000/month (food, supplements, workouts, weekly video coaching, daily WhatsApp)</li>
+    </ul>
+    <p><strong>Traction (Feb-Mar 2025):</strong> 4,000+ women served · 40,000-member community · 60% MoM growth · ~22K Instagram followers · $1M pre-seed in Feb/Mar 2025, led by <strong>All In Capital</strong>.</p>
+    <div class="flag">
+      <strong>⚠️ Couldn't verify:</strong> retention rate, NPS, subscriber count specifically (vs "community member" count), exact MRR.
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="voice"><span class="num">02</span>The brand voice — <em>how they talk</em></h2>
+  <div class="card">
+    <p>The dominant move is <strong>second-person address, never the third-person clinical patient.</strong> Their AMH explainer opens:</p>
+    <p class="pull-quote">"You've likely come across the term 'AMH' — perhaps during a fertility consultation, a routine blood test, or while exploring options like egg freezing or IVF. But what is AMH, really? And how much does it actually tell you about your chances of getting pregnant?"
+      <span class="pull-quote-source">— Arva blog: <a href="https://www.arva.health/blogs/fertility-101/what-is-amh-and-what-does-it-really-tell-you-about-your-fertility" target="_blank">What is AMH?</a></span>
+    </p>
+    <p>The same explainer handles the most emotionally loaded moment — a low AMH result — with:</p>
+    <p class="pull-quote">"First of all, don't panic. A low AMH result doesn't mean your fertility journey is over. You only need one good egg to conceive. AMH is just a data point."
+      <span class="pull-quote-source">— Same blog</span>
+    </p>
+    <p>That's the move: <strong>acknowledge the feeling, reframe the data, restore agency.</strong> Not "the patient's ovarian reserve is below the reference range." Just "don't panic — you only need one good egg."</p>
+
+    <h3 style="margin-top: 28px;">Best <em>quotables</em></h3>
+
+    <p class="pull-quote">
+      "Fertility is this huge black hole. No one talks about it. We wanted to normalise this conversation."
+      <span class="pull-quote-source">— Dipalie Bajaj, <a href="https://www.shethepeople.tv/interviews/arva-health-fertility-tests-nidhi-panchmal-dipalie-bajaj-6845223" target="_blank">SheThePeople</a></span>
+    </p>
+    <p class="pull-quote">
+      "We want fertility to be as normal as discussing a skincare routine."
+      <span class="pull-quote-source">— Dipalie Bajaj, <a href="https://inc42.com/startups/this-startup-is-on-a-mission-to-transform-indias-fertility-care-landscape/" target="_blank">Inc42</a></span>
+    </p>
+    <p class="pull-quote">
+      "Fertility care needs a rebrand. Too often, people feel lost, rushed, or judged in this process."
+      <span class="pull-quote-source">— Nidhi Panchmal, <a href="https://ehealth.eletsonline.com/2025/03/femtech-startup-arva-health-secures-1m-pre-seed-funding-for-transforming-indias-fertility-care/" target="_blank">eHealth Magazine</a></span>
+    </p>
+    <p class="pull-quote">
+      "We are not in the business of diagnosing infertility but in the business of helping people have babies."
+      <span class="pull-quote-source">— Dipalie Bajaj, <a href="https://femtechinsider.com/arva-health-secures-1m-pre-seed-to-build-network-of-modern-fertility-clinics-in-india/" target="_blank">Femtech Insider</a></span>
+    </p>
+    <p class="pull-quote">
+      "We say that 50% of fertility is emotional."
+      <span class="pull-quote-source">— Dipalie Bajaj, SheThePeople</span>
+    </p>
+    <p class="pull-quote">
+      "Remember that you're in control. This is your story."
+      <span class="pull-quote-source">— Dipalie Bajaj, SheThePeople</span>
+    </p>
+
+    <h3 style="margin-top: 28px;">Vs. <em>competitors</em></h3>
+    <ul>
+      <li><strong>Veera Health</strong> leads with disease-state language ("treating PCOS for 110M women") — clinical authority. Arva leads with timeline + choice.</li>
+      <li><strong>Luma Fertility</strong> uses similar warm/modern positioning but anchors in IVF clinics first. Arva starts pre-IVF, at home, hormones first.</li>
+      <li><strong>Allara (US)</strong> is condition-and-insurance-led ("PCOS, virtual care, covered"). Arva is timeline-led.</li>
+    </ul>
+    <p style="margin-top: 14px;">The difference isn't the category — it's the <strong>starting verb</strong>. Veera "treats," Luma "performs IVF," Arva "<em>helps you plan</em>."</p>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="visual"><span class="num">03</span>Visual <em>identity</em></h2>
+  <div class="card">
+    <ul>
+      <li><strong>Palette:</strong> the brand's own logo file is literally named <code>ARVA_Merlot.png</code>. A warm wine/burgundy as primary, <strong>not the femtech default millennial pink.</strong> Merlot reads as <em>adult, considered, not girlboss</em> — signals "this is a real decision, not a wellness fling."</li>
+      <li><strong>Photography:</strong> weighted toward real bodies and warm interior clinic spaces. Arva's own copy uses "home, not a hospital" and "warm spaces." Avoids the stock-photo lab coat.</li>
+      <li><strong>Type:</strong> clean modern sans, prioritising legibility over personality.</li>
+      <li><strong>LinkedIn tagline:</strong> <em>"Fertility care, reimagined for the next generation of India."</em></li>
+      <li><strong>Product headline:</strong> <em>"Know your fertility. Plan with confidence."</em> — verb + noun + emotional outcome.</li>
+      <li><strong>The results screen</strong> (lived experience): a 1:1 free fertility-coach session is bundled into every test. Results aren't a PDF you cry over alone — <strong>they're a conversation</strong>. That's structural, not cosmetic.</li>
+    </ul>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="channels"><span class="num">04</span>Channels they <em>own</em></h2>
+  <div class="card">
+    <ul>
+      <li><strong>Instagram <a href="https://www.instagram.com/arva.health/" target="_blank">@arva.health</a></strong> — ~22K followers · "Not your typical fertility clinic / Trusted by 10,000+ women &amp; their partners." Founder-led video content.</li>
+      <li><strong>Founder Instagram <a href="https://www.instagram.com/dipalie_/" target="_blank">@dipalie_</a></strong> — personal account, links to arva.health, parallel channel.</li>
+      <li><strong>Blog</strong> — extensive SEO library covering AMH, PCOS, egg freezing myths, IVF cost.</li>
+      <li><strong>YouTube</strong> @arvahealth — exists, scale unverified.</li>
+      <li><strong>PR coverage:</strong> Inc42 · Entrepreneur India · Femtech Insider · eHealth Magazine · SheThePeople · Outlook Business · FemTech World.</li>
+      <li><strong>Podcasts:</strong> none surfaced. <em>Likely a gap Tanvi could mention as an extension to the playbook.</em></li>
+      <li><strong>Influencers/celebrities:</strong> no confirmed partnership. <strong>The founders themselves ARE the influencers</strong> — they front the content.</li>
+    </ul>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="moves"><span class="num">05</span>The specific moves that <em>built recall</em></h2>
+  <div class="card">
+    <h3><em>"Two friends figuring it out together"</em></h3>
+    <p>Dipalie + Nidhi being childhood friends with no medical background is the entire brand origin. Press picks it up because it answers "why should I trust you?" with "<em>because we were you</em>."</p>
+
+    <h3><em>Founder-led content as a deliberate choice</em></h3>
+    <p>Per Inc42: <em>"The cofounders decided on a founder-led approach, with all their content being delivered directly by either Bajaj or Panchmal."</em> This sparked <strong>viral videos with millions of views in the first month.</strong></p>
+
+    <h3><em>Arva Over Ice events</em></h3>
+    <p>Real-world meetups (Bombay edition documented) where women came to "chat about egg freezing" but actually surfaced <em>"expectations, aspirations, fears, and things I haven't been able to voice elsewhere."</em> That last phrase is the brand promise as a customer testimonial.</p>
+
+    <h3><em>Myth-busting as a content engine</em></h3>
+    <p>"Egg freezing in India: myths, facts &amp; what doctors won't always tell you" frames Arva <strong>against</strong> the dominant gatekeeper (the IVF clinic), not against rival startups.</p>
+
+    <h3><em>"50% of fertility is emotional"</em></h3>
+    <p>A repeatable line that licenses the brand to do non-clinical things (coaching, community, WhatsApp support) without seeming unserious.</p>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="non-judgmental"><span class="num">06</span>The non-judgmental moves, <em>specifically</em></h2>
+  <div class="card">
+    <p>The core trick: <strong>separate the data from the verdict.</strong> AMH is "just a data point." A ₹5,650 test is information, not a diagnosis. The judgment is something you can opt out of.</p>
+    <table>
+      <thead>
+        <tr><th>Move</th><th>What Arva does</th><th>What they don't do</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pronoun</td><td>"your body," "your timeline," "your story"</td><td>"the female reproductive system," "the patient"</td></tr>
+        <tr><td>Bad news</td><td>"First of all, don't panic. A low AMH result doesn't mean your fertility journey is over."</td><td>List a clinical reference range and stop</td></tr>
+        <tr><td>Framing of choice</td><td>"fertility optionality" — Nidhi's phrase</td><td>"treating infertility"</td></tr>
+        <tr><td>Cultural specificity</td><td>Acknowledges "aunties" and Indian family pressure by name</td><td>Pretends the patient exists in a vacuum</td></tr>
+        <tr><td>Stigma vocab</td><td>"planning ahead," "knowing your body"</td><td>"your problem," "your struggle"</td></tr>
+        <tr><td>PCOS handling</td><td>Listed alongside non-pathological reasons</td><td>Lead with disease state</td></tr>
+        <tr><td>Results delivery</td><td>Free 1:1 coach session bundled in</td><td>PDF → silence</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="founders"><span class="num">07</span>Founder <em>learnings</em></h2>
+  <div class="card">
+    <ul>
+      <li><strong>They started with a pilot, not a product.</strong> <em>"There was no initial plan to build Arva. We began Arva's journey with a pilot in 2022 to validate the actual problems women were facing."</em> — Dipalie. Two years between formation and shipping the test.</li>
+      <li><strong>They built the audience before the product.</strong> Social media presence first, fertility test second. <em>This is the move Tanvi will recognise.</em></li>
+      <li><strong>Hiring for brand:</strong> no public statement. Dipalie's background is UX design + HCI at SCAD + Harvard entrepreneurship cert, which probably explains why the brand looks like a product, not a clinic. <strong>Worth asking Dipalie directly.</strong></li>
+      <li><strong>What they got wrong:</strong> no public "we got this wrong" moment found in research. <strong>Worth a real ask if Tanya is in a 1:1 with Dipalie.</strong></li>
+    </ul>
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 id="elfina"><span class="num">08</span>Direct applications for <em>Elfina</em></h2>
+  <p style="margin: 12px 0 18px; color: var(--muted); font-size: 14px;">Mental-health-therapist-matching has the same brand problem fertility had: high stakes, high stigma, low information, an existing market (clinics, psychiatry) that talks down to the user. Seven moves Tanvi could try, framed as <em>moves not templates.</em></p>
+
+  <ol class="num-list">
+    <li>
+      <strong>Pick a starting verb that isn't "treat."</strong>
+      Arva says "plan." Veera says "treat PCOS." Elfina could say "match," "begin," "find your person," or "try therapy." <em>The verb sets the entire tone — clinical or chosen.</em>
+    </li>
+    <li>
+      <strong>Second-person everything.</strong>
+      Audit every onboarding screen, every email, every blog for "the patient" / "users with depression" / "individuals seeking care" and rewrite as <em>"you."</em> Free and immediate.
+    </li>
+    <li>
+      <strong>Name the emotional moment before the data.</strong>
+      Arva's "First of all, don't panic" before they explain low AMH. Elfina's equivalent: before a PHQ-9 score, before a "moderate depression" tag, before a therapist mismatch — <strong>a single human line.</strong> Mental health is <em>more</em> loaded than fertility, not less.
+    </li>
+    <li>
+      <strong>Found a real-world ritual.</strong>
+      Arva Over Ice = small, in-person, low-stakes, women-in-a-room. Elfina's version could be <em>"Therapy Test Drive"</em> or <em>"First-Session Stories"</em> evenings — not for selling, for surfacing the unsaid. The marketing return is the <strong>quotes you collect</strong>, which then run the next quarter of content.
+    </li>
+    <li>
+      <strong>Make the founders the face.</strong>
+      Dipalie and Nidhi front every video. Tanvi has a credible founder story — build it explicitly: <em>"two friends, one struggle to find a therapist who got it"</em> is the Arva template applied. Founder-led content is cheaper, more trusted, and more legally defensible in mental health than influencer content.
+    </li>
+    <li>
+      <strong>Pick a palette that doesn't say "wellness app."</strong>
+      Arva's merlot rejects pink. Elfina should reject calm-blue and sage-green — both are now generic. A <strong>single confident colour</strong> signals "we made a decision."
+    </li>
+    <li>
+      <strong>Bundle a human into every transaction.</strong>
+      Arva ships every test with a free 1:1 coach call. Elfina's equivalent: every therapist match comes with a no-cost 15-minute <em>"is this the right fit?"</em> call <strong>before</strong> the first paid session. Signal: <em>we don't profit from a mismatch.</em>
+    </li>
+  </ol>
+
+  <!-- ─────────────────────────────────────── -->
+  <div class="flag" style="margin-top: 40px;">
+    <strong>How to send this to Tanvi.</strong> Open with <em>"I've used Arva for a year — here's what I think Dipalie did, and a few things you might steal."</em> That's the artifact Tanvi remembers, vs. a deck she archives.
+  </div>
+
+  <!-- ─────────────────────────────────────── -->
+  <h2 style="border: none; padding: 0; font-size: 20px; margin-top: 50px;">Sources</h2>
+  <ul class="sources">
+    <li><a href="https://inc42.com/startups/this-startup-is-on-a-mission-to-transform-indias-fertility-care-landscape/" target="_blank">Inc42 — On a Mission to Transform India's Fertility Care</a></li>
+    <li><a href="https://www.shethepeople.tv/interviews/arva-health-fertility-tests-nidhi-panchmal-dipalie-bajaj-6845223" target="_blank">SheThePeople — Arva Health Founders Interview</a></li>
+    <li><a href="https://femtechinsider.com/arva-health-secures-1m-pre-seed-to-build-network-of-modern-fertility-clinics-in-india/" target="_blank">Femtech Insider — $1M Pre-Seed</a></li>
+    <li><a href="https://ehealth.eletsonline.com/2025/03/femtech-startup-arva-health-secures-1m-pre-seed-funding-for-transforming-indias-fertility-care/" target="_blank">eHealth Magazine — Pre-Seed Coverage</a></li>
+    <li><a href="https://www.arva.health/blogs/fertility-101/what-is-amh-and-what-does-it-really-tell-you-about-your-fertility" target="_blank">Arva blog — What is AMH?</a></li>
+    <li><a href="https://www.arva.health/blogs/fertility-treatments/egg-freezing-in-india-myths-facts-amp-what-doctors-won-t-always-tell-you" target="_blank">Arva blog — Egg freezing myths</a></li>
+    <li><a href="https://in.linkedin.com/company/arva-health" target="_blank">Arva Health LinkedIn</a></li>
+    <li><a href="https://www.linkedin.com/in/dipalie/" target="_blank">Dipalie Bajaj LinkedIn</a></li>
+    <li><a href="https://www.instagram.com/arva.health/" target="_blank">Instagram @arva.health</a></li>
+  </ul>
+
+  <p class="footer">
+    Compiled by Tanya Arora · May 14, 2026 · For internal use, can be forwarded to Tanvi at Elfina Health.
+  </p>
+
+</main>
+</body>
+</html>
