@@ -1,22 +1,40 @@
 {
-  "generated_at": "2026-05-14T09:36:05.674Z",
+  "generated_at": "2026-05-14T11:57:51.398Z",
   "source": "Notion DB 82d05994b82f4ad69228a1081c9be8c3",
-  "total": 13,
+  "total": 14,
   "rows": [
+    {
+      "id": "360c095b-d797-8102-8670-c7f4d1aaa4d7",
+      "company": "Snowball",
+      "status": "Sent",
+      "priority": "High",
+      "role": null,
+      "person": "",
+      "mode": [
+        "Job Application"
+      ],
+      "date_sent": "2026-05-14",
+      "brand_page": null,
+      "job_posting": "https://www.linkedin.com/jobs/view/4411355090/",
+      "last_contact": "May 14, 2026: Applied via LinkedIn Apply button. Apply only — no direct outreach yet. NEXT: identify founder + recruiter contact for direct DM if a fit is plausible.",
+      "notes_preview": "Role + company details: to be researched. Linked posting: https://www.linkedin.com/jobs/view/4411355090/. Just hit Apply on the form, no further outreach yet.",
+      "notion_url": "https://www.notion.so/Snowball-360c095bd79781028670c7f4d1aaa4d7"
+    },
     {
       "id": "360c095b-d797-8122-a499-dfcbb38f53be",
       "company": "Pocket FM",
-      "status": "Sent",
+      "status": "Awaiting reply",
       "priority": "High",
       "role": "AI Native Generalist, Founder's Office",
       "person": "Ashish Kumar (Head of Talent) — CONTACTED May 14\n\n— Not yet contacted —\nRohan Nayak (Co-Founder & CEO) — linkedin.com/in/rohan-nayak\nNishanth Srinivasagowda (COO)\nPrateek Dixit (CTO)\nLalit Gangwar (COO Global)",
       "mode": [
-        "Job Application"
+        "Job Application",
+        "WhatsApp"
       ],
-      "date_sent": "2026-05-13",
+      "date_sent": "2026-05-14",
       "brand_page": null,
       "job_posting": "https://in.linkedin.com/jobs/view/ai-native-generalist-at-pocket-fm-4410383106",
-      "last_contact": "May 13, 2026: Applied via LinkedIn for the AI Native Generalist, Founder's Office role in Bengaluru (posted ~3 days ago, 200+ applicants). NEXT: build custom brand page + direct DM to Rohan Nayak + Ashish Kumar to differentiate from the applicant pile.",
+      "last_contact": "May 14, 2026: Direct WhatsApp DM to Ashish Kumar (Head of Talent) with link to tanyaarora.in/hey_pocketfm. Asked for a quick 15-min call. NEXT: same shape DM to Rohan Nayak (CEO) if no reply by May 16-17. May 13: form application via LinkedIn for AI Native Generalist role.",
       "notes_preview": "Role: AI Native Generalist, Founder's Office · HQ: Bengaluru (Koramangala + HSR Layout, primary) + Gurgaon (secondary).\n\nFounded 2018 by IIT-KGP batchmates Rohan Nayak (CEO) + Nishanth Srinivasagowda (COO) + Prateek Dixit (CTO). Audio-series platform (~10 min serialized fiction).",
       "notion_url": "https://www.notion.so/Pocket-FM-360c095bd7978122a499dfcbb38f53be"
     },
@@ -81,7 +99,7 @@
       "status": "Sent",
       "priority": "High",
       "role": "(undisclosed)",
-      "person": "(Contact name undisclosed in posting)",
+      "person": "",
       "mode": [
         "Job Application"
       ],
@@ -136,7 +154,7 @@
       "status": "Sent",
       "priority": "High",
       "role": "Creative Lead",
-      "person": "Arunita Sen (Founder & CEO) — linkedin.com/in/arunitasen",
+      "person": "Arunita Sen",
       "mode": [
         "Email"
       ],
