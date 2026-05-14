@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanya Arora — Job Hunt Dashboard</title>
+<meta name="description" content="Live tracker of Tanya Arora's job applications & founder outreach. Auto-synced from Notion every hour.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;0,900;1,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF6CC;
+    --paper: #FCF5E0;
+    --paper-deep: #FFE9A1;
+    --coral: #DA6F4D;
+    --terra: #C04B25;
+    --green: #5C8A4F;
+    --blue: #5B8FB9;
+    --purple: #9A7BBF;
+    --pink: #D87295;
+    --orange: #E89C5C;
+    --gray: #8A8378;
+    --ink: #1B1A18;
+    --muted: hsl(30, 12%, 32%);
+    --line: rgba(27, 26, 24, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  body {
+    background:
+      radial-gradient(ellipse 900px 500px at 0% 0%, rgba(218, 111, 77, 0.10), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 100% 100%, rgba(92, 138, 79, 0.08), transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+    padding: clamp(20px, 4vw, 50px) clamp(14px, 3vw, 40px) 80px;
+  }
+  .container { max-width: 1180px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  .stamp {
+    font-size: 11px;
+    color: var(--coral);
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+  h1 em { font-style: italic; color: var(--coral); }
+  .subtitle {
+    font-size: clamp(14px, 1.6vw, 16px);
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+  .updated-at {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--paper);
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-style: normal;
+    margin-left: 6px;
+  }
+
+  /* ── STAT CARDS ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .stat {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 18px 16px;
+    border: 1.5px solid var(--line);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat-num em { color: var(--coral); font-style: italic; }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .stat-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* ── FILTER STRIP ── */
+  .filter-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    align-items: center;
+  }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-right: 4px;
+  }
+  .chip {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .chip:hover { background: var(--paper-deep); }
+  .chip.is-active {
+    background: var(--ink);
+    color: var(--paper-deep);
+  }
+  .chip-count {
+    display: inline-block;
+    margin-left: 4px;
+    opacity: 0.6;
+    font-size: 10px;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 180px;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-box:focus { border-color: var(--coral); }
+  .search-box::placeholder { color: var(--muted); }
+
+  /* ── DATA TABLE / CARDS ── */
+  .results-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 12px 0 10px;
+    font-style: italic;
+  }
+
+  /* Desktop table */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+  }
+  thead th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--paper);
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid var(--ink);
+    white-space: nowrap;
+  }
+  tbody tr {
+    transition: background 0.12s ease;
+    cursor: pointer;
+  }
+  tbody tr:hover { background: rgba(218, 111, 77, 0.06); }
+  tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  .row-company {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .row-role {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .row-person {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .row-last-contact {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .row-date { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+  /* ── STATUS BADGES ── */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1.5px solid;
+  }
+  .badge--toapply { color: var(--gray); border-color: var(--gray); background: rgba(138, 131, 120, 0.08); }
+  .badge--drafted { color: var(--orange); border-color: var(--orange); background: rgba(232, 156, 92, 0.10); }
+  .badge--sent { color: var(--blue); border-color: var(--blue); background: rgba(91, 143, 185, 0.10); }
+  .badge--awaiting { color: var(--coral); border-color: var(--coral); background: rgba(218, 111, 77, 0.10); }
+  .badge--replied { color: var(--purple); border-color: var(--purple); background: rgba(154, 123, 191, 0.10); }
+  .badge--interviewing { color: var(--pink); border-color: var(--pink); background: rgba(216, 114, 149, 0.12); }
+  .badge--offer { color: var(--green); border-color: var(--green); background: rgba(92, 138, 79, 0.10); }
+  .badge--rejected { color: var(--terra); border-color: var(--terra); background: rgba(192, 75, 37, 0.08); }
+  .badge--closed { color: var(--muted); border-color: var(--muted); background: rgba(138, 131, 120, 0.05); }
+
+  .priority-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  .priority-dot--high { background: var(--coral); }
+  .priority-dot--medium { background: var(--orange); }
+  .priority-dot--low { background: var(--gray); }
+  .priority-label { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+  .mode-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .mode-pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--paper-deep);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    white-space: nowrap;
+  }
+
+  .link-icon {
+    display: inline-block;
+    color: var(--terra);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 1px dotted var(--terra);
+  }
+  .link-icon:hover { color: var(--coral); border-bottom-color: var(--coral); }
+  .no-link { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  /* New / met badges */
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag--new { background: var(--coral); color: var(--paper); }
+  .tag--met { background: var(--green); color: var(--paper); }
+  .tag--assignment { background: var(--orange); color: var(--paper); }
+  .tag--applyonly { background: var(--paper-deep); color: var(--ink); border: 1px solid var(--ink); }
+
+  .apply-only-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .apply-only-note::before { content: "📝"; font-size: 11px; }
+
+  /* Mobile cards */
+  .cards { display: none; }
+  .card-row {
+    background: var(--paper);
+    border-radius: 10px;
+    border: 1.5px solid var(--line);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .card-row .row-company { margin-bottom: 6px; }
+  .card-row .row-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+  .card-row .row-person { margin: 6px 0 4px; }
+  .card-row .row-last-contact { margin-top: 6px; }
+  .card-row .row-links { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; }
+
+  /* ── FOOTER BRAND PAGES ── */
+  .section-divider {
+    margin: 60px 0 30px;
+    border: none;
+    border-top: 2px solid var(--ink);
+    opacity: 0.4;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(22px, 3vw, 30px);
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  h2 em { color: var(--coral); font-style: italic; }
+  .section-sub { color: var(--muted); font-size: 14px; margin-bottom: 22px; font-style: italic; }
+
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .brand-card {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.15s ease;
+  }
+  .brand-card:hover {
+    background: var(--paper-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  }
+  .brand-card-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .brand-card-url {
+    font-size: 12px;
+    color: var(--coral);
+    word-break: break-all;
+  }
+
+  /* ── HELP BLOCK ── */
+  .help-block {
+    background: var(--paper-deep);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: clamp(20px, 3vw, 28px);
+    margin-top: 40px;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  .help-block h2 { margin-top: 0; }
+  .help-block ol { padding-left: 24px; }
+  .help-block li { margin: 8px 0; font-size: 14px; }
+  .help-block li strong { color: var(--terra); }
+
+  .footer-final {
+    margin-top: 50px;
+    padding-top: 24px;
+    border-top: 1.5px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .footer-final a { color: var(--terra); text-decoration: none; border-bottom: 1px dotted var(--terra); }
+  .footer-final a:hover { color: var(--coral); border-bottom-color: var(--coral); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .table-wrap { display: none; }
+    .cards { display: block; }
+    .filter-strip { gap: 6px; }
+    .chip { font-size: 11px; padding: 5px 10px; }
+  }
+  @media (max-width: 420px) {
+    .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat { padding: 14px 12px; }
+  }
+</style>
+</head>
+<body>
+<main class="container">
+
+  <p class="stamp">Job hunt dashboard <span class="updated-at" id="updated-at">loading…</span></p>
+  <h1>Tanya × <em>the world</em>.</h1>
+  <p class="subtitle">Every application, every conversation, every founder I've reached. Live from Notion.</p>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="stat"><div class="stat-num" id="stat-total">—</div><div class="stat-label">In flight</div><div class="stat-sub">total applications</div></div>
+    <div class="stat"><div class="stat-num" id="stat-active">—</div><div class="stat-label">Active</div><div class="stat-sub">sent + awaiting + interviewing</div></div>
+    <div class="stat"><div class="stat-num" id="stat-interviewing">—</div><div class="stat-label">Interviewing</div><div class="stat-sub">in active conversation</div></div>
+    <div class="stat"><div class="stat-num" id="stat-toapply">—</div><div class="stat-label">To apply</div><div class="stat-sub">queued up</div></div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filter-strip" id="status-filters">
+    <span class="filter-label">Status</span>
+    <button class="chip is-active" data-status="all">All</button>
+    <button class="chip" data-status="Interviewing">🩷 Interviewing</button>
+    <button class="chip" data-status="Awaiting reply">🟡 Awaiting reply</button>
+    <button class="chip" data-status="Sent">🔵 Sent</button>
+    <button class="chip" data-status="Drafted">🟠 Drafted</button>
+    <button class="chip" data-status="To apply">⏳ To apply</button>
+    <input type="text" class="search-box" id="search-box" placeholder="Search company / person…">
+  </div>
+
+  <p class="results-meta" id="results-meta">Loading…</p>
+
+  <!-- TABLE (desktop) -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Status</th>
+          <th>Person</th>
+          <th>Last contact</th>
+          <th>Mode</th>
+          <th>Brand page</th>
+        </tr>
+      </thead>
+      <tbody id="rows-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- CARDS (mobile) -->
+  <div class="cards" id="rows-cards"></div>
+
+  <hr class="section-divider">
+
+  <!-- BRAND PAGES -->
+  <h2>Live <em>brand pages</em></h2>
+  <p class="section-sub">Each one is a custom one-pager. Forward them to anyone who can help.</p>
+  <div class="brand-grid" id="brand-grid"></div>
+
+  <!-- HELP BLOCK -->
+  <div class="help-block">
+    <h2>Want to <em>help me</em>?</h2>
+    <ol>
+      <li><strong>Warm intros</strong> — to anyone in the table above. Even a one-line "hey, this is Tanya, she'd love a 15-min chat" forwarded to a founder is gold.</li>
+      <li><strong>Forward my brand-specific page</strong> if you know someone inside the company.</li>
+      <li><strong>Surface companies I'm missing.</strong> Indian D2C / consumer brand / early-stage startup names — drop them my way.</li>
+      <li><strong>Be a sanity check.</strong> If you're seeing my LinkedIn posts or DMs and they sound off, tell me.</li>
+    </ol>
+  </div>
+
+  <p class="footer-final">
+    Dashboard auto-syncs from <a href="https://www.notion.so/82d05994b82f4ad69228a1081c9be8c3" target="_blank">my Notion tracker</a> · refreshed hourly via GitHub Action ·
+    <a href="https://www.tanyaarora.in" target="_blank">tanyaarora.in</a>
+  </p>
+
+</main>
+
+<script>
+const STATUS_BADGE_CLASS = {
+  "To apply": "badge--toapply",
+  "Drafted": "badge--drafted",
+  "Sent": "badge--sent",
+  "Awaiting reply": "badge--awaiting",
+  "Replied": "badge--replied",
+  "Interviewing": "badge--interviewing",
+  "Offer": "badge--offer",
+  "Rejected": "badge--rejected",
+  "Closed": "badge--closed"
+};
+const PRIORITY_DOT = { "High": "high", "Medium": "medium", "Low": "low" };
+
+let DATA = null;
+let activeStatus = "all";
+let searchQ = "";
+
+function esc(s){ if(s==null) return ""; return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+
+function badge(status){
+  const cls = STATUS_BADGE_CLASS[status] || "badge--closed";
+  return `<span class="badge ${cls}">${esc(status)}</span>`;
+}
+
+function modePills(modes){
+  if(!modes || !modes.length) return '<span class="no-link">—</span>';
+  return `<div class="mode-list">${modes.map(m => `<span class="mode-pill">${esc(m)}</span>`).join("")}</div>`;
+}
+
+function isApplyOnly(modes){
+  return modes && modes.length === 1 && modes[0] === "Job Application";
+}
+
+function brandLink(url){
+  if(!url) return '<span class="no-link">—</span>';
+  const short = url.replace(/^https?:\/\/(www\.)?/, "");
+  return `<a class="link-icon" href="${esc(url)}" target="_blank">${esc(short)} ↗</a>`;
+}
+
+function tagBadges(tags){
+  if(!tags || !tags.length) return "";
+  return tags.map(t => `<span class="tag tag--${esc(t)}">${esc(t)}</span>`).join("");
+}
+
+function renderStats(){
+  const rows = DATA.rows;
+  const total = rows.length;
+  const active = rows.filter(r => ["Sent","Awaiting reply","Interviewing","Replied"].includes(r.status)).length;
+  const interviewing = rows.filter(r => r.status === "Interviewing").length;
+  const toApply = rows.filter(r => r.status === "To apply").length;
+  document.getElementById("stat-total").innerHTML = total;
+  document.getElementById("stat-active").innerHTML = active;
+  document.getElementById("stat-interviewing").innerHTML = interviewing;
+  document.getElementById("stat-toapply").innerHTML = toApply;
+
+  // Updated stamp
+  const gen = DATA.generated_at;
+  if(gen){
+    const d = new Date(gen);
+    const opts = { day:"numeric", month:"short", hour:"2-digit", minute:"2-digit" };
+    document.getElementById("updated-at").innerText = `updated ${d.toLocaleString("en-IN", opts)}`;
+  }
+}
+
+function renderFilters(){
+  const counts = {};
+  DATA.rows.forEach(r => { counts[r.status] = (counts[r.status]||0)+1; });
+  document.querySelectorAll(".chip[data-status]").forEach(c => {
+    const s = c.dataset.status;
+    if(s === "all"){
+      c.innerHTML = c.innerHTML.replace(/<span class="chip-count">.*?<\/span>/, "") + ` <span class="chip-count">${DATA.rows.length}</span>`;
+    } else if(counts[s]){
+      c.innerHTML = c.innerHTML.replace(/<span class="chip-count">.*?<\/span>/, "") + ` <span class="chip-count">${counts[s]}</span>`;
+    }
+  });
+}
+
+function rowSorter(a, b){
+  // Priority first: High → Medium → Low
+  const pOrder = { "High":0, "Medium":1, "Low":2 };
+  const pa = pOrder[a.priority] ?? 3;
+  const pb = pOrder[b.priority] ?? 3;
+  if(pa !== pb) return pa - pb;
+  // Then status: Interviewing → Awaiting → Sent → Drafted → To apply
+  const sOrder = { "Interviewing":0, "Awaiting reply":1, "Replied":2, "Sent":3, "Drafted":4, "To apply":5 };
+  const sa = sOrder[a.status] ?? 9;
+  const sb = sOrder[b.status] ?? 9;
+  if(sa !== sb) return sa - sb;
+  // Then most-recent date_sent
+  const da = a.date_sent || "";
+  const db = b.date_sent || "";
+  return db.localeCompare(da);
+}
+
+function renderRows(){
+  const tbody = document.getElementById("rows-tbody");
+  const cards = document.getElementById("rows-cards");
+  const meta = document.getElementById("results-meta");
+
+  let rows = DATA.rows.slice().sort(rowSorter);
+
+  if(activeStatus !== "all"){ rows = rows.filter(r => r.status === activeStatus); }
+  if(searchQ){
+    const q = searchQ.toLowerCase();
+    rows = rows.filter(r =>
+      (r.company || "").toLowerCase().includes(q) ||
+      (r.person || "").toLowerCase().includes(q) ||
+      (r.role || "").toLowerCase().includes(q)
+    );
+  }
+
+  meta.innerText = `Showing ${rows.length} of ${DATA.rows.length} · sorted by priority + status`;
+
+  tbody.innerHTML = rows.map(r => `
+    <tr>
+      <td>
+        <div class="row-company">${esc(r.company)}${tagBadges(r.tags)}</div>
+        <div class="row-role">${esc(r.role || "")}</div>
+        ${isApplyOnly(r.mode) ? '<div class="apply-only-note">Apply only — no direct outreach yet</div>' : ""}
+      </td>
+      <td>
+        <div>${badge(r.status)}</div>
+        <div style="margin-top:6px"><span class="priority-dot priority-dot--${PRIORITY_DOT[r.priority] || 'low'}"></span><span class="priority-label">${esc(r.priority || "")}</span></div>
+      </td>
+      <td>
+        <div class="row-person">${esc(r.person || "—")}</div>
+      </td>
+      <td>
+        <div class="row-last-contact">${esc(r.last_contact || "—")}</div>
+        ${r.date_sent ? `<div class="row-date" style="margin-top:4px">Sent: ${esc(r.date_sent)}</div>` : ""}
+      </td>
+      <td>${modePills(r.mode)}</td>
+      <td>${brandLink(r.brand_page)}</td>
+    </tr>
+  `).join("") || `<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--muted)">No applications match this filter.</td></tr>`;
+
+  cards.innerHTML = rows.map(r => `
+    <div class="card-row">
+      <div class="row-company">${esc(r.company)}${tagBadges(r.tags)}</div>
+      <div class="row-role">${esc(r.role || "")}</div>
+      ${isApplyOnly(r.mode) ? '<div class="apply-only-note">Apply only — no direct outreach yet</div>' : ""}
+      <div class="row-meta" style="margin-top:8px">
+        ${badge(r.status)}
+        <span class="priority-label"><span class="priority-dot priority-dot--${PRIORITY_DOT[r.priority] || 'low'}"></span>${esc(r.priority || "")}</span>
+      </div>
+      <div class="row-person">${esc(r.person || "—")}</div>
+      <div class="row-meta">${modePills(r.mode)}</div>
+      <div class="row-last-contact">${esc(r.last_contact || "—")}</div>
+      <div class="row-links">
+        ${r.brand_page ? `<a class="link-icon" href="${esc(r.brand_page)}" target="_blank">brand page ↗</a>` : ""}
+        ${r.job_posting ? `<a class="link-icon" href="${esc(r.job_posting)}" target="_blank">job link ↗</a>` : ""}
+      </div>
+    </div>
+  `).join("") || `<div class="card-row" style="text-align:center;color:var(--muted)">No applications match this filter.</div>`;
+}
+
+function renderBrandGrid(){
+  const cards = DATA.rows.filter(r => r.brand_page).sort(rowSorter);
+  document.getElementById("brand-grid").innerHTML = cards.map(r => `
+    <a class="brand-card" href="${esc(r.brand_page)}" target="_blank">
+      <div class="brand-card-name">${esc(r.company)}</div>
+      <div class="brand-card-url">${esc(r.brand_page.replace(/^https?:\/\/(www\.)?/, ""))}</div>
+    </a>
+  `).join("");
+}
+
+// Filter chip clicks
+document.querySelectorAll(".chip[data-status]").forEach(c => {
+  c.addEventListener("click", () => {
+    document.querySelectorAll(".chip[data-status]").forEach(x => x.classList.remove("is-active"));
+    c.classList.add("is-active");
+    activeStatus = c.dataset.status;
+    renderRows();
+  });
+});
+
+// Search input
+document.getElementById("search-box").addEventListener("input", (e) => {
+  searchQ = e.target.value.trim();
+  renderRows();
+});
+
+// Fetch + render
+fetch("./data.json", { cache: "no-store" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    renderStats();
+    renderFilters();
+    renderRows();
+    renderBrandGrid();
+  })
+  .catch(err => {
+    document.getElementById("results-meta").innerText = `Couldn't load data: ${err.message}`;
+  });
+</script>
+</body>
+</html>
