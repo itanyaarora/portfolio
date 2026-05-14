@@ -234,5 +234,20 @@
       "title": "Why I'm writing to <em>you</em>, BrandSheep.",
       "intro": "Before I send anything over, two things I've been thinking about."
     }
+  },
+
+  "wework": {
+    "displayName": "WeWork",
+    "heroHeadline": "An artistic person<br>writing about your design.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of engineering, then four months trying creative careers including mural artist and exhibition designer. The Manager, Arts &amp; Graphic role looks like the room I've been wanting to be in.",
+    "ctaTitle": "Open to a conversation?",
+    "ctaDesc": "20 minutes, whenever it's easy for you.",
+    "_status": "Manager, Arts & Graphic role at WeWork India (Bengaluru). LinkedIn 4410484407. Cards: 'I love how WeWork looks' (artistic angle) + 'My path here is unusual' (honest about 7-8yr Adobe gap). Awaiting wework_hey.webp loader asset + optional wework_polo.mp4 polaroid (mural or exhibition-design clip).",
+
+    "personalNote": {
+      "eyebrow": "A little note just for WeWork",
+      "title": "Why I'm writing to <em>you</em>, WeWork.",
+      "intro": "Two things I keep coming back to."
+    }
   }
 }
