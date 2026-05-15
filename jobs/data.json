@@ -1,8 +1,23 @@
 {
-  "generated_at": "2026-05-15T04:07:28.449Z",
+  "generated_at": "2026-05-15T11:26:15.010Z",
   "source": "Notion DB 82d05994b82f4ad69228a1081c9be8c3",
-  "total": 14,
+  "total": 15,
   "rows": [
+    {
+      "id": "361c095b-d797-81ca-81aa-edd1186c5268",
+      "company": "WeWork",
+      "status": "To apply",
+      "priority": "Medium",
+      "role": "Manager, Arts & Graphic at WeWork India (Bengaluru). JD asks for 7-8 yrs Adobe Creative Suite. Tanya has 6 yrs engineering + 4 months of 50 careers (mural artist + exhibition designer). Brand page leans on artistic angle (Card 1: 'I love how WeWork looks') + honest about the gap (Card 2: 'My path here is unusual'). Hero/CTA in companies.json. Page is built, not yet applied or DM'd.",
+      "person": "(No contact identified yet — next step: find hiring manager / design lead at WeWork India on LinkedIn)",
+      "mode": [],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/hey_wework",
+      "job_posting": "https://www.linkedin.com/jobs/view/4410484407",
+      "last_contact": "May 15, 2026: Brand page wework.html built and pushed. Live at tanyaarora.in/wework.html with hey_wework redirect. Not yet applied via LinkedIn or reached out to anyone. Action: apply + identify hiring manager.",
+      "notes_preview": "Role: Manager, Arts & Graphic at WeWork India (Bengaluru). JD asks for 7-8 yrs Adobe Creative Suite. Tanya has 6 yrs engineering + 4 months of 50 careers (mural artist + exhibition designer). Brand page leans on artistic angle (Card 1: 'I love how WeWork looks') + honest about th",
+      "notion_url": "https://www.notion.so/WeWork-361c095bd79781ca81aaedd1186c5268"
+    },
     {
       "id": "360c095b-d797-8102-8670-c7f4d1aaa4d7",
       "company": "Snowball",
@@ -26,15 +41,16 @@
       "status": "Awaiting reply",
       "priority": "High",
       "role": "AI Native Generalist, Founder's Office",
-      "person": "Ashish Kumar (Head of Talent) — CONTACTED May 14\n\n— Not yet contacted —\nRohan Nayak (Co-Founder & CEO) — linkedin.com/in/rohan-nayak\nNishanth Srinivasagowda (COO)\nPrateek Dixit (CTO)\nLalit Gangwar (COO Global)",
+      "person": "Ashish Kumar (Head of Talent) — CONTACTED May 14\nRohan Nayak (Co-Founder & CEO) — CONTACTED May 15 via LinkedIn DM — linkedin.com/in/rohan-nayak\nPrateek Dixit (Co-Founder & CTO) — CONTACTED May 15 via LinkedIn DM — AI / eng-leader angle\n\n— Not yet contacted —\nNishanth Srinivasagowda (COO)\nLalit Gangwar (COO Global)",
       "mode": [
         "Job Application",
-        "WhatsApp"
+        "WhatsApp",
+        "LinkedIn DM"
       ],
       "date_sent": "2026-05-14",
-      "brand_page": null,
+      "brand_page": "https://www.tanyaarora.in/hey_pocketfm",
       "job_posting": "https://in.linkedin.com/jobs/view/ai-native-generalist-at-pocket-fm-4410383106",
-      "last_contact": "May 14, 2026: Direct WhatsApp DM to Ashish Kumar (Head of Talent) with link to tanyaarora.in/hey_pocketfm. Asked for a quick 15-min call. NEXT: same shape DM to Rohan Nayak (CEO) if no reply by May 16-17. May 13: form application via LinkedIn for AI Native Generalist role.",
+      "last_contact": "May 15, 2026: Double LinkedIn DM to Rohan Nayak (CEO) + Prateek Dixit (CTO), both linked to tanyaarora.in/hey_pocketfm. Rohan message framed: Founder's Office role works closely with him → reaching out directly. Prateek message framed: he leads the AI side at Pocket FM → reaching out directly + AI Generalist role works closely with that team. Both messages noted: applied recently, trying multiple folks, engineering background (Microsoft + Uber) + 4 months of shipping with AI. May 14: WhatsApp DM to Ashish Kumar (Head of Talent) — no reply yet. May 13: form application via LinkedIn for AI Native Generalist role.",
       "notes_preview": "Role: AI Native Generalist, Founder's Office · HQ: Bengaluru (Koramangala + HSR Layout, primary) + Gurgaon (secondary).\n\nFounded 2018 by IIT-KGP batchmates Rohan Nayak (CEO) + Nishanth Srinivasagowda (COO) + Prateek Dixit (CTO). Audio-series platform (~10 min serialized fiction).",
       "notion_url": "https://www.notion.so/Pocket-FM-360c095bd7978122a499dfcbb38f53be"
     },
