@@ -54,11 +54,11 @@
       color: hsl(12, 70%, 58%);
     }
 
-    /* ── WeWork variant: 2-col grid (card | card) ──
-       No middle polaroid yet — Tanya to supply a mural or exhibition
-       design clip later. For now the 2 cards carry the whole pitch. */
+    /* ── WeWork variant: 3-col grid (card | polaroid | card) ──
+       Middle polaroid is wework_polo.mp4 — H.264 clip transcoded
+       from wework.MP4 (HEVC) via avconvert. */
     body.has-personal-note .personal-note-points--cb {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr minmax(240px, 300px) 1fr;
       gap: clamp(24px, 3vw, 44px);
       align-items: center;
     }
@@ -431,36 +431,47 @@
       <p style="
         font-family: 'Nunito', sans-serif;
         font-style: italic;
-        font-size: 14px;
+        font-size: 16px;
         color: var(--muted, hsl(30, 10%, 40%));
         max-width: 60ch;
         margin: 0 auto 2rem;
         text-align: center;
-        line-height: 1.6;
+        line-height: 1.65;
         padding: 0 1rem;
       ">
-        Engineer by training, but the last four months I've been trying creative careers, mural artist and exhibition designer were two of them. Built this whole site with AI in a weekend. That's why I think the <em>Manager, Arts &amp; Graphic</em> role at WeWork might actually be a good fit. The rest of the page is my case for why.
+        Writing about the <em>Manager, Arts &amp; Graphic</em> role. Really keen on it, even though I'm coming from an unusual background. Two things below on why I think it could still be a fit.
       </p>
 
       <div class="personal-note-points personal-note-points--cb" id="personalNotePoints">
 
-        <!-- Card 1 — the artistic-person angle. Tanya as someone
-             who notices WeWork's design choices and wants to be in
-             the room shaping them. Real-customer warmth. -->
+        <!-- Card 1 — curated-spaces angle. Tanya as someone who's
+             worked from MNC offices for years and understands why
+             thoughtful, curated spaces matter for real productivity. -->
         <div class="personal-note-card">
           <div class="polaroid-tape" style="--tape: hsla(48, 95%, 72%, 0.85); --tape-rot: -4deg"></div>
-          <h3 class="personal-note-card-title">I love how WeWork looks.</h3>
-          <p class="personal-note-card-body">Every time I walk into one, the first thing I notice is the walls. The murals, the typography, the small choices that make the room feel <em>made</em>, not just leased. I just spent four months trying creative careers, mural artist was one of them. That's the kind of room I'd love to help shape.</p>
+          <h3 class="personal-note-card-title">I know how much curated spaces matter.</h3>
+          <p class="personal-note-card-body">I've worked in MNCs like Microsoft and Uber, where the office spaces were genuinely thoughtful and curated. That's where I learned how much a good space shapes your day. Lately, exploring a lot of different companies, WeWork is the only one I've seen that matches that standard. That's the team I'd want to be on.</p>
         </div>
 
-        <!-- Card 2 — honest about the path. The JD asks for 7-8 yrs
-             graphic design / Adobe Suite. Tanya doesn't have that.
-             She has 6 yrs engineering + 4 months of 50 creative
-             careers. Be straight about it instead of papering over. -->
+        <!-- ━━━ MIDDLE POLAROID — between Card 1 and Card 2 ━━━
+             wework_polo.mp4 — H.264 clip transcoded from wework.MP4
+             (HEVC) via avconvert. Caption is a placeholder — Tanya
+             to confirm/adjust to match what the clip shows. -->
+        <figure class="personal-note-media">
+          <div class="polaroid-tape" style="--tape: hsla(286, 60%, 70%, 0.85); --tape-rot: 3deg"></div>
+          <video class="personal-note-media-video" muted playsinline autoplay loop preload="auto" aria-hidden="true">
+            <source src="wework_polo.mp4" type="video/mp4">
+          </video>
+          <figcaption class="personal-note-media-label">Mural artist, recently.</figcaption>
+        </figure>
+
+        <!-- Card 2 — artistic instinct angle. Tanya as a lifelong
+             maker / mural artist, honest about the Adobe Suite gap
+             but framed as willingness to invest in the tools. -->
         <div class="personal-note-card">
           <div class="polaroid-tape" style="--tape: hsla(54, 88%, 74%, 0.85); --tape-rot: -2deg"></div>
-          <h3 class="personal-note-card-title">My path here is unusual.</h3>
-          <p class="personal-note-card-body">Six years engineering at Microsoft and Uber. Then four months trying creative careers, including mural artist and exhibition designer. I don't have eight years of Adobe Suite the role asks for. But I'm artistic by instinct, fast with tools, and the kind of person who'll learn the software in a weekend and be useful on Monday.</p>
+          <h3 class="personal-note-card-title">I have the artistic instinct.</h3>
+          <p class="personal-note-card-body">I recently spent time as a mural artist, and honestly, art is the thing that pulls me everywhere I go. This role feels like the team I'd want to be on. I don't have eight years on Adobe Suite, but I'll invest in whatever software the team uses. That's the easy part.</p>
         </div>
 
       </div>
