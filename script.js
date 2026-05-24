@@ -286,13 +286,13 @@ function updateWhyCards() {
   const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
 
   // Why-work's scroll budget is split into three zones (see .why-work height):
-  //   1. Card reveal  →  1100px  (cards 1–5 slide up)
+  //   1. Card reveal  →  2500px  (cards 1–5 slide up, ~500px per card)
   //   2. Read pause   →   400px  (all cards visible, nothing moves — reader catches up)
   //   3. Services up  →  100vh   (services rises from below to cover the pinned sticky)
-  // Card 5 must arrive at the END of zone 1, which is 1100 / (1100 + 400 + 100vh).
-  // With 100vh ≈ 720px: 1100 / 2220 ≈ 0.50, so cardEnd ≈ 0.50.
+  // Card 5 must arrive at the END of zone 1, which is 2500 / (2500 + 400 + 100vh).
+  // With 100vh ≈ 720px: 2500 / 3620 ≈ 0.69, so cardEnd ≈ 0.69.
   const cardStart = 0.05;
-  const cardEnd   = 0.50;
+  const cardEnd   = 0.69;
   const n = whyCards.length;
   const cardProgress = Math.max(0, Math.min(1, (progress - cardStart) / (cardEnd - cardStart)));
 

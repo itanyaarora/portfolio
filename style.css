@@ -618,11 +618,7 @@ body::after {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
-  /* flex-start so pill rows align with the "Wanna dance?" button above
-     them. justify-content: center was centring each wrapped row on its
-     own total width, which left the rows looking offset from each other
-     and from the button. */
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .contact-pill {
@@ -2860,11 +2856,11 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   z-index: 4;
   background: var(--bg);
   /* Three zones stacked into one scroll budget:
-     1. Card reveal  →  1100px  (cards 1–5 slide up)
+     1. Card reveal  →  2500px  (cards 1–5 slide up, ~500px per card)
      2. Read pause   →   400px  (all cards visible, nothing moving — user can read card 5)
      3. Services up  →  100svh   (services slides up to cover the sticky)
      Plus the 100svh sticky base itself. */
-  height: calc(100svh + 1100px + 400px + 100svh);
+  height: calc(100svh + 2500px + 400px + 100svh);
   border-radius: 32px 32px 0 0;
   margin-top: -100svh;
   box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.12),
@@ -2946,12 +2942,8 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   padding: 18px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10),
               0 4px 14px rgba(0, 0, 0, 0.05);
-  /* Invisible (opacity:0) until the Why section scrolls in — block clicks
-     while hidden so the cards don't intercept clicks on content below
-     (e.g. the "Watch on Instagram" buttons in the journey polaroid pile,
-     which the -800px margin pulls behind these cards). */
   pointer-events: none;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.6s ease-out;
   display: flex;
   flex-direction: column;
@@ -3596,13 +3588,55 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
     width: 100%;
     max-width: 640px;
   }
-  /* .journey-careers-title font-size is fluid via base clamp() — no override
-     needed here anymore. */
   /* Car + dotted trail hidden — both rely on desktop-width geometry and
      end up overlapping copy at tablet widths. */
   .journey-car,
   .journey-trail {
     display: none !important;
+  }
+
+  .cta-box {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .cta-contacts {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100%;
+  }
+
+  .contact-pill {
+    width: 100% !important;
+    max-width: 280px !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .cta-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-copyright {
+    text-align: left;
+  }
+
+  .character-left,
+  .character-right {
+    display: none;
+  }
+
+  .marquee-bar {
+    display: none;
   }
 }
 
@@ -4216,6 +4250,27 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
 
   .time-badge {
     display: none;
+  }
+
+  .why-big-text {
+    text-align: center;
+  }
+
+  .why-card {
+    width: 280px;
+  }
+
+  .cta-contacts {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .contact-pill {
+    padding: 12px 18px;
+    font-size: 13px;
+    justify-content: center;
+    width: 100%;
   }
 }
 
