@@ -3602,6 +3602,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
 
   .cta-contacts {
+    display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     gap: 8px !important;
@@ -4065,7 +4066,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
      at a time — each new card flies in from below and stacks on top.
      Only when all 6 are revealed does continued scroll advance. */
   .why-work {
-    height: calc(100svh + 1100px + 400px + 100svh);
+    height: calc(100svh + 3600px + 400px + 100svh);
     margin-top: -100svh;
   }
   .why-sticky {
@@ -4261,8 +4262,9 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   }
 
   .cta-contacts {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     gap: 8px;
   }
 
