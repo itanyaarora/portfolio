@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-25T05:26:08.062Z",
   "source": "Notion DB 82d05994b82f4ad69228a1081c9be8c3",
-  "total": 24,
+  "total": 25,
   "rows": [
     {
       "id": "361c095b-d797-81ca-81aa-edd1186c5268",
@@ -405,6 +405,21 @@
       "job_posting": "https://www.linkedin.com/jobs/view/4414464306/",
       "last_contact": "Added to tracker May 20. Creative strategy + internet culture + writing — right in Tanya's lane. Travel credit card brand.",
       "notes_preview": "Role: Creative Strategist · Location: Bangalore · 2-4 yrs. Platform-native campaigns, culturally-aware copy, content patterns. 'Intersection of strategy, writing, internet culture, and good taste.'",
+      "notion_url": null
+    },
+    {
+      "id": "manual-cube",
+      "company": "Cube",
+      "status": "Awaiting reply",
+      "priority": "High",
+      "role": "Chief of Staff",
+      "person": "Suhail Abidi (CEO, Stanford GSB, IIT Kanpur)\nAshish Ranjan (Co-Founder, IIT Kharagpur)\nAbhinav Gupta (CTO) — CONTACTED May 25 via LinkedIn DM\nShylashree H B (Head of People Ops)\nSahana K (Growth Lead, Founding Member)",
+      "mode": ["Job Application", "LinkedIn DM"],
+      "date_sent": "2026-05-25",
+      "brand_page": null,
+      "job_posting": "https://www.linkedin.com/jobs/view/4415780943/",
+      "last_contact": "May 25: Applied via mandatory Google Form + LinkedIn DM to Abhinav Gupta (CTO/Co-Founder). Next: DM Shylashree (Head of People Ops) and email Suhail.",
+      "notes_preview": "Role: Chief of Staff · Location: HSR Layout, Bangalore. AI-powered marketing platform (SEO, paid ads, social, review mgmt). Surge-backed (Sequoia India), ~$2.2M raised, ~41 people. Clients: KFC, Taco Bell. Salary est: 15-22 LPA + equity.",
       "notion_url": null
     }
   ]
