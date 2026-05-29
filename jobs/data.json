@@ -1,8 +1,76 @@
 {
-  "generated_at": "2026-05-29T04:21:16.802Z",
+  "generated_at": "2026-05-29T08:48:01.612Z",
   "source": "Notion DB 82d05994b82f4ad69228a1081c9be8c3",
-  "total": 15,
+  "total": 19,
   "rows": [
+    {
+      "id": "36fc095b-d797-812f-b28a-f30b2739d72a",
+      "company": "Cava Athleisure",
+      "status": "To apply",
+      "priority": "Medium",
+      "role": null,
+      "person": "Shamaila Khan",
+      "mode": [
+        "LinkedIn DM"
+      ],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/cava.html",
+      "job_posting": null,
+      "last_contact": "",
+      "notes_preview": "",
+      "notion_url": "https://www.notion.so/Cava-Athleisure-36fc095bd797812fb28af30b2739d72a"
+    },
+    {
+      "id": "36fc095b-d797-8140-9c81-c17ddd3ddbff",
+      "company": "Cava Athleisure",
+      "status": "To apply",
+      "priority": "Low",
+      "role": null,
+      "person": "Ashika Prakash",
+      "mode": [
+        "LinkedIn DM"
+      ],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/cava.html",
+      "job_posting": null,
+      "last_contact": "",
+      "notes_preview": "",
+      "notion_url": "https://www.notion.so/Cava-Athleisure-36fc095bd79781409c81c17ddd3ddbff"
+    },
+    {
+      "id": "36fc095b-d797-815c-89f6-fb4ee5da9346",
+      "company": "Cava Athleisure",
+      "status": "To apply",
+      "priority": "High",
+      "role": null,
+      "person": "Ria Mittal",
+      "mode": [
+        "LinkedIn DM"
+      ],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/cava.html",
+      "job_posting": null,
+      "last_contact": "",
+      "notes_preview": "",
+      "notion_url": "https://www.notion.so/Cava-Athleisure-36fc095bd797815c89f6fb4ee5da9346"
+    },
+    {
+      "id": "36fc095b-d797-81cc-b436-c623873bf7f6",
+      "company": "Cava Athleisure",
+      "status": "To apply",
+      "priority": "High",
+      "role": null,
+      "person": "Shreya Mittal",
+      "mode": [
+        "LinkedIn DM"
+      ],
+      "date_sent": null,
+      "brand_page": "https://www.tanyaarora.in/cava.html",
+      "job_posting": null,
+      "last_contact": "",
+      "notes_preview": "",
+      "notion_url": "https://www.notion.so/Cava-Athleisure-36fc095bd79781ccb436c623873bf7f6"
+    },
     {
       "id": "361c095b-d797-81ca-81aa-edd1186c5268",
       "company": "WeWork",
