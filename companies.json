@@ -249,5 +249,20 @@
       "title": "Why I'm writing to <em>you</em>, WeWork.",
       "intro": ""
     }
+  },
+
+  "cava": {
+    "displayName": "Cava Athleisure",
+    "heroHeadline": "A real customer<br>writing to a brand she actually wears.",
+    "heroSubtext": "Ex-Microsoft, ex-Uber. Six years of engineering, then four months of trying seven creative careers. Loyal Cava wearer (HYROX included). Writing because the brands I love wearing are the ones I want to help build.",
+    "ctaTitle": "Hire your most loyal customer?",
+    "ctaDesc": "20 minutes. No pitch, just a chat.",
+    "_status": "Brand outreach to Cava Athleisure. Cards: loyal customer + soft fabric + HYROX-tested + lifelong clothes obsession (athleisure to couture to nightwear). Pending assets from Tanya: cava_hey.webp (loader), cava1.jpg / cava-hyrox.mp4 / cava2.jpg (polaroid rotator), cava-logo.svg or .png (if wanted in the loader).",
+
+    "personalNote": {
+      "eyebrow": "A little note just for Cava",
+      "title": "Why I'm writing to <em>you</em>, Cava.",
+      "intro": ""
+    }
   }
 }
