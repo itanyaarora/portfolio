@@ -13,11 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Preload the Cava loader. `cava_hey.gif` is Tanya's animated
-       greeting (large file, ~41MB — fine for in-person preview, but
-       worth compressing to webp/apng before publishing for a real
-       audience). -->
-  <link rel="preload" as="image" href="cava_hey.gif" fetchpriority="high">
+  <!-- Preload the Cava loader. `cava_hey.webp` is Tanya's animated
+       greeting, transcoded from a 41 MB GIF down to 1.78 MB (24x
+       smaller) via Pillow webp_anim. Same visuals, much cheaper first
+       paint so the loader doesn't keep visitors waiting. -->
+  <link rel="preload" as="image" href="cava_hey.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css?v=159">
   <style>
     /* Critical loader styles, inlined so there's no flash before style.css parses */
@@ -182,10 +182,10 @@
 </head>
 <body>
 
-  <!-- PAGE LOADER: Cava-branded animated GIF (cava_hey.gif) + greeting.
+  <!-- PAGE LOADER: Cava-branded animated WebP (cava_hey.webp) + greeting.
        Greeting overrides via ?hi=… or ?company=… URL params. -->
   <div class="page-loader" id="pageLoader" aria-hidden="true">
-    <img class="loader-gif" src="cava_hey.gif" alt="" aria-hidden="true">
+    <img class="loader-gif" src="cava_hey.webp" alt="" aria-hidden="true">
     <p class="loader-greeting" id="loaderGreeting">Hi Cava!</p>
   </div>
   <script>
