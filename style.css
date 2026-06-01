@@ -613,17 +613,29 @@ body::after {
 }
 
 /* ===== CTA CONTACTS — always visible ===== */
+/* Desktop layout: a tidy 2x2 grid so the four pills line up cleanly,
+   regardless of how wide each pill's text is. The pills themselves
+   stretch to fill their grid cell (see .contact-pill below), which
+   keeps the two pills in each row exactly the same width. max-width
+   stops the grid from sprawling across the whole cta-box on wide
+   screens. The mobile media-query override further down narrows the
+   grid + centres it. */
 .cta-contacts {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-top: 24px;
-  justify-content: center;
+  max-width: 600px;
 }
 
 .contact-pill {
-  display: inline-flex;
+  /* `flex` (not inline-flex) so the pill behaves as a block-level
+     element inside its grid cell and fills the cell's width.
+     justify-content: center keeps the icon + text grouped tidily in
+     the middle of each equal-width pill. */
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 9px;
   padding: 11px 18px;
   background: #111;
@@ -635,6 +647,7 @@ body::after {
   font-weight: 600;
   transition: background 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
+  width: 100%;
 }
 
 .contact-pill:hover {
