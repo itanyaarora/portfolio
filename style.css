@@ -622,10 +622,10 @@ body::after {
    grid + centres it. */
 .cta-contacts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
   margin-top: 24px;
-  max-width: 600px;
+  max-width: 360px;
 }
 
 .contact-pill {
@@ -1840,7 +1840,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
   font-size: clamp(14px, 1.2vw, 17px);
   color: var(--text-secondary);
   line-height: 1.75;
-  max-width: 600px;
+  max-width: min(92%, 820px);
   margin: 12px auto 0;
 }
 
@@ -3501,7 +3501,7 @@ body.personal-note-visible .personal-note-card:nth-child(3) { transition-delay: 
      axes (flex-wrap alone lets uneven widths stagger the rows). */
   .cta-contacts {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 10px;
     width: 100%;
     max-width: 360px;
